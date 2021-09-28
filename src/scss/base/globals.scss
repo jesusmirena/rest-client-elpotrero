@@ -1,0 +1,38 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-size: 1rem;
+  background-color: $moradoRedux;
+}
+p {
+  font-size: 1.2rem;
+  font-family: $fuenteParrafos;
+  color: $black;
+}
+a {
+  font-family: $fuenteSecundaria;
+  text-decoration: none;
+}
+h1,
+a {
+  color: $white;
+}
+img {
+  max-width: 100%;
+}
+h1 {
+  font-family: $fuentePrincipal;
+  font-size: 2.4rem;
+}
+h2 {
+  font-family: $fuenteSecundaria;
+  font-weight: $bold;
+  font-size: 2rem;
+}
+h3 {
+  font-family: $fuenteSecundaria;
+  font-size: 1.8rem;
+}
