@@ -36,7 +36,7 @@ export default function NavBarMui() {
               <MenuHamburguesa />
             </IconButton>
             <Button color="inherit">
-              <Link to="/home">Home </Link>
+              <Link to="/">Home </Link>
             </Button>
             <Button color="inherit">
               <Link to="/canchas">Canchas</Link>
@@ -46,7 +46,7 @@ export default function NavBarMui() {
             </Button>
 
             <Button sx={{ mx: 35 }}>
-              <Link to="/home">
+              <Link to="/">
                 <img style={{ background: "white" }} src={logo} alt="logo" />
               </Link>
             </Button>
