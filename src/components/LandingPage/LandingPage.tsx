@@ -1,7 +1,5 @@
 import React from "react";
 
-const LandinPage = () => {
+export default function LandinPage() {
   return <div></div>;
-};
-
-export default LandinPage;
+}

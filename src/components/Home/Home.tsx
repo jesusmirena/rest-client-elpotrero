@@ -1,14 +1,13 @@
 import React from "react";
-import Card from "../Card/Card";
 import NavBar from "../NavBar/NavBar";
+import CardsGrid from "../CardsGrid/CardsGrid";
+import styles from "../Home/Home.module.scss";
 
-const Home = () => {
+export default function Home() {
   return (
     <div>
       <NavBar />
-      <Card />
+      <CardsGrid />
     </div>
   );
-};
-
-export default Home;
+}
