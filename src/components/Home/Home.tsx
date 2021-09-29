@@ -1,12 +1,11 @@
 import React from "react";
-import NavBar from "../NavBar/NavBar";
 import CardsGrid from "../CardsGrid/CardsGrid";
-import styles from "../Home/Home.module.scss";
+import NavBarMui from "../NavBar/NavBarMUI";
 
 export default function Home() {
   return (
     <div>
-      <NavBar />
+      <NavBarMui />
       <CardsGrid />
     </div>
   );
