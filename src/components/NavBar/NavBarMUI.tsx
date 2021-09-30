@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 
-import logo from "../../visuales/fondoPotrero.png";
+import logo from "../../visuales/logoblanco.png";
 import MenuHamburguesa from "./MenuHamburguesa";
 
 const purpleTheme = createTheme({
@@ -47,7 +47,7 @@ export default function NavBarMui() {
 
             <Button sx={{ mx: 35 }}>
               <Link to="/">
-                <img style={{ background: "white" }} src={logo} alt="logo" />
+                <img style={{ height: "100px" }} src={logo} alt="logo" />
               </Link>
             </Button>
             <Button color="inherit">

@@ -9,12 +9,14 @@ module.exports = {
   output: {
     filename: "bundle.js",
     path: path.resolve(__dirname, "../dist"),
+    publicPath: "/",
   },
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".json"],
   },
   devServer: {
     static: "../dist",
+    historyApiFallback: true,
   },
   devtool: "source-map",
   module: {
