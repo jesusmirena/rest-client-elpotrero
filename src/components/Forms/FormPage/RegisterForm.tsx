@@ -1,6 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
+import TextField from "@mui/material/TextField";
 import { useForm, SubmitHandler } from "react-hook-form";
+import PasoAPaso from "./PasoAPaso";
 
 enum GenderEnum {
   female = "female",
@@ -31,72 +39,91 @@ export default function RegisterForm() {
     <div>
       <h1>Registrate</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <label>Nombre</label>
-        <input
-          placeholder="Escribe tu nombre"
-          {...register("name", { required: true })}
-        />
-        {errors.name?.type === "required" && "name is required"}
+        <PasoAPaso />
+        <Grid
+          container
+          direction="column"
+          justifyContent="center"
+          alignItems="center"
+        >
+          <TextField
+            label="Nombre"
+            variant="standard"
+            placeholder="Nombre"
+            {...register("name", { required: true })}
+          />
+          {errors.name?.type === "required" && "name is required"}
+          <TextField
+            label="Nombre de usuario"
+            variant="standard"
+            placeholder="Nombre de usuario"
+            {...register("username", { required: true })}
+          />
+          {errors.username?.type === "required" && "username is required"}
 
-        <label>Nombre de usuario</label>
-        <input
-          placeholder="Escribe tu nombre de usuario"
-          {...register("username", { required: true })}
-        />
-        {errors.username?.type === "required" && "username is required"}
+          <TextField
+            label="Correo electronico"
+            variant="standard"
+            placeholder="correo electronico"
+            type="email"
+            {...register("mail", {
+              required: true,
+              pattern:
+                /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
+            })}
+          />
+          {errors.mail?.type === "required" && "mail is required"}
 
-        <label>Correo electronico</label>
-        <input
-          placeholder="Ingresa tu correo electronico"
-          type="email"
-          {...register("mail", {
-            required: true,
-            pattern:
-              /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
-          })}
-        />
-        {errors.mail?.type === "required" && "mail is required"}
+          <TextField
+            label="Contraseña"
+            variant="standard"
+            type="password"
+            placeholder="Ingresa una contraseña"
+            {...register("password", { required: true })}
+          />
+          {errors.password?.type === "required" && "password is required"}
+          <label>Fecha de nacimiento</label>
+          <TextField
+            variant="standard"
+            type="date"
+            {...register("birthday", { valueAsDate: true, required: true })}
+          />
+          {errors.birthday?.type === "required" && "Birthday is required"}
 
-        <label>Contraseña</label>
-        <input
-          placeholder="Ingresa una contraseña"
-          {...register("password", { required: true })}
-        />
-        {errors.password?.type === "required" && "password is required"}
+          <TextField
+            label="Documento de identificacion"
+            variant="standard"
+            placeholder="documento de identificacion"
+            {...register("dni", { required: true })}
+          />
+          {errors.dni?.type === "required" && "dni is required"}
 
-        <label>Fecha de nacimiento</label>
-        <input
-          type="date"
-          {...register("password", { valueAsDate: true, required: true })}
-        />
-        {errors.birthday?.type === "required" && "Birthday is required"}
+          <TextField
+            label="Numero de telefono"
+            variant="standard"
+            placeholder="numero telefonico"
+            type="tel"
+            {...register("cellphone", { required: true, valueAsNumber: true })}
+          />
+          {errors.cellphone?.type === "required" && "Cellphone is required"}
+          <Box sx={{ maxWidth: 120 }}>
+            <FormControl fullWidth>
+              <InputLabel id="demo-simple-select-label">Genero</InputLabel>
+              <Select
+                {...register("gender")}
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                label="gender"
+              >
+                <MenuItem value="femenino">femenino</MenuItem>
+                <MenuItem value="masculino">masculino</MenuItem>
+                <MenuItem value="otro">otro</MenuItem>
+              </Select>
+            </FormControl>
+          </Box>
 
-        <label>Documento de identificacion</label>
-        <input
-          placeholder="Ingresa tu documento de identificacion"
-          {...register("dni", { required: true })}
-        />
-        {errors.dni?.type === "required" && "dni is required"}
-
-        <label>Numero de telefono</label>
-        <input
-          placeholder="Ingresa tu numero telefonico"
-          type="number"
-          {...register("cellphone", { required: true, valueAsNumber: true })}
-        />
-        {errors.cellphone?.type === "required" && "Cellphone is required"}
-
-        <label>Genero</label>
-        <select {...register("gender")}>
-          <option selected={true} disabled value="Default">
-            Escoge un genero
-          </option>
-          <option value="femenino">femenino</option>
-          <option value="masculino">masculino</option>
-          <option value="otro">otro</option>
-        </select>
-
-        <input type="submit" />
+          <input type="submit" />
+        </Grid>
       </form>
     </div>
   );
