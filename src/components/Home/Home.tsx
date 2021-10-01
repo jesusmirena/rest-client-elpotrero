@@ -1,10 +1,13 @@
 import React from "react";
 import CardsGrid from "../CardsGrid/CardsGrid";
+import styles from "./Home.module.scss";
 
 export default function Home() {
   return (
-    <div>
-      <CardsGrid />
+    <div className={styles.image}>
+      <div className={styles.container}>
+        <CardsGrid />
+      </div>
     </div>
   );
 }
