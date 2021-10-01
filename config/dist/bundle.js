@@ -1,4 +1,11 @@
 /******/ (function() { // webpackBootstrap
+<<<<<<< HEAD
+/******/ 	"use strict";
+/******/ 	
+/******/ 	
+/******/ })()
+;
+=======
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./src/index.tsx":
@@ -23,3 +30,4 @@ throw new Error("Module build failed (from ./node_modules/ts-loader/index.js):\n
 /******/ })()
 ;
 //# sourceMappingURL=bundle.js.map
+>>>>>>> 2593c81492cde4171494d22f3438d9780c354ef7
