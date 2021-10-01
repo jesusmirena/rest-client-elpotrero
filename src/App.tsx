@@ -7,6 +7,7 @@ import FormPage from "./components/Forms/FormPage/FormPage";
 import RegisterForm from "./components/Forms/FormPage/Register/RegisterForm";
 import Home from "./components/Home/Home";
 import NavBarMui from "./components/NavBar/NavBarMUI";
+import LandinPage from "./components/LandingPage/LandingPage";
 
 import "./scss/App.scss";
 
@@ -16,7 +17,8 @@ function App() {
       <div>
         <NavBarMui />
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" component={LandinPage} />
+          <Route path="/home" component={Home} />
           <Route path="/canchas" component={ReservarCancha} />
           <Route path="/equipo" component={CrearEquipo} />
           <Route path="/contacto" component={ContactForm} />
