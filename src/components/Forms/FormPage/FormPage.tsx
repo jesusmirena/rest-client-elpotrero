@@ -1,11 +1,11 @@
 import React from "react";
-import LoginForm from "./LoginForm";
 import styles from "./FormPage.module.scss";
+import FormPrueba from "./Login/FormPrueba";
 
 export default function FormPage() {
   return (
-    <div className={styles.container}>
-      <LoginForm />
+    <div className={styles.formBgImg}>
+      <FormPrueba />
     </div>
   );
 }

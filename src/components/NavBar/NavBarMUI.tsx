@@ -1,64 +1,34 @@
 import * as React from "react";
-import { createTheme, ThemeProvider } from "@material-ui/core/styles";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import { Link } from "react-router-dom";
-import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
-
-import logo from "../../visuales/logoblanco.png";
+import styles from "./NavBarMUI.module.scss";
 import MenuHamburguesa from "./MenuHamburguesa";
-
-const purpleTheme = createTheme({
-  palette: {
-    primary: {
-      main: "#37003c",
-    },
-    secondary: {
-      main: "#ad1457",
-    },
-  },
-});
+import logo from "../../visuales/logoblanco.png";
+import IconButton from "@mui/material/IconButton";
 
 export default function NavBarMui() {
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <ThemeProvider theme={purpleTheme}>
-        <AppBar position="static" color="primary">
-          <Toolbar>
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-            >
-              <MenuHamburguesa />
-            </IconButton>
-            <Button color="inherit">
-              <Link to="/">Home </Link>
-            </Button>
-            <Button color="inherit">
-              <Link to="/canchas">Canchas</Link>
-            </Button>
-            <Button color="inherit">
-              <Link to="/equipo">Crear equipo</Link>
-            </Button>
+    <div className={styles.navbar}>
+      <div className={styles.columnmenu}>
+        <MenuHamburguesa />
+      </div>
+      <div className={styles.columnlogo}>
+        <img src={logo} className={styles.logo} />
+      </div>
+      <div className={styles.columnhome}>
+        <p className={styles.title}>HOME</p>
+      </div>
+      <div className={styles.columncanchas}>
+        <p className={styles.title}>CANCHAS</p>
+      </div>
+      <div className={styles.columnequipo}>
+        <p className={styles.title}>CREAR EQUIPO</p>
+      </div>
 
-            <Button sx={{ mx: 35 }}>
-              <Link to="/">
-                <img style={{ height: "100px" }} src={logo} alt="logo" />
-              </Link>
-            </Button>
-            <Button color="inherit">
-              <Link to="/contacto">Contacto</Link>
-            </Button>
-            <Button color="inherit">
-              <Link to="/login">Iniciar sesion</Link>
-            </Button>
-          </Toolbar>
-        </AppBar>
-      </ThemeProvider>
-    </Box>
+      <div className={styles.columncontacto}>
+        <p className={styles.title}>CONTACTO</p>
+      </div>
+      <div className={styles.columnsesion}>
+        <p className={styles.title}>INICIAR SESION</p>
+      </div>
+    </div>
   );
 }

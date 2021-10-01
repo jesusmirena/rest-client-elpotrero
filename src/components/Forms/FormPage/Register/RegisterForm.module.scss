@@ -1,0 +1,101 @@
+.formBgImg {
+  background: url("../../../../visuales/fondoLogin.jpg");
+  color: white;
+  height: 100%;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.form {
+  background-color: #0000007c;
+  border-radius: 1rem;
+  margin: 0 auto 0 auto;
+  width: 55%;
+  height: 40rem;
+  padding: 5rem;
+}
+.formDiv {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  padding: 15px 0 0;
+  margin-top: 10px;
+}
+.formLabel {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: #e1e1e1;
+}
+.formInput {
+  border: 0;
+  border-bottom: 2px solid #e1e1e1;
+  outline: 0;
+  font-size: 1.3rem;
+  color: #ffffff;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+
+  &::placeholder {
+    color: transparent;
+  }
+
+  &:placeholder-shown .formLabel {
+    font-size: 1.3rem;
+    cursor: text;
+    top: 20px;
+  }
+}
+.formInput:focus {
+  ~ .formLabel {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1rem;
+    color: #ffffff;
+    font-weight: 700;
+  }
+  padding-bottom: 6px;
+  font-weight: 700;
+  border-width: 3px;
+  border-image: linear-gradient(to right, #ffffff, #e1e1e1);
+  border-image-slice: 1;
+}
+select {
+  margin-bottom: 1em;
+  padding: 0.25em;
+  border: 0;
+  border-bottom: 2px solid currentcolor;
+  font-weight: bold;
+  letter-spacing: 0.15em;
+  border-radius: 0;
+  &:focus,
+  &:active {
+    outline: 0;
+    border-bottom-color: rgb(110, 110, 110);
+  }
+}
+.button {
+  background-color: #ffffff;
+  display: block;
+  color: #111111;
+  text-align: center;
+  padding: 0.6rem 1.5rem;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  border: none;
+}
+@media (min-width: 768px) {
+  .button {
+    display: inline-block;
+  }
+}
+.button:hover {
+  cursor: pointer;
+}
