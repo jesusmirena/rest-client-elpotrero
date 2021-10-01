@@ -4,7 +4,7 @@ import ReservarCancha from "./components/Canchas/ReservarCancha";
 import CrearEquipo from "./components/Equipos/CrearEquipo";
 import ContactForm from "./components/Forms/ContactForm/ContactForm";
 import FormPage from "./components/Forms/FormPage/FormPage";
-import RegisterForm from "./components/Forms/FormPage/RegisterForm";
+import RegisterForm from "./components/Forms/FormPage/Register/RegisterForm";
 import Home from "./components/Home/Home";
 import NavBarMui from "./components/NavBar/NavBarMUI";
 
