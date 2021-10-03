@@ -1,5 +1,12 @@
 @import "../../scss/base/variables.scss";
 
+.navLink {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 6rem;
+}
+
 .navBg {
   background-color: $black;
 }
@@ -17,7 +24,7 @@
   }
 }
 .navegacion .navLink {
-  padding: 1rem 2rem;
+  padding: 1rem 0;
   color: $white;
   text-decoration: none;
   font-size: 1.4rem;
@@ -33,6 +40,7 @@
 @media (min-width: 768px) {
   .navegacion .navLink {
     margin-bottom: 0;
+    margin-left: 0;
   }
 }
 .contenedor {
