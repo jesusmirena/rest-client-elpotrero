@@ -9,7 +9,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 
 type Anchor = "top" | "left" | "bottom" | "right";
 
-export default function SwipeableTemporaryDrawer() {
+export default function MenuHamburguesa() {
   const [state, setState] = React.useState({
     top: false,
     left: false,

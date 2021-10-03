@@ -8,6 +8,7 @@ import RegisterForm from "./components/Forms/FormPage/Register/RegisterForm";
 import Home from "./components/Home/Home";
 import NavBarMui from "./components/NavBar/NavBarMUI";
 import LandinPage from "./components/LandingPage/LandingPage";
+import Header from "./components/Header/Header";
 
 import "./scss/App.scss";
 
@@ -15,6 +16,7 @@ function App() {
   return (
     <BrowserRouter>
       <div>
+        <Header />
         <NavBarMui />
         <Switch>
           <Route exact path="/" component={LandinPage} />

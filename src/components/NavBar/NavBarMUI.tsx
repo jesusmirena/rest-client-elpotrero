@@ -1,34 +1,29 @@
 import * as React from "react";
 import styles from "./NavBarMUI.module.scss";
-import MenuHamburguesa from "./MenuHamburguesa";
-import logo from "../../visuales/logoblanco.png";
-import IconButton from "@mui/material/IconButton";
+
+import { Link } from "react-router-dom";
 
 export default function NavBarMui() {
   return (
-    <div className={styles.navbar}>
-      <div className={styles.columnmenu}>
-        <MenuHamburguesa />
-      </div>
-      <div className={styles.columnlogo}>
-        <img src={logo} className={styles.logo} />
-      </div>
-      <div className={styles.columnhome}>
-        <p className={styles.title}>HOME</p>
-      </div>
-      <div className={styles.columncanchas}>
-        <p className={styles.title}>CANCHAS</p>
-      </div>
-      <div className={styles.columnequipo}>
-        <p className={styles.title}>CREAR EQUIPO</p>
-      </div>
+    <div className={styles.navBg}>
+      <nav className={`${styles.navegacion} ${styles.contenedor}`}>
+        <Link to="/home" className={styles.navLink}>
+          HOME
+        </Link>
+        <Link className={styles.navLink} to="/canchas">
+          CANCHAS
+        </Link>
+        <Link className={styles.navLink} to="/equipo">
+          CREAR EQUIPO
+        </Link>
 
-      <div className={styles.columncontacto}>
-        <p className={styles.title}>CONTACTO</p>
-      </div>
-      <div className={styles.columnsesion}>
-        <p className={styles.title}>INICIAR SESION</p>
-      </div>
+        <Link className={styles.navLink} to="/contacto">
+          CONTACTO
+        </Link>
+        <Link className={styles.navLink} to="/login">
+          INICIAR SESION
+        </Link>
+      </nav>
     </div>
   );
 }

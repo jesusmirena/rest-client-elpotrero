@@ -1,81 +1,41 @@
-.navbar {
-  display: grid;
-  grid-template-columns: repeat(9, 1fr);
-  grid-template-rows: 1fr;
-  grid-column-gap: 7px;
-  grid-row-gap: 0px;
-  background-color: #000000d0;
-  width: 100%;
-  height: 7rem;
-  z-index: 1;
-}
+@import "../../scss/base/variables.scss";
 
-.nav {
+.navBg {
+  background-color: $black;
+}
+.navegacion {
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
   display: flex;
-  justify-content: right;
-  list-style: none;
-  margin-right: 15%;
+  flex-direction: column;
+  align-items: center;
 }
-
-a {
-  margin: 15px;
-  color: #000;
+@media (min-width: 768px) {
+  .navegacion {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+.navegacion .navLink {
+  padding: 1rem 2rem;
+  color: $white;
   text-decoration: none;
-  text-transform: uppercase;
+  font-size: 1.4rem;
+  font-weight: 700;
 }
-
-.columnlogo {
-  display: flex;
-  grid-area: 1 / 5 / 2 / 6;
-  overflow: hidden;
-  align-items: center;
-  justify-content: center;
+.navegacion .navLink:hover {
+  background-color: #252525;
+  color: #cebebe;
 }
-.columnmenu {
-  grid-area: 1 / 1 / 2 / 2;
+.navegacion .navLink:last-of-type {
+  margin-bottom: 0;
 }
-.columnsesion {
-  align-items: center;
-  grid-area: 1 / 9 / 2 / 10;
-  justify-content: center;
-  display: flex;
-  text-align: center;
+@media (min-width: 768px) {
+  .navegacion .navLink {
+    margin-bottom: 0;
+  }
 }
-.logo {
-  height: calc(100%);
-}
-.columncontacto {
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  text-align: center;
-  grid-area: 1 / 8 / 2 / 9;
-}
-.columnequipo {
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  text-align: center;
-  grid-area: 1 / 4 / 2 / 5;
-}
-
-.columnhome {
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  text-align: center;
-  grid-area: 1 / 2 / 2 / 3;
-}
-
-.columncanchas {
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  text-align: center;
-  grid-area: 1 / 3 / 2 / 4;
-}
-.title {
-  color: white;
-  text-decoration: underline;
-  font-size: 1.2rem;
+.contenedor {
+  margin: 0 auto;
+  max-width: 1200px;
 }
