@@ -51,6 +51,7 @@
 }
 .title {
   color: white;
+  margin: 0;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   font-size: 17rem;
   letter-spacing: 1rem;
@@ -103,16 +104,69 @@
 
 @media screen and(max-width: 1400px) {
   .title {
-    font-size: 15rem;
+    font-size: 13rem;
+  }
+  .btn {
+    height: 5rem;
+    width: 18rem;
+    font-size: 2rem;
   }
 }
 @media screen and(max-width: 1280px) {
   .title {
-    font-size: 13rem;
+    font-size: 10rem;
   }
   .btn {
     height: 5rem;
     width: 15rem;
     font-size: 2rem;
+  }
+}
+@media (max-width: 768px) {
+  .container .backgroundInfo {
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .title {
+    font-size: 4rem;
+  }
+  .btn {
+    border: solid #ffffff 3px;
+    height: 2rem;
+    width: 8rem;
+    font-size: 1rem;
+  }
+}
+@media screen and(max-width: 444px) {
+  .container .backgroundInfo {
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .title {
+    text-align: center;
+    font-size: 2.7rem;
+  }
+  .infotitle {
+    font-size: 2.2rem;
+  }
+  .parrafo {
+    font-size: 1.3rem;
+  }
+  .btngrid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .btn {
+      border: solid #ffffff 3px;
+      height: 2rem;
+      width: 8rem;
+      font-size: 1rem;
+    }
   }
 }

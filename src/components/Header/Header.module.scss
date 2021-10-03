@@ -1,18 +1,28 @@
 .header {
   background-color: #000000;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
 }
 
-.logo {
+.logoContainer {
   overflow: hidden;
   display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
   align-content: center;
 }
+.logo {
+  height: 150px;
+}
 .menuHamburguesa {
   display: flex;
   justify-content: left;
-  align-content: center;
-  align-items: center;
+  align-content: flex-end;
+  align-items: flex-end;
+}
+@media (max-width: 768px) {
+  .logo {
+    height: 100px;
+  }
 }

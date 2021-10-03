@@ -18,9 +18,11 @@ export default function Header() {
           <MenuHamburguesa />
         </IconButton>
       </div>
-      <Link className={styles.logo} to="/home">
-        <img style={{ height: "150px" }} src={logo} />
-      </Link>
+      <div className={styles.logoContainer}>
+        <Link to="/home">
+          <img className={styles.logo} src={logo} />
+        </Link>
+      </div>
     </header>
   );
 }
