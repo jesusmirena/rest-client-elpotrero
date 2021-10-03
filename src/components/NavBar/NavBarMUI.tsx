@@ -7,22 +7,21 @@ export default function NavBarMui() {
   return (
     <div className={styles.navBg}>
       <nav className={`${styles.navegacion} ${styles.contenedor}`}>
-        <Link to="/home" className={styles.navLink}>
-          HOME
-        </Link>
-        <Link className={styles.navLink} to="/canchas">
-          CANCHAS
-        </Link>
-        <Link className={styles.navLink} to="/equipo">
-          CREAR EQUIPO
-        </Link>
-
-        <Link className={styles.navLink} to="/contacto">
-          CONTACTO
-        </Link>
-        <Link className={styles.navLink} to="/login">
-          INICIAR SESION
-        </Link>
+        <li className={styles.navLink}>
+          <Link to="/home">HOME</Link>
+        </li>
+        <li className={styles.navLink}>
+          <Link to="/canchas">CANCHAS</Link>
+        </li>
+        <li className={styles.navLink}>
+          <Link to="/equipo">CREAR EQUIPO</Link>
+        </li>
+        <li className={styles.navLink}>
+          <Link to="/contacto">CONTACTO</Link>
+        </li>
+        <li className={styles.navLink}>
+          <Link to="/login">INICIAR SESION</Link>
+        </li>
       </nav>
     </div>
   );
