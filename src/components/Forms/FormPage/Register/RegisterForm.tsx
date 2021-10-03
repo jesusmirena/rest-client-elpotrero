@@ -1,13 +1,10 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import Box from "@mui/material/Box";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
-import TextField from "@mui/material/TextField";
+
 import { useForm, SubmitHandler } from "react-hook-form";
 import styles from "./RegisterForm.module.scss";
+import { postUsername } from "../../../../redux/actions";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as Yup from "yup";
 
 enum GenderEnum {
   female = "female",
@@ -15,7 +12,7 @@ enum GenderEnum {
   other = "other",
 }
 
-interface IFormInput {
+/* interface IFormInput {
   name: String;
   username: String;
   mail: String;
@@ -25,15 +22,16 @@ interface IFormInput {
   cellphone: Number;
   image?: String;
   gender?: GenderEnum;
-}
+} */
 
 export default function RegisterForm() {
   const {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm<IFormInput>();
-  const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data);
+  } = useForm<User>();
+  const onSubmit: SubmitHandler<User> = () => alert("USUARIO CREADO ");
+
   return (
     <div className={styles.formBgImg}>
       <h2>Registrate</h2>

@@ -1,12 +1,18 @@
-import { ADD_TODO, DELETE_TODO } from "./actionsNames";
-let id: number = 1;
-export function addTodo(payload: Todo) {
-  if (payload.desc === "") delete payload.desc;
-  payload.id = id++;
+import { POST_USERNAME, GET_CANCHAS } from "./actionsNames";
+
+export function postUsername(payload: User) {
+  if (payload.gender === "") delete payload.gender;
+  if (payload.image === "") delete payload.image;
+
   return {
-    type: ADD_TODO,
+    type: POST_USERNAME,
     payload,
   };
 }
 
-export const deleteTodo = (payload: Todo) => ({ type: DELETE_TODO, payload });
+export function getCanchas(payload: Cancha) {
+  return {
+    type: GET_CANCHAS,
+    payload,
+  };
+}

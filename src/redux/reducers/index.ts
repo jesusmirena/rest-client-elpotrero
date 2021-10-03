@@ -1,6 +1,8 @@
 import { combineReducers } from "redux";
-import todos from './todos'; //Nombre de los reducers
+import users from "./users"; //Nombre de los reducers
+import canchas from "./canchas";
 
 export default combineReducers({
-  todos, //Lista de reducers
-})
+  users,
+  canchas, //Lista de reducers
+});
