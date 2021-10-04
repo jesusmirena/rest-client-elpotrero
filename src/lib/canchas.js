@@ -1,4 +1,4 @@
-export const canchas = [
+export const canchasm = [
   {
     id: 1,
     number: "Ferroviarios",

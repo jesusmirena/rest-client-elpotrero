@@ -32,7 +32,7 @@ interface Cancha {
   inicialTime: String;
   endTime: String;
   cost: Number;
-  image: string;
+  image: string; //URL
   description: String;
 }
 

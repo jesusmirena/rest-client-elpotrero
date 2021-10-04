@@ -4,5 +4,5 @@ import canchas from "./canchas";
 
 export default combineReducers({
   users,
-  canchas, //Lista de reducers
+  canchas,
 });

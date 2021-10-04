@@ -4,10 +4,10 @@ import styles from "./Home.module.scss";
 import { getCanchas } from "../../redux/actions";
 
 export default function Home() {
-  useEffect(() => {
+  /*   useEffect(() => {
     getCanchas();
   }, []);
-
+ */
   return (
     <div className={styles.image}>
       <div className={styles.fondo}>
