@@ -1,16 +1,23 @@
 import * as React from "react";
-import image from "../../visuales/canchitaCard.png";
+import imagen from "../../visuales/canchitaCard.png";
 import styles from "../Card/Card.module.scss";
 
-export default function Card() {
+interface Props {
+  data: Cancha;
+}
+
+const Card = ({ data }: Props) => {
+  const { id, number, image, inicialTime, cost, description, endTime } = data;
+
   return (
     <div className={styles.container}>
       <div className={styles.imgcontainer}>
         <img className={styles.img} src={image} alt="Img not found" />
       </div>
       <div className={styles.info}>
-        <h2>Serrano Corner</h2>
-        <p>Serrano 250, Capital Federal</p>
+        <h2>{number}</h2>
+        <p>{description}</p>
+        <p>Precio: {cost}</p>
       </div>
 
       <div className={styles.selectContainer}>
@@ -34,8 +41,12 @@ export default function Card() {
         </div>
       </div>
       <div className={styles.buttonContainer}>
-        <input className={styles.button} type="submit" />
+        <button className={styles.button} type="submit">
+          Reservar
+        </button>
       </div>
     </div>
   );
-}
+};
+
+export default Card;

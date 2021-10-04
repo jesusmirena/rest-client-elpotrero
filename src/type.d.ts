@@ -27,12 +27,12 @@ interface Canchastate {
 }
 
 interface Cancha {
-  // id: Number;
+  id: Number;
   number: String;
   inicialTime: String;
   endTime: String;
   cost: Number;
-  image: String;
+  image: string;
   description: String;
 }
 

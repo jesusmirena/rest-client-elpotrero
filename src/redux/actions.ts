@@ -1,4 +1,5 @@
 import { POST_USERNAME, GET_CANCHAS } from "./actionsNames";
+import axios, { AxiosResponse } from "axios";
 
 export function postUsername(payload: User) {
   if (payload.gender === "") delete payload.gender;
@@ -10,9 +11,13 @@ export function postUsername(payload: User) {
   };
 }
 
-export function getCanchas(payload: Cancha) {
+export async function getCanchas() {
+  const data: Cancha[] = await axios
+    .get("https://jsonplaceholder.typicode.com/todos")
+    .then((data: AxiosResponse) => data.data);
+  console.log(data);
   return {
     type: GET_CANCHAS,
-    payload,
+    payload: data,
   };
 }
