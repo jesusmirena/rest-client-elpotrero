@@ -7,13 +7,20 @@
   background-size: cover;
 }
 
+/* width: 100%;
+height: 100vh;
+max-width: 100%;
+background-size: cover;
+background-repeat: no-repeat;
+background-attachment: fixed; */
+
 .formBgImg h2 {
   text-align: center !important;
 }
 .form {
   background-color: #0000007c;
   border-radius: 1rem;
-  margin: 0 auto 0 auto;
+  margin: 2rem auto auto;
   width: 55%;
   height: 40rem;
   padding: 5rem;

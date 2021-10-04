@@ -29,8 +29,11 @@ export default function RegisterForm() {
     register,
     formState: { errors },
     handleSubmit,
+    reset,
   } = useForm<User>();
-  const onSubmit: SubmitHandler<User> = () => alert("USUARIO CREADO ");
+  const onSubmit: SubmitHandler<User> = () => {
+    alert("Usuario Creado"), reset();
+  };
 
   return (
     <div className={styles.formBgImg}>
