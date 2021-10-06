@@ -4,15 +4,12 @@ const initialState: Canchastate = {
   canchas: [],
 };
 
-const reducer = (
-  state: Canchastate = initialState,
-  action: Actioncancha
-): Canchastate => {
+const reducer = (state = initialState, action: Actioncancha): Canchastate => {
   switch (action.type) {
     case GET_CANCHAS:
       return {
         ...state,
-        canchas: [action.payload, ...state.canchas],
+        canchas: action.payload,
       };
 
     default:

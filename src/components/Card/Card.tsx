@@ -1,23 +1,37 @@
 import * as React from "react";
 import imagen from "../../visuales/canchitaCard.png";
 import styles from "../Card/Card.module.scss";
+import Datapicker from "../Datepicker/datepicker";
 
-interface Props {
+/* interface Props {
   data: Cancha;
-}
+} */
 
-const Card = ({ data }: Props) => {
-  const { id, number, image, inicialTime, cost, description, endTime } = data;
+const Card = ({ data }: any) => {
+  const {
+    name,
+    image,
+    qualification,
+    inicialTime,
+    cost,
+    description,
+    endTime,
+  } = data;
 
   return (
     <div className={styles.container}>
       <div className={styles.imgcontainer}>
-        <img className={styles.img} src={image} alt="Img not found" />
+        <img
+          className={styles.img}
+          src={image.lenght < 5 ? image : imagen}
+          alt="Img not found"
+        />
       </div>
       <div className={styles.info}>
-        <h2>{number}</h2>
+        <h2>{name}</h2>
         <p>{description}</p>
         <p>Precio: {cost}</p>
+        <p>Calificacion {qualification}</p>
       </div>
 
       <div className={styles.selectContainer}>
@@ -30,7 +44,8 @@ const Card = ({ data }: Props) => {
             <option>21:00hs</option>
           </select>
         </div>
-        <div>
+        <Datapicker />
+        {/*  <div>
           <select className={styles.select}>
             <option>Fecha</option>
             <option>Martes</option>
@@ -38,7 +53,7 @@ const Card = ({ data }: Props) => {
             <option>Jueves</option>
             <option>Viernes</option>
           </select>
-        </div>
+        </div> */}
       </div>
       <div className={styles.buttonContainer}>
         <button className={styles.button} type="submit">

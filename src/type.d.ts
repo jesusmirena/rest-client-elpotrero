@@ -27,18 +27,21 @@ interface Canchastate {
 }
 
 interface Cancha {
-  id: Number;
-  number: String;
-  inicialTime: String;
-  endTime: String;
+  address: String;
   cost: Number;
-  image: string; //URL
   description: String;
+  endTime: String;
+  id: Number;
+  image: string; //URL
+  inicialTime: String;
+  name: String;
+  qualification: Number;
+  votes: Number;
 }
 
 interface Actioncancha {
   type: string;
-  payload: Cancha;
+  payload: any;
 }
 
 interface Action {
