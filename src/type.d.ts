@@ -6,16 +6,16 @@ interface Todo {
 }
 
 interface User {
-  name: String;
-  username: String;
-  mail: String;
-  password: String;
-  birthday: String;
-  dni: Number;
-  cellphone: Number;
-  image?: String;
-  gender?: GenderEnum;
-  player: { create: { position: string; qualification?: string } };
+  name: string;
+  userName: string;
+  mail: string;
+  password: string;
+  birthday: string;
+  dni: number;
+  cellphone: number;
+  image?: string;
+  gender?: "FEMALE" | "MALE" | "UNDEFINED";
+  player: { position: string; qualification: string };
 }
 
 interface Userstate {

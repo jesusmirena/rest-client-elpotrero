@@ -31,8 +31,8 @@ export default function RegisterForm() {
     handleSubmit,
     reset,
   } = useForm<User>();
-  const onSubmit: SubmitHandler<User> = () => {
-    alert("Usuario Creado"), reset();
+  const onSubmit: SubmitHandler<User> = (data) => {
+    postUsername(data), alert("Usuario Creado"), console.log(data), reset();
   };
 
   return (
@@ -52,10 +52,10 @@ export default function RegisterForm() {
           <input
             className={styles.formInput}
             placeholder="Escribe tu nombre de usuario"
-            {...register("username", { required: true })}
+            {...register("userName", { required: true })}
           />
           <label className={styles.formLabel}>Nombre de usuario</label>
-          {errors.username?.type === "required" && "username is required"}
+          {errors.userName?.type === "required" && "userName is required"}
         </div>
         <div className={styles.formDiv}>
           <input
@@ -74,6 +74,15 @@ export default function RegisterForm() {
         <div className={styles.formDiv}>
           <input
             className={styles.formInput}
+            placeholder="image"
+            {...register("image", { required: true })}
+          />
+          <label className={styles.formLabel}>imagen</label>
+          {errors.name?.type === "required" && "image is required"}
+        </div>
+        <div className={styles.formDiv}>
+          <input
+            className={styles.formInput}
             type="password"
             placeholder="Ingresa una contraseña"
             {...register("password", { required: true })}
@@ -84,8 +93,8 @@ export default function RegisterForm() {
         <div className={styles.formDiv}>
           <input
             className={styles.formInput}
-            type="date"
-            {...register("birthday", { valueAsDate: true, required: true })}
+            type="text"
+            {...register("birthday", { required: true })}
           />
           <label className={styles.formLabel}>Fecha de nacimiento</label>
           {errors.birthday?.type === "required" && "Birthday is required"}
@@ -93,8 +102,9 @@ export default function RegisterForm() {
         <div className={styles.formDiv}>
           <input
             className={styles.formInput}
+            type="number"
             placeholder="Ingresa tu documento de identificacion"
-            {...register("dni", { required: true })}
+            {...register("dni", { valueAsNumber: true, required: true })}
           />
           <label className={styles.formLabel}>
             Documento de identificacion
@@ -112,14 +122,42 @@ export default function RegisterForm() {
           {errors.cellphone?.type === "required" && "Cellphone is required"}
         </div>
         <div className={styles.formDiv}>
+          <label className={styles.formLabel}>Posicion</label>
+          <select {...register("player.position")}>
+            <option selected={true} disabled value="Default">
+              Escoge una posicion
+            </option>
+            <option value="GOALKEEPER">GOALKEEPER</option>
+            <option value="DEFENDER">DEFENDER</option>
+            <option value="MIDFIELDER">MIDFIELDER</option>
+            <option value="DEFENDER">DEFENDER</option>
+            <option value="ATTACKER">ATTACKER</option>
+          </select>
+        </div>
+        <div className={styles.formDiv}>
+          <label className={styles.formLabel}>calificacion</label>
+          <select
+            {...register("player.qualification", { valueAsNumber: true })}
+          >
+            <option selected={true} disabled value="Default">
+              Escoge una calificacion
+            </option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
+        <div className={styles.formDiv}>
           <label className={styles.formLabel}>Genero</label>
           <select {...register("gender")}>
             <option selected={true} disabled value="Default">
               Escoge un genero
             </option>
-            <option value="femenino">femenino</option>
-            <option value="masculino">masculino</option>
-            <option value="otro">otro</option>
+            <option value="FEMALE">femenino</option>
+            <option value="MALE">masculino</option>
+            <option value="UNDEFINED">otro</option>
           </select>
         </div>
         <input className={styles.button} type="submit" />
