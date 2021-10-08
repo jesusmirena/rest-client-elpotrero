@@ -1,4 +1,4 @@
-import { POST_USERNAME, GET_CANCHAS } from "./actionsNames";
+import { GET_CANCHAS } from "./actionsNames";
 import axios, { AxiosResponse } from "axios";
 
 export async function postUsername(payload: User) {
@@ -8,6 +8,27 @@ export async function postUsername(payload: User) {
   console.log("desde el response", response);
 }
 
+// export async function postLogin(payload: any) {
+//   const response = await axios.post("http://localhost:3001/login", payload);
+//   console.log("desde el Login", response);
+// }
+export function postLogin({ mail, password }: any) {
+  return fetch("http://localhost:3001/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ mail, password }),
+  })
+    .then((res) => {
+      if (!res.ok) throw new Error("Response is NOT ok");
+      return res.json();
+    })
+    .then((res) => {
+      const { token } = res;
+      return token;
+    });
+}
 export async function getCanchas() {
   const data: Cancha[] = await axios
     .get("http://localhost:3001/fields")
