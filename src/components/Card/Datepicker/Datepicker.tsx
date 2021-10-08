@@ -13,20 +13,20 @@ registerLocale("es", es);
 export default function Datepicker() {
   const dispatch = useDispatch();
 
-  const [startDate, setStartDate] = useState();
+  const [startDate, setStartDate] = useState(new Date());
 
   console.log(" FECHAAAA  ", startDate);
 
 
 
-  /*  useEffect(() => {
-     if (startDate !== null) {
- 
-       dispatch(getCanchasDisponible(startDate));
-     }
-   }, []);
-  */
-  < CardsGrid dato={startDate} />
+  useEffect(() => {
+
+
+    dispatch(getCanchasDisponible(startDate));
+
+  }, [startDate]);
+
+  // < CardsGrid dato={startDate} />
 
   return (
     <div>

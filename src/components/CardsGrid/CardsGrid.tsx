@@ -6,17 +6,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 
 export default function CardsGrid({ dato }: any) {
-  console.log("datoooooooo", dato)
+  console.log("PUTO", dato)
   const dispatch = useDispatch();
 
 
-  useEffect(() => {
-
-
-    dispatch(getCanchasDisponible(dato));
-
-  }, [dispatch]);
-
+  /*   useEffect(() => {
+  
+  
+      dispatch(getCanchasDisponible(dato));
+  
+    }, [dispatch]);
+ */
 
   /*  useEffect(() => {
      dispatch(
