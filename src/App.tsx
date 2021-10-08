@@ -11,6 +11,7 @@ import LandinPage from "./components/LandingPage/LandingPage";
 import Header from "./components/Header/Header";
 
 import "./scss/App.scss";
+import CardsGrid from "./components/CardsGrid/CardsGrid";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/contacto" component={ContactForm} />
           <Route path="/login" component={FormPage} />
           <Route path="/register" component={RegisterForm} />
+          <Route path="/alquiler" component={CardsGrid} />
         </Switch>
       </div>
     </BrowserRouter>

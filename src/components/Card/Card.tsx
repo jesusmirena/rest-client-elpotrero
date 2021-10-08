@@ -1,11 +1,7 @@
 import * as React from "react";
 import imagen from "../../visuales/canchitaCard.png";
 import styles from "../Card/Card.module.scss";
-import Datapicker from "../Datepicker/datepicker";
-
-/* interface Props {
-  data: Cancha;
-} */
+import FormAlquiler from "./FormAlquiler/FormAlquiler";
 
 const Card = ({ data }: any) => {
   const {
@@ -16,6 +12,7 @@ const Card = ({ data }: any) => {
     cost,
     description,
     endTime,
+    id,
   } = data;
 
   return (
@@ -35,30 +32,7 @@ const Card = ({ data }: any) => {
       </div>
 
       <div className={styles.selectContainer}>
-        <div>
-          <select className={styles.select}>
-            <option>Horario</option>
-            <option>18:00hs</option>
-            <option>19:00hs</option>
-            <option>20:00hs</option>
-            <option>21:00hs</option>
-          </select>
-        </div>
-        <Datapicker />
-        {/*  <div>
-          <select className={styles.select}>
-            <option>Fecha</option>
-            <option>Martes</option>
-            <option>Miercoles</option>
-            <option>Jueves</option>
-            <option>Viernes</option>
-          </select>
-        </div> */}
-      </div>
-      <div className={styles.buttonContainer}>
-        <button className={styles.button} type="submit">
-          Reservar
-        </button>
+        <FormAlquiler id={id} inicialTime={inicialTime} endTime={endTime} />
       </div>
     </div>
   );
