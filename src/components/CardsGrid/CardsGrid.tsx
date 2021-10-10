@@ -4,34 +4,27 @@ import styles from "../CardsGrid/CardsGrid.module.scss";
 import { getCanchasDisponible } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
+import FormAlquiler from "../Card/FormAlquiler/FormAlquiler";
+import { useParams } from "react-router";
 
-export default function CardsGrid({ dato }: any) {
-  console.log("PUTO", dato)
-  const dispatch = useDispatch();
+export default function CardsGrid(props: any) {
 
+  try {
+    var data = props.match.params.startDate
+  } catch (err) {
+    console.log(err);
+  }
 
-  /*   useEffect(() => {
-  
-  
-      dispatch(getCanchasDisponible(dato));
-  
-    }, [dispatch]);
- */
-
-  /*  useEffect(() => {
-     dispatch(
-       getCanchasDisponible()
- 
-     );
-   }, [dispatch]); */
   const canchas = useSelector((state: RootState) => state.canchas);
 
   return (
     <div className={styles.containerGrid}>
+      <h1>Canchas disponibles en la fecha :{data?.slice(3)}</h1>
       {
         <div className={styles.grid}>
           {canchas.map((c: Cancha, i) => {
-            return <Card key={i} data={c} />;
+            return (<Card key={i} data={c} />
+            )
           })}
         </div>
       }

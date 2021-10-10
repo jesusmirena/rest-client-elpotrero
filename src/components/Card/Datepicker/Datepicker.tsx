@@ -5,7 +5,6 @@ import "react-datepicker/dist/react-datepicker.css";
 import es from "date-fns/locale/es";
 import { useDispatch } from "react-redux";
 import { getCanchasDisponible } from "../../../redux/actions";
-import CardsGrid from "../../CardsGrid/CardsGrid";
 import { Link } from "react-router-dom";
 
 registerLocale("es", es);
@@ -15,7 +14,6 @@ export default function Datepicker() {
 
   const [startDate, setStartDate] = useState(new Date());
 
-  console.log(" FECHAAAA  ", startDate);
 
 
 
@@ -26,7 +24,7 @@ export default function Datepicker() {
 
   }, [startDate]);
 
-  // < CardsGrid dato={startDate} />
+
 
   return (
     <div>
@@ -39,11 +37,12 @@ export default function Datepicker() {
         maxDate={addDays(new Date(), 16)}
         placeholderText="Select a date between today and 5 days in the future"
       />
+      <div>
+        <Link to={"/alquiler/" + startDate.toDateString()} >
 
-      <Link to="alquiler">
-
-        <button>alqui</button>
-      </Link>
-    </div>
+          <button>alqui</button>
+        </Link>
+      </div>
+    </div >
   );
 }

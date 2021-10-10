@@ -7,7 +7,6 @@ const initialState: Canchastate = {
 const reducer = (state = initialState, action: Actioncancha): Canchastate => {
   switch (action.type) {
     case GET_CANCHAS:
-      console.log("reducer", action.payload);
       return {
         ...state,
         canchas: action.payload,

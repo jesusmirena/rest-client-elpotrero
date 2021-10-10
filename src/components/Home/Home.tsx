@@ -11,8 +11,9 @@ export default function Home() {
     <div className={styles.image}>
       <div className={styles.fondo}>
         <div>
-
           <Datepicker />
+
+
         </div>
         {/*  <CardsGrid /> */}
       </div>

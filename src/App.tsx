@@ -27,7 +27,7 @@ function App() {
           <Route path="/contacto" component={ContactForm} />
           <Route path="/login" component={FormPage} />
           <Route path="/register" component={RegisterForm} />
-          <Route path="/alquiler" component={CardsGrid} />
+          <Route path="/alquiler/:startDate" component={CardsGrid} />
         </Switch>
       </div>
     </BrowserRouter>

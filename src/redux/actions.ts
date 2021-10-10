@@ -21,11 +21,9 @@ export function getCanchas() {
 
 export function getCanchasDisponible(payload: any) {
   return async function (dispatch: any) {
-    console.log("action PAYLOAD", payload);
     let res = await axios.get(
       "http://localhost:3001/fields/available/" + payload
     );
-    console.log("respuesta", res.data);
     return dispatch({ type: GET_CANCHAS, payload: res.data });
   };
 }

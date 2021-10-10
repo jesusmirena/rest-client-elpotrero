@@ -13,16 +13,13 @@ const Card = ({ data }: any) => {
     description,
     endTime,
     id,
+    timetable,
   } = data;
 
   return (
     <div className={styles.container}>
       <div className={styles.imgcontainer}>
-        <img
-          className={styles.img}
-          src={image.lenght < 5 ? image : imagen}
-          alt="Img not found"
-        />
+        <img className={styles.img} src={image} alt="Img not found" />
       </div>
       <div className={styles.info}>
         <h2>{name}</h2>
@@ -32,7 +29,12 @@ const Card = ({ data }: any) => {
       </div>
 
       <div className={styles.selectContainer}>
-        <FormAlquiler id={id} inicialTime={inicialTime} endTime={endTime} />
+        <FormAlquiler
+          id={id}
+          inicialTime={inicialTime}
+          endTime={endTime}
+          timetable={timetable}
+        />
       </div>
     </div>
   );

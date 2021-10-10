@@ -1,8 +1,11 @@
-import React, { useState } from "react";
-import { date } from "yup";
-import Datepicker from "../Datepicker/Datepicker";
+import React from "react";
 
-export default function FormAlquiler({ id, endTime, inicialTime }: any) {
+export default function FormAlquiler({
+  id,
+  endTime,
+  inicialTime,
+  timetable,
+}: any) {
   let hours = [];
   inicialTime = inicialTime.slice(0, 2);
   endTime = endTime.slice(0, 2);
@@ -12,30 +15,19 @@ export default function FormAlquiler({ id, endTime, inicialTime }: any) {
     inicialTime++;
   }
 
-  /*   const [input, setInput] = useState({
-      date: new Date(),
-      day: date,
-      hour: "",
-      duration: 1,
-      fieldId: id,
-    }); */
-  /* 
-    function handleSelect(e: any) {
-      setInput({
-        ...input,
-        hour: e.target.value,
-      });
-    }
-   */
+  const p = timetable.map((a: any) => a.hour);
+
+  hours = hours.filter((i) => !p.includes(i));
+
   function handleSubmit(e: any) {
     e.preventDefault();
   }
 
-
   return (
     <div>
       <div>
-        <select >
+        <label>Hora disponible</label>
+        <select>
           {hours.map((g) => (
             <option key={g} value={g}>
               {g}
@@ -50,9 +42,3 @@ export default function FormAlquiler({ id, endTime, inicialTime }: any) {
     </div>
   );
 }
-
-/* {"day": "2021/12/06",
-  "hour": "10:00",
-  "duration": 1,
-  "fieldId": 1,
-} */
