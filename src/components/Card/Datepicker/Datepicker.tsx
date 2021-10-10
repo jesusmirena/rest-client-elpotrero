@@ -14,17 +14,9 @@ export default function Datepicker() {
 
   const [startDate, setStartDate] = useState(new Date());
 
-
-
-
   useEffect(() => {
-
-
     dispatch(getCanchasDisponible(startDate));
-
   }, [startDate]);
-
-
 
   return (
     <div>
@@ -34,15 +26,14 @@ export default function Datepicker() {
         onChange={(date: any) => setStartDate(date)}
         selected={startDate}
         minDate={new Date()}
-        maxDate={addDays(new Date(), 16)}
+        maxDate={addDays(new Date(), 7)}
         placeholderText="Select a date between today and 5 days in the future"
       />
       <div>
-        <Link to={"/alquiler/" + startDate.toDateString()} >
-
+        <Link to={"/alquiler/" + startDate}>
           <button>alqui</button>
         </Link>
       </div>
-    </div >
+    </div>
   );
 }

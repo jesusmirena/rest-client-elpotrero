@@ -8,9 +8,8 @@ import FormAlquiler from "../Card/FormAlquiler/FormAlquiler";
 import { useParams } from "react-router";
 
 export default function CardsGrid(props: any) {
-
   try {
-    var data = props.match.params.startDate
+    var data = props.match.params.startDate;
   } catch (err) {
     console.log(err);
   }
@@ -19,12 +18,11 @@ export default function CardsGrid(props: any) {
 
   return (
     <div className={styles.containerGrid}>
-      <h1>Canchas disponibles en la fecha :{data?.slice(3)}</h1>
+      <h3>Canchas disponibles en la fecha :{data?.slice(3, 15)}</h3>
       {
         <div className={styles.grid}>
           {canchas.map((c: Cancha, i) => {
-            return (<Card key={i} data={c} />
-            )
+            return <Card key={i} data={c} />;
           })}
         </div>
       }
