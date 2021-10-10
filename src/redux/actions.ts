@@ -13,7 +13,7 @@ export async function postUsername(payload: User) {
 //   console.log("desde el Login", response);
 // }
 export function postLogin({ mail, password }: any) {
-  return fetch("http://localhost:3001/login", {
+  return fetch("http://localhost:3001/auth/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -25,8 +25,7 @@ export function postLogin({ mail, password }: any) {
       return res.json();
     })
     .then((res) => {
-      const { token } = res;
-      return token;
+      return res;
     });
 }
 export async function getCanchas() {

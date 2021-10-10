@@ -11,6 +11,7 @@ export default function useUser() {
       setState({ loading: true, error: false });
       postLogin({ mail, password })
         .then((jwt) => {
+          console.log(jwt);
           window.sessionStorage.setItem("jwt", jwt);
           setState({ loading: false, error: false });
           setJWT(jwt);
