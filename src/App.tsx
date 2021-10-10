@@ -12,6 +12,8 @@ import Header from "./components/Header/Header";
 
 import "./scss/App.scss";
 import CardsGrid from "./components/CardsGrid/CardsGrid";
+import Success from "./components/Success/Success";
+import Failed from "./components/Failed/Failed"
 
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
           <Route path="/contacto" component={ContactForm} />
           <Route path="/login" component={FormPage} />
           <Route path="/register" component={RegisterForm} />
+          <Route path="/failed" component={Failed} />
+          <Route path="/success" component={Success} />
           <Route path="/alquiler/:startDate" component={CardsGrid} />
         </Switch>
       </div>

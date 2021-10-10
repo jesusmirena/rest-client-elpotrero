@@ -34,7 +34,10 @@ const Card = ({ data }: any) => {
           inicialTime={inicialTime}
           endTime={endTime}
           timetable={timetable}
-        />
+          name={name}
+          cost={cost}
+          />
+          
       </div>
     </div>
   );

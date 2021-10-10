@@ -6,10 +6,13 @@ export default function FormAlquiler({
   endTime,
   inicialTime,
   timetable,
+  name,
+  cost,
 }: any) {
   let hours = [];
   inicialTime = inicialTime.slice(0, 2);
   endTime = endTime.slice(0, 2);
+  
 
   while (inicialTime < endTime) {
     hours.push(inicialTime + ":00");
@@ -58,7 +61,13 @@ export default function FormAlquiler({
         </div>
 
         <div>
-          <button type="submit">Reserva</button>
+          <form action="http://localhost:3001/checkout" method="POST">
+            <input type="hidden" name="title" id="title" value={name} />
+            <input type="hidden" name="price" id="price" value={cost} />
+            <input type="hidden" name="quantity" id="quantity" value="1" />
+            <input type="submit" value="Reservar" />
+          </form>
+          {/* <button type="submit">Reserva</button> */}
         </div>
       </form>
     </div>
