@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useParams } from "react-router";
+import { postReserva } from "../../../redux/actions";
 
 export default function FormAlquiler({
   id,
@@ -15,6 +17,7 @@ export default function FormAlquiler({
     hours.push(inicialTime + ":00");
     inicialTime++;
   }
+  const dispatch = useDispatch();
 
   let { startDate }: any = useParams();
   //<{ startDate : string }>
@@ -32,6 +35,13 @@ export default function FormAlquiler({
 
   function handleSubmit(e: any) {
     e.preventDefault();
+    dispatch(postReserva(alquiler));
+
+    setAlquiler({
+      ...alquiler,
+      hour: "",
+    });
+
     console.log("POST", alquiler);
   }
 
