@@ -26,6 +26,7 @@ export default function FormAlquiler({
     day: startDate,
     hour: "",
     duration: 1,
+    user: 1,
     field: id,
   });
 
