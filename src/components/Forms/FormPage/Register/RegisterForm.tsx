@@ -1,28 +1,8 @@
-import React from "react";
+import React, { useRef } from "react";
 
 import { useForm, SubmitHandler } from "react-hook-form";
 import styles from "./RegisterForm.module.scss";
 import { postUsername } from "../../../../redux/actions";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as Yup from "yup";
-
-enum GenderEnum {
-  female = "female",
-  male = "male",
-  other = "other",
-}
-
-/* interface IFormInput {
-  name: String;
-  username: String;
-  mail: String;
-  password: String;
-  birthday: String;
-  dni: Number;
-  cellphone: Number;
-  image?: String;
-  gender?: GenderEnum;
-} */
 
 export default function RegisterForm() {
   const {
@@ -30,9 +10,12 @@ export default function RegisterForm() {
     formState: { errors },
     handleSubmit,
     reset,
+    watch,
   } = useForm<User>();
+  const password = useRef({});
+  password.current = watch("password", "");
   const onSubmit: SubmitHandler<User> = (data) => {
-    postUsername(data), alert("Usuario Creado"), console.log(data), reset();
+    postUsername(data), alert("Usuario Creado"), reset();
   };
 
   return (
@@ -74,21 +57,30 @@ export default function RegisterForm() {
         <div className={styles.formDiv}>
           <input
             className={styles.formInput}
-            placeholder="image"
-            {...register("image", { required: true })}
+            type="password"
+            placeholder="Ingresa una contraseña"
+            {...register("password", {
+              required: true,
+              minLength: {
+                value: 8,
+                message: "Password must have at least 8 characters",
+              },
+            })}
           />
-          <label className={styles.formLabel}>imagen</label>
-          {errors.name?.type === "required" && "image is required"}
+          <label className={styles.formLabel}>Contraseña</label>
+          {errors.password && errors.password.message}
         </div>
         <div className={styles.formDiv}>
           <input
             className={styles.formInput}
             type="password"
-            placeholder="Ingresa una contraseña"
-            {...register("password", { required: true })}
+            {...register("password_repeat", {
+              validate: (value: {}) =>
+                value === password.current || "The passwords do not match",
+            })}
           />
-          <label className={styles.formLabel}>Contraseña</label>
-          {errors.password?.type === "required" && "password is required"}
+          <label className={styles.formLabel}>Confirmar contraseña</label>
+          {errors.password_repeat && errors.password_repeat.message}
         </div>
         <div className={styles.formDiv}>
           <input
@@ -127,26 +119,10 @@ export default function RegisterForm() {
             <option selected={true} disabled value="Default">
               Escoge una posicion
             </option>
-            <option value="GOALKEEPER">GOALKEEPER</option>
-            <option value="DEFENDER">DEFENDER</option>
-            <option value="MIDFIELDER">MIDFIELDER</option>
-            <option value="DEFENDER">DEFENDER</option>
-            <option value="ATTACKER">ATTACKER</option>
-          </select>
-        </div>
-        <div className={styles.formDiv}>
-          <label className={styles.formLabel}>calificacion</label>
-          <select
-            {...register("player.qualification", { valueAsNumber: true })}
-          >
-            <option selected={true} disabled value="Default">
-              Escoge una calificacion
-            </option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
+            <option value="GOALKEEPER">Portero</option>
+            <option value="DEFENDER">Defensa</option>
+            <option value="MIDFIELDER">Centrocampista</option>
+            <option value="ATTACKER">Delantero</option>
           </select>
         </div>
         <div className={styles.formDiv}>

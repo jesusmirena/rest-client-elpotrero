@@ -10,6 +10,7 @@ interface User {
   userName: string;
   mail: string;
   password: string;
+  password_repeat: string;
   birthday: string;
   dni: number;
   cellphone: number;
