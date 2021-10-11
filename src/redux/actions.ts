@@ -30,7 +30,7 @@ export function getCanchasDisponible(payload: any) {
 export function postReserva(payload: any) {
   return async function () {
     const res = await axios.post("http://localhost:3001/timetable", payload);
-    console.log(res);
+    console.log("RESERVA",res);
     return res;
   };
 }

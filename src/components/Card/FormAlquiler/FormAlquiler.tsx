@@ -15,6 +15,8 @@ export default function FormAlquiler({
   inicialTime = inicialTime.slice(0, 2);
   endTime = endTime.slice(0, 2);
   
+  let costPorcentage = Math.floor(cost*20)/100;
+
 
   while (inicialTime < endTime) {
     hours.push(inicialTime + ":00");
@@ -74,7 +76,7 @@ export default function FormAlquiler({
         <div>
           <form action="http://localhost:3001/checkout" method="POST">
             <input type="hidden" name="title" id="title" value={name} />
-            <input type="hidden" name="price" id="price" value={cost} />
+            <input type="hidden" name="price" id="price" value={costPorcentage} />
             <input type="hidden" name="quantity" id="quantity" value="1" />
             <input type="submit" value="Reservar" />
           </form>
