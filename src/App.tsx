@@ -1,4 +1,6 @@
 import React from "react";
+import axios from "axios";
+import { useSelector } from "react-redux";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ReservarCancha from "./components/Canchas/ReservarCancha";
 import CrearEquipo from "./components/Equipos/CrearEquipo";
@@ -9,27 +11,29 @@ import Home from "./components/Home/Home";
 import NavBarMui from "./components/NavBar/NavBarMUI";
 import LandinPage from "./components/LandingPage/LandingPage";
 import Header from "./components/Header/Header";
-
-import "./scss/App.scss";
 import CardsGrid from "./components/CardsGrid/CardsGrid";
+import { UserContextProvider } from "./context/userContext";
+import "./scss/App.scss";
 
 function App() {
   return (
     <BrowserRouter>
-      <div>
-        <Header />
-        <NavBarMui />
-        <Switch>
-          <Route exact path="/" component={LandinPage} />
-          <Route path="/home" component={Home} />
-          <Route path="/canchas" component={ReservarCancha} />
-          <Route path="/equipo" component={CrearEquipo} />
-          <Route path="/contacto" component={ContactForm} />
-          <Route path="/login" component={FormPage} />
-          <Route path="/register" component={RegisterForm} />
-          <Route path="/alquiler/:startDate" component={CardsGrid} />
-        </Switch>
-      </div>
+      <UserContextProvider>
+        <div>
+          <Header />
+          <NavBarMui />
+          <Switch>
+            <Route exact path="/" component={LandinPage} />
+            <Route path="/home" component={Home} />
+            <Route path="/canchas" component={ReservarCancha} />
+            <Route path="/equipo" component={CrearEquipo} />
+            <Route path="/contacto" component={ContactForm} />
+            <Route path="/login" component={FormPage} />
+            <Route path="/register" component={RegisterForm} />
+            <Route path="/alquiler/:startDate" component={CardsGrid} />
+          </Switch>
+        </div>
+      </UserContextProvider>
     </BrowserRouter>
   );
 }

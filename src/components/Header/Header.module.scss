@@ -21,8 +21,18 @@
   align-content: flex-end;
   align-items: flex-end;
 }
+.login {
+  display: flex;
+  justify-content: right;
+  align-content: flex-start;
+  align-items: flex-start;
+  margin: 0.6rem 1rem;
+}
 @media (max-width: 768px) {
   .logo {
     height: 100px;
+  }
+  .login {
+    margin: 0;
   }
 }

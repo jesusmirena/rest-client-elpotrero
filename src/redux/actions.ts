@@ -1,24 +1,23 @@
 import { POST_USERNAME, GET_CANCHAS } from "./actionsNames";
 import axios from "axios";
 
-export function postUsername(payload: User) {
-  if (payload.gender === "") delete payload.gender;
-  if (payload.image === "") delete payload.image;
 
+export async function postUsername(payload: User) {
+  const response = await axios.post("http://localhost:3001/user", payload);
+  console.log("desde el response", response);
+}
+
+export async function postLogin({ mail, password }: any) {
+  const response = await axios.post("http://localhost:3001/auth/login", {
+    mail,
+    password,
+  });
+  const user = response.data;
   return {
-    type: POST_USERNAME,
-    payload,
+    type: "POST_LOGIN",
+    payload: user,
   };
 }
-/* 
-export function getCanchas() {
-  return async function (dispatch: any) {
-    let info = await axios.get("http://localhost:3001/fields");
-    console.log("acrtion", info.data);
-    return dispatch({ type: "GET_CANCHAS", payload: info.data });
-  };
-} */
-
 export function getCanchasDisponible(payload: any) {
   return async function (dispatch: any) {
     let res = await axios.get(
