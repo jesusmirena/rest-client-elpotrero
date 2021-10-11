@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link, Redirect } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
-// import { postLogin } from "../../../../redux/actions";
 import "./FormPrueba.css";
 import useUser from "../../../../hooks/useUser";
+
 export default function FormPrueba() {
   const { isLoginLoading, hasLoginError, login, isLogged } = useUser();
   const {
@@ -12,12 +12,9 @@ export default function FormPrueba() {
     handleSubmit,
     reset,
   } = useForm();
-  // useEffect(() => {
 
-  // }, [isLogged, Redirect]);
   const onSubmit: SubmitHandler<any> = ({ mail, password }) => {
     login({ mail, password }),
-      // postLogin(data),
       alert("Bienvenido"),
       console.log("desde el formulario", { mail, password }),
       reset();
