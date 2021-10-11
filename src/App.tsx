@@ -1,4 +1,6 @@
 import React from "react";
+import axios from "axios";
+import { useSelector } from "react-redux";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ReservarCancha from "./components/Canchas/ReservarCancha";
 import CrearEquipo from "./components/Equipos/CrearEquipo";
