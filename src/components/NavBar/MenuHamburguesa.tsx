@@ -7,6 +7,8 @@ import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import useUser from "../../hooks/useUser";
+import { resetUser } from "../../redux/actions";
+import { useDispatch } from "react-redux";
 
 type Anchor = "top" | "left" | "bottom" | "right";
 
@@ -18,6 +20,12 @@ export default function MenuHamburguesa() {
     bottom: false,
     right: false,
   });
+  const dispatch = useDispatch();
+
+  function handleLogout() {
+    logout();
+    dispatch(resetUser());
+  }
 
   const toggleDrawer =
     (anchor: Anchor, open: boolean) =>
@@ -52,7 +60,7 @@ export default function MenuHamburguesa() {
           <ListItemText primary="Reservar cancha" />
         </ListItem>
         <ListItem button>
-          <Button onClick={logout} variant="contained">
+          <Button onClick={handleLogout} variant="contained">
             Cerrar sesion
           </Button>
         </ListItem>
