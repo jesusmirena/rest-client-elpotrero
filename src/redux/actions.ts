@@ -1,7 +1,6 @@
 import { POST_USERNAME, GET_CANCHAS } from "./actionsNames";
 import axios from "axios";
 
-
 export async function postUsername(payload: User) {
   const response = await axios.post("http://localhost:3001/user", payload);
   console.log("desde el response", response);
@@ -25,6 +24,10 @@ export function getCanchasDisponible(payload: any) {
     );
     return dispatch({ type: GET_CANCHAS, payload: res.data });
   };
+}
+
+export function resetUser() {
+  return { type: "RESET" };
 }
 
 export function postReserva(payload: any) {

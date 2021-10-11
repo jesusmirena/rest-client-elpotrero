@@ -14,7 +14,7 @@ export default function CardsGrid(props: any) {
     console.log(err);
   }
 
-  const canchas = useSelector((state: RootState) => state.canchas);
+  const canchas = useSelector((state: RootState) => state.canchas.canchas);
 
   return (
     <div className={styles.containerGrid}>

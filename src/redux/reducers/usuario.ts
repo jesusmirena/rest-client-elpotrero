@@ -10,6 +10,12 @@ const reducer = (state: any = initialState, action: any): any => {
         user: action.payload,
       };
 
+    case "RESET":
+      return {
+        ...state,
+        user: {},
+      };
+
     default:
       return state;
   }
