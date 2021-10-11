@@ -24,6 +24,7 @@ interface Userstate {
 }
 
 interface Canchastate {
+
   canchas: Cancha[];
 }
 

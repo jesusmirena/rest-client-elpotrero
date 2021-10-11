@@ -12,6 +12,7 @@ import Header from "./components/Header/Header";
 import CardsGrid from "./components/CardsGrid/CardsGrid";
 import Success from "./components/Success/Success";
 import Failed from "./components/Failed/Failed"
+import Reserva from "./components/Reserva/Reserva";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route path="/register" component={RegisterForm} />
           <Route path="/failed" component={Failed} />
           <Route path="/success" component={Success} />
+          <Route path="/reserva" component={Reserva} />
           <Route path="/alquiler/:startDate" component={CardsGrid} />
         </Switch>
       </div>

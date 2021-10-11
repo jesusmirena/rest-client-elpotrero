@@ -1,4 +1,4 @@
-import { POST_USERNAME, GET_CANCHAS } from "./actionsNames";
+import { POST_USERNAME, GET_CANCHAS, GET_RESERVA, DELETE_RESERVA } from "./actionsNames";
 import axios from "axios";
 
 
@@ -18,6 +18,7 @@ export async function postLogin({ mail, password }: any) {
     payload: user,
   };
 }
+
 export function getCanchasDisponible(payload: any) {
   return async function (dispatch: any) {
     let res = await axios.get(
@@ -34,3 +35,27 @@ export function postReserva(payload: any) {
     return res;
   };
 }
+
+export function getReserva(id:any) {
+  return async function (dispatch: any) {
+    let res = await axios.get(
+      `http://localhost:3001/timetable/${id}`);
+    return dispatch({ type: GET_RESERVA, payload: res.data });
+  };
+}
+
+export function deleteReserva(id:any) {
+  return async function (dispatch: any) {
+    let res = await axios.delete(
+      `http://localhost:3001/timetable/${id}`);
+    return dispatch({ type: DELETE_RESERVA});
+  };
+}
+
+// export function postMercadoPago(payload: any) {
+//   return async function () {
+//     const res = await axios.post("http://localhost:3001/checkout", payload);
+//     console.log("MERCADO",res);
+//     return res;
+//   };
+// }

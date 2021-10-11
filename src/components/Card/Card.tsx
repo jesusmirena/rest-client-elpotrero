@@ -2,6 +2,7 @@ import * as React from "react";
 import imagen from "../../visuales/canchitaCard.png";
 import styles from "../Card/Card.module.scss";
 import FormAlquiler from "./FormAlquiler/FormAlquiler";
+import Reserva from "../Reserva/Reserva";
 
 const Card = ({ data }: any) => {
   const {
@@ -37,8 +38,21 @@ const Card = ({ data }: any) => {
           timetable={timetable}
           name={name}
           cost={cost}
-          />
-          
+        />
+      </div>
+      <div>
+        {/* <Reserva
+          id={id}
+          inicialTime={inicialTime}
+          endTime={endTime}
+          timetable={timetable}
+          name={name}
+          cost={cost}
+          image={image}
+          qualification={qualification}
+          description={description}
+          adress={adress}
+        /> */}
       </div>
     </div>
   );

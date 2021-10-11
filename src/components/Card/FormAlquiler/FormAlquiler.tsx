@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router";
+import { Link } from "react-router-dom";
 import { postReserva } from "../../../redux/actions";
 
 export default function FormAlquiler({
@@ -14,9 +15,8 @@ export default function FormAlquiler({
   let hours = [];
   inicialTime = inicialTime.slice(0, 2);
   endTime = endTime.slice(0, 2);
-  
-  let costPorcentage = Math.floor(cost*20)/100;
 
+  let costPorcentage = Math.floor(cost * 20) / 100;
 
   while (inicialTime < endTime) {
     hours.push(inicialTime + ":00");
@@ -34,6 +34,13 @@ export default function FormAlquiler({
     user: 1,
     field: id,
   });
+
+  // const [dateMp, setDateMp] = useState({
+  //   title: name,
+  //   price: costPorcentage,
+  //   quantity: hours,
+  //   timeTableId: timetable,
+  // });
 
   const p = timetable.map((a: any) => a.hour);
 
@@ -61,6 +68,9 @@ export default function FormAlquiler({
   return (
     <div>
       <form onSubmit={handleSubmit}>
+        {/* <input type="hidden" name="title" id="title" value={name} />
+        <input type="hidden" name="price" id="price" value={costPorcentage} />
+        <input type="hidden" name="quantity" id="quantity" value="1" /> */}
         <div>
           <label>Hora disponible</label>
           <select onChange={handleSelect}>
@@ -71,16 +81,23 @@ export default function FormAlquiler({
               </option>
             ))}
           </select>
+          <Link to="/reserva">
+            <button type="submit">Reserva</button>
+          </Link>
         </div>
 
         <div>
-          <form action="http://localhost:3001/checkout" method="POST">
+          {/* <form action="http://localhost:3001/checkout" method="POST">
             <input type="hidden" name="title" id="title" value={name} />
-            <input type="hidden" name="price" id="price" value={costPorcentage} />
+            <input
+              type="hidden"
+              name="price"
+              id="price"
+              value={costPorcentage}
+            />
             <input type="hidden" name="quantity" id="quantity" value="1" />
             <input type="submit" value="Reservar" />
-          </form>
-          {/* <button type="submit">Reserva</button> */}
+          </form> */}
         </div>
       </form>
     </div>
