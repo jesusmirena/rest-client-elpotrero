@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { postReserva } from "../../../redux/actions";
+
+
 export default function FormAlquiler({
   id,
   endTime,
@@ -15,7 +17,7 @@ export default function FormAlquiler({
   inicialTime = inicialTime.slice(0, 2);
   endTime = endTime.slice(0, 2);
 
-  let costPorcentage = Math.floor(cost * 20) / 100;
+  const history = useHistory();
 
   while (inicialTime < endTime) {
     hours.push(inicialTime + ":00");
@@ -52,7 +54,7 @@ export default function FormAlquiler({
         ...alquiler,
         hour: "",
       });
-
+      history.push("/reserva")
       console.log("POST", alquiler);
     }
   }
@@ -66,7 +68,7 @@ export default function FormAlquiler({
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form>
         {/* <input type="hidden" name="title" id="title" value={name} />
         <input type="hidden" name="price" id="price" value={costPorcentage} />
         <input type="hidden" name="quantity" id="quantity" value="1" /> */}
@@ -80,9 +82,9 @@ export default function FormAlquiler({
               </option>
             ))}
           </select>
-          <Link to="/reserva">
-            <button type="submit">Reserva</button>
-          </Link>
+          {/* <Link to="/reserva"> */}
+            <button onClick={handleSubmit} type="submit">Reserva</button>
+          {/* </Link> */}
         </div>
 
         <div>

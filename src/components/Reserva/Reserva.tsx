@@ -8,10 +8,11 @@ export default function Reserva() {
   const dispatch = useDispatch();
   const history = useHistory();
   const reservaData = useSelector((state: any) => state.reserva);
-  const [dateCancha, setDateCancha] = useState();
-
+  const userId = useSelector((state: any) => state.usuario.user.id);
+  
+console.log("IDDDD",userId)
   useEffect(() => {
-    dispatch(getReserva(1));
+    dispatch(getReserva(userId));
   }, [dispatch]);
 
   function handleSubmit(e: any) {
