@@ -31,7 +31,7 @@ export default function Datepicker() {
       />
       <div>
         <Link to={"/alquiler/" + startDate}>
-          <button>alqui</button>
+          <button>Ver canchas</button>
         </Link>
       </div>
     </div>

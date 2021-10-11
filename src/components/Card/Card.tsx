@@ -13,6 +13,7 @@ const Card = ({ data }: any) => {
     description,
     endTime,
     id,
+    adress,
     timetable,
   } = data;
 

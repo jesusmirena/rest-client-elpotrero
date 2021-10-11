@@ -6,10 +6,12 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
+import useUser from "../../hooks/useUser";
 
 type Anchor = "top" | "left" | "bottom" | "right";
 
 export default function MenuHamburguesa() {
+  const { logout, isLogged } = useUser();
   const [state, setState] = React.useState({
     top: false,
     left: false,
@@ -50,29 +52,35 @@ export default function MenuHamburguesa() {
           <ListItemText primary="Reservar cancha" />
         </ListItem>
         <ListItem button>
-          <Button variant="contained">Cerrar sesion</Button>
+          <Button onClick={logout} variant="contained">
+            Cerrar sesion
+          </Button>
         </ListItem>
       </List>
     </Box>
   );
 
   return (
-    <div>
-      {(["left"] as const).map((anchor) => (
-        <React.Fragment key={anchor}>
-          <Button color="inherit" onClick={toggleDrawer(anchor, true)}>
-            <MenuIcon />
-          </Button>
-          <SwipeableDrawer
-            anchor={anchor}
-            open={state[anchor]}
-            onClose={toggleDrawer(anchor, false)}
-            onOpen={toggleDrawer(anchor, true)}
-          >
-            {list(anchor)}
-          </SwipeableDrawer>
-        </React.Fragment>
-      ))}
-    </div>
+    <>
+      {isLogged && (
+        <div>
+          {(["left"] as const).map((anchor) => (
+            <React.Fragment key={anchor}>
+              <Button color="inherit" onClick={toggleDrawer(anchor, true)}>
+                <MenuIcon />
+              </Button>
+              <SwipeableDrawer
+                anchor={anchor}
+                open={state[anchor]}
+                onClose={toggleDrawer(anchor, false)}
+                onOpen={toggleDrawer(anchor, true)}
+              >
+                {list(anchor)}
+              </SwipeableDrawer>
+            </React.Fragment>
+          ))}
+        </div>
+      )}
+    </>
   );
 }

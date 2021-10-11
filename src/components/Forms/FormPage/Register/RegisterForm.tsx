@@ -1,28 +1,8 @@
-import React from "react";
+import React, { useRef } from "react";
 
 import { useForm, SubmitHandler } from "react-hook-form";
 import styles from "./RegisterForm.module.scss";
 import { postUsername } from "../../../../redux/actions";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as Yup from "yup";
-
-enum GenderEnum {
-  female = "female",
-  male = "male",
-  other = "other",
-}
-
-/* interface IFormInput {
-  name: String;
-  username: String;
-  mail: String;
-  password: String;
-  birthday: String;
-  dni: Number;
-  cellphone: Number;
-  image?: String;
-  gender?: GenderEnum;
-} */
 
 export default function RegisterForm() {
   const {
@@ -30,9 +10,12 @@ export default function RegisterForm() {
     formState: { errors },
     handleSubmit,
     reset,
+    watch,
   } = useForm<User>();
-  const onSubmit: SubmitHandler<User> = () => {
-    alert("Usuario Creado"), reset();
+  const password = useRef({});
+  password.current = watch("password", "");
+  const onSubmit: SubmitHandler<User> = (data) => {
+    postUsername(data), alert("Usuario Creado"), reset();
   };
 
   return (
@@ -52,10 +35,10 @@ export default function RegisterForm() {
           <input
             className={styles.formInput}
             placeholder="Escribe tu nombre de usuario"
-            {...register("username", { required: true })}
+            {...register("userName", { required: true })}
           />
           <label className={styles.formLabel}>Nombre de usuario</label>
-          {errors.username?.type === "required" && "username is required"}
+          {errors.userName?.type === "required" && "userName is required"}
         </div>
         <div className={styles.formDiv}>
           <input
@@ -76,16 +59,34 @@ export default function RegisterForm() {
             className={styles.formInput}
             type="password"
             placeholder="Ingresa una contraseña"
-            {...register("password", { required: true })}
+            {...register("password", {
+              required: true,
+              minLength: {
+                value: 8,
+                message: "Password must have at least 8 characters",
+              },
+            })}
           />
           <label className={styles.formLabel}>Contraseña</label>
-          {errors.password?.type === "required" && "password is required"}
+          {errors.password && errors.password.message}
         </div>
         <div className={styles.formDiv}>
           <input
             className={styles.formInput}
-            type="date"
-            {...register("birthday", { valueAsDate: true, required: true })}
+            type="password"
+            {...register("password_repeat", {
+              validate: (value: {}) =>
+                value === password.current || "The passwords do not match",
+            })}
+          />
+          <label className={styles.formLabel}>Confirmar contraseña</label>
+          {errors.password_repeat && errors.password_repeat.message}
+        </div>
+        <div className={styles.formDiv}>
+          <input
+            className={styles.formInput}
+            type="text"
+            {...register("birthday", { required: true })}
           />
           <label className={styles.formLabel}>Fecha de nacimiento</label>
           {errors.birthday?.type === "required" && "Birthday is required"}
@@ -93,8 +94,9 @@ export default function RegisterForm() {
         <div className={styles.formDiv}>
           <input
             className={styles.formInput}
+            type="number"
             placeholder="Ingresa tu documento de identificacion"
-            {...register("dni", { required: true })}
+            {...register("dni", { valueAsNumber: true, required: true })}
           />
           <label className={styles.formLabel}>
             Documento de identificacion
@@ -112,14 +114,26 @@ export default function RegisterForm() {
           {errors.cellphone?.type === "required" && "Cellphone is required"}
         </div>
         <div className={styles.formDiv}>
+          <label className={styles.formLabel}>Posicion</label>
+          <select {...register("player.position")}>
+            <option selected={true} disabled value="Default">
+              Escoge una posicion
+            </option>
+            <option value="GOALKEEPER">Portero</option>
+            <option value="DEFENDER">Defensa</option>
+            <option value="MIDFIELDER">Centrocampista</option>
+            <option value="ATTACKER">Delantero</option>
+          </select>
+        </div>
+        <div className={styles.formDiv}>
           <label className={styles.formLabel}>Genero</label>
           <select {...register("gender")}>
             <option selected={true} disabled value="Default">
               Escoge un genero
             </option>
-            <option value="femenino">femenino</option>
-            <option value="masculino">masculino</option>
-            <option value="otro">otro</option>
+            <option value="FEMALE">femenino</option>
+            <option value="MALE">masculino</option>
+            <option value="UNDEFINED">otro</option>
           </select>
         </div>
         <input className={styles.button} type="submit" />

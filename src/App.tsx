@@ -9,8 +9,6 @@ import Home from "./components/Home/Home";
 import NavBarMui from "./components/NavBar/NavBarMUI";
 import LandinPage from "./components/LandingPage/LandingPage";
 import Header from "./components/Header/Header";
-
-import "./scss/App.scss";
 import CardsGrid from "./components/CardsGrid/CardsGrid";
 import Success from "./components/Success/Success";
 import Failed from "./components/Failed/Failed"
