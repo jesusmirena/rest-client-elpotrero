@@ -48,7 +48,7 @@ export default function FormAlquiler({
   function handleSubmit(e: any) {
     e.preventDefault();
     if (!userId) {
-      alert("Debe registrarse!");
+      alert("Debe iniciar sesion!");
       history.push("/login");
     } else {
       dispatch(postReserva(alquiler));

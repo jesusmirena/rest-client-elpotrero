@@ -14,15 +14,14 @@ export default function FormPrueba() {
   } = useForm();
 
   const onSubmit: SubmitHandler<any> = ({ mail, password }) => {
-    login({ mail, password }),
+      login({ mail, password }),
       alert("Bienvenido"),
-      console.log("desde el formulario", { mail, password }),
       reset();
   };
 
   return (
     <>
-      {isLoginLoading && <strong>Checking credentials...</strong>}
+      {isLoginLoading && <strong>El usuario no existe</strong>}
       {!isLoginLoading && (
         <div className="container-global">
           <div className="container" id="container">
