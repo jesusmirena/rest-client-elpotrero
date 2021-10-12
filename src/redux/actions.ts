@@ -1,10 +1,6 @@
 import { POST_USERNAME, GET_CANCHAS } from "./actionsNames";
 import axios from '../lib/axiosConfig'
 
-
-
-
-
 export async function postUsername(payload: User) {
   const response = await axios.post("http://localhost:3001/user", payload);
   console.log("desde el response", response);
