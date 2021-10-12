@@ -5,15 +5,15 @@ import styles from "./Home.module.scss";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Datepicker from "../Card/Datepicker/Datepicker";
+import { useSelector } from "react-redux";
 
 export default function Home() {
+  
   return (
     <div className={styles.image}>
       <div className={styles.fondo}>
         <div>
           <Datepicker />
-
-
         </div>
         {/*  <CardsGrid /> */}
       </div>

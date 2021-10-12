@@ -14,8 +14,15 @@ import Header from "./components/Header/Header";
 import CardsGrid from "./components/CardsGrid/CardsGrid";
 import { UserContextProvider } from "./context/userContext";
 import "./scss/App.scss";
+import { RootState } from "./redux/store";
+
 
 function App() {
+
+  // const token: string = useSelector((state: RootState)=> state.usuario.user.token)
+  // console.log(token, "TOKEN EN LA APP")
+  // axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
   return (
     <BrowserRouter>
       <UserContextProvider>
