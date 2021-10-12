@@ -69,11 +69,18 @@ export default function Reserva() {
                         id="price"
                         value={reservaData.reserva.field?.cost * 0.2}
                       />
+                      
                       <input
                         type="hidden"
                         name="quantity"
                         id="quantity"
                         value={reservaData.reserva?.duration}
+                      />
+                      <input
+                        type="hidden"
+                        name="id"
+                        id="id"
+                        value={reservaData.reserva.id}
                       />
                       <button className={styles.btnreservar} type="submit">
                         Reserva

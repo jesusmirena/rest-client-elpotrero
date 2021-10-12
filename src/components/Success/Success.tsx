@@ -6,7 +6,7 @@ export default function Success() {
   return (
     <div className={styles.container}>
       <h1>¡Listo! Se acredito tu pago</h1>
-      <Link to="/home">
+      <Link to="/">
         <button className={styles.btn}>Volver a Home</button>
       </Link>
     </div>
