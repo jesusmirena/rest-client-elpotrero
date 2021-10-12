@@ -1,5 +1,5 @@
 import { POST_USERNAME, GET_CANCHAS, GET_RESERVA, DELETE_RESERVA } from "./actionsNames";
-import axios from "axios";
+import axios from '../lib/axiosConfig'
 
 export async function postUsername(payload: User) {
   const response = await axios.post("http://localhost:3001/user", payload);
@@ -7,22 +7,30 @@ export async function postUsername(payload: User) {
 }
 
 export async function postLogin({ mail, password }: any) {
-  const response = await axios.post("http://localhost:3001/auth/login", {
-    mail,
-    password,
-  });
-  const user = response.data;
-  return {
-    type: "POST_LOGIN",
-    payload: user,
-  };
+  console.log("ANTEESSSS ESTAMOS EN EL POST LOGIN")
+  try{
+    const response = await axios.post("http://localhost:3001/auth/login", {
+      mail,
+      password,
+    });
+    const user = response.data;
+    console.log("ESTAMOS EN EL POST LOGIN")
+    console.log(user, "ESTAMOS EN EL POST LOGIN")
+    return {
+      type: "POST_LOGIN",
+      payload: user,
+    };
+
+  }catch(error){
+    console.log("ERROR DEL POSTLOGIN",error)
+  }
 }
 
 export function getCanchasDisponible(payload: any) {
   return async function (dispatch: any) {
     let res = await axios.get(
-      "http://localhost:3001/fields/available/" + payload
-    );
+      "http://localhost:3001/fields/available/" + payload,
+      );
     return dispatch({ type: GET_CANCHAS, payload: res.data });
   };
 }
