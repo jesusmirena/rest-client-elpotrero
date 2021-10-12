@@ -51,6 +51,7 @@ export function getReserva(id:any) {
   return async function (dispatch: any) {
     let res = await axios.get(
       `http://localhost:3001/timetable/${id}`);
+    console.log("GET DE RESERVA", res.data)
     return dispatch({ type: GET_RESERVA, payload: res.data });
   };
 }
