@@ -1,16 +1,25 @@
 import React from "react";
 import styles from "./LandingPage.module.scss";
 import { Link } from "react-router-dom";
+import Datepicker from "../Card/Datepicker/Datepicker";
+import useUser from "../../hooks/useUser";
 
 export default function LandinPage() {
+  const { isLogged } = useUser();
+
   return (
     <div className={styles.container}>
+      <div className={styles.datepicker}>
+        <Datepicker />
+      </div>
       <div className={styles.btngrid}>
-        <div className={styles.btnc}>
-          <Link to="/register">
-            <button className={styles.btn}>Registrese</button>
-          </Link>
-        </div>
+        {!isLogged && (
+          <div className={styles.btnc}>
+            <Link to="/register">
+              <button className={styles.btn}>Registrese</button>
+            </Link>
+          </div>
+        )}
       </div>
       <div className={styles.containerTitle}>
         <p className={styles.title}>EL POTRERO</p>

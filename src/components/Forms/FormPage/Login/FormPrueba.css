@@ -41,7 +41,7 @@ button.ghost {
   border-color: #000000;
 }
 
-form {
+.formNegro {
   background-color: #0000007c;
   display: flex;
   align-items: center;

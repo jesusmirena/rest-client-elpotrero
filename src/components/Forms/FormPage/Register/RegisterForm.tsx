@@ -3,8 +3,10 @@ import React, { useRef } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import styles from "./RegisterForm.module.scss";
 import { postUsername } from "../../../../redux/actions";
+import { useHistory } from "react-router";
 
 export default function RegisterForm() {
+  const history = useHistory();
   const {
     register,
     formState: { errors },
@@ -15,7 +17,10 @@ export default function RegisterForm() {
   const password = useRef({});
   password.current = watch("password", "");
   const onSubmit: SubmitHandler<User> = (data) => {
-    postUsername(data), alert("Usuario Creado"), reset();
+    postUsername(data),
+      alert("Usuario Creado"),
+      reset(),
+      history.push("/login");
   };
 
   return (
@@ -115,7 +120,7 @@ export default function RegisterForm() {
         </div>
         <div className={styles.formDiv}>
           <label className={styles.formLabel}>Posicion</label>
-          <select {...register("player.position")}>
+          <select className="selectForm" {...register("player.position")}>
             <option selected={true} disabled value="Default">
               Escoge una posicion
             </option>
@@ -127,7 +132,7 @@ export default function RegisterForm() {
         </div>
         <div className={styles.formDiv}>
           <label className={styles.formLabel}>Genero</label>
-          <select {...register("gender")}>
+          <select className="selectForm" {...register("gender")}>
             <option selected={true} disabled value="Default">
               Escoge un genero
             </option>
@@ -136,7 +141,9 @@ export default function RegisterForm() {
             <option value="UNDEFINED">otro</option>
           </select>
         </div>
-        <input className={styles.button} type="submit" />
+        <div className={styles.btncontainer}>
+          <input className={styles.button} type="submit" />
+        </div>
       </form>
     </div>
   );

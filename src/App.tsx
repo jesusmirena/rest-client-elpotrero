@@ -11,29 +11,34 @@ import LandinPage from "./components/LandingPage/LandingPage";
 import Header from "./components/Header/Header";
 import CardsGrid from "./components/CardsGrid/CardsGrid";
 import Success from "./components/Success/Success";
-import Failed from "./components/Failed/Failed"
+import Failed from "./components/Failed/Failed";
 import Reserva from "./components/Reserva/Reserva";
+import "./scss/App.scss";
+import { UserContextProvider } from "./context/userContext";
 
 function App() {
   return (
     <BrowserRouter>
-      <div>
-        <Header />
-        <NavBarMui />
-        <Switch>
-          <Route exact path="/" component={LandinPage} />
-          <Route path="/home" component={Home} />
-          <Route path="/canchas" component={ReservarCancha} />
-          <Route path="/equipo" component={CrearEquipo} />
-          <Route path="/contacto" component={ContactForm} />
-          <Route path="/login" component={FormPage} />
-          <Route path="/register" component={RegisterForm} />
-          <Route path="/failed" component={Failed} />
-          <Route path="/success" component={Success} />
-          <Route path="/reserva" component={Reserva} />
-          <Route path="/alquiler/:startDate" component={CardsGrid} />
-        </Switch>
-      </div>
+      <UserContextProvider>
+        <div>
+          <Header />
+          <NavBarMui />
+          <Switch>
+            <Route exact path="/" component={LandinPage} />
+            <Route path="/home/:startDate" component={CardsGrid} />
+            <Route path="/canchas" component={ReservarCancha} />
+            <Route path="/equipo" component={CrearEquipo} />
+            <Route path="/contacto" component={ContactForm} />
+            <Route path="/login" component={FormPage} />
+            <Route path="/register" component={RegisterForm} />
+            <Route path="/failed" component={Failed} />
+            <Route path="/success" component={Success} />
+            <Route path="/reserva" component={Reserva} />
+            {/*           <Route path="/alquiler/:startDate" component={CardsGrid} />
+             */}{" "}
+          </Switch>
+        </div>
+      </UserContextProvider>
     </BrowserRouter>
   );
 }

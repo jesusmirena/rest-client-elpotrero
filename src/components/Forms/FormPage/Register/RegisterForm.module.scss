@@ -76,7 +76,7 @@ background-attachment: fixed; */
   border-image: linear-gradient(to right, #ffffff, #e1e1e1);
   border-image-slice: 1;
 }
-select {
+.selectForm {
   margin-bottom: 1em;
   padding: 0.25em;
   border: 0;
@@ -92,7 +92,9 @@ select {
 }
 .button {
   background-color: #ffffff;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: #111111;
   text-align: center;
   padding: 0.6rem 1.5rem;
@@ -101,6 +103,12 @@ select {
   font-weight: 700;
   margin-bottom: 1rem;
   border: none;
+}
+.btncontainer {
+  margin: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 @media (min-width: 768px) {
   .button {

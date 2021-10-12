@@ -3,7 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { Link, useHistory } from "react-router-dom";
 import { postReserva } from "../../../redux/actions";
-
+import styles from "./FormAlquiler.module.scss";
+import useUser from "../../../hooks/useUser";
+import { Redirect } from "react-router";
 
 export default function FormAlquiler({
   id,
@@ -47,6 +49,7 @@ export default function FormAlquiler({
     e.preventDefault();
     if (!userId) {
       alert("Debe registrarse!");
+      history.push("/login");
     } else {
       dispatch(postReserva(alquiler));
 
@@ -54,7 +57,7 @@ export default function FormAlquiler({
         ...alquiler,
         hour: "",
       });
-      history.push("/reserva")
+      history.push("/reserva");
       console.log("POST", alquiler);
     }
   }
@@ -65,40 +68,24 @@ export default function FormAlquiler({
       hour: e.target.value,
     });
   }
+  const { isLogged } = useUser();
 
   return (
     <div>
       <form>
-        {/* <input type="hidden" name="title" id="title" value={name} />
-        <input type="hidden" name="price" id="price" value={costPorcentage} />
-        <input type="hidden" name="quantity" id="quantity" value="1" /> */}
-        <div>
-          <label>Hora disponible</label>
-          <select onChange={handleSelect}>
-            <option>Horarios</option>
+        <div className={styles.jordi}>
+          <label className={styles.hora}>Hora disponible</label>
+          <select className={styles.selectHora} onChange={handleSelect}>
+            <option className={styles.select}>Horarios</option>
             {hours.map((g) => (
-              <option key={g} value={g}>
+              <option className={styles.select} key={g} value={g}>
                 {g}
               </option>
             ))}
           </select>
-          {/* <Link to="/reserva"> */}
-            <button onClick={handleSubmit} type="submit">Reserva</button>
-          {/* </Link> */}
-        </div>
-
-        <div>
-          {/* <form action="http://localhost:3001/checkout" method="POST">
-            <input type="hidden" name="title" id="title" value={name} />
-            <input
-              type="hidden"
-              name="price"
-              id="price"
-              value={costPorcentage}
-            />
-            <input type="hidden" name="quantity" id="quantity" value="1" />
-            <input type="submit" value="Reservar" />
-          </form> */}
+          <button onClick={handleSubmit} type="submit">
+            Reserva
+          </button>
         </div>
       </form>
     </div>

@@ -27,7 +27,11 @@ export default function FormPrueba() {
         <div className="container-global">
           <div className="container" id="container">
             <div className="form-container sign-in-container">
-              <form action="#" onSubmit={handleSubmit(onSubmit)}>
+              <form
+                className="formNegro"
+                action="#"
+                onSubmit={handleSubmit(onSubmit)}
+              >
                 <h1>Inicia sesión</h1>
                 <input
                   className="inputLogIn"
@@ -44,7 +48,7 @@ export default function FormPrueba() {
                 <Link to="#">¿Olvidaste tu contraseña?</Link>
 
                 <button type="submit">
-                  {isLogged && <Redirect to="/home" />}
+                  {isLogged && <Redirect to="/" />}
                   Ingresa
                 </button>
               </form>
