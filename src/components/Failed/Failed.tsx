@@ -14,6 +14,7 @@ export default function Failed() {
         medio de pago
       </p>
       <div>
+        {/* <Link to="/home/:startDate">  */}
         <Link to="/">
           <button className={styles.btn}>Volver a Home</button>
         </Link>
