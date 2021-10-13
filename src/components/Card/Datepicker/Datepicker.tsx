@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import DatePicker, { registerLocale } from "react-datepicker";//ROMPE
+import DatePicker, { registerLocale } from "react-datepicker"; //ROMPE
 import { addDays } from "date-fns";
 import "react-datepicker/dist/react-datepicker.css";
 import es from "date-fns/locale/es";

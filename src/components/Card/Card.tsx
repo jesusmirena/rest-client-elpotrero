@@ -28,7 +28,7 @@ const Card = ({ data }: any) => {
         <p>{description}</p>
         <p>Direccion: </p>
         <p>{address}</p>
-        <p>Precio: {cost}</p>
+        <p>Precio: $ {cost}</p>
         <p>Calificacion {qualification}</p>
       </div>
 

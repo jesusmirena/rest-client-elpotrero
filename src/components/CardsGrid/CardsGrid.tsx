@@ -18,9 +18,7 @@ export default function CardsGrid(props: any) {
 
   return (
     <div className={styles.containerGrid}>
-      <h3 className={styles.titulo}>
-        Canchas disponibles en la fecha :{data?.slice(3, 15)}
-      </h3>
+      <h3 className={styles.titulo}>Canchas disponibles en la fecha :{data}</h3>
       {
         <div className={styles.grid}>
           {canchas.map((c: Cancha, i) => {

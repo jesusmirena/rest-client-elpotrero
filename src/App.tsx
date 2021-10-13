@@ -15,6 +15,7 @@ import Failed from "./components/Failed/Failed";
 import Reserva from "./components/Reserva/Reserva";
 import "./scss/App.scss";
 import { UserContextProvider } from "./context/userContext";
+import Profile from "./components/Profile/Profile";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
             <Route path="/failed" component={Failed} />
             <Route path="/success" component={Success} />
             <Route path="/reserva" component={Reserva} />
+            <Route path="/profile" component={Profile} />
             {/*           <Route path="/alquiler/:startDate" component={CardsGrid} />
              */}{" "}
           </Switch>

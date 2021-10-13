@@ -30,6 +30,10 @@ export default function MenuHamburguesa() {
     history.push("/");
   }
 
+  function handleViewProfile() {
+    history.push("/profile");
+  }
+
   const toggleDrawer =
     (anchor: Anchor, open: boolean) =>
     (event: React.KeyboardEvent | React.MouseEvent) => {
@@ -54,7 +58,8 @@ export default function MenuHamburguesa() {
     >
       <List>
         <ListItem button>
-          <ListItemText primary="Ver perfil" />
+          <ListItemText onClick={handleViewProfile} primary="Ver perfil" />
+          {/*   <Button onClick={handleViewProfile}>Ver Perfil</Button> */}
         </ListItem>
         <ListItem button>
           <ListItemText primary="Crear equipo" />
