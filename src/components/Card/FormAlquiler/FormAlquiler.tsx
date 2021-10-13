@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { postReserva } from "../../../redux/actions";
-
 export default function FormAlquiler({
   id,
   endTime,
@@ -27,11 +26,13 @@ export default function FormAlquiler({
   let { startDate }: any = useParams();
   //<{ startDate : string }>
 
+  const userId = useSelector((state: any) => state.usuario.user.id);
+
   const [alquiler, setAlquiler] = useState({
     day: startDate,
     hour: "",
     duration: 1,
-    user: 1,
+    user: userId,
     field: id,
   });
 
@@ -48,14 +49,18 @@ export default function FormAlquiler({
 
   function handleSubmit(e: any) {
     e.preventDefault();
-    dispatch(postReserva(alquiler));
+    if (!userId) {
+      alert("Debe registrarse!");
+    } else {
+      dispatch(postReserva(alquiler));
 
-    setAlquiler({
-      ...alquiler,
-      hour: "",
-    });
+      setAlquiler({
+        ...alquiler,
+        hour: "",
+      });
 
-    console.log("POST", alquiler);
+      console.log("POST", alquiler);
+    }
   }
 
   function handleSelect(e: any) {
