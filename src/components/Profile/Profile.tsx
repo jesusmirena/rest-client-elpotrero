@@ -7,7 +7,7 @@ export default function Profile() {
   return (
     <div>
       <div className={styles.conteiner}>
-        <h1>Bienvenido {profile.name || "usuario"}</h1>
+        <h1>Bienvenido {profile.name || "FEDERICO AGUILERA"}</h1>
       </div>
       <div>
         <div className={styles.card}></div>
