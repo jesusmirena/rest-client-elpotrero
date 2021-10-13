@@ -14,7 +14,7 @@ export default function FormAlquiler({
   timetable,
   name,
   cost,
-}: any) {
+}: FormAlquiler) {
   let hours = [];
   inicialTime = inicialTime.slice(0, 2);
   endTime = endTime.slice(0, 2);
@@ -27,7 +27,7 @@ export default function FormAlquiler({
   }
   const dispatch = useDispatch();
 
-  let { startDate }: any = useParams();
+  let { startDate }: any= useParams();
   //<{ startDate : string }>
 
   const userId = useSelector((state: any) => state.usuario.user.id);
@@ -40,7 +40,7 @@ export default function FormAlquiler({
     field: id,
   });
 
-  console.log("FORMULARIO", alquiler);
+  
   const p = timetable.map((a: any) => a.hour);
 
   hours = hours.filter((i) => !p.includes(i));
