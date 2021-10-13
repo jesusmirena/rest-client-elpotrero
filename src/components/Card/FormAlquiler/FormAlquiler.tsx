@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { postReserva } from "../../../redux/actions";
+import styles from "./FormAlquiler.module.scss";
+import useUser from "../../../hooks/useUser";
+import { Redirect } from "react-router";
+
 export default function FormAlquiler({
   id,
   endTime,
@@ -15,7 +19,7 @@ export default function FormAlquiler({
   inicialTime = inicialTime.slice(0, 2);
   endTime = endTime.slice(0, 2);
 
-  let costPorcentage = Math.floor(cost * 20) / 100;
+  const history = useHistory();
 
   while (inicialTime < endTime) {
     hours.push(inicialTime + ":00");
@@ -36,13 +40,7 @@ export default function FormAlquiler({
     field: id,
   });
 
-  // const [dateMp, setDateMp] = useState({
-  //   title: name,
-  //   price: costPorcentage,
-  //   quantity: hours,
-  //   timeTableId: timetable,
-  // });
-
+  console.log("FORMULARIO", alquiler);
   const p = timetable.map((a: any) => a.hour);
 
   hours = hours.filter((i) => !p.includes(i));
@@ -50,7 +48,8 @@ export default function FormAlquiler({
   function handleSubmit(e: any) {
     e.preventDefault();
     if (!userId) {
-      alert("Debe registrarse!");
+      alert("Debe iniciar sesion!");
+      history.push("/login");
     } else {
       dispatch(postReserva(alquiler));
 
@@ -58,7 +57,7 @@ export default function FormAlquiler({
         ...alquiler,
         hour: "",
       });
-
+      history.push("/reserva");
       console.log("POST", alquiler);
     }
   }
@@ -69,40 +68,24 @@ export default function FormAlquiler({
       hour: e.target.value,
     });
   }
+  const { isLogged } = useUser();
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        {/* <input type="hidden" name="title" id="title" value={name} />
-        <input type="hidden" name="price" id="price" value={costPorcentage} />
-        <input type="hidden" name="quantity" id="quantity" value="1" /> */}
-        <div>
-          <label>Hora disponible</label>
-          <select onChange={handleSelect}>
-            <option>Horarios</option>
+      <form>
+        <div className={styles.jordi}>
+          <label className={styles.hora}>Hora disponible</label>
+          <select className={styles.selectHora} onChange={handleSelect}>
+            <option className={styles.select}>Horarios</option>
             {hours.map((g) => (
-              <option key={g} value={g}>
+              <option className={styles.select} key={g} value={g}>
                 {g}
               </option>
             ))}
           </select>
-          <Link to="/reserva">
-            <button type="submit">Reserva</button>
-          </Link>
-        </div>
-
-        <div>
-          {/* <form action="http://localhost:3001/checkout" method="POST">
-            <input type="hidden" name="title" id="title" value={name} />
-            <input
-              type="hidden"
-              name="price"
-              id="price"
-              value={costPorcentage}
-            />
-            <input type="hidden" name="quantity" id="quantity" value="1" />
-            <input type="submit" value="Reservar" />
-          </form> */}
+          <button onClick={handleSubmit} type="submit">
+            Reserva
+          </button>
         </div>
       </form>
     </div>

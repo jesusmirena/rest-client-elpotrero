@@ -1,8 +1,14 @@
 .container {
   display: flex;
   flex-direction: column;
-
-  height: 400px;
+  background-color: black;
+  border-radius: 20px;
+  height: 620px;
+  width: 333px;
+  transition: transform 250ms;
+  &:hover {
+    transform: translate(-10px, -10px);
+  }
 }
 
 .imgcontainer {
@@ -11,8 +17,10 @@
 }
 
 .img {
+  margin-top: 0.8rem;
   width: 280px;
   height: 200px;
+  border-radius: 10px;
 }
 
 .info {

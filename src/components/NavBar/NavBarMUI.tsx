@@ -6,14 +6,15 @@ import useUser from "../../hooks/useUser";
 
 export default function NavBarMui() {
   const { isLogged } = useUser();
+
   return (
     <div className={styles.navBg}>
       <nav className={`${styles.navegacion} ${styles.contenedor}`}>
+        {/*    <li className={styles.navLink}>
+          <Link to="/home/">HOME</Link>
+        </li> */}
         <li className={styles.navLink}>
-          <Link to="/home">HOME</Link>
-        </li>
-        <li className={styles.navLink}>
-          <Link to="/canchas">CANCHAS</Link>
+          <Link to="/canchas">EQUIPOS</Link>
         </li>
         <li className={styles.navLink}>
           <Link to="/equipo">CREAR EQUIPO</Link>

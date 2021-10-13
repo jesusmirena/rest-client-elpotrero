@@ -8,14 +8,14 @@ export default function Failed() {
       <div>
         <h1>Tu pago fue rechazado</h1>
       </div>
-      <span>¿Qué pasó?</span>
-      <p>
+      <span className={styles.txt}>¿Qué pasó?</span>
+      <p className={styles.txt}>
         No pudimos avanzar con el pago, si quieres puedes intentar con otro
         medio de pago
       </p>
       <div>
-        <Link to="/home">
-          <button>Volver a Home</button>
+        <Link to="/">
+          <button className={styles.btn}>Volver a Home</button>
         </Link>
       </div>
     </div>

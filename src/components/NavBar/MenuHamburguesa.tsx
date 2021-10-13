@@ -9,6 +9,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import useUser from "../../hooks/useUser";
 import { resetUser } from "../../redux/actions";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router";
 
 type Anchor = "top" | "left" | "bottom" | "right";
 
@@ -21,10 +22,16 @@ export default function MenuHamburguesa() {
     right: false,
   });
   const dispatch = useDispatch();
+  const history = useHistory();
 
   function handleLogout() {
     logout();
     dispatch(resetUser());
+    history.push("/");
+  }
+
+  function handleViewProfile() {
+    history.push("/profile");
   }
 
   const toggleDrawer =
@@ -51,7 +58,8 @@ export default function MenuHamburguesa() {
     >
       <List>
         <ListItem button>
-          <ListItemText primary="Ver perfil" />
+          <ListItemText onClick={handleViewProfile} primary="Ver perfil" />
+          {/*   <Button onClick={handleViewProfile}>Ver Perfil</Button> */}
         </ListItem>
         <ListItem button>
           <ListItemText primary="Crear equipo" />

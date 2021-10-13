@@ -1,0 +1,26 @@
+.jordi {
+  display: flex;
+
+  flex-direction: column;
+}
+
+.hora {
+  color: white;
+  text-align: center;
+}
+.selectHora {
+  border-radius: 10px;
+  outline: none;
+  text-decoration: none;
+  border: 1px solid white;
+
+  background-color: #000000;
+  margin: 1rem;
+  color: white;
+}
+.select {
+  text-align: center;
+
+  color: white;
+  font-size: 1rem;
+}

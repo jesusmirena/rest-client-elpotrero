@@ -14,7 +14,7 @@ const Card = ({ data }: any) => {
     description,
     endTime,
     id,
-    adress,
+    address,
     timetable,
   } = data;
 
@@ -26,7 +26,9 @@ const Card = ({ data }: any) => {
       <div className={styles.info}>
         <h2>{name}</h2>
         <p>{description}</p>
-        <p>Precio: {cost}</p>
+        <p>Direccion: </p>
+        <p>{address}</p>
+        <p>Precio: $ {cost}</p>
         <p>Calificacion {qualification}</p>
       </div>
 
@@ -39,20 +41,6 @@ const Card = ({ data }: any) => {
           name={name}
           cost={cost}
         />
-      </div>
-      <div>
-        {/* <Reserva
-          id={id}
-          inicialTime={inicialTime}
-          endTime={endTime}
-          timetable={timetable}
-          name={name}
-          cost={cost}
-          image={image}
-          qualification={qualification}
-          description={description}
-          adress={adress}
-        /> */}
       </div>
     </div>
   );

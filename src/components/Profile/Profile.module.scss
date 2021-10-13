@@ -1,0 +1,23 @@
+.conteiner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5rem auto;
+  background-color: black;
+  color: white;
+  border-radius: 20px;
+  height: 100px;
+  width: 600px;
+  text-align: center;
+}
+
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem auto;
+  background-color: black;
+  height: 600px;
+  width: 600px;
+  border-radius: 20px;
+}
