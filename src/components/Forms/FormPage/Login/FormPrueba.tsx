@@ -14,9 +14,7 @@ export default function FormPrueba() {
   } = useForm();
 
   const onSubmit: SubmitHandler<any> = ({ mail, password }) => {
-      login({ mail, password }),
-      alert("Bienvenido"),
-      reset();
+    login({ mail, password }), alert("Bienvenido"), reset();
   };
 
   return (

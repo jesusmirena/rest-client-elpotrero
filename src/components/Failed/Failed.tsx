@@ -1,8 +1,23 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import styles from "./Failed.module.scss";
+import { deleteReserva } from "../../redux/actions";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function Failed() {
+  const dispatch = useDispatch();
+  const history = useHistory();
+  // const reservaData = useSelector((state: any) => state.reserva);
+
+  function handleSubmit(e: any) {
+    e.preventDefault();
+    const id = window.sessionStorage.getItem("idreserva");
+    dispatch(deleteReserva(id));
+    window.sessionStorage.removeItem("idreserva");
+
+    history.push("/");
+  }
+
   return (
     <div className={styles.container}>
       <div>
@@ -14,9 +29,9 @@ export default function Failed() {
         medio de pago
       </p>
       <div>
-        <Link to="/">
-          <button className={styles.btn}>Volver a Home</button>
-        </Link>
+        <button onClick={handleSubmit} className={styles.btn}>
+          Volver a Home
+        </button>
       </div>
     </div>
   );

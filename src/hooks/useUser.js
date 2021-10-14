@@ -12,16 +12,20 @@ export default function useUser() {
     async ({ mail, password }) => {
       setState({ loading: true, error: false });
       const usuarioGuardado = await postLogin({ mail, password });
-      dispatch(usuarioGuardado);
+      // dispatch(usuarioGuardado);
+      window.sessionStorage.setItem("id", usuarioGuardado.payload.id);
       window.sessionStorage.setItem("jwt", usuarioGuardado.payload.token);
       setState({ loading: false, error: false });
       setJWT(usuarioGuardado.payload.token);
     },
     [setJWT]
   );
-  
+
   const logout = useCallback(() => {
     window.sessionStorage.removeItem("jwt");
+    window.sessionStorage.removeItem("id");
+    window.sessionStorage.removeItem("idreserva");
+
     setJWT(null);
   }, [setJWT]);
 

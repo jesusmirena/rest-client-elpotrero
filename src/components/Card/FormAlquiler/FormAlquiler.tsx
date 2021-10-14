@@ -5,7 +5,7 @@ import { Link, useHistory } from "react-router-dom";
 import { postReserva } from "../../../redux/actions";
 import styles from "./FormAlquiler.module.scss";
 import useUser from "../../../hooks/useUser";
-import { Redirect } from "react-router";
+import { getReserva } from "../../../redux/actions";
 
 export default function FormAlquiler({
   id,
@@ -30,20 +30,23 @@ export default function FormAlquiler({
   let { startDate }: any = useParams();
   //<{ startDate : string }>
 
-  const userId = useSelector((state: any) => state.usuario.user.id);
+  const userId: any = window.sessionStorage.getItem("id");
 
   const [alquiler, setAlquiler] = useState({
     day: startDate,
     hour: "",
     duration: 1,
-    user: userId,
+    user: parseInt(userId),
     field: id,
   });
 
-  console.log("FORMULARIO", alquiler);
+  //console.log("FORMULARIO", alquiler);
   const p = timetable.map((a: any) => a.hour);
 
   hours = hours.filter((i) => !p.includes(i));
+
+  const reservaData = useSelector((state: any) => state.reserva);
+  console.log("formaalquiler", reservaData.reserva.id);
 
   function handleSubmit(e: any) {
     e.preventDefault();
@@ -51,14 +54,16 @@ export default function FormAlquiler({
       alert("Debe iniciar sesion!");
       history.push("/login");
     } else {
+      dispatch(getReserva(userId));
       dispatch(postReserva(alquiler));
+      window.sessionStorage.setItem("idreserva", reservaData.reserva.id);
 
       setAlquiler({
         ...alquiler,
         hour: "",
       });
       history.push("/reserva");
-      console.log("POST", alquiler);
+      //console.log("POST", alquiler);
     }
   }
 
