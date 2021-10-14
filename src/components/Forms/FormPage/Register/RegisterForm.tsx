@@ -29,6 +29,7 @@ export default function RegisterForm() {
       <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.formDiv}>
           <input
+            autoComplete="off"
             className={styles.formInput}
             placeholder="Escribe tu nombre"
             {...register("name", { required: true })}
@@ -38,6 +39,7 @@ export default function RegisterForm() {
         </div>
         <div className={styles.formDiv}>
           <input
+            autoComplete="off"
             className={styles.formInput}
             placeholder="Escribe tu nombre de usuario"
             {...register("userName", { required: true })}
@@ -90,7 +92,7 @@ export default function RegisterForm() {
         <div className={styles.formDiv}>
           <input
             className={styles.formInput}
-            type="text"
+            type="date"
             {...register("birthday", { required: true })}
           />
           <label className={styles.formLabel}>Fecha de nacimiento</label>

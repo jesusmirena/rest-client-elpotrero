@@ -39,11 +39,12 @@ background-attachment: fixed; */
   transition: 0.2s;
   font-size: 1rem;
   color: #e1e1e1;
+  margin-bottom: 2rem;
 }
 .formInput {
   border: 0;
   border-bottom: 2px solid #e1e1e1;
-  outline: 0;
+  outline: none;
   font-size: 1.3rem;
   color: #ffffff;
   padding: 7px 0;
@@ -53,13 +54,17 @@ background-attachment: fixed; */
   &::placeholder {
     color: transparent;
   }
-
+  &:focus {
+    outline: none;
+    background-color: transparent;
+  }
   &:placeholder-shown .formLabel {
     font-size: 1.3rem;
     cursor: text;
     top: 20px;
   }
 }
+
 .formInput:focus {
   ~ .formLabel {
     position: absolute;
@@ -67,7 +72,7 @@ background-attachment: fixed; */
     display: block;
     transition: 0.2s;
     font-size: 1rem;
-    color: #ffffff;
+    color: #ffffff78;
     font-weight: 700;
   }
   padding-bottom: 6px;

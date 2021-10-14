@@ -35,13 +35,13 @@ export default function Profile() {
         <div className={styles.card}>
           <img className={styles.img} src={user.image || img} />
           <h3>Usuario</h3>
-          <h4> {user.userName || "fede"}</h4>
+          <h4> {user.userName}</h4>
           <h3>Telefono </h3>
-          <h4>{user.cellphone || "1130102047"}</h4>
+          <h4>{user.cellphone}</h4>
           <h3>Dni</h3>
-          <h4>{user.dni || "38351158"}</h4>
+          <h4>{user.dni}</h4>
           <h3>Posicion</h3>
-          <h4>{user.player?.position || "MEDIOCAMPO"}</h4>
+          <h4>{user.player?.position}</h4>
         </div>
         <EditProfile />
       </div>

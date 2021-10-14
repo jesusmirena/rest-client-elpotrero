@@ -46,16 +46,26 @@ export default function FormAlquiler({
   hours = hours.filter((i) => !p.includes(i));
 
   const reservaData = useSelector((state: any) => state.reserva);
-  console.log("formaalquiler", reservaData.reserva.id);
+
+  function handleSelect(e: any) {
+    setAlquiler({
+      ...alquiler,
+      hour: e.target.value,
+    });
+  }
+  const { isLogged } = useUser();
 
   function handleSubmit(e: any) {
     e.preventDefault();
+    if (alquiler.hour === "") {
+      return alert("Debe seleccionar una hora");
+    }
     if (!userId) {
       alert("Debe iniciar sesion!");
       history.push("/login");
     } else {
-      dispatch(getReserva(userId));
       dispatch(postReserva(alquiler));
+      dispatch(getReserva(userId));
       window.sessionStorage.setItem("idreserva", reservaData.reserva.id);
 
       setAlquiler({
@@ -66,14 +76,6 @@ export default function FormAlquiler({
       //console.log("POST", alquiler);
     }
   }
-
-  function handleSelect(e: any) {
-    setAlquiler({
-      ...alquiler,
-      hour: e.target.value,
-    });
-  }
-  const { isLogged } = useUser();
 
   return (
     <div>

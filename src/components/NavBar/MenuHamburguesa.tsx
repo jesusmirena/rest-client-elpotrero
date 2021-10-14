@@ -68,7 +68,24 @@ export default function MenuHamburguesa() {
           <ListItemText primary="Reservar cancha" />
         </ListItem>
         <ListItem button>
-          <Button onClick={handleLogout} variant="contained">
+          <ListItemText primary="Invitar jugadores" />
+        </ListItem>
+        <ListItem button>
+          <ListItemText primary="Equipo completo" />
+        </ListItem>
+        <ListItem button>
+          <ListItemText primary="Eliminar equipo" />
+        </ListItem>
+        <ListItem button>
+          <Button
+            style={{
+              backgroundColor: "#b62121",
+
+              fontSize: "18px",
+            }}
+            onClick={handleLogout}
+            variant="contained"
+          >
             Cerrar sesion
           </Button>
         </ListItem>
