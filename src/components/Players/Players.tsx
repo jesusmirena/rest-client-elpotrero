@@ -1,7 +1,8 @@
-import axios from "../../lib/axiosConfig";
 import React, { useEffect, useState } from "react";
+import axios from "../../lib/axiosConfig";
 import { Link } from "react-router-dom";
 import styles from "./Players.module.scss";
+
 function Players() {
   const [jugadores, setJugadores]: any = useState([]);
 
@@ -30,14 +31,14 @@ function Players() {
         <tbody>
           {jugadores.map((p: any) => {
             return (
-              <tr>
+              <tr key={p.id}>
                 <td>
-                  <Link to="/jugador">
+                  <Link to={`/jugador/${p.id}`}>
                     <img className={styles.imagenTabla} src={p.image} alt="" />
                   </Link>
                 </td>
                 <td>
-                  <Link to="/jugador">{p.name}</Link>
+                  <Link to={`/jugador/${p.id}`}>{p.name}</Link>
                 </td>
                 <td>{p.gender}</td>
                 <td>{p.position}</td>

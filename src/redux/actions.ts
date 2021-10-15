@@ -4,8 +4,8 @@ import {
   GET_RESERVA,
   DELETE_RESERVA,
 } from "./actionsNames";
-// import axios from '../lib/axiosConfig'
-import axios from "axios";
+import axios from "../lib/axiosConfig";
+// import axios from "axios";
 
 export async function postUsername(payload: User) {
   const response = await axios.post("http://localhost:3001/user", payload);

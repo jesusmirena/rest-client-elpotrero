@@ -32,7 +32,7 @@ function App() {
             <Route path="/canchas" component={ReservarCancha} />
             <Route path="/equipo" component={CrearEquipo} />
             <Route path="/jugadores" component={Players} />
-            <Route path="/jugador" component={DetalleJugador} />
+            <Route path="/jugador/:id" component={DetalleJugador} />
             <Route path="/contacto" component={ContactForm} />
             <Route path="/login" component={FormPage} />
             <Route path="/register" component={RegisterForm} />
