@@ -1,12 +1,8 @@
 import * as React from "react";
 import styles from "./NavBarMUI.module.scss";
-
 import { Link } from "react-router-dom";
-import useUser from "../../hooks/useUser";
 
 export default function NavBarMui() {
-  const { isLogged } = useUser();
-
   return (
     <div className={styles.navBg}>
       <nav className={`${styles.navegacion} ${styles.contenedor}`}>

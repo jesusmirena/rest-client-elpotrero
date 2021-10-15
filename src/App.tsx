@@ -5,7 +5,6 @@ import CrearEquipo from "./components/Equipos/CrearEquipo";
 import ContactForm from "./components/Forms/ContactForm/ContactForm";
 import FormPage from "./components/Forms/FormPage/FormPage";
 import RegisterForm from "./components/Forms/FormPage/Register/RegisterForm";
-import Home from "./components/Home/Home";
 import NavBarMui from "./components/NavBar/NavBarMUI";
 import LandinPage from "./components/LandingPage/LandingPage";
 import Header from "./components/Header/Header";
@@ -40,8 +39,6 @@ function App() {
             <Route path="/success" component={Success} />
             <Route path="/reserva" component={Reserva} />
             <Route path="/profile" component={Profile} />
-            {/*           <Route path="/alquiler/:startDate" component={CardsGrid} />
-             */}{" "}
           </Switch>
         </div>
       </UserContextProvider>

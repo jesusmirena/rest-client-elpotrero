@@ -59,7 +59,6 @@ export default function MenuHamburguesa() {
       <List>
         <ListItem button>
           <ListItemText onClick={handleViewProfile} primary="Ver perfil" />
-          {/*   <Button onClick={handleViewProfile}>Ver Perfil</Button> */}
         </ListItem>
         <ListItem button>
           <ListItemText primary="Crear equipo" />
