@@ -17,6 +17,7 @@ import "./scss/App.scss";
 import { UserContextProvider } from "./context/userContext";
 import Profile from "./components/Profile/Profile";
 import Players from "./components/Players/Players";
+import DetalleJugador from "./components/DetalleJugador/DetalleJugador";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
             <Route path="/canchas" component={ReservarCancha} />
             <Route path="/equipo" component={CrearEquipo} />
             <Route path="/jugadores" component={Players} />
+            <Route path="/jugador" component={DetalleJugador} />
             <Route path="/contacto" component={ContactForm} />
             <Route path="/login" component={FormPage} />
             <Route path="/register" component={RegisterForm} />
