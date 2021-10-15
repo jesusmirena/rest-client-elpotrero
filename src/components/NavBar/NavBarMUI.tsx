@@ -10,9 +10,6 @@ export default function NavBarMui() {
   return (
     <div className={styles.navBg}>
       <nav className={`${styles.navegacion} ${styles.contenedor}`}>
-        {/*    <li className={styles.navLink}>
-          <Link to="/home/">HOME</Link>
-        </li> */}
         <li className={styles.navLink}>
           <Link to="/canchas">EQUIPOS</Link>
         </li>
@@ -20,10 +17,10 @@ export default function NavBarMui() {
           <Link to="/equipo">CREAR EQUIPO</Link>
         </li>
         <li className={styles.navLink}>
-          <Link to="/contacto">CONTACTO</Link>
+          <Link to="/jugadores">JUGADORES</Link>
         </li>
         <li className={styles.navLink}>
-          <Link to="/jugadores">JUGADORES</Link>
+          <Link to="/contacto">CONTACTO</Link>
         </li>
       </nav>
     </div>
