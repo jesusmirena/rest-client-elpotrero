@@ -51,4 +51,13 @@ interface Action {
   payload: User;
 }
 
+interface FormAlquiler {
+  id: Number;
+  endTime: any;
+  inicialTime: any;
+  timetable: any;
+  name: String;
+  cost: Number;
+}
+
 type DispatchType = (args: TodoAction) => TodoAction;

@@ -19,7 +19,7 @@ export default function FormPrueba() {
 
   return (
     <>
-      {isLoginLoading && <strong>El usuario no existe</strong>}
+      {isLoginLoading && <Redirect to="/register"/>}
       {!isLoginLoading && (
         <div className="container-global">
           <div className="container" id="container">
