@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "../../lib/axiosConfig";
+import axios from "axios";
 import styles from "./DetalleJugador.module.scss";
 
 function DetalleJugador(props: { match: { params: { id: any } } }) {
+  const token = window.sessionStorage.getItem("jwt") || "";
   const [jugador, setJugador]: any = useState([]);
   const { id } = props.match.params;
   const getJugador = async (id: string) => {
-    const data = await axios.get("http://localhost:3001/player/" + id);
+    const data = await axios.get("http://localhost:3001/player/byid/" + id, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     var res = await data.data;
     setJugador(res);
   };

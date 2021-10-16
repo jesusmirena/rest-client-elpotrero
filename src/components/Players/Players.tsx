@@ -1,19 +1,16 @@
-import React, { useEffect, useState } from "react";
-import axios from "../../lib/axiosConfig";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Players.module.scss";
-
+import { useDispatch, useSelector } from "react-redux";
+import { getPlayers } from "../../redux/actions";
 function Players() {
-  const [jugadores, setJugadores]: any = useState([]);
+  const jugadores = useSelector((state: any) => state.jugadores.jugadores);
+  const dispatch = useDispatch();
 
-  const players = async () => {
-    const data = await axios.get("http://localhost:3001/player");
-    var res = await data.data;
-    setJugadores(res);
-  };
   useEffect(() => {
-    players();
-  }, []);
+    dispatch(getPlayers());
+  }, [dispatch]);
+
   return (
     <div>
       <h1 className={styles.title}>Jugadores</h1>

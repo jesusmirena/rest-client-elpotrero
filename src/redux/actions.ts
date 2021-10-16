@@ -5,7 +5,9 @@ import {
   DELETE_RESERVA,
 } from "./actionsNames";
 import axios from "axios";
+
 const token = window.sessionStorage.getItem("jwt") || "";
+
 export async function postUsername(payload: User) {
   const response = await axios.post("http://localhost:3001/user", payload);
 }
