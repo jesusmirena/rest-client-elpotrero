@@ -41,25 +41,32 @@ export default function Reserva() {
             <div>
               <div>
                 <div>
-                  <h3>{reservaData.reserva.field?.name}</h3>
-                  <span>{reservaData.reserva?.day}</span>
+                  <h2>{reservaData.reserva.field?.name}</h2>
+                  <h3>{reservaData.reserva?.day}</h3>
                 </div>
-                <span>{reservaData.reserva?.hour}</span>
+                <h3>{reservaData.reserva?.hour}</h3>
                 <div>
                   <img
                     className={styles.img}
                     src={reservaData.reserva.field?.image || imagen}
                     alt="Cancha"
                   />
+<<<<<<< HEAD
                   <h4>Direccion</h4>
                   <p className={styles.direccion}>
                     {reservaData.reserva.field?.address}
                   </p>
+=======
+                  <h2>Direccion</h2>
+                  <h3 className={styles.direccion}>
+                    {reservaData.reserva.field?.address || "IRALA AL 1500"}
+                  </h3>
+>>>>>>> 45d9d0bb1da9acafe4f24e2719f92af7981afe70
 
-                  <h4>
+                  <h3>
                     Precio de la reserva (20%) : ${" "}
                     {reservaData.reserva.field?.cost * 0.2}
-                  </h4>
+                  </h3>
                   <div>
                     <form action="http://localhost:3001/checkout" method="POST">
                       <input

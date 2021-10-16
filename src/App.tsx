@@ -16,6 +16,7 @@ import Reserva from "./components/Reserva/Reserva";
 import "./scss/App.scss";
 import { UserContextProvider } from "./context/userContext";
 import Profile from "./components/Profile/Profile";
+import Teams from "./components/Teams/Teams";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
             <Route path="/reserva" component={Reserva} />
             <Route path="/profile" component={Profile} />
             <Route path="/crearequipo" component={CrearEquipo} />
+            <Route path="/teams" component={Teams} />
             {/*           <Route path="/alquiler/:startDate" component={CardsGrid} />
              */}{" "}
           </Switch>
