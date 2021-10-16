@@ -1,113 +1,94 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useHistory } from "react-router";
 import styles from "./LoginGoogleForm.module.scss";
 function LoginGoogleForm() {
   const history = useHistory();
-  const {
-    register,
-    formState: { errors },
-    handleSubmit,
-    reset,
-    watch,
-  } = useForm<User>();
+
   const password = useRef({});
-  password.current = watch("password", "");
-  const onSubmit: SubmitHandler<User> = (data) => {
-    alert("Usuario Creado"), reset(), history.push("/login");
-  };
+
   let cookie = decodeURIComponent(document.cookie);
   const cookieParseada = cookie.split("{");
   const cookieObject = "{" + cookieParseada[1];
   const cookieJson = JSON.parse(cookieObject);
   console.log("COOKIEEEE", cookieJson);
 
+  // const onSubmit: SubmitHandler<User> = (data) => {
+  //   alert("Usuario Creado"),
+  //     reset(),
+  //     console.log("logingoogle", data),
+  //     history.push("/login");
+  // };
+
+  const [UsuarioGoogle, setUsuarioGoogle] = useState({
+    name: cookieJson.name,
+    mail: "",
+    image: "",
+    birthday: "",
+    userName: "",
+    gender: "",
+    cellphone: "",
+    dni: "",
+    player: {
+      position: "",
+    },
+  });
+  console.log("USUARIOOOO", UsuarioGoogle);
+
+  function handleChange(e: any) {
+    setUsuarioGoogle({
+      ...UsuarioGoogle,
+      [e.target.name]: e.target.value,
+    });
+  }
+  function handleLoginGoogle() {}
+
   return (
     <div className={styles.formBgImg}>
       <h2>Ingresa los datos restantes</h2>
-      <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+      <form className={styles.form} onSubmit={handleLoginGoogle}>
         <div className={styles.formDiv}>
           <input
-            disabled
-            value={cookieJson.name}
+            onChange={handleChange}
             autoComplete="off"
             className={styles.formInput}
             placeholder="Escribe tu nombre"
-            {...register("name", { required: true })}
           />
           <label className={styles.formLabel}>Nombre</label>
-          {errors.name?.type === "required" && "name is required"}
         </div>
         <div className={styles.formDiv}>
           <input
             autoComplete="off"
             className={styles.formInput}
             placeholder="Escribe tu nombre de usuario"
-            {...register("userName", { required: true })}
           />
           <label className={styles.formLabel}>Nombre de usuario</label>
-          {errors.userName?.type === "required" && "userName is required"}
         </div>
         <div className={styles.formDiv}>
-          <input
-            className={styles.formInput}
-            placeholder="Ingresa tu correo electronico"
-            type="email"
-            {...register("mail", {
-              required: true,
-              pattern:
-                /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
-            })}
-          />
-          <label className={styles.formLabel}>Contraseña</label>
-          {errors.password && errors.password.message}
-        </div>
-        <div className={styles.formDiv}>
-          <input
-            className={styles.formInput}
-            type="password"
-            {...register("password_repeat", {
-              validate: (value: {}) =>
-                value === password.current || "The passwords do not match",
-            })}
-          />
-          <label className={styles.formLabel}>Confirmar contraseña</label>
-          {errors.password_repeat && errors.password_repeat.message}
-        </div>
-        <div className={styles.formDiv}>
-          <input
-            className={styles.formInput}
-            type="date"
-            {...register("birthday", { required: true })}
-          />
+          <input className={styles.formInput} type="date" />
           <label className={styles.formLabel}>Fecha de nacimiento</label>
-          {errors.birthday?.type === "required" && "Birthday is required"}
         </div>
         <div className={styles.formDiv}>
           <input
             className={styles.formInput}
             type="number"
             placeholder="Ingresa tu documento de identificacion"
-            {...register("dni", { valueAsNumber: true, required: true })}
           />
           <label className={styles.formLabel}>
             Documento de identificacion
           </label>
-          {errors.dni?.type === "required" && "dni is required"}
         </div>
         <div className={styles.formDiv}>
           <input
             className={styles.formInput}
             placeholder="Ingresa tu numero telefonico"
             type="tel"
-            {...register("cellphone", { required: true, valueAsNumber: true })}
           />
           <label className={styles.formLabel}>Numero de telefono</label>
-          {errors.cellphone?.type === "required" && "Cellphone is required"}
         </div>
         <div className={styles.formDiv}>
           <label className={styles.formLabel}>Posicion</label>
-          <select className="selectForm" {...register("player.position")}>
+          <select className="selectForm">
             <option selected={true} disabled value="Default">
               Escoge una posicion
             </option>
@@ -119,7 +100,7 @@ function LoginGoogleForm() {
         </div>
         <div className={styles.formDiv}>
           <label className={styles.formLabel}>Genero</label>
-          <select className="selectForm" {...register("gender")}>
+          <select className="selectForm">
             <option selected={true} disabled value="Default">
               Escoge un genero
             </option>

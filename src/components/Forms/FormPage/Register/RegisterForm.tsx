@@ -19,8 +19,8 @@ export default function RegisterForm() {
   const onSubmit: SubmitHandler<User> = (data) => {
     postUsername(data),
       alert("Usuario Creado"),
-      reset(),
-      history.push("/login");
+      console.log("usuario creado", data);
+    reset(), history.push("/login");
   };
 
   return (
