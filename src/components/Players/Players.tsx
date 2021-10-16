@@ -9,18 +9,13 @@ import {
   getPlayers,
   getPlayersDisponibles,
   orderByName,
-  searchByName,
 } from "../../redux/actions";
+import SearchBar from "./SearchBar";
 
 function Players() {
   const jugadores = useSelector((state: any) => state.jugadores.jugadores);
   const dispatch = useDispatch();
-  const [name, setName] = useState("");
 
-  function handleChange(e: any) {
-    e.preventDefault();
-    setName(e.target.value);
-  }
   useEffect(() => {
     dispatch(getPlayers());
   }, [dispatch]);
@@ -40,27 +35,11 @@ function Players() {
   function handleOrderByPosition(orden: any) {
     dispatch(getOrderPosition(orden));
   }
-  function handleSubmit(e: any) {
-    e.preventDefault();
-    dispatch(searchByName(name));
-    setName("");
-  }
+
   return (
     <div>
       <h1 className={styles.title}>Jugadores</h1>
-      <div>
-        <form onSubmit={(e) => handleSubmit(e)}>
-          <div>
-            <input
-              type="text"
-              value={name}
-              onChange={(e) => handleChange(e)}
-              placeholder="Search..."
-            />
-            <button type="submit">buscar</button>
-          </div>
-        </form>
-      </div>
+      <SearchBar />
       <table className={styles.jugadores}>
         <thead>
           <tr>

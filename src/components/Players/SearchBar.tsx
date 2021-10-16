@@ -27,7 +27,7 @@ export default function SearchBar() {
             onChange={(e) => handleChange(e)}
             placeholder="Search..."
           />
-          <button type="submit">buscar</button>
+          <input value="buscar" type="submit" />
         </div>
       </form>
     </div>
