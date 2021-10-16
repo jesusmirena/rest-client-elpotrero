@@ -53,7 +53,7 @@ export default function Reserva() {
                   />
                   <h4>Direccion</h4>
                   <p className={styles.direccion}>
-                    {reservaData.reserva.field?.address || "IRALA AL 1500"}
+                    {reservaData.reserva.field?.address}
                   </p>
 
                   <h4>

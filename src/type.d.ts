@@ -24,7 +24,6 @@ interface Userstate {
 }
 
 interface Canchastate {
-
   canchas: Cancha[];
 }
 
@@ -50,5 +49,18 @@ interface Action {
   type: string;
   payload: User;
 }
+
+type User = {
+  name: string;
+  userName: string;
+  gender: any;
+  dni: number;
+  birthday: string | null;
+  cellphone: number;
+  mail: string;
+  image: string | null;
+  password: string;
+  playerId: number;
+};
 
 type DispatchType = (args: TodoAction) => TodoAction;

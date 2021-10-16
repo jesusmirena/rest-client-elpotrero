@@ -4,7 +4,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import "./FormPrueba.css";
 import useUser from "../../../../hooks/useUser";
 
-export default function FormPrueba() {
+export default function FormPrueba({ notify }: any) {
   const { isLoginLoading, hasLoginError, login, isLogged } = useUser();
   const {
     register,
@@ -14,7 +14,7 @@ export default function FormPrueba() {
   } = useForm();
 
   const onSubmit: SubmitHandler<any> = ({ mail, password }) => {
-    login({ mail, password }), alert("Bienvenido"), reset();
+    login({ mail, password }), reset();
   };
 
   return (
@@ -44,7 +44,7 @@ export default function FormPrueba() {
                 />
                 <Link to="#">¿Olvidaste tu contraseña?</Link>
 
-                <button type="submit">
+                <button className="btn" type="submit">
                   {isLogged && <Redirect to="/" />}
                   Ingresa
                 </button>

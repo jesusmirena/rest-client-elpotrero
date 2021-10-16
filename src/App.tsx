@@ -36,6 +36,7 @@ function App() {
             <Route path="/success" component={Success} />
             <Route path="/reserva" component={Reserva} />
             <Route path="/profile" component={Profile} />
+            <Route path="/crearequipo" component={CrearEquipo} />
             {/*           <Route path="/alquiler/:startDate" component={CardsGrid} />
              */}{" "}
           </Switch>
