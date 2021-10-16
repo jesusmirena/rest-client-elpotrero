@@ -17,6 +17,7 @@ import { UserContextProvider } from "./context/userContext";
 import Profile from "./components/Profile/Profile";
 import Players from "./components/Players/Players";
 import DetalleJugador from "./components/DetalleJugador/DetalleJugador";
+import LoginGoogleForm from "./components/Forms/FormPage/LoginGoogle/LoginGoogleForm";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
             <Route path="/jugador/:id" component={DetalleJugador} />
             <Route path="/contacto" component={ContactForm} />
             <Route path="/login" component={FormPage} />
+            <Route path="/googleForm" component={LoginGoogleForm} />
             <Route path="/register" component={RegisterForm} />
             <Route path="/failed" component={Failed} />
             <Route path="/success" component={Success} />
