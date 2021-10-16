@@ -15,10 +15,24 @@ export default function CardsGrid(props: any) {
   }
 
   const canchas = useSelector((state: RootState) => state.canchas.canchas);
+  function dateChange(prop: any) {
+    let preday = prop.slice(0, 15).split(" ");
+    let day = preday[2];
+    let year = preday[3];
+    let monthName = preday[1];
+    let monthNumber = (new Date(monthName + "1").getMonth() + 1).toString();
+    let dayMonthYear = day + "/" + monthNumber + "/" + year;
+
+    return dayMonthYear;
+  }
+
+  const fecha = dateChange(data);
 
   return (
     <div className={styles.containerGrid}>
-      <h3 className={styles.titulo}>Canchas disponibles en la fecha :{data}</h3>
+      <h3 className={styles.titulo}>
+        Canchas disponibles en la fecha :{fecha}
+      </h3>
       {
         <div className={styles.grid}>
           {canchas.map((c: Cancha, i) => {

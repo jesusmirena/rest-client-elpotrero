@@ -1,4 +1,4 @@
-import {GET_RESERVA} from "../actionsNames";
+import { GET_RESERVA } from "../actionsNames";
 
 const initialState: any = {
   reserva: [],
@@ -11,11 +11,14 @@ const reducer = (state = initialState, action: any): any => {
         ...state,
         reserva: action.payload,
       };
-      
+    case "RESET_RESERVA":
+      return {
+        reserva: [],
+      };
+
     default:
       return state;
   }
-  
 };
 
 export default reducer;

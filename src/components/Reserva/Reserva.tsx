@@ -7,25 +7,30 @@ import useUser from "../../hooks/useUser";
 import { Redirect } from "react-router";
 import styles from "./Reserva.module.scss";
 import imagen from "../../visuales/canchitaCard.png";
+import { resetReserva } from "../../redux/actions";
 
 export default function Reserva() {
   const dispatch = useDispatch();
   const history = useHistory();
   const reservaData = useSelector((state: any) => state.reserva);
-  const userId = useSelector((state: any) => state.usuario.user.id);
+  let userId: any = window.sessionStorage.getItem("id");
   const { isLogged } = useUser();
 
-  console.log("IDDDD", userId);
-  useEffect(() => {
-    dispatch(getReserva(userId));
-  }, [dispatch]);
+  //console.log("IDDDD", userId);
 
   function handleSubmit(e: any) {
     e.preventDefault();
     dispatch(deleteReserva(reservaData.reserva.id));
     history.push("/");
+    dispatch(resetReserva());
+    window.sessionStorage.removeItem("idreserva");
   }
+  window.sessionStorage.setItem("idreserva", reservaData.reserva.id);
 
+  const numberid = parseInt(userId);
+  useEffect(() => {
+    dispatch(getReserva(numberid));
+  }, []);
   return (
     <>
       {!isLogged && <Redirect to="/login" />}
@@ -69,7 +74,7 @@ export default function Reserva() {
                         id="price"
                         value={reservaData.reserva.field?.cost * 0.2}
                       />
-                      
+
                       <input
                         type="hidden"
                         name="quantity"
