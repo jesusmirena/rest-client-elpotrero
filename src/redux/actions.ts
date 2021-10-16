@@ -112,3 +112,72 @@ export function getPlayers() {
 //     return res;
 //   };
 // }
+export function orderByName(orden: any) {
+  return async function (dispatch: any) {
+    let res = await axios.get(`http://localhost:3001/player?order=${orden}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return dispatch({ type: "GET_ORDER_BY_NAME", payload: res.data });
+  };
+}
+export function getPlayersDisponibles(orden: any) {
+  return async function (dispatch: any) {
+    let res = await axios.get(
+      `http://localhost:3001/player/available?order=${orden}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return dispatch({ type: "GET_PLAYERS_DISPONIBLES", payload: res.data });
+  };
+}
+export function getOrderGender(orden: any) {
+  return async function (dispatch: any) {
+    let res = await axios.get(`http://localhost:3001/player/${orden}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return dispatch({ type: "GET_PLAYERS_GENDER", payload: res.data });
+  };
+}
+export function getOrderPunctuation(orden: any) {
+  return async function (dispatch: any) {
+    let res = await axios.get(
+      `http://localhost:3001/player/punctuation/${orden}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return dispatch({ type: "GET_PLAYERS_PUNCTUATION", payload: res.data });
+  };
+}
+export function getOrderPosition(orden: any) {
+  return async function (dispatch: any) {
+    let res = await axios.get(
+      `http://localhost:3001/player/position/${orden}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return dispatch({ type: "GET_PLAYERS_POSITION", payload: res.data });
+  };
+}
+export function searchByName(orden: any) {
+  return async function (dispatch: any) {
+    let res = await axios.get(`http://localhost:3001/player/byname/${orden}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return dispatch({ type: "SEARCH_PLAYER", payload: res.data });
+  };
+}

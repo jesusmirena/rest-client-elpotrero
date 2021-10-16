@@ -1,32 +1,131 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Players.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { getPlayers } from "../../redux/actions";
+import {
+  getOrderGender,
+  getOrderPosition,
+  getOrderPunctuation,
+  getPlayers,
+  getPlayersDisponibles,
+  orderByName,
+  searchByName,
+} from "../../redux/actions";
+
 function Players() {
   const jugadores = useSelector((state: any) => state.jugadores.jugadores);
   const dispatch = useDispatch();
+  const [name, setName] = useState("");
 
+  function handleChange(e: any) {
+    e.preventDefault();
+    setName(e.target.value);
+  }
   useEffect(() => {
     dispatch(getPlayers());
   }, [dispatch]);
 
+  function handleOrderByName(orden: any) {
+    dispatch(orderByName(orden));
+  }
+  function handleOrderByAvailability(orden: any) {
+    dispatch(getPlayersDisponibles(orden));
+  }
+  function handleOrderByGender(orden: any) {
+    dispatch(getOrderGender(orden));
+  }
+  function handleOrderByPunctuation(orden: any) {
+    dispatch(getOrderPunctuation(orden));
+  }
+  function handleOrderByPosition(orden: any) {
+    dispatch(getOrderPosition(orden));
+  }
+  function handleSubmit(e: any) {
+    e.preventDefault();
+    dispatch(searchByName(name));
+    setName("");
+  }
   return (
     <div>
       <h1 className={styles.title}>Jugadores</h1>
+      <div>
+        <form onSubmit={(e) => handleSubmit(e)}>
+          <div>
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => handleChange(e)}
+              placeholder="Search..."
+            />
+            <button type="submit">buscar</button>
+          </div>
+        </form>
+      </div>
       <table className={styles.jugadores}>
         <thead>
           <tr>
             <th>Imagen</th>
-            <th>Nombre</th>
-            <th>Sexo</th>
-            <th>Posicion</th>
-            <th>Calificacion</th>
+            <th>
+              Nombre
+              <select onChange={(e) => handleOrderByName(e.target.value)}>
+                <option defaultValue="---Seleccionar---">
+                  ---Seleccionar---
+                </option>
+                <option value="ascendent">ascendente</option>
+                <option value="descendent">descendente</option>
+              </select>
+            </th>
+            <th>
+              Disponibilidad
+              <select
+                onChange={(e) => handleOrderByAvailability(e.target.value)}
+              >
+                <option>---Seleccionar---</option>
+                <option value="">Solo Disponibles</option>
+                <option value="ascendent">ascendente</option>
+                <option value="descendent">descendente</option>
+              </select>
+            </th>
+            <th>
+              Sexo
+              <select onChange={(e) => handleOrderByGender(e.target.value)}>
+                <option value="">---Seleccionar---</option>
+                <option value="male">Masculino</option>
+                <option value="female">Femenino</option>
+                <option value="undefined">otro</option>
+              </select>
+            </th>
+            <th>
+              Posicion
+              <select onChange={(e) => handleOrderByPosition(e.target.value)}>
+                <option value="">---Seleccionar---</option>
+                <option value="goalkeeper">Portero</option>
+                <option value="defender">Defensa</option>
+                <option value="midfielder">Centrocampista</option>
+                <option value="attacker">Delantero</option>
+              </select>
+            </th>
+            <th>
+              Calificacion
+              <select
+                onChange={(e) => handleOrderByPunctuation(e.target.value)}
+              >
+                <option value="">---Seleccionar---</option>
+                <option value="ascendent">Ascendente</option>
+                <option value="descendent">Descendente</option>
+                <option value="5">5</option>
+                <option value="4">4</option>
+                <option value="3">3</option>
+                <option value="2">2</option>
+                <option value="1">1</option>
+              </select>
+            </th>
             <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
           {jugadores.map((p: any) => {
+            console.log(p);
             return (
               <tr key={p.id}>
                 <td>
@@ -37,17 +136,23 @@ function Players() {
                 <td>
                   <Link to={`/jugador/${p.id}`}>{p.name}</Link>
                 </td>
+                <td>{p.available ? "Disponible" : "No Disponible"}</td>
                 <td>{p.gender}</td>
                 <td>{p.position}</td>
-                <td>{p.qualification} / 5</td>
+                <td>{p.punctuation} / 5</td>
                 <td>
                   <form>
-                    <input
-                      className={`${styles.boton} ${styles.botonInvitar}`}
-                      type="submit"
-                      name=""
-                      value="Invitar"
-                    />
+                    {p.available ? (
+                      <input
+                        className={`${styles.boton} ${styles.botonInvitar}`}
+                        type="submit"
+                        name=""
+                        value="Invitar"
+                      />
+                    ) : (
+                      <></>
+                    )}
+
                     <input
                       className={`${styles.boton} ${styles.botonCalificar}`}
                       type="submit"
