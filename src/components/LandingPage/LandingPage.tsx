@@ -3,6 +3,7 @@ import styles from "./LandingPage.module.scss";
 import { Link } from "react-router-dom";
 import Datepicker from "../Card/Datepicker/Datepicker";
 import useUser from "../../hooks/useUser";
+import FormPrueba from "../Forms/FormPage/Login/FormPrueba";
 
 export default function LandinPage() {
   const { isLogged } = useUser();
@@ -12,7 +13,7 @@ export default function LandinPage() {
       <div className={styles.datepicker}>
         <Datepicker />
       </div>
-      <div className={styles.btngrid}>
+      {/* <div className={styles.btngrid}>
         {!isLogged && (
           <div className={styles.btnc}>
             <Link to="/register">
@@ -20,6 +21,9 @@ export default function LandinPage() {
             </Link>
           </div>
         )}
+      </div> */}
+      <div className={styles.btngrid}>
+        <FormPrueba/>
       </div>
       <div className={styles.containerTitle}>
         <p className={styles.title}>EL POTRERO</p>
