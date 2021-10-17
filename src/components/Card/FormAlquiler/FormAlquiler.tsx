@@ -40,7 +40,6 @@ export default function FormAlquiler({
     field: id,
   });
 
-  //console.log("FORMULARIO", alquiler);
   const p = timetable.map((a: any) => a.hour);
 
   hours = hours.filter((i) => !p.includes(i));

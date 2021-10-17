@@ -56,16 +56,28 @@ export default function Profile() {
     player();
   }, [btn]);
   return (
-    <div>
-      <button className={styles.btn} onClick={handleBtn}>
+    <div className={styles.background}>
+      <button
+        style={{ background: "white" }}
+        className={styles.btn}
+        onClick={handleBtn}
+      >
         {btn ? "EDITAR PERFIL" : "VOLVER"}
       </button>
 
-      <button className={styles.btn} onClick={handleDelete}>
+      <button
+        style={{ background: "white" }}
+        className={styles.btn}
+        onClick={handleDelete}
+      >
         {btndelete ? "CANCELAR" : "ELIMINAR PERFIL"}
       </button>
       {btndelete && (
-        <button className={styles.btn} onClick={handleConfirmar}>
+        <button
+          style={{ background: "red" }}
+          className={styles.btn}
+          onClick={handleConfirmar}
+        >
           CONFIRMAR
         </button>
       )}
@@ -78,14 +90,15 @@ export default function Profile() {
           <div>
             <div className={styles.card}>
               <img className={styles.img} src={user.image || img} />
-              <h3>Usuario</h3>
-              <h4> {user.userName}</h4>
-              <h3>Telefono </h3>
-              <h4>{user.cellphone}</h4>
-              <h3>Dni</h3>
-              <h4>{user.dni}</h4>
-              <h3>Posicion</h3>
-              <h4>{user.player?.position}</h4>
+              <div></div>
+              <label className={styles.label}>Usuario</label>
+              <p className={styles.txt}> {user.userName}</p>
+              <label className={styles.label}>Telefono </label>
+              <p className={styles.txt}>{user.cellphone}</p>
+              <label className={styles.label}>Dni</label>
+              <p className={styles.txt}>{user.dni}</p>
+              <label className={styles.label}>Posicion</label>
+              <p className={styles.txt}>{user.player?.position}</p>
             </div>
           </div>
         </div>

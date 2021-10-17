@@ -85,64 +85,80 @@ export default function EditProfile({
 
   return (
     <div>
-      <div>
-        <form>
-          <div className={styles.conteiner}>
-            <h1>Editar Perfil</h1>
-          </div>
-          <div>
-            <div className={styles.card}>
-              <img className={styles.img} src={user.image || img} />
-              <label>URL imagen</label>
-              <input type="text" name="image" onChange={handleChange} />
-              <h3>Nombre</h3>
-              <input
-                className={styles.formInput}
-                name="name"
-                onChange={handleChange}
-                defaultValue={name}
-              />
-              <h3>Usuario</h3>
-              <input
-                className={styles.formInput}
-                name="userName"
-                onChange={handleChange}
-                defaultValue={userName}
-              />
-              <h3>Telefono </h3>
-              <input
-                className={styles.formInput}
-                type="number"
-                name="cellphone"
-                onChange={handleChange}
-                defaultValue={cellphone}
-              />
+      {/* <div className={styles.conteiner}>
+        <h1>Editar Perfil</h1>
+      </div> */}
+      <div className={styles.container}>
+        <form className={styles.formContainer}>
+          <label className={styles.label}>URL imagen</label>
+          <input
+            className={styles.formInput}
+            type="text"
+            name="image"
+            onChange={handleChange}
+          />
+          <label className={styles.label}>Nombre</label>
+          <input
+            className={styles.formInput}
+            name="name"
+            onChange={handleChange}
+            defaultValue={name}
+          />
+          <label className={styles.label}>Usuario</label>
+          <input
+            className={styles.formInput}
+            name="userName"
+            onChange={handleChange}
+            defaultValue={userName}
+          />
+          <label className={styles.label}>Telefono </label>
+          <input
+            className={styles.formInput}
+            type="number"
+            name="cellphone"
+            onChange={handleChange}
+            defaultValue={cellphone}
+          />
 
-              <h3>Posicion</h3>
-              <select onChange={handlePos}>
-                <option selected={true} disabled value="Default">
-                  Escoge una posicion
-                </option>
-                <option value="GOALKEEPER">Portero</option>
-                <option value="DEFENDER">Defensa</option>
-                <option value="MIDFIELDER">Centrocampista</option>
-                <option value="ATTACKER">Delantero</option>
-              </select>
-              <h3>Genero</h3>
-              <select onChange={handleGen}>
-                <option selected={true} disabled value="Default">
-                  Escoge un genero
-                </option>
-                <option value="FEMALE">femenino</option>
-                <option value="MALE">masculino</option>
-                <option value="UNDEFINED">otro</option>
-              </select>
-            </div>
-            <button onClick={handleSubmit} className={styles.btn}>
-              Enviar
-            </button>
-          </div>
+          <label className={styles.label}>Posicion</label>
+          <select onChange={handlePos}>
+            <option selected={true} disabled value="Default">
+              Escoge una posicion
+            </option>
+            <option value="GOALKEEPER">Portero</option>
+            <option value="DEFENDER">Defensa</option>
+            <option value="MIDFIELDER">Centrocampista</option>
+            <option value="ATTACKER">Delantero</option>
+          </select>
+          <label className={styles.label}>Genero</label>
+          <select onChange={handleGen}>
+            <option selected={true} disabled value="Default">
+              Escoge un genero
+            </option>
+            <option value="FEMALE">Femenino</option>
+            <option value="MALE">Masculino</option>
+            <option value="UNDEFINED">Otro</option>
+          </select>
+
+          <button onClick={handleSubmit} className={styles.btn}>
+            Enviar
+          </button>
         </form>
+        <div className={styles.imageContainer}>
+          <div className={styles.c}>
+            <img src={user.image} className={styles.img} />
+            <label className={styles.label}>Nombre</label>
+            <p className={styles.txt}>{user.name}</p>
+            <label className={styles.label}>Usuario</label>
+            <p className={styles.txt}>{user.userName}</p>
+            <label className={styles.label}>Telefono</label>
+            <p className={styles.txt}>{user.cellphone}</p>
+            <label className={styles.label}>Posicion</label>
+            <p className={styles.txt}>{user.player.position}</p>
+            <label className={styles.label}>Genero</label>
+            <p className={styles.txt}>{user.gender}</p>
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -29,9 +29,11 @@ export default function Failed() {
         medio de pago
       </p>
       <div>
+
         <button onClick={handleSubmit} className={styles.btn}>
           Volver a Home
         </button>
+
       </div>
     </div>
   );

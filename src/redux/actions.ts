@@ -3,7 +3,9 @@ import {
   GET_CANCHAS,
   GET_RESERVA,
   DELETE_RESERVA,
+  GET_TEAMS,
 } from "./actionsNames";
+
 // import axios from '../lib/axiosConfig'
 import axios from "axios";
 
@@ -13,7 +15,7 @@ export async function postUsername(payload: User) {
 }
 
 export async function postLogin({ mail, password }: any) {
-  //console.log("ANTEESSSS ESTAMOS EN EL POST LOGIN")
+  console.log("ANTEESSSS ESTAMOS EN EL POST LOGIN");
   try {
     const response = await axios.post("http://localhost:3001/auth/local", {
       mail,
@@ -107,10 +109,11 @@ export function deleteReserva(id: any) {
   };
 }
 
-// export function postMercadoPago(payload: any) {
-//   return async function () {
-//     const res = await axios.post("http://localhost:3001/checkout", payload);
-//     console.log("MERCADO",res);
-//     return res;
-//   };
-// }
+export function getTeams(id: any) {
+  return async function (dispatch: any) {
+    let res = await axios.get("http://localhost:3001/team?id=" + id);
+    console.log("pepe", res);
+
+    return dispatch({ type: GET_TEAMS, payload: res.data });
+  };
+}
