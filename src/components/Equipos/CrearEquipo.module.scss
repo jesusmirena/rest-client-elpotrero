@@ -1,0 +1,95 @@
+.btncontainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+.formContainer {
+  background-color: #0000007c;
+  border-radius: 1rem;
+
+  margin: 2rem;
+  width: 20%;
+  height: 10rem;
+  padding: 5rem;
+}
+
+.formInput {
+  border: 0;
+  border-bottom: 2px solid #e1e1e1;
+  outline: none;
+  font-size: 1.3rem;
+  color: #ffffff;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+
+  &::placeholder {
+    color: white;
+  }
+  &:focus {
+    outline: none;
+    background-color: transparent;
+  }
+}
+.formDiv {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  padding: 15px 0 0;
+  margin-top: 10px;
+}
+.btn {
+  margin: 1rem;
+  color: white;
+  background-color: black;
+}
+.background {
+  background: url("../../visuales/crearequipo.jpg");
+  color: white;
+  height: 100vh;
+  max-width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.container {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  margin: 3rem auto;
+}
+.imageContainer {
+  background-color: black;
+  height: 500px;
+
+  border-radius: 20px;
+}
+
+.img {
+  margin: 20px;
+  border-radius: 15px;
+  height: 300px;
+  width: 400px;
+}
+
+.title {
+  color: rgb(0, 0, 0);
+}
+
+.formLabel {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: #e1e1e1;
+  margin: 2rem;
+}
+
+.title {
+  color: white;
+  text-align: center;
+}

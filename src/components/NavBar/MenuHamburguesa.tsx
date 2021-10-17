@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import Button from "@mui/material/Button";
@@ -7,15 +7,17 @@ import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import useUser from "../../hooks/useUser";
-import { resetUser } from "../../redux/actions";
+import { putUser, resetUser } from "../../redux/actions";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
+import axios from "axios";
 
 type Anchor = "top" | "left" | "bottom" | "right";
 
 export default function MenuHamburguesa() {
   const { logout, isLogged } = useUser();
-  const [state, setState] = React.useState({
+
+  const [state, setState] = useState({
     top: false,
     left: false,
     bottom: false,
@@ -23,15 +25,47 @@ export default function MenuHamburguesa() {
   });
   const dispatch = useDispatch();
   const history = useHistory();
+  const [user, setUser]: any = useState([]);
+  const [flag, setFlag] = useState(true);
+  const id = window.sessionStorage.getItem("id");
+
+  const player = async () => {
+    const data = await axios.get("http://localhost:3001/user?id=" + id);
+    var res = await data.data;
+    setUser(res);
+    // console.log("axios profile", res);
+  };
 
   function handleLogout() {
     logout();
     dispatch(resetUser());
+
     history.push("/");
   }
 
   function handleViewProfile() {
     history.push("/profile");
+  }
+  function handleViewTeam() {
+    history.push("/profile");
+  }
+
+  function handleCrearEquipo() {
+    history.push("/crearequipo");
+  }
+
+  function handlePlaying(e: any) {
+    e.preventDefault();
+    dispatch(putUser(id, { player: { available: true } }));
+    setFlag(!flag);
+    alert("Vas a jugar!");
+  }
+
+  function handleNoPlaying(e: any) {
+    e.preventDefault();
+    dispatch(putUser(id, { player: { available: false } }));
+    setFlag(!flag);
+    alert("Juega pronto!");
   }
 
   const toggleDrawer =
@@ -49,6 +83,10 @@ export default function MenuHamburguesa() {
       setState({ ...state, [anchor]: open });
     };
 
+  useEffect(() => {
+    player();
+  }, [flag]);
+
   const list = (anchor: Anchor) => (
     <Box
       sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 250 }}
@@ -59,10 +97,9 @@ export default function MenuHamburguesa() {
       <List>
         <ListItem button>
           <ListItemText onClick={handleViewProfile} primary="Ver perfil" />
-          {/*   <Button onClick={handleViewProfile}>Ver Perfil</Button> */}
         </ListItem>
         <ListItem button>
-          <ListItemText primary="Crear equipo" />
+          <ListItemText onClick={handleCrearEquipo} primary="Crear equipo" />
         </ListItem>
         <ListItem button>
           <ListItemText primary="Reservar cancha" />
@@ -71,8 +108,37 @@ export default function MenuHamburguesa() {
           <ListItemText primary="Invitar jugadores" />
         </ListItem>
         <ListItem button>
-          <ListItemText primary="Equipo completo" />
+          <ListItemText primary="Mis equipos" />
         </ListItem>
+        {user.player?.available ? (
+          <ListItem button>
+            <Button
+              style={{
+                backgroundColor: "#b62121",
+                fontSize: "12px",
+              }}
+              onClick={handleNoPlaying}
+              variant="contained"
+            >
+              NO QUIERO JUGAR
+            </Button>
+          </ListItem>
+        ) : (
+          <ListItem button>
+            {/* <ListItemText onClick={handlePlaying} primary="Quiero jugar!" /> */}
+            <Button
+              style={{
+                backgroundColor: "#21b649",
+                fontSize: "12px",
+              }}
+              onClick={handlePlaying}
+              variant="contained"
+            >
+              QUERIO JUGAR
+            </Button>
+          </ListItem>
+        )}
+
         <ListItem button>
           <ListItemText primary="Eliminar equipo" />
         </ListItem>

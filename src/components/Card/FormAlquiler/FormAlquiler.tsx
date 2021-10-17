@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { postReserva } from "../../../redux/actions";
 import styles from "./FormAlquiler.module.scss";
-import useUser from "../../../hooks/useUser";
 import { getReserva } from "../../../redux/actions";
 
 export default function FormAlquiler({
@@ -27,8 +26,7 @@ export default function FormAlquiler({
   }
   const dispatch = useDispatch();
 
-  let { startDate }: any= useParams();
-  //<{ startDate : string }>
+  let { startDate }: any = useParams();
 
   const userId: any = window.sessionStorage.getItem("id");
 
@@ -39,7 +37,6 @@ export default function FormAlquiler({
     user: parseInt(userId),
     field: id,
   });
-
 
   const p = timetable.map((a: any) => a.hour);
 
@@ -53,15 +50,14 @@ export default function FormAlquiler({
       hour: e.target.value,
     });
   }
-  const { isLogged } = useUser();
 
   function handleSubmit(e: any) {
     e.preventDefault();
     if (alquiler.hour === "") {
-      return alert("Debe seleccionar una hora");
+      return alert("Seleccione una fecha");
     }
     if (!userId) {
-      alert("Debe iniciar sesion!");
+      alert("Debe iniciar sesion");
       history.push("/login");
     } else {
       dispatch(postReserva(alquiler));
@@ -73,7 +69,6 @@ export default function FormAlquiler({
         hour: "",
       });
       history.push("/reserva");
-      //console.log("POST", alquiler);
     }
   }
 

@@ -51,11 +51,10 @@ export default function Reserva() {
                     src={reservaData.reserva.field?.image || imagen}
                     alt="Cancha"
                   />
-                  <h2>Direccion</h2>
-                  <h3 className={styles.direccion}>
-                    {reservaData.reserva.field?.address || "IRALA AL 1500"}
-                  </h3>
-
+                  <h4>Direccion</h4>
+                  <p className={styles.direccion}>
+                    {reservaData.reserva.field?.address}
+                  </p>
                   <h3>
                     Precio de la reserva (20%) : ${" "}
                     {reservaData.reserva.field?.cost * 0.2}

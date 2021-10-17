@@ -5,7 +5,6 @@ import CrearEquipo from "./components/Equipos/CrearEquipo";
 import ContactForm from "./components/Forms/ContactForm/ContactForm";
 import FormPage from "./components/Forms/FormPage/FormPage";
 import RegisterForm from "./components/Forms/FormPage/Register/RegisterForm";
-import Home from "./components/Home/Home";
 import NavBarMui from "./components/NavBar/NavBarMUI";
 import LandinPage from "./components/LandingPage/LandingPage";
 import Header from "./components/Header/Header";
@@ -19,6 +18,11 @@ import Profile from "./components/Profile/Profile";
 import Teams from "./components/Teams/Teams";
 import TeamId from "./components/Teams/TeamId";
 import HomeDos from "./components/HomeDos/HomeDos";
+import Players from "./components/Players/Players";
+import DetalleJugador from "./components/DetalleJugador/DetalleJugador";
+import LoginGoogleForm from "./components/Forms/FormPage/LoginGoogle/LoginGoogleForm";
+
+
 
 function App() {
   return (
@@ -33,8 +37,11 @@ function App() {
             <Route path="/home/:startDate" component={CardsGrid} />
             <Route path="/canchas" component={ReservarCancha} />
             <Route path="/equipo" component={CrearEquipo} />
+            <Route path="/jugadores" component={Players} />
+            <Route path="/jugador/:id" component={DetalleJugador} />
             <Route path="/contacto" component={ContactForm} />
             <Route path="/login" component={FormPage} />
+            <Route path="/googleForm" component={LoginGoogleForm} />
             <Route path="/register" component={RegisterForm} />
             <Route path="/failed" component={Failed} />
             <Route path="/success" component={Success} />
@@ -42,6 +49,9 @@ function App() {
             <Route path="/profile" component={Profile} />
             <Route path="/teams" component={Teams} />
             <Route path="/teamId" component={TeamId} />
+            <Route path="/crearequipo" component={CrearEquipo} />
+            {/*           <Route path="/alquiler/:startDate" component={CardsGrid} />
+             */}{" "}
           </Switch>
         </div>
       </UserContextProvider>
