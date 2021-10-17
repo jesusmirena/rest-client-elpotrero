@@ -1,7 +1,8 @@
-import { GET_TEAMS } from "../actionsNames";
+import { GET_TEAMS, GET_TEAMS_ID } from "../actionsNames";
 
 const initialState: any = {
   teams: [],
+  teamsId: [],
 };
 
 const reducer = (state = initialState, action: any) => {
@@ -11,6 +12,11 @@ const reducer = (state = initialState, action: any) => {
         ...state,
         teams: action.payload,
       };
+      case GET_TEAMS_ID:
+        return { 
+          ...state,
+          teamsId: action.payload,
+        }
       
     default:
       return state;

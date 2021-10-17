@@ -1,5 +1,5 @@
 
-import { POST_USERNAME, GET_CANCHAS, GET_RESERVA, DELETE_RESERVA, GET_TEAMS } from "./actionsNames";
+import { POST_USERNAME, GET_CANCHAS, GET_RESERVA, DELETE_RESERVA, GET_TEAMS, GET_TEAMS_ID } from "./actionsNames";
 
 // import axios from '../lib/axiosConfig'
 import axios from "axios";
@@ -72,13 +72,20 @@ export function deleteReserva(id: any) {
   };
 }
 
-export function getTeams(id:any) {
+export function getTeams() {
+  return async function (dispatch: any) {
+    let res = await axios.get(
+      "http://localhost:3001/team/available");
+    return dispatch({ type: GET_TEAMS, payload: res.data});
+  };
+}
+
+export function getTeamsId(id: any) {
   return async function (dispatch: any) {
     let res = await axios.get(
       "http://localhost:3001/team?id=" + id);
-      console.log("pepe",res);
-      
-    return dispatch({ type: GET_TEAMS, payload: res.data});
+      console.log("IDDD",res)
+    return dispatch({ type: GET_TEAMS_ID, payload: res.data});
   };
 }
 

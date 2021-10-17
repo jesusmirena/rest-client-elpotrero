@@ -19,7 +19,7 @@ export default function FormPrueba() {
 
   return (
     <>
-      {isLoginLoading && <Redirect to="/register"/>}
+      {isLoginLoading && <strong>usuario no registrado</strong>}
       {!isLoginLoading && (
         <div className="container-global">
           <div className="container" id="container">
@@ -45,7 +45,7 @@ export default function FormPrueba() {
                 <Link to="#">¿Olvidaste tu contraseña?</Link>
 
                 <button type="submit">
-                  {isLogged && <Redirect to="/" />}
+                  {isLogged && <Redirect to="/homedos" />}
                   Ingresa
                 </button>
               </form>

@@ -1,30 +1,41 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {getTeams} from "../../redux/actions"
-
+import { Link } from "react-router-dom";
+import { getTeams, getTeamsId } from "../../redux/actions";
+import styles from "./Teams.module.scss";
+import Team from "./Team";
 
 export default function Teams() {
   const dispatch = useDispatch();
-  const team = useSelector((state: any) => state.teams)
-  const id = window.sessionStorage.getItem("id");
-  console.log(team);
-  
+  const allTeams = useSelector((state: any) => state.teams.teams);
   
   
   useEffect(() => {
-    dispatch(getTeams(id));
+    dispatch(getTeams());
+    
   }, []);
-  
+
+  function handleClick(e: any) {
+    e.preventDefault();
+    dispatch(getTeams());
+  }
+
   return (
-    <div>
-      <h1>{team.name}</h1>
-      <div>
-        <h3>nombre</h3>
-        <h3>imagen</h3>
-        <h3>calificacion</h3>
-        <h3>available</h3>
-        <h3>players</h3>
-      </div>
+    <div >
+      <h2 >Equipos disponibles</h2>
+      <button
+        onClick={(e) => {
+          handleClick(e);
+        }}
+      >
+        Cargar todos los Equipos
+      </button>
+      {
+        allTeams && allTeams.map((el:any) =>{
+          return <Team name={el.name} image={el.image} qualification={el.qualification} players={el.players}/>
+        })
+      } 
+      
     </div>
   );
 }
