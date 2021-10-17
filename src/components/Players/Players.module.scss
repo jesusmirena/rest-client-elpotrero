@@ -1,0 +1,71 @@
+.title {
+  color: black;
+  margin-top: 1rem;
+  text-align: center;
+}
+table.jugadores {
+  margin-top: 2rem;
+  width: 100%;
+  border-collapse: collapse;
+
+  thead {
+    background-color: black;
+    th {
+      color: white;
+      padding: 2rem;
+    }
+  }
+  tr {
+    border: solid;
+    border-width: 1px 0;
+    &:first-child {
+      border-top: none;
+    }
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+  td {
+    text-align: center;
+
+    &:first-of-type {
+      width: 3rem;
+      text-align: left;
+    }
+    a {
+      font-size: 1.4rem;
+      color: black;
+      &:hover {
+        color: #474747;
+      }
+    }
+  }
+  .imagenTabla {
+    margin-left: 5px;
+    width: 8rem;
+  }
+}
+
+.boton {
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 1rem 2rem;
+  margin: 1rem;
+  text-align: center;
+  border: none;
+}
+.botonCalificar {
+  background-color: #e08709;
+  &:hover {
+    background-color: darken(#e08709, 5);
+    cursor: pointer;
+  }
+}
+.botonInvitar {
+  background-color: #71b100;
+  &:hover {
+    background-color: darken(#71b100, 5);
+    cursor: pointer;
+  }
+}

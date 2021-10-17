@@ -3,6 +3,7 @@ import { Link, Redirect } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
 import "./FormPrueba.css";
 import useUser from "../../../../hooks/useUser";
+import { postLoginGoogle } from "../../../../redux/actions";
 
 export default function FormPrueba({ notify }: any) {
   const { isLoginLoading, hasLoginError, login, isLogged } = useUser();
@@ -16,7 +17,10 @@ export default function FormPrueba({ notify }: any) {
   const onSubmit: SubmitHandler<any> = ({ mail, password }) => {
     login({ mail, password }), reset();
   };
-
+  function googleLogin() {
+    const googleLoginURL = "http://localhost:3001/auth/google";
+    const newWindow = window.location.replace(googleLoginURL);
+  }
   return (
     <>
       {isLoginLoading && <Redirect to="/login" />}
@@ -24,6 +28,7 @@ export default function FormPrueba({ notify }: any) {
         <div className="container-global">
           <div className="container" id="container">
             <div className="form-container sign-in-container">
+              <button onClick={googleLogin}>Inicia con Google</button>
               <form
                 className="formNegro"
                 action="#"

@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { postReserva } from "../../../redux/actions";
 import styles from "./FormAlquiler.module.scss";
-import useUser from "../../../hooks/useUser";
 import { getReserva } from "../../../redux/actions";
 
 export default function FormAlquiler({
@@ -28,7 +27,6 @@ export default function FormAlquiler({
   const dispatch = useDispatch();
 
   let { startDate }: any = useParams();
-  //<{ startDate : string }>
 
   const userId: any = window.sessionStorage.getItem("id");
 
@@ -52,7 +50,6 @@ export default function FormAlquiler({
       hour: e.target.value,
     });
   }
-  const { isLogged } = useUser();
 
   function handleSubmit(e: any) {
     e.preventDefault();
@@ -72,7 +69,6 @@ export default function FormAlquiler({
         hour: "",
       });
       history.push("/reserva");
-      //console.log("POST", alquiler);
     }
   }
 

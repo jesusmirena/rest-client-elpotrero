@@ -1,13 +1,12 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import styles from "./Failed.module.scss";
 import { deleteReserva } from "../../redux/actions";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 export default function Failed() {
   const dispatch = useDispatch();
   const history = useHistory();
-  // const reservaData = useSelector((state: any) => state.reserva);
 
   function handleSubmit(e: any) {
     e.preventDefault();

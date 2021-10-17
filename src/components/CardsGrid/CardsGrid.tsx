@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Card from "../Card/Card";
 import styles from "../CardsGrid/CardsGrid.module.scss";
-import { getCanchasDisponible } from "../../redux/actions";
-import { useDispatch, useSelector } from "react-redux";
+
+import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
-import FormAlquiler from "../Card/FormAlquiler/FormAlquiler";
-import { useParams } from "react-router";
 
 export default function CardsGrid(props: any) {
   try {
