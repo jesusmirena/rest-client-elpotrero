@@ -1,5 +1,4 @@
 import React, { useRef } from "react";
-
 import { useForm, SubmitHandler } from "react-hook-form";
 import styles from "./RegisterForm.module.scss";
 import { postUsername } from "../../../../redux/actions";

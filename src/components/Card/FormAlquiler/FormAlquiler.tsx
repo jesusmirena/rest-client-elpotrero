@@ -54,10 +54,10 @@ export default function FormAlquiler({
   function handleSubmit(e: any) {
     e.preventDefault();
     if (alquiler.hour === "") {
-      return alert("Debe seleccionar una hora");
+      return alert("Seleccione una fecha");
     }
     if (!userId) {
-      alert("Debe iniciar sesion!");
+      alert("Debe iniciar sesion");
       history.push("/login");
     } else {
       dispatch(postReserva(alquiler));

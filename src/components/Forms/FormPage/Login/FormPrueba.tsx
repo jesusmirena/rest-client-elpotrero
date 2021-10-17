@@ -5,7 +5,7 @@ import "./FormPrueba.css";
 import useUser from "../../../../hooks/useUser";
 import { postLoginGoogle } from "../../../../redux/actions";
 
-export default function FormPrueba() {
+export default function FormPrueba({ notify }: any) {
   const { isLoginLoading, hasLoginError, login, isLogged } = useUser();
   const {
     register,
@@ -15,7 +15,7 @@ export default function FormPrueba() {
   } = useForm();
 
   const onSubmit: SubmitHandler<any> = ({ mail, password }) => {
-    login({ mail, password }), alert("Bienvenido"), reset();
+    login({ mail, password }), reset();
   };
   function googleLogin() {
     const googleLoginURL = "http://localhost:3001/auth/google";
@@ -23,7 +23,7 @@ export default function FormPrueba() {
   }
   return (
     <>
-      {isLoginLoading && <strong>El usuario no existe</strong>}
+      {isLoginLoading && <Redirect to="/login" />}
       {!isLoginLoading && (
         <div className="container-global">
           <div className="container" id="container">
@@ -49,7 +49,7 @@ export default function FormPrueba() {
                 />
                 <Link to="#">¿Olvidaste tu contraseña?</Link>
 
-                <button type="submit">
+                <button className="btn" type="submit">
                   {isLogged && <Redirect to="/" />}
                   Ingresa
                 </button>
