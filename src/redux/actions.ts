@@ -83,7 +83,7 @@ export function getTeams() {
 export function getTeamsId(id: any) {
   return async function (dispatch: any) {
     let res = await axios.get(
-      "http://localhost:3001/team?id=" + id);
+      "http://localhost:3001/team?id=33");
       console.log("IDDD",res)
     return dispatch({ type: GET_TEAMS_ID, payload: res.data});
   };

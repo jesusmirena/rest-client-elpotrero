@@ -33,7 +33,7 @@ export default function Team(props: any) {
                 <span>{el.position}</span>
               </div>
             );
-          })} */}
+          })}  */}
     </div>
   );
 }

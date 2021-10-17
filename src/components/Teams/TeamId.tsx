@@ -6,7 +6,7 @@ import Team from "./Team";
 
 export default function TeamId() {
   const dispatch = useDispatch();
-  const allTeamsId = useSelector((state: any) => state.teamsId);
+  const allTeamsId = useSelector((state: any) => state.teams.teamsId);
   let userId: any = window.sessionStorage.getItem("id");
   console.log("TEAMSS", allTeamsId);
 
