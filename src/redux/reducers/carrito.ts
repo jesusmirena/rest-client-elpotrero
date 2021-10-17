@@ -16,7 +16,7 @@ const reducer = (state = initialState, action: any): any => {
     case "FILTER_CARRITO":
       return {
         ...state,
-        carrito: [state.carrito.filter((e: any) => e.id !== action.payload)],
+        carrito: state.carrito.filter((e: any) => e.id !== action.payload),
       };
 
     default:
