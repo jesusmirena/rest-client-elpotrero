@@ -14,7 +14,7 @@ export default function NavBarMui() {
           <Link to="/home/">HOME</Link>
         </li> */}
         <li className={styles.navLink}>
-          <Link to="/canchas">EQUIPOS</Link>
+          <Link to="/teams">EQUIPOS</Link>
         </li>
         <li className={styles.navLink}>
           <Link to="/equipo">CREAR EQUIPO</Link>

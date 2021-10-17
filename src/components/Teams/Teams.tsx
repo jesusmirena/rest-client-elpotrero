@@ -8,34 +8,33 @@ import Team from "./Team";
 export default function Teams() {
   const dispatch = useDispatch();
   const allTeams = useSelector((state: any) => state.teams.teams);
-  
-  
+  console.log("TEAMSS", allTeams);
+
   useEffect(() => {
     dispatch(getTeams());
-    
   }, []);
 
-  function handleClick(e: any) {
-    e.preventDefault();
-    dispatch(getTeams());
-  }
-
   return (
-    <div >
-      <h2 >Equipos disponibles</h2>
-      <button
-        onClick={(e) => {
-          handleClick(e);
-        }}
-      >
-        Cargar todos los Equipos
-      </button>
-      {
-        allTeams && allTeams.map((el:any) =>{
-          return <Team name={el.name} image={el.image} qualification={el.qualification} players={el.players}/>
-        })
-      } 
-      
+    <div>
+      <div className={styles.containerGrid}>
+        <div className={styles.titulo}>
+          <h1>Equipos disponibles</h1>
+        </div>
+        <div className={styles.grid}>
+          {allTeams &&
+            allTeams.map((el: any) => {
+              return (
+                <Team
+                  name={el.name}
+                  image={el.image}
+                  qualification={el.qualification}
+                  players={el.players}
+                  user={el.user.name}
+                />
+              );
+            })}
+        </div>
+      </div>
     </div>
   );
 }

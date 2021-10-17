@@ -7,19 +7,20 @@ export default function Team(props: any) {
   console.log("PROOOPS", props);
 
   return (
-    <div >
-      <div>
-        <img src={imagen} alt="" width="150px" height="150px" />
+    <div className={styles.container}>
+      <div className={styles.imgcontainer} >
+        <img className={styles.img} src={imagen} alt=""/>
       </div>
-      <div >
-        <h3>nombre: </h3>
-        <p>{props.name}</p>
-        <p>calificacion: </p>
+      <div className={styles.info} >
+        <h3>{props.name}</h3>
+        <p>Calificacion: </p>
         <p>{props.qualification}</p>
-        <button >Unirme</button>
+        <p>Capitan: </p>
+        <p>{props.user}</p>
       </div>
+        <button >Unirme</button>
         <p>Jugadores:</p>
-        {props.players &&
+        {/* {props.players &&
           props.players.map((el: any) => {
             return (
               <div>
@@ -32,7 +33,7 @@ export default function Team(props: any) {
                 <span>{el.position}</span>
               </div>
             );
-          })}
+          })} */}
     </div>
   );
 }
