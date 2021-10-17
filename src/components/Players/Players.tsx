@@ -11,7 +11,7 @@ import {
   orderByName,
 } from "../../redux/actions";
 import SearchBar from "./SearchBar";
-
+import AddCarrito from "../CarritodeJugadores/Carrito/AddCarrito";
 function Players() {
   const jugadores = useSelector((state: any) => state.jugadores.jugadores);
   const dispatch = useDispatch();
@@ -40,6 +40,7 @@ function Players() {
     <div>
       <h1 className={styles.title}>Jugadores</h1>
       <SearchBar />
+
       <table className={styles.jugadores}>
         <thead>
           <tr>
@@ -104,7 +105,6 @@ function Players() {
         </thead>
         <tbody>
           {jugadores.map((p: any) => {
-            console.log(p);
             return (
               <tr key={p.id}>
                 <td>
@@ -122,12 +122,16 @@ function Players() {
                 <td>
                   <form>
                     {p.available ? (
-                      <input
+                      /*    <input
                         className={`${styles.boton} ${styles.botonInvitar}`}
                         type="submit"
                         name=""
                         value="Invitar"
-                      />
+                      /> */
+                      /*                       <AddCarrito players={p} />
+                              
+ */
+                      <AddCarrito players={p} />
                     ) : (
                       <></>
                     )}

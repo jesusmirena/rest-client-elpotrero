@@ -1,31 +1,34 @@
-// import CartItem from '../Item/';
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector, useStore } from "react-redux";
+import { filterCarrito } from "../../../redux/actions";
 
-// // type Props = {
-//     cartItems: any[];
-//     addToCart: (clickedItem: any) => void;
-//     removeFromCart: (id: number) => void;
-//   };
+export default function Carrito() {
+  const dispatch = useDispatch();
+  const [state, setstate] = useState(null);
+  const select = useSelector((state: any) => state.carrito.carrito);
 
-//   const Cart: React.FC<Props> = ({ cartItems, addToCart, removeFromCart }) => {
-//     const calculateTotal = (items: any[]) =>
-//       items.reduce((ack: number, item) => ack + item.amount * item.price, 0);
+  function deletePlayer(e: any) {
+    e.preventDefault();
 
-//     return (
-//       <Wrapper>
-//         <h2>Your Shopping Cart</h2>
-//         {cartItems.length === 0 ? <p>No items in cart.</p> : null}
-//         {cartItems.map(item => (
-//           <CartItem
-//             key={item.id}
-//             item={item}
-//             addToCart={addToCart}
-//             removeFromCart={removeFromCart}
-//           />
-//         ))}
-//         <h2>Total: ${calculateTotal(cartItems).toFixed(2)}</h2>
-//       </Wrapper>
-//     );
-//   };
+    dispatch(filterCarrito(e));
+  }
 
-//   export default Cart;
+  function handle(e: any) {
+    e.preventDefault();
+    alert("equis");
+  }
+  return (
+    <div>
+      {select.map((e: any) => {
+        return (
+          <div style={{ color: "white" }}>
+            <button type="button" onClick={deletePlayer}>
+              x
+            </button>
+            {e.name} {e.id}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
