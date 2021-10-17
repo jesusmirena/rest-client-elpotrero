@@ -23,11 +23,7 @@ export default function FormPrueba({ notify }: any) {
   }
   return (
     <>
-<<<<<<< HEAD
-      {isLoginLoading && <strong>usuario no registrado</strong>}
-=======
       {isLoginLoading && <Redirect to="/login" />}
->>>>>>> 8d1ecb387a7285b935b0d766baebd21a22ba7dc6
       {!isLoginLoading && (
         <div className="container-global">
           <div className="container" id="container">
@@ -53,13 +49,8 @@ export default function FormPrueba({ notify }: any) {
                 />
                 <Link to="#">¿Olvidaste tu contraseña?</Link>
 
-<<<<<<< HEAD
-                <button type="submit">
-                  {isLogged && <Redirect to="/homedos" />}
-=======
                 <button className="btn" type="submit">
-                  {isLogged && <Redirect to="/" />}
->>>>>>> 8d1ecb387a7285b935b0d766baebd21a22ba7dc6
+                  {isLogged && <Redirect to="/homedos" />}  
                   Ingresa
                 </button>
               </form>

@@ -68,6 +68,14 @@ export default function MenuHamburguesa() {
     alert("Juega pronto!");
   }
 
+  function handleMisEquipos(){
+    history.push("/teamId")
+  }
+
+  function handleReservaCancha(){
+    history.push("/homedos")
+  }
+
   const toggleDrawer =
     (anchor: Anchor, open: boolean) =>
     (event: React.KeyboardEvent | React.MouseEvent) => {
@@ -102,13 +110,13 @@ export default function MenuHamburguesa() {
           <ListItemText onClick={handleCrearEquipo} primary="Crear equipo" />
         </ListItem>
         <ListItem button>
-          <ListItemText primary="Reservar cancha" />
+          <ListItemText onClick={handleReservaCancha} primary="Reservar cancha" />
         </ListItem>
         <ListItem button>
           <ListItemText primary="Invitar jugadores" />
         </ListItem>
         <ListItem button>
-          <ListItemText primary="Mis equipos" />
+          <ListItemText onClick={handleMisEquipos} primary="Mis equipos" />
         </ListItem>
         {user.player?.available ? (
           <ListItem button>
