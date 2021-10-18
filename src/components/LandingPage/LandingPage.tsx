@@ -4,15 +4,17 @@ import { Link } from "react-router-dom";
 import Datepicker from "../Card/Datepicker/Datepicker";
 import useUser from "../../hooks/useUser";
 import FormPrueba from "../Forms/FormPage/Login/FormPrueba";
+import Logo from "../../visuales/logoblanco.png";
 
 export default function LandinPage() {
   const { isLogged } = useUser();
 
   return (
     <div className={styles.container}>
-      <div className={styles.datepicker}>
-        <Datepicker />
-      </div>
+      <img className={styles.logo} src={Logo} alt="" />
+      {/* <div className={styles.datepicker}>
+      {<Datepicker />}
+      </div> */}
       {/* <div className={styles.btngrid}>
         {!isLogged && (
           <div className={styles.btnc}>
@@ -23,13 +25,13 @@ export default function LandinPage() {
         )}
       </div> */}
       <div className={styles.btngrid}>
-        <FormPrueba/>
+        <FormPrueba />
       </div>
       <div className={styles.containerTitle}>
-        <p className={styles.title}>EL POTRERO</p>
+        <h1 className={styles.title}>EL POTRERO</h1>
       </div>
-      <div className={styles.backgroundInfo}>
-        <div className={styles.busca}>
+      {/* <div className={styles.backgroundInfo}>
+         <div className={styles.busca}>
           <p className={styles.infotitle}>Busca</p>
           <p className={styles.parrafo}>
             Conocé la disponibilidad de tus canchas preferidas
@@ -46,8 +48,8 @@ export default function LandinPage() {
           <p className={styles.parrafo}>
             Vos preocupate por romperla en el partido
           </p>
-        </div>
-      </div>
+        </div> 
+      </div>*/}
     </div>
   );
 }

@@ -15,11 +15,13 @@ import Reserva from "./components/Reserva/Reserva";
 import "./scss/App.scss";
 import { UserContextProvider } from "./context/userContext";
 import Profile from "./components/Profile/Profile";
+import Teams from "./components/Teams/Teams";
+import TeamsId from "./components/Teams/TeamsId";
+import HomeDos from "./components/HomeDos/HomeDos";
 import Players from "./components/Players/Players";
 import DetalleJugador from "./components/DetalleJugador/DetalleJugador";
 import LoginGoogleForm from "./components/Forms/FormPage/LoginGoogle/LoginGoogleForm";
 import Notificaciones from "./components/Notificaciones/Notificaciones";
-import Teams from "./components/Teams/Teams";
 import CartItem from "./components/CarritodeJugadores/Item/CartItem";
 import PlayersAvailable from "./components/Players/PlayersAvailable";
 
@@ -27,11 +29,12 @@ function App() {
   return (
     <BrowserRouter>
       <UserContextProvider>
+        <Header />
+        <NavBarMui />
         <div>
-          <Header />
-          <NavBarMui />
           <Switch>
             <Route exact path="/" component={LandinPage} />
+            <Route path="/homedos" component={HomeDos} />
             <Route path="/home/:startDate" component={CardsGrid} />
             <Route path="/canchas" component={ReservarCancha} />
             <Route path="/equipo" component={CrearEquipo} />
@@ -45,8 +48,9 @@ function App() {
             <Route path="/success" component={Success} />
             <Route path="/reserva" component={Reserva} />
             <Route path="/profile" component={Profile} />
-            <Route path="/crearequipo" component={CrearEquipo} />
             <Route path="/teams" component={Teams} />
+            <Route path="/teamsId" component={TeamsId} />
+            <Route path="/crearequipo" component={CrearEquipo} />
             <Route path="/carrito" component={CartItem} />
             <Route path="/disponibles" component={PlayersAvailable} />
             <Route path="/notificaciones" component={Notificaciones} />

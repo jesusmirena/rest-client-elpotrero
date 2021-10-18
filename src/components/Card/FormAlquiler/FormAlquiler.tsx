@@ -13,7 +13,7 @@ export default function FormAlquiler({
   timetable,
   name,
   cost,
-}: any) {
+}: FormAlquiler) {
   let hours = [];
   inicialTime = inicialTime.slice(0, 2);
   endTime = endTime.slice(0, 2);

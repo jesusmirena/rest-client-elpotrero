@@ -9,7 +9,7 @@ import {
   getOrderPunctuation,
   getPlayers,
   getPlayersDisponibles,
-  getTeams,
+  getTeamsId,
   orderByName,
 } from "../../redux/actions";
 import SearchBar from "./SearchBar";
@@ -26,7 +26,7 @@ function Players() {
 
   useEffect(() => {
     dispatch(getPlayers());
-    dispatch(getTeams(id));
+    dispatch(getTeamsId(id));
   }, [dispatch]);
 
   function handleOrderByName(orden: any) {

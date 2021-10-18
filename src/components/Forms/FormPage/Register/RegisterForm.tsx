@@ -19,7 +19,7 @@ export default function RegisterForm() {
     postUsername(data),
       alert("Usuario Creado"),
       console.log("usuario creado", data);
-    reset(), history.push("/login");
+    reset(), history.push("/");
   };
 
   return (

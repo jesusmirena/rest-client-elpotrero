@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { filterCarrito, filterTeam } from "../../../redux/actions";
 import { GiSoccerField } from "react-icons/gi";
-import { GiSoccerKick } from "react-icons/gi";
 import styles from "./Carrito.module.scss";
 
 export default function Carrito() {

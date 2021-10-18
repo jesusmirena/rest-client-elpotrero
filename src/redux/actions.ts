@@ -1,16 +1,21 @@
 import {
-  GET_PLAYERS,
+  POST_USERNAME,
   GET_CANCHAS,
   GET_RESERVA,
   DELETE_RESERVA,
   GET_TEAMS,
   GET_NOTIFICACIONES,
-  RESPOND_NOTIFICACION
+  RESPOND_NOTIFICACION,
+  GET_TEAMS_ID,
+  GET_PLAYERS,
 } from "./actionsNames";
+
+// import axios from '../lib/axiosConfig'
 
 import axios from "axios";
 
 const token = window.sessionStorage.getItem("jwt") || "";
+
 
 export async function postUsername(payload: User) {
   const response = await axios.post("http://localhost:3001/user", payload);
@@ -64,7 +69,11 @@ export async function postLoginGoogle(user: any) {
 
 export function getUser(id: any) {
   return async function (dispatch: any) {
-    let res = await axios.get("http://localhost:3001/user?id=" + id);
+    let res = await axios.get("http://localhost:3001/user?id=" + id, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     return dispatch({ type: "POST_LOGIN", payload: res.data });
   };
 }
@@ -89,7 +98,11 @@ export function resetUser() {
 
 export function deleteUser(id: any) {
   return async function () {
-    const res = await axios.delete(`http://localhost:3001/user/${id}`);
+    const res = await axios.delete(`http://localhost:3001/user/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     return res;
   };
 }
@@ -108,7 +121,11 @@ export function postReserva(payload: any) {
 
 export function postTeam(payload: any) {
   return async function () {
-    const res = await axios.post("http://localhost:3001/team", payload);
+    const res = await axios.post("http://localhost:3001/team", payload, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     return res;
   };
 }
@@ -116,7 +133,11 @@ export function postTeam(payload: any) {
 export function putUser(id: any, payload: any) {
   return async function () {
     try {
-      const res = await axios.put(`http://localhost:3001/user/${id}`, payload);
+      const res = await axios.put(`http://localhost:3001/user/${id}`, payload, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       return res;
     } catch (err) {
       console.log("put", err);
@@ -129,7 +150,12 @@ export function putTeam(id: any, payload: any) {
     try {
       const res = await axios.put(
         `http://localhost:3001/team/team/${id}`,
-        payload
+        payload,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
       );
       return res;
     } catch (err) {
@@ -166,8 +192,32 @@ export function deleteReserva(id: any) {
   };
 }
 
+export function getTeams() {
+  return async function (dispatch: any) {
+    let res = await axios.get("http://localhost:3001/team/available", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return dispatch({ type: GET_TEAMS, payload: res.data });
+  };
+}
+
+export function getTeamsId(id: any) {
+  return async function (dispatch: any) {
+    let res = await axios.get("http://localhost:3001/team?id=" + id, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    return dispatch({ type: GET_TEAMS_ID, payload: res.data });
+  };
+}
+
 export function getPlayers() {
   return async function (dispatch: any) {
+    const token = window.sessionStorage.getItem("jwt") || "";  
     let res = await axios.get("http://localhost:3001/player", {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -263,13 +313,13 @@ export function searchByName(orden: any) {
   };
 }
 
-export function getTeams(id: any) {
-  return async function (dispatch: any) {
-    let res = await axios.get("http://localhost:3001/team?id=" + id);
+// export function getTeams(id: any) {
+//   return async function (dispatch: any) {
+//     let res = await axios.get("http://localhost:3001/team?id=" + id);
 
-    return dispatch({ type: GET_TEAMS, payload: res.data });
-  };
-}
+//     return dispatch({ type: GET_TEAMS, payload: res.data });
+//   };
+// }
 
 export function addCarrito(payload: any) {
   return async function (dispatch: any) {
@@ -294,6 +344,36 @@ export function filterCarrito(payload: any) {
   };
 }
 
+export function putEditTeam(id: any, payload: any) {
+  return async function () {
+    console.log(payload);
+    try {
+      const res = await axios.put(
+        `http://localhost:3001/team/team/${id}`,
+        payload,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      return res;
+    } catch (err) {
+      console.log("put", err);
+    }
+  };
+}
+
+export function deleteTeam(id: any) {
+  return async function () {
+    const res = await axios.delete(`http://localhost:3001/team/team/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return res;
+  };
+}
 export function filterTeam(payload: any) {
   return {
     type: "FILTER_TEAM",

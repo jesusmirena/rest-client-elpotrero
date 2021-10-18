@@ -3,33 +3,33 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getTeams, getTeamsId } from "../../redux/actions";
 import styles from "./Teams.module.scss";
-import Team from "./Team";
+import TeamId from "./TeamId";
 
 export default function Teams() {
   const dispatch = useDispatch();
-  const allTeams = useSelector((state: any) => state.teams.teams);
-  console.log("TEAMSS", allTeams);
+  const allTeams = useSelector((state: any) => state.teams.teamsId);
+  let userId: any = window.sessionStorage.getItem("id");
+  //console.log("TEAMSS", allTeams);
 
   useEffect(() => {
-    dispatch(getTeams());
+    dispatch(getTeamsId(userId));
   }, []);
 
   return (
     <div>
       <div className={styles.containerGrid}>
         <div className={styles.titulo}>
-          <h1>Equipos disponibles</h1>
+          <h1>Mis equipos</h1>
         </div>
         <div className={styles.grid}>
           {allTeams &&
             allTeams.map((el: any) => {
               return (
-                <Team
+                <TeamId
+                  id={el.id}
                   name={el.name}
                   image={el.image}
                   qualification={el.qualification}
-                  players={el.players}
-                  user={el.user.name}
                 />
               );
             })}

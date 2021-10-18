@@ -55,7 +55,7 @@ export default function Reserva() {
                   <p className={styles.direccion}>
                     {reservaData.reserva.field?.address}
                   </p>
-    <h3>
+                  <h3>
                     Precio de la reserva (20%) : ${" "}
                     {reservaData.reserva.field?.cost * 0.2}
                   </h3>

@@ -50,6 +50,14 @@ interface Action {
   payload: User;
 }
 
+interface FormAlquiler {
+  id: Number;
+  endTime: any;
+  inicialTime: any;
+  timetable: any;
+  name: String;
+  cost: Number;
+}
 type User = {
   name: string;
   userName: string;
