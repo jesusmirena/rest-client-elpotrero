@@ -12,7 +12,7 @@ export default function CrearEquipo() {
     name: "",
     image: "",
     available: true,
-    user: id,
+    id: id,
   });
 
   /* {“name":"River vol 2",  "image":"url", "available":true, "player":[ {"id":3},{"id":4}]}
@@ -27,10 +27,11 @@ export default function CrearEquipo() {
       name: "",
       image: "",
       available: true,
-      user: id,
+      id: id,
     });
   }
-
+  console.log();
+  
   function handleChange(e: any) {
     setTeam({
       ...team,
@@ -38,7 +39,7 @@ export default function CrearEquipo() {
     });
   }
 
-  console.log(team);
+  console.log("TEEMCREAR",team);
 
   return (
     <div className={styles.background}>

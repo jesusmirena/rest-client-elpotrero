@@ -3,7 +3,7 @@
   flex-direction: column;
   background-color: black;
   border-radius: 20px;
-  height: 620px;
+  height: 670px;
   width: 333px;
   transition: transform 250ms;
   &:hover {
@@ -27,4 +27,13 @@
   font-size: 1.5rem;
   text-align: center;
   color: white;
+}
+
+.span{
+  color:white;
+}
+
+.container button{
+  width: 10rem;
+  margin-left: 5.5rem;
 }

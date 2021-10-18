@@ -69,7 +69,7 @@ export default function MenuHamburguesa() {
   }
 
   function handleMisEquipos(){
-    history.push("/teamId")
+    history.push("/teamsId")
   }
 
   function handleReservaCancha(){

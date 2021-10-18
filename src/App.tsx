@@ -16,7 +16,7 @@ import "./scss/App.scss";
 import { UserContextProvider } from "./context/userContext";
 import Profile from "./components/Profile/Profile";
 import Teams from "./components/Teams/Teams";
-import TeamId from "./components/Teams/TeamId";
+import TeamsId from "./components/Teams/TeamsId";
 import HomeDos from "./components/HomeDos/HomeDos";
 import Players from "./components/Players/Players";
 import DetalleJugador from "./components/DetalleJugador/DetalleJugador";
@@ -48,7 +48,7 @@ function App() {
             <Route path="/reserva" component={Reserva} />
             <Route path="/profile" component={Profile} />
             <Route path="/teams" component={Teams} />
-            <Route path="/teamId" component={TeamId} />
+            <Route path="/teamsId" component={TeamsId} />
             <Route path="/crearequipo" component={CrearEquipo} />
             {/*           <Route path="/alquiler/:startDate" component={CardsGrid} />
              */}{" "}

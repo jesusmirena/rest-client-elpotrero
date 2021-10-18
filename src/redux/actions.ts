@@ -84,7 +84,11 @@ export function postReserva(payload: any) {
 export function postTeam(payload: any) {
   console.log("PAYLOAD", payload);
   return async function () {
-    const res = await axios.post("http://localhost:3001/team", payload);
+    const res = await axios.post("http://localhost:3001/team", payload, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     return res;
   };
 }
@@ -132,7 +136,11 @@ export function deleteReserva(id: any) {
 export function getTeams() {
   return async function (dispatch: any) {
     let res = await axios.get(
-      "http://localhost:3001/team/available");
+      "http://localhost:3001/team/available",{
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
     return dispatch({ type: GET_TEAMS, payload: res.data});
   };
 }
@@ -140,8 +148,12 @@ export function getTeams() {
 export function getTeamsId(id: any) {
   return async function (dispatch: any) {
     let res = await axios.get(
-      "http://localhost:3001/team?id=" + id);
-      console.log("IDDD",res)
+      "http://localhost:3001/team?id=" + id,{
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      
     return dispatch({ type: GET_TEAMS_ID, payload: res.data});
   };
 }
@@ -245,5 +257,32 @@ export function filterCarrito(payload: any) {
   console.log("ACTION FILTER");
   return async function (dispatch: any) {
     return dispatch({ type: "FILTER_CARRITO", payload });
+  };
+}
+
+export function putEditTeam(id: any, payload: any) {
+  return async function () {
+    console.log(payload);
+    try {
+      const res = await axios.put(`http://localhost:3001/team/team/${id}`, payload, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return res;
+    } catch (err) {
+      console.log("put", err);
+    }
+  };
+}
+
+export function deleteTeam(id: any) {
+  return async function () {
+    const res = await axios.delete(`http://localhost:3001/team/team/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return res;
   };
 }

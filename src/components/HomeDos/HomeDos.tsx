@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./HomeDos.module.scss";
 import Datepicker from "../Card/Datepicker/Datepicker";
+import { Link } from "react-router-dom";
 
 export default function HomeDos() {
   return (
@@ -12,9 +13,13 @@ export default function HomeDos() {
             Vos preocupate por romperla en el partido.
           </p>
           <br />
+          <Link to="/jugadores">
           <button className={styles.btn}>Invitar Jugador</button>
+          </Link>
           <br />
-          <button className={styles.btn}>Mis equipos</button>
+          <Link to="/teamsId">
+            <button className={styles.btn}>Mis equipos</button>
+          </Link>
         </div>
         <div className={styles.reserva}>
           <p className={styles.infotitle}>Busca y Reservá</p>
