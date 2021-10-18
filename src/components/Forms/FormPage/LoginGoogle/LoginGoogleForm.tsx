@@ -1,29 +1,21 @@
-import React, { useRef, useState } from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
+import React, { useState } from "react";
 import { useHistory } from "react-router";
+import useUser from "../../../../hooks/useUser";
 import styles from "./LoginGoogleForm.module.scss";
+
 function LoginGoogleForm() {
-  const history = useHistory();
-
-  const password = useRef({});
-
   let cookie = decodeURIComponent(document.cookie);
   const cookieParseada = cookie.split("{");
   const cookieObject = "{" + cookieParseada[1];
   const cookieJson = JSON.parse(cookieObject);
-  console.log("COOKIEEEE", cookieJson);
 
-  // const onSubmit: SubmitHandler<User> = (data) => {
-  //   alert("Usuario Creado"),
-  //     reset(),
-  //     console.log("logingoogle", data),
-  //     history.push("/login");
-  // };
+  // if (cookieJson.userName !== "Por default") {
+
+  // }
+  const { isLoginLoading, hasLoginError, loginGoogle, isLogged } = useUser();
 
   const [UsuarioGoogle, setUsuarioGoogle] = useState({
-    name: cookieJson.name,
-    mail: "",
-    image: "",
+    id: cookieJson.id,
     birthday: "",
     userName: "",
     gender: "",
@@ -33,7 +25,6 @@ function LoginGoogleForm() {
       position: "",
     },
   });
-  console.log("USUARIOOOO", UsuarioGoogle);
 
   function handleChange(e: any) {
     setUsuarioGoogle({
@@ -41,23 +32,23 @@ function LoginGoogleForm() {
       [e.target.name]: e.target.value,
     });
   }
-  function handleLoginGoogle() {}
+  function handleSubmitLoginGoogle(e: any) {
+    console.log("handle GOOGLE", UsuarioGoogle);
+    e.preventDefault();
+    loginGoogle(UsuarioGoogle), alert("Bienvenido");
+  }
 
   return (
     <div className={styles.formBgImg}>
       <h2>Ingresa los datos restantes</h2>
-      <form className={styles.form} onSubmit={handleLoginGoogle}>
+      <form
+        className={styles.form}
+        onSubmit={(e) => handleSubmitLoginGoogle(e)}
+      >
         <div className={styles.formDiv}>
           <input
             onChange={handleChange}
-            autoComplete="off"
-            className={styles.formInput}
-            placeholder="Escribe tu nombre"
-          />
-          <label className={styles.formLabel}>Nombre</label>
-        </div>
-        <div className={styles.formDiv}>
-          <input
+            name="userName"
             autoComplete="off"
             className={styles.formInput}
             placeholder="Escribe tu nombre de usuario"
@@ -65,13 +56,20 @@ function LoginGoogleForm() {
           <label className={styles.formLabel}>Nombre de usuario</label>
         </div>
         <div className={styles.formDiv}>
-          <input className={styles.formInput} type="date" />
+          <input
+            onChange={handleChange}
+            name="birthday"
+            className={styles.formInput}
+            type="date"
+          />
           <label className={styles.formLabel}>Fecha de nacimiento</label>
         </div>
         <div className={styles.formDiv}>
           <input
-            className={styles.formInput}
             type="number"
+            name="dni"
+            onChange={handleChange}
+            className={styles.formInput}
             placeholder="Ingresa tu documento de identificacion"
           />
           <label className={styles.formLabel}>
@@ -80,6 +78,8 @@ function LoginGoogleForm() {
         </div>
         <div className={styles.formDiv}>
           <input
+            onChange={handleChange}
+            name="cellphone"
             className={styles.formInput}
             placeholder="Ingresa tu numero telefonico"
             type="tel"
@@ -88,7 +88,7 @@ function LoginGoogleForm() {
         </div>
         <div className={styles.formDiv}>
           <label className={styles.formLabel}>Posicion</label>
-          <select className="selectForm">
+          <select onChange={handleChange} name="player" className="selectForm">
             <option selected={true} disabled value="Default">
               Escoge una posicion
             </option>
@@ -100,7 +100,7 @@ function LoginGoogleForm() {
         </div>
         <div className={styles.formDiv}>
           <label className={styles.formLabel}>Genero</label>
-          <select className="selectForm">
+          <select onChange={handleChange} name="gender" className="selectForm">
             <option selected={true} disabled value="Default">
               Escoge un genero
             </option>

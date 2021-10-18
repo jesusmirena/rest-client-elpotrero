@@ -27,14 +27,34 @@ export async function postLogin({ mail, password }: any) {
     console.log("ERROR DEL POSTLOGIN", error);
   }
 }
-export async function postLoginGoogle() {
+export async function putLoginGoogle(user: any) {
   try {
-    const response = await axios.get("http://localhost:3001/auth/google");
-    console.log("desde el post Google", response);
-
-    return alert("conectado correctamente");
+    const response = await axios.put(
+      "http://localhost:3001/auth/googleFormLogin",
+      user
+    );
+    const userGoogle = response.data;
+    return {
+      type: "PUT_LOGIN",
+      payload: userGoogle,
+    };
   } catch (error) {
-    console.log("ERROR DEL POSTLOGINGOOGLE", error);
+    console.log("ERROR DEL PUTLOGINGOOGLE", error);
+  }
+}
+export async function postLoginGoogle(user: any) {
+  try {
+    const response = await axios.post(
+      "http://localhost:3001/auth//googleLogin",
+      user
+    );
+    const userGoogle = response.data;
+    return {
+      type: "POST_LOGIN",
+      payload: userGoogle,
+    };
+  } catch (error) {
+    console.log("ERROR DEL PUTLOGINGOOGLE", error);
   }
 }
 

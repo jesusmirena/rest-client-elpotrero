@@ -3,7 +3,7 @@ import { Link, Redirect } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
 import "./FormPrueba.css";
 import useUser from "../../../../hooks/useUser";
-import { postLoginGoogle } from "../../../../redux/actions";
+// import { postLoginGoogle } from "../../../../redux/actions";
 
 export default function FormPrueba() {
   const { isLoginLoading, hasLoginError, login, isLogged } = useUser();
