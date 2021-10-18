@@ -8,7 +8,6 @@ const notificaciones = useSelector((state:any) => state.notificaciones.notificac
 const dispatch = useDispatch();
 const history = useHistory();
 let userId: any = window.sessionStorage.getItem("id");
-console.log("id de sesion",userId)
 
 useEffect(() => {
   dispatch(getNotificaciones(userId)); // VER COMO TRAERME EL ID DEL USUARIO QUE INICIO SESION
@@ -22,7 +21,7 @@ useEffect(() => {
         }
         dispatch(putNotification(payload))
         alert("Aceptaste la invitacion satisfactoriamente")
-        history.push("/notificaciones")
+        window.location.reload()
     }
 
     function handleReject(id:number){
@@ -32,7 +31,7 @@ useEffect(() => {
         }
         dispatch(putNotification(payload))
         alert("Rechazaste la invitacion satisfactoriamente")
-        history.push("/notificaciones")
+        window.location.reload()
     }
     return(
         <div>
