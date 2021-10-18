@@ -25,13 +25,13 @@ export default function LandinPage() {
         )}
       </div> */}
       <div className={styles.btngrid}>
-        <FormPrueba/>
+        <FormPrueba />
       </div>
       <div className={styles.containerTitle}>
         <h1 className={styles.title}>EL POTRERO</h1>
       </div>
-      <div className={styles.backgroundInfo}>
-        {/* <div className={styles.busca}>
+      {/* <div className={styles.backgroundInfo}>
+         <div className={styles.busca}>
           <p className={styles.infotitle}>Busca</p>
           <p className={styles.parrafo}>
             Conocé la disponibilidad de tus canchas preferidas
@@ -48,8 +48,8 @@ export default function LandinPage() {
           <p className={styles.parrafo}>
             Vos preocupate por romperla en el partido
           </p>
-        </div> */}
-      </div>
+        </div> 
+      </div>*/}
     </div>
   );
 }

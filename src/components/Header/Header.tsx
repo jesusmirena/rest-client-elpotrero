@@ -9,25 +9,29 @@ import useUser from "../../hooks/useUser";
 export default function Header() {
   const { isLogged } = useUser();
   return (
-    <header className={styles.header}>
-      <div className={styles.menuHamburguesa}>
-        <IconButton
-          size="large"
-          edge="start"
-          style={{ color: "white" }}
-          aria-label="menu"
-        >
-          <MenuHamburguesa />
-        </IconButton>
-      </div>
-      <div className={styles.logoContainer}>
-        <Link to="/homedos">
-          <img className={styles.logo} src={logo} />
-        </Link>
-      </div>
-      <div className={styles.login}>
-        {!isLogged && <Link to="/login">INICIAR SESION</Link>}
-      </div>
-    </header>
+    <>
+      {isLogged && (
+        <header className={styles.header}>
+          <div className={styles.menuHamburguesa}>
+            <IconButton
+              size="large"
+              edge="start"
+              style={{ color: "white" }}
+              aria-label="menu"
+            >
+              <MenuHamburguesa />
+            </IconButton>
+          </div>
+          <div className={styles.logoContainer}>
+            <Link to="/homedos">
+              <img className={styles.logo} src={logo} />
+            </Link>
+          </div>
+          <div className={styles.login}>
+            {!isLogged && <Link to="/login">INICIAR SESION</Link>}
+          </div>
+        </header>
+      )}
+    </>
   );
 }

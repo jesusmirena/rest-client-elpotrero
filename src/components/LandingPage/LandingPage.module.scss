@@ -13,14 +13,13 @@
   grid-row-gap: 0px;
 }
 
-.logo{
+.logo {
   grid-area: 1 / 2 / 2 / 3;
   margin-left: 18rem;
 }
 
-
 .btngrid {
-  grid-area: 2 / 2 / 3 / 3; 
+  grid-area: 2 / 2 / 3 / 3;
 }
 .btnc {
   margin: 2rem;
@@ -60,7 +59,7 @@
 .title {
   color: white;
   margin: 0;
-  font-family: 'Anton', sans-serif;
+  font-family: "Anton", sans-serif;
   font-size: 17rem;
   letter-spacing: 1rem;
   display: flex;
@@ -118,7 +117,7 @@
 
 @media screen and(max-width: 1400px) {
   .title {
-    font-size: 13rem;
+    font-size: 8rem;
   }
   .btn {
     height: 5rem;

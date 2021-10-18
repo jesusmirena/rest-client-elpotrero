@@ -25,7 +25,7 @@ function LoginGoogleForm() {
       position: "",
     },
   });
-
+  const history = useHistory();
   function handleChange(e: any) {
     setUsuarioGoogle({
       ...UsuarioGoogle,
@@ -35,7 +35,7 @@ function LoginGoogleForm() {
   function handleSubmitLoginGoogle(e: any) {
     console.log("handle GOOGLE", UsuarioGoogle);
     e.preventDefault();
-    loginGoogle(UsuarioGoogle), alert("Bienvenido");
+    loginGoogle(UsuarioGoogle), alert("Bienvenido"), history.push("/homedos");
   }
 
   return (

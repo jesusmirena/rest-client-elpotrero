@@ -23,15 +23,13 @@ import DetalleJugador from "./components/DetalleJugador/DetalleJugador";
 import LoginGoogleForm from "./components/Forms/FormPage/LoginGoogle/LoginGoogleForm";
 import CartItem from "./components/CarritodeJugadores/Item/CartItem";
 import PlayersAvailable from "./components/Players/PlayersAvailable";
-import useUser from "./hooks/useUser";
 
 function App() {
-  const { isLogged } = useUser();
   return (
     <BrowserRouter>
       <UserContextProvider>
         <Header />
-        {isLogged && <NavBarMui />}
+        <NavBarMui />
         <div>
           <Switch>
             <Route exact path="/" component={LandinPage} />

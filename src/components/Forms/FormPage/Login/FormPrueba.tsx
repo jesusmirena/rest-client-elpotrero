@@ -23,7 +23,6 @@ export default function FormPrueba({ notify }: any) {
   }
   return (
     <>
-      {isLoginLoading && <Redirect to="/login" />}
       {!isLoginLoading && (
         <div className="container-global">
           <div className="container" id="container">
@@ -50,7 +49,7 @@ export default function FormPrueba({ notify }: any) {
                 <Link to="#">¿Olvidaste tu contraseña?</Link>
 
                 <button className="btn" type="submit">
-                  {isLogged && <Redirect to="/homedos" />}  
+                  {isLogged && <Redirect to="/homedos" />}
                   Ingresa
                 </button>
               </form>
