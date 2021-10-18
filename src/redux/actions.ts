@@ -33,20 +33,44 @@ export async function postLogin({ mail, password }: any) {
     console.log("ERROR DEL POSTLOGIN", error);
   }
 }
-export async function postLoginGoogle() {
+export async function putLoginGoogle(user: any) {
   try {
-    const response = await axios.get("http://localhost:3001/auth/google");
-    console.log("desde el post Google", response);
-
-    return alert("conectado correctamente");
+    const response = await axios.put(
+      "http://localhost:3001/auth/googleFormLogin",
+      user
+    );
+    const userGoogle = response.data;
+    return {
+      type: "PUT_LOGIN",
+      payload: userGoogle,
+    };
   } catch (error) {
-    console.log("ERROR DEL POSTLOGINGOOGLE", error);
+    console.log("ERROR DEL PUTLOGINGOOGLE", error);
+  }
+}
+export async function postLoginGoogle(user: any) {
+  try {
+    const response = await axios.post(
+      "http://localhost:3001/auth//googleLogin",
+      user
+    );
+    const userGoogle = response.data;
+    return {
+      type: "POST_LOGIN",
+      payload: userGoogle,
+    };
+  } catch (error) {
+    console.log("ERROR DEL PUTLOGINGOOGLE", error);
   }
 }
 
 export function getUser(id: any) {
   return async function (dispatch: any) {
-    let res = await axios.get("http://localhost:3001/user?id=" + id);
+    let res = await axios.get("http://localhost:3001/user?id=" + id, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     return dispatch({ type: "POST_LOGIN", payload: res.data });
   };
 }
@@ -71,7 +95,11 @@ export function resetUser() {
 
 export function deleteUser(id: any) {
   return async function () {
-    const res = await axios.delete(`http://localhost:3001/user/${id}`);
+    const res = await axios.delete(`http://localhost:3001/user/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     return res;
   };
 }
@@ -89,7 +117,6 @@ export function postReserva(payload: any) {
 }
 
 export function postTeam(payload: any) {
-  console.log("PAYLOAD", payload);
   return async function () {
     const res = await axios.post("http://localhost:3001/team", payload, {
       headers: {
@@ -102,12 +129,34 @@ export function postTeam(payload: any) {
 
 export function putUser(id: any, payload: any) {
   return async function () {
-    console.log(payload);
     try {
-      const res = await axios.put(`http://localhost:3001/user/${id}`, payload);
+      const res = await axios.put(`http://localhost:3001/user/${id}`, payload, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       return res;
     } catch (err) {
       console.log("put", err);
+    }
+  };
+}
+
+export function putTeam(id: any, payload: any) {
+  return async function () {
+    try {
+      const res = await axios.put(
+        `http://localhost:3001/team/team/${id}`,
+        payload,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      return res;
+    } catch (err) {
+      console.log("Error equipo", err);
     }
   };
 }
@@ -203,6 +252,16 @@ export function getPlayersDisponibles(orden: any) {
     return dispatch({ type: "GET_PLAYERS_DISPONIBLES", payload: res.data });
   };
 }
+export function getSoloDisponibles() {
+  return async function (dispatch: any) {
+    let res = await axios.get(`http://localhost:3001/player/available`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return dispatch({ type: "GET_SOLO_DISPONIBLES", payload: res.data });
+  };
+}
 export function getOrderGender(orden: any) {
   return async function (dispatch: any) {
     let res = await axios.get(`http://localhost:3001/player/${orden}`, {
@@ -250,14 +309,32 @@ export function searchByName(orden: any) {
   };
 }
 
+// export function getTeams(id: any) {
+//   return async function (dispatch: any) {
+//     let res = await axios.get("http://localhost:3001/team?id=" + id);
+
+//     return dispatch({ type: GET_TEAMS, payload: res.data });
+//   };
+// }
+
 export function addCarrito(payload: any) {
   return async function (dispatch: any) {
     return dispatch({ type: "ADD_CARRITO", payload });
   };
 }
 
+export function addCarritoDisponible(payload: any) {
+  return async function (dispatch: any) {
+    return dispatch({ type: "ADD_CARRITO_DISPONIBLE", payload });
+  };
+}
+
+export function filterCarritoDisponible(payload: any) {
+  return async function (dispatch: any) {
+    return dispatch({ type: "FILTER_CARRITO_DISPONIBLE", payload });
+  };
+}
 export function filterCarrito(payload: any) {
-  console.log("ACTION FILTER");
   return async function (dispatch: any) {
     return dispatch({ type: "FILTER_CARRITO", payload });
   };
@@ -291,5 +368,11 @@ export function deleteTeam(id: any) {
       },
     });
     return res;
+  };
+}
+export function filterTeam(payload: any) {
+  return {
+    type: "FILTER_TEAM",
+    payload,
   };
 }

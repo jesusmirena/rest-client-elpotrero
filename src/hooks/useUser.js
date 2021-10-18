@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useState } from "react";
 import Context from "../context/userContext";
-import { postLogin } from "../redux/actions";
+import { postLogin, putLoginGoogle } from "../redux/actions";
 
 export default function useUser() {
   const [state, setState] = useState({ loading: false, error: false });
@@ -10,6 +10,18 @@ export default function useUser() {
     async ({ mail, password }) => {
       setState({ loading: true, error: false });
       const usuarioGuardado = await postLogin({ mail, password });
+      window.sessionStorage.setItem("id", usuarioGuardado.payload.id);
+      window.sessionStorage.setItem("jwt", usuarioGuardado.payload.token);
+      setState({ loading: false, error: false });
+      setJWT(usuarioGuardado.payload.token);
+    },
+    [setJWT]
+  );
+  const loginGoogle = useCallback(
+    async (user) => {
+      setState({ loading: true, error: false });
+      const usuarioGuardado = await putLoginGoogle(user);
+      console.log("USUARIO GUARDADO LOGIN", usuarioGuardado);
       window.sessionStorage.setItem("id", usuarioGuardado.payload.id);
       window.sessionStorage.setItem("jwt", usuarioGuardado.payload.token);
       setState({ loading: false, error: false });
@@ -28,6 +40,7 @@ export default function useUser() {
 
   return {
     isLogged: Boolean(jwt),
+    loginGoogle,
     login,
     logout,
     isLoginLoading: state.loading,

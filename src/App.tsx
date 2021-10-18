@@ -21,15 +21,17 @@ import HomeDos from "./components/HomeDos/HomeDos";
 import Players from "./components/Players/Players";
 import DetalleJugador from "./components/DetalleJugador/DetalleJugador";
 import LoginGoogleForm from "./components/Forms/FormPage/LoginGoogle/LoginGoogleForm";
-
-
+import CartItem from "./components/CarritodeJugadores/Item/CartItem";
+import PlayersAvailable from "./components/Players/PlayersAvailable";
+import useUser from "./hooks/useUser";
 
 function App() {
+  const { isLogged } = useUser();
   return (
     <BrowserRouter>
       <UserContextProvider>
-            <Header/>
-            <NavBarMui />
+        <Header />
+        {isLogged && <NavBarMui />}
         <div>
           <Switch>
             <Route exact path="/" component={LandinPage} />
@@ -50,6 +52,8 @@ function App() {
             <Route path="/teams" component={Teams} />
             <Route path="/teamsId" component={TeamsId} />
             <Route path="/crearequipo" component={CrearEquipo} />
+            <Route path="/carrito" component={CartItem} />
+            <Route path="/disponibles" component={PlayersAvailable} />
             {/*           <Route path="/alquiler/:startDate" component={CardsGrid} />
              */}{" "}
           </Switch>

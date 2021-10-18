@@ -1,0 +1,35 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 500px);
+  gap: 3rem;
+  padding: 1rem;
+  justify-content: center;
+}
+
+@media (max-width: 560px) {
+  .grid {
+    grid-template-columns: 100%;
+  }
+}
+
+.titulo {
+  font-size: 1.5rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.btn {
+  background-color: black;
+  color: white;
+}
+
+.btnC {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  text-align: center;
+  color: black;
+}

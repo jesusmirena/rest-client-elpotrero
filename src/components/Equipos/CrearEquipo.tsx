@@ -3,10 +3,12 @@ import styles from "./CrearEquipo.module.scss";
 import { postTeam } from "../../redux/actions";
 import { useDispatch } from "react-redux";
 import imagen from "../../visuales/canchitaCard.png";
+import { useHistory } from "react-router";
 
 export default function CrearEquipo() {
   var id = window.sessionStorage.getItem("id");
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const [team, setTeam] = useState({
     name: "",
@@ -29,6 +31,7 @@ export default function CrearEquipo() {
       available: true,
       id: id,
     });
+    history.push("/jugadores");
   }
   console.log();
   
