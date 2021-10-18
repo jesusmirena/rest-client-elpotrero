@@ -14,6 +14,7 @@ import axios from "axios";
 
 const token = window.sessionStorage.getItem("jwt") || "";
 
+
 export async function postUsername(payload: User) {
   const response = await axios.post("http://localhost:3001/user", payload);
 }
@@ -214,6 +215,7 @@ export function getTeamsId(id: any) {
 
 export function getPlayers() {
   return async function (dispatch: any) {
+    const token = window.sessionStorage.getItem("jwt") || "";
     let res = await axios.get("http://localhost:3001/player", {
       headers: {
         Authorization: `Bearer ${token}`,
