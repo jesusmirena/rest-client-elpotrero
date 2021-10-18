@@ -7,6 +7,7 @@ import img from "../../visuales/profile.png";
 import EditProfile from "./EditProfile";
 import useUser from "../../hooks/useUser";
 import { useHistory } from "react-router";
+import { margin } from "@mui/material/node_modules/@mui/system";
 
 export default function Profile() {
   const profile = window.sessionStorage.getItem("id");
@@ -57,29 +58,40 @@ export default function Profile() {
   }, [btn]);
   return (
     <div className={styles.background}>
-      <button
-        style={{ background: "white" }}
-        className={styles.btn}
-        onClick={handleBtn}
-      >
-        {btn ? "EDITAR PERFIL" : "VOLVER"}
-      </button>
-
-      <button
-        style={{ background: "white" }}
-        className={styles.btn}
-        onClick={handleDelete}
-      >
-        {btndelete ? "CANCELAR" : "ELIMINAR PERFIL"}
-      </button>
-      {btndelete && (
+      <div className={styles.btnC}>
         <button
-          style={{ background: "red" }}
+          style={{ background: "white" }}
           className={styles.btn}
-          onClick={handleConfirmar}
+          onClick={handleBtn}
         >
-          CONFIRMAR
+          {btn ? "EDITAR PERFIL" : "VOLVER"}
         </button>
+
+        <button
+          style={{ background: "red", color: "white" }}
+          className={styles.btn}
+          onClick={handleDelete}
+        >
+          {btndelete ? "CANCELAR" : "ELIMINAR PERFIL"}
+        </button>
+      </div>
+      {btndelete && (
+        <div className={styles.btnC}>
+          <div style={{ background: "red", borderRadius: "10px" }}>
+            <h3 style={{ margin: "0.4rem", color: "white", fontSize: "2rem" }}>
+              Estas seguro que queres eliminar el perfil?
+            </h3>{" "}
+          </div>
+          <div>
+            <button
+              style={{ background: "red", color: "white", margin: "1rem auto" }}
+              className={styles.btn}
+              onClick={handleConfirmar}
+            >
+              CONFIRMAR
+            </button>
+          </div>
+        </div>
       )}
 
       {btn ? (

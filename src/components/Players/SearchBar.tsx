@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { searchByName } from "../../redux/actions";
 import styles from "./SearchBar.module.scss";
+import { FaSearch } from "react-icons/fa";
 
 export default function SearchBar() {
   const dispatch = useDispatch();
@@ -19,15 +20,21 @@ export default function SearchBar() {
 
   return (
     <div>
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <div>
+      <form
+        className={styles.searchContainer}
+        onSubmit={(e) => handleSubmit(e)}
+      >
+        <div className={styles.searchBox}>
           <input
+            className={styles.searchInput}
             type="text"
             value={name}
             onChange={(e) => handleChange(e)}
-            placeholder="Search..."
+            placeholder="Buscar...."
           />
-          <input value="buscar" type="submit" />
+          <button className={styles.searchButton} value="buscar" type="submit">
+            <FaSearch size={20} />
+          </button>
         </div>
       </form>
     </div>

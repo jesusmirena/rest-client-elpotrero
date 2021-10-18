@@ -26,7 +26,6 @@ export default function Header() {
         </Link>
       </div>
       <div className={styles.login}>
-        {" "}
         {!isLogged && <Link to="/login">INICIAR SESION</Link>}
       </div>
     </header>
