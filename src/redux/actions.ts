@@ -15,7 +15,6 @@ export async function postUsername(payload: User) {
 }
 
 export async function postLogin({ mail, password }: any) {
-
   try {
     const response = await axios.post("http://localhost:3001/auth/local", {
       mail,
@@ -237,7 +236,8 @@ export function searchByName(orden: any) {
       },
     });
     return dispatch({ type: "SEARCH_PLAYER", payload: res.data });
-
+  };
+}
 
 export function getTeams(id: any) {
   return async function (dispatch: any) {
@@ -245,6 +245,5 @@ export function getTeams(id: any) {
     console.log("pepe", res);
 
     return dispatch({ type: GET_TEAMS, payload: res.data });
-
   };
 }
