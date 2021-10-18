@@ -215,7 +215,7 @@ export function getTeamsId(id: any) {
 
 export function getPlayers() {
   return async function (dispatch: any) {
-    const token = window.sessionStorage.getItem("jwt") || "";
+    const token = window.sessionStorage.getItem("jwt") || "";  
     let res = await axios.get("http://localhost:3001/player", {
       headers: {
         Authorization: `Bearer ${token}`,
