@@ -15,6 +15,12 @@ const reducer = (state: any = initialState, action: any): any => {
         ...state,
         jugadores: action.payload,
       };
+    case "GET_SOLO_DISPONIBLES":
+      return {
+        ...state,
+        jugadores: action.payload,
+      };
+
     case "GET_PLAYERS_DISPONIBLES":
       return {
         ...state,

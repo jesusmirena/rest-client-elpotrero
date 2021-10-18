@@ -1,44 +1,66 @@
-import React from "react";
-// import Button from "@material-ui/core/Button";
+import React, { useEffect, useReducer, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { filterCarrito, getTeams, putTeam } from "../../../redux/actions";
+import styles from "./CartItem.module.scss";
+export default function CartItem() {
+  const jugadores = useSelector((state: any) => state.carrito.carrito);
+  const equipos = useSelector((state: any) => state.teams.teams);
+  const dispatch = useDispatch();
 
-// // Styles
+  const [state, setstate] = useState({
+    name: equipos[0].name,
+    image: equipos[0].image,
+    available: true,
+    player: [],
+  });
 
-// type Props = {
-//   item: any;
-//   addToCart: (clickedItem: any) => void;
-//   removeFromCart: (id: number) => void;
-// };
+  function deletePlayer(e: any) {
+    dispatch(filterCarrito(e));
+    alert("Jugador eliminado");
+  }
 
-// const CartItem: React.FC<Props> = ({ item, addToCart, removeFromCart }) => (
-//   <div>
-//     <div>
-//       <h3>{item.title}</h3>
-//       <div className="information">
-//         <p>Price: ${item.price}</p>
-//         <p>Total: ${(item.amount * item.price).toFixed(2)}</p>
-//       </div>
-//       <div className="buttons">
-//         <Button
-//           size="small"
-//           disableElevation
-//           variant="contained"
-//           onClick={() => removeFromCart(item.id)}
-//         >
-//           -
-//         </Button>
-//         <p>{item.amount}</p>
-//         <Button
-//           size="small"
-//           disableElevation
-//           variant="contained"
-//           onClick={() => addToCart(item)}
-//         >
-//           +
-//         </Button>
-//       </div>
-//     </div>
-//     <img src={item.image} alt={item.title} />
-//   </div>
-// );
+  let arreglo: any = [];
 
-// export default CartItem;
+  jugadores.forEach((e: any) => {
+    arreglo.push({ id: e.id });
+  });
+
+  function handleSubmit(e: any) {
+    dispatch(putTeam(equipos[0].id, state));
+    alert("Enviado");
+  }
+
+  useEffect(() => {
+    setstate({
+      ...state,
+      player: arreglo,
+    });
+  }, [dispatch]);
+
+  return (
+    <div>
+      <Link to="/jugadores">
+        <button className={styles.btn}>Volver</button>
+      </Link>
+      <h1 className={styles.title}>Equipo: {equipos[0].name}</h1>
+      <ul className={styles.grid}>
+        {jugadores.map((p: any) => {
+          return (
+            <li>
+              <div>
+                <p className={styles.titulo}>{p.name}</p>
+                <img src={p.image} alt="Jugador" />
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+      <div className={styles.btnC}>
+        <button className={styles.btn} type="submit" onClick={handleSubmit}>
+          Enviar
+        </button>
+      </div>
+    </div>
+  );
+}

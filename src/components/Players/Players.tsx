@@ -3,21 +3,30 @@ import { Link } from "react-router-dom";
 import styles from "./Players.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  filterTeam,
   getOrderGender,
   getOrderPosition,
   getOrderPunctuation,
   getPlayers,
   getPlayersDisponibles,
+  getTeams,
   orderByName,
 } from "../../redux/actions";
 import SearchBar from "./SearchBar";
 import AddCarrito from "../CarritodeJugadores/Carrito/AddCarrito";
+import Carrito from "../CarritodeJugadores/Carrito/Carrito";
 function Players() {
   const jugadores = useSelector((state: any) => state.jugadores.jugadores);
+  const equipos = useSelector((state: any) => state.teams.teams);
+  const id = sessionStorage.getItem("id");
+
+  const [equipo, setEquipo] = useState();
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getPlayers());
+    dispatch(getTeams(id));
   }, [dispatch]);
 
   function handleOrderByName(orden: any) {
@@ -40,6 +49,8 @@ function Players() {
     <div>
       <h1 className={styles.title}>Jugadores</h1>
       <SearchBar />
+
+      <Carrito />
 
       <table className={styles.jugadores}>
         <thead>

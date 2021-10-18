@@ -20,6 +20,8 @@ import DetalleJugador from "./components/DetalleJugador/DetalleJugador";
 import LoginGoogleForm from "./components/Forms/FormPage/LoginGoogle/LoginGoogleForm";
 
 import Teams from "./components/Teams/Teams";
+import CartItem from "./components/CarritodeJugadores/Item/CartItem";
+import PlayersAvailable from "./components/Players/PlayersAvailable";
 
 function App() {
   return (
@@ -45,6 +47,8 @@ function App() {
             <Route path="/profile" component={Profile} />
             <Route path="/crearequipo" component={CrearEquipo} />
             <Route path="/teams" component={Teams} />
+            <Route path="/carrito" component={CartItem} />
+            <Route path="/disponibles" component={PlayersAvailable} />
             {/*           <Route path="/alquiler/:startDate" component={CardsGrid} />
              */}{" "}
           </Switch>

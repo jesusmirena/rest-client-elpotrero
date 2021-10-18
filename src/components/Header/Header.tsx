@@ -5,7 +5,6 @@ import logo from "../../visuales/logoblanco.png";
 import MenuHamburguesa from "../NavBar/MenuHamburguesa";
 import IconButton from "@mui/material/IconButton";
 import useUser from "../../hooks/useUser";
-import Carrito from "../CarritodeJugadores/Carrito/Carrito";
 
 export default function Header() {
   const { isLogged } = useUser();
@@ -27,7 +26,7 @@ export default function Header() {
         </Link>
       </div>
       <div className={styles.login}>
-        <Carrito /> {!isLogged && <Link to="/login">INICIAR SESION</Link>}
+        {!isLogged && <Link to="/login">INICIAR SESION</Link>}
       </div>
     </header>
   );

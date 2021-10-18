@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addCarrito } from "../../../redux/actions";
-import Carrito from "./Carrito";
+import { addCarrito, addCarritoDisponible } from "../../../redux/actions";
 
-export default function AddCarrito({ players }: any) {
+export default function AddCarritoDisponible({ players }: any) {
   const { image, id, name } = players;
   const dispatch = useDispatch();
   // const array = useSelector((state: any) => state.carrito.carrito);
@@ -26,7 +25,7 @@ export default function AddCarrito({ players }: any) {
     });
   }
 
-  if (jugador.name !== "") dispatch(addCarrito(jugador));
+  if (jugador.name !== "") dispatch(addCarritoDisponible(jugador));
 
   return (
     <div>
