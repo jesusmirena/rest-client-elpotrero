@@ -4,6 +4,8 @@ import {
   GET_RESERVA,
   DELETE_RESERVA,
   GET_TEAMS,
+  GET_NOTIFICACIONES,
+  RESPOND_NOTIFICACION
 } from "./actionsNames";
 
 import axios from "axios";
@@ -297,4 +299,37 @@ export function filterTeam(payload: any) {
     type: "FILTER_TEAM",
     payload,
   };
+}
+
+export function getNotificaciones(id:any) {
+  return async function (dispatch: any) {
+    let res = await axios.get(`http://localhost:3001/notification/${id}`, {
+      // headers: {
+      //   Authorization: `Bearer ${token}`,
+      // },
+    });
+    return dispatch({ type: GET_NOTIFICACIONES, payload: res.data });
+  };
+}
+
+export function putNotification(payload: any) {
+  return async function () {
+    try {
+      const res = await axios.put("http://localhost:3001/notification", payload);
+      return res;
+    } catch (err) {
+      console.log("put", err);
+    }
+  };
+}
+
+  export function postNotification(payload: any) {
+    return async function () {
+      try {
+        const res = await axios.post(`http://localhost:3001/notification`, payload);
+        return res;
+      } catch (err) {
+        console.log("post", err);
+      }
+    };
 }

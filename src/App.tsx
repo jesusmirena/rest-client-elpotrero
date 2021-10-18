@@ -18,7 +18,7 @@ import Profile from "./components/Profile/Profile";
 import Players from "./components/Players/Players";
 import DetalleJugador from "./components/DetalleJugador/DetalleJugador";
 import LoginGoogleForm from "./components/Forms/FormPage/LoginGoogle/LoginGoogleForm";
-
+import Notificaciones from "./components/Notificaciones/Notificaciones";
 import Teams from "./components/Teams/Teams";
 import CartItem from "./components/CarritodeJugadores/Item/CartItem";
 import PlayersAvailable from "./components/Players/PlayersAvailable";
@@ -49,6 +49,7 @@ function App() {
             <Route path="/teams" component={Teams} />
             <Route path="/carrito" component={CartItem} />
             <Route path="/disponibles" component={PlayersAvailable} />
+            <Route path="/notificaciones" component={Notificaciones} />
             {/*           <Route path="/alquiler/:startDate" component={CardsGrid} />
              */}{" "}
           </Switch>

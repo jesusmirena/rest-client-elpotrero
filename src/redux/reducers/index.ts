@@ -6,6 +6,7 @@ import reserva from "./reserva";
 import jugadores from "./jugadores";
 import teams from "./teams";
 import carrito from "./carrito";
+import notificaciones from "./notificaciones"
 
 export default combineReducers({
   users,
@@ -15,4 +16,5 @@ export default combineReducers({
   jugadores,
   teams,
   carrito,
+  notificaciones,
 });
