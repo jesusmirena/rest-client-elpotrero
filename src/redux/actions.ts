@@ -3,7 +3,9 @@ import {
   GET_CANCHAS,
   GET_RESERVA,
   DELETE_RESERVA,
+  GET_TEAMS,
 } from "./actionsNames";
+
 import axios from "axios";
 
 const token = window.sessionStorage.getItem("jwt") || "";
@@ -13,6 +15,7 @@ export async function postUsername(payload: User) {
 }
 
 export async function postLogin({ mail, password }: any) {
+
   try {
     const response = await axios.post("http://localhost:3001/auth/local", {
       mail,
@@ -58,6 +61,13 @@ export async function postLoginGoogle(user: any) {
   }
 }
 
+export function getUser(id: any) {
+  return async function (dispatch: any) {
+    let res = await axios.get("http://localhost:3001/user?id=" + id);
+    return dispatch({ type: "POST_LOGIN", payload: res.data });
+  };
+}
+
 export function getCanchasDisponible(payload: any) {
   return async function (dispatch: any) {
     let res = await axios.get(
@@ -76,6 +86,13 @@ export function resetUser() {
   return { type: "RESET" };
 }
 
+export function deleteUser(id: any) {
+  return async function () {
+    const res = await axios.delete(`http://localhost:3001/user/${id}`);
+    return res;
+  };
+}
+
 export function postReserva(payload: any) {
   return async function () {
     const res = await axios.post("http://localhost:3001/timetable", payload, {
@@ -85,6 +102,26 @@ export function postReserva(payload: any) {
     });
 
     return res;
+  };
+}
+
+export function postTeam(payload: any) {
+  console.log("PAYLOAD", payload);
+  return async function () {
+    const res = await axios.post("http://localhost:3001/team", payload);
+    return res;
+  };
+}
+
+export function putUser(id: any, payload: any) {
+  return async function () {
+    console.log(payload);
+    try {
+      const res = await axios.put(`http://localhost:3001/user/${id}`, payload);
+      return res;
+    } catch (err) {
+      console.log("put", err);
+    }
   };
 }
 
@@ -115,6 +152,7 @@ export function deleteReserva(id: any) {
     return dispatch({ type: DELETE_RESERVA });
   };
 }
+
 export function getPlayers() {
   return async function (dispatch: any) {
     let res = await axios.get("http://localhost:3001/player", {
@@ -199,5 +237,14 @@ export function searchByName(orden: any) {
       },
     });
     return dispatch({ type: "SEARCH_PLAYER", payload: res.data });
+
+
+export function getTeams(id: any) {
+  return async function (dispatch: any) {
+    let res = await axios.get("http://localhost:3001/team?id=" + id);
+    console.log("pepe", res);
+
+    return dispatch({ type: GET_TEAMS, payload: res.data });
+
   };
 }

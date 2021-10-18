@@ -19,6 +19,8 @@ import Players from "./components/Players/Players";
 import DetalleJugador from "./components/DetalleJugador/DetalleJugador";
 import LoginGoogleForm from "./components/Forms/FormPage/LoginGoogle/LoginGoogleForm";
 
+import Teams from "./components/Teams/Teams";
+
 function App() {
   return (
     <BrowserRouter>
@@ -41,6 +43,10 @@ function App() {
             <Route path="/success" component={Success} />
             <Route path="/reserva" component={Reserva} />
             <Route path="/profile" component={Profile} />
+            <Route path="/crearequipo" component={CrearEquipo} />
+            <Route path="/teams" component={Teams} />
+            {/*           <Route path="/alquiler/:startDate" component={CardsGrid} />
+             */}{" "}
           </Switch>
         </div>
       </UserContextProvider>
