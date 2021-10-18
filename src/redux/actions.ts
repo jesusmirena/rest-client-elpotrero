@@ -1,5 +1,12 @@
-
-import { POST_USERNAME, GET_CANCHAS, GET_RESERVA, DELETE_RESERVA, GET_TEAMS, GET_TEAMS_ID,GET_PLAYERS, } from "./actionsNames";
+import {
+  POST_USERNAME,
+  GET_CANCHAS,
+  GET_RESERVA,
+  DELETE_RESERVA,
+  GET_TEAMS,
+  GET_TEAMS_ID,
+  GET_PLAYERS,
+} from "./actionsNames";
 
 // import axios from '../lib/axiosConfig'
 
@@ -135,29 +142,26 @@ export function deleteReserva(id: any) {
 
 export function getTeams() {
   return async function (dispatch: any) {
-    let res = await axios.get(
-      "http://localhost:3001/team/available",{
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-    return dispatch({ type: GET_TEAMS, payload: res.data});
+    let res = await axios.get("http://localhost:3001/team/available", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return dispatch({ type: GET_TEAMS, payload: res.data });
   };
 }
 
 export function getTeamsId(id: any) {
   return async function (dispatch: any) {
-    let res = await axios.get(
-      "http://localhost:3001/team?id=" + id,{
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      
-    return dispatch({ type: GET_TEAMS_ID, payload: res.data});
+    let res = await axios.get("http://localhost:3001/team?id=" + id, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    return dispatch({ type: GET_TEAMS_ID, payload: res.data });
   };
 }
-
 
 export function getPlayers() {
   return async function (dispatch: any) {
@@ -246,7 +250,6 @@ export function searchByName(orden: any) {
   };
 }
 
-
 export function addCarrito(payload: any) {
   return async function (dispatch: any) {
     return dispatch({ type: "ADD_CARRITO", payload });
@@ -264,11 +267,15 @@ export function putEditTeam(id: any, payload: any) {
   return async function () {
     console.log(payload);
     try {
-      const res = await axios.put(`http://localhost:3001/team/team/${id}`, payload, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const res = await axios.put(
+        `http://localhost:3001/team/team/${id}`,
+        payload,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       return res;
     } catch (err) {
       console.log("put", err);
