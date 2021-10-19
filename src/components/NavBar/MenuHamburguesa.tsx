@@ -73,6 +73,12 @@ export default function MenuHamburguesa() {
   function handleReservaCancha() {
     history.push("/home");
   }
+  function handleMisNotificaciones(){
+    history.push("/notificaciones")
+  }
+  function handleInvitarJugadoresDisponibles(){
+    history.push("/disponibles")
+  }
 
   const toggleDrawer =
     (anchor: Anchor, open: boolean) =>
@@ -114,7 +120,7 @@ export default function MenuHamburguesa() {
           />
         </ListItem>
         <ListItem button>
-          <ListItemText primary="Invitar jugadores" />
+          <ListItemText onClick ={handleInvitarJugadoresDisponibles} primary="Invitar jugadores" />
         </ListItem>
         <ListItem button>
           <ListItemText onClick={handleMisEquipos} primary="Mis equipos" />
@@ -149,7 +155,7 @@ export default function MenuHamburguesa() {
         )}
 
         <ListItem button>
-          <ListItemText primary="Eliminar equipo" />
+          <ListItemText  onClick={handleMisNotificaciones} primary="Mis notificaciones" />
         </ListItem>
         <ListItem button>
           <Button

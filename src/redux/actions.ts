@@ -4,8 +4,10 @@ import {
   GET_RESERVA,
   DELETE_RESERVA,
   GET_TEAMS,
+  GET_NOTIFICACIONES,
   GET_TEAMS_ID,
   GET_PLAYERS,
+  GET_NOTIFICACIONES_MY_TEAM,
 } from "./actionsNames";
 
 // import axios from '../lib/axiosConfig'
@@ -253,7 +255,7 @@ export function resetTeam() {
 }
 export function getPlayers() {
   return async function (dispatch: any) {
-    const token = window.sessionStorage.getItem("jwt") || "";
+    const token = window.sessionStorage.getItem("jwt") || "";  
     let res = await axios.get("http://localhost:3001/player", {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -482,4 +484,59 @@ export function filterTeam(payload: any) {
     type: "FILTER_TEAM",
     payload,
   };
+}
+
+export function getNotificaciones(id:any) {
+  return async function (dispatch: any) {
+    const token = window.sessionStorage.getItem("jwt") || "";
+    let res = await axios.get(`http://localhost:3001/notification/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return dispatch({ type: GET_NOTIFICACIONES, payload: res.data });
+  };
+}
+
+export function getNotificacionesMisEquipos(id:any) {
+  return async function (dispatch: any) {
+    const token = window.sessionStorage.getItem("jwt") || "";
+    let res = await axios.get(`http://localhost:3001/notification/myteam/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return dispatch({ type: GET_NOTIFICACIONES_MY_TEAM, payload: res.data });
+  };
+}
+export function putNotification(payload: any) {
+  return async function () {
+    try {
+      const token = window.sessionStorage.getItem("jwt") || "";
+      const res = await axios.put("http://localhost:3001/notification", payload,{     
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      });
+      return res;
+    } catch (err) {
+      console.log("put", err);
+    }
+  };
+}
+
+  export function postNotification(payload: any) {
+    return async function () {
+      try {
+        const token = window.sessionStorage.getItem("jwt") || "";
+        const res = await axios.post(`http://localhost:3001/notification`, payload,{
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        return res;
+      } catch (err) {
+        console.log("post", err);
+      }
+    };
 }
