@@ -1,7 +1,8 @@
-import { GET_NOTIFICACIONES } from "../actionsNames";
+import { GET_NOTIFICACIONES, GET_NOTIFICACIONES_MY_TEAM } from "../actionsNames";
 
 const initialState: any = {
   notificaciones: [],
+  notificacionesMisEquipos: []
 };
 
 const reducer = (state = initialState, action: any): any => {
@@ -11,6 +12,12 @@ const reducer = (state = initialState, action: any): any => {
         ...state,
         notificaciones: action.payload,
       };
+    case GET_NOTIFICACIONES_MY_TEAM:{
+      return {
+        ...state,
+        notificacionesMisEquipos: action.payload
+      }
+    }
 
     default:
       return state;

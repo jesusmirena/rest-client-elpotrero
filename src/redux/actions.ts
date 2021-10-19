@@ -5,9 +5,9 @@ import {
   DELETE_RESERVA,
   GET_TEAMS,
   GET_NOTIFICACIONES,
-  RESPOND_NOTIFICACION,
   GET_TEAMS_ID,
   GET_PLAYERS,
+  GET_NOTIFICACIONES_MY_TEAM,
 } from "./actionsNames";
 
 // import axios from '../lib/axiosConfig'
@@ -392,6 +392,16 @@ export function getNotificaciones(id:any) {
   };
 }
 
+export function getNotificacionesMisEquipos(id:any) {
+  return async function (dispatch: any) {
+    let res = await axios.get(`http://localhost:3001/notification/myteam/${id}`, {
+      // headers: {
+      //   Authorization: `Bearer ${token}`,
+      // },
+    });
+    return dispatch({ type: GET_NOTIFICACIONES_MY_TEAM, payload: res.data });
+  };
+}
 export function putNotification(payload: any) {
   return async function () {
     try {
