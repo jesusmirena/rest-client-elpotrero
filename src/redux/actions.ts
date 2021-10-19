@@ -449,7 +449,6 @@ export function filterCarrito(payload: any) {
 
 export function putEditTeam(id: any, payload: any) {
   return async function () {
-    console.log(payload);
     try {
       const token = window.sessionStorage.getItem("jwt") || "";
       const res = await axios.put(
@@ -550,6 +549,27 @@ export function postNotification(payload: any) {
     } catch (err) {
       alert("Fallo envio de notificacion");
       console.log("post", err);
+    }
+  };
+}
+
+export function putCalificarTeam(payload: any) {
+  return async function () {
+    try {
+      const token = window.sessionStorage.getItem("jwt") || "";
+      const res = await axios.put(
+        `http://localhost:3001/team/qualification`,
+        payload,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      return alert("Calificaste con exito");
+    } catch (err) {
+      console.log("Error equipo", err);
+      alert("Algo salio mal");
     }
   };
 }
