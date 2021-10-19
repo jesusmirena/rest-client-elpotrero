@@ -21,6 +21,7 @@ import HomeDos from "./components/HomeDos/HomeDos";
 import Players from "./components/Players/Players";
 import DetalleJugador from "./components/DetalleJugador/DetalleJugador";
 import LoginGoogleForm from "./components/Forms/FormPage/LoginGoogle/LoginGoogleForm";
+import Notificaciones from "./components/Notificaciones/Notificaciones";
 import CartItem from "./components/CarritodeJugadores/Item/CartItem";
 import PlayersAvailable from "./components/Players/PlayersAvailable";
 import CartDisponible from "./components/CarritodeJugadores/Item/CartDisponible";
@@ -54,6 +55,7 @@ function App() {
             <Route path="/carrito" component={CartItem} />
             <Route path="/carritoAvailable" component={CartDisponible} />
             <Route path="/disponibles" component={PlayersAvailable} />
+            <Route path="/notificaciones" component={Notificaciones} />
           </Switch>
         </div>
       </UserContextProvider>

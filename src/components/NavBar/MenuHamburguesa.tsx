@@ -73,6 +73,9 @@ export default function MenuHamburguesa() {
   function handleReservaCancha() {
     history.push("/home");
   }
+  function handleMisNotificaciones(){
+    history.push("/notificaciones")
+  }
 
   const toggleDrawer =
     (anchor: Anchor, open: boolean) =>
@@ -149,7 +152,7 @@ export default function MenuHamburguesa() {
         )}
 
         <ListItem button>
-          <ListItemText primary="Eliminar equipo" />
+          <ListItemText  onClick={handleMisNotificaciones} primary="Mis notificaciones" />
         </ListItem>
         <ListItem button>
           <Button
