@@ -14,7 +14,6 @@ import axios from "axios";
 
 const token = window.sessionStorage.getItem("jwt") || "";
 
-
 export async function postUsername(payload: User) {
   const response = await axios.post("http://localhost:3001/user", payload);
 }
@@ -96,12 +95,18 @@ export function resetUser() {
 
 export function deleteUser(id: any) {
   return async function () {
-    const res = await axios.delete(`http://localhost:3001/user/${id}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    return res;
+    try {
+      const res = await axios.delete(`http://localhost:3001/user/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      alert("Usuario eliminado");
+      return res;
+    } catch (err) {
+      alert("Vuelve a intentar");
+      console.log(err);
+    }
   };
 }
 
@@ -136,8 +141,10 @@ export function putUser(id: any, payload: any) {
           Authorization: `Bearer ${token}`,
         },
       });
+      alert("Cambios realizados satisfactoriamente");
       return res;
     } catch (err) {
+      alert("Vuelve a intentar por favor");
       console.log("put", err);
     }
   };
@@ -155,9 +162,10 @@ export function putTeam(id: any, payload: any) {
           },
         }
       );
-      return res;
+      return alert("Enviado");
     } catch (err) {
       console.log("Error equipo", err);
+      alert("Algo salio mal");
     }
   };
 }

@@ -44,7 +44,6 @@ function Players() {
   function handleOrderByPosition(orden: any) {
     dispatch(getOrderPosition(orden));
   }
-
   return (
     <div>
       <h1 className={styles.title}>Jugadores</h1>

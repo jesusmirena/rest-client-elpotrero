@@ -8,11 +8,10 @@ import Team from "./Team";
 export default function Teams() {
   const dispatch = useDispatch();
   const allTeams = useSelector((state: any) => state.teams.teams);
-  console.log("TEAMSS", allTeams);
 
   useEffect(() => {
     dispatch(getTeams());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div>
@@ -21,18 +20,17 @@ export default function Teams() {
           <h1>Equipos disponibles</h1>
         </div>
         <div className={styles.grid}>
-          {allTeams &&
-            allTeams.map((el: any) => {
-              return (
-                <Team
-                  name={el.name}
-                  image={el.image}
-                  qualification={el.qualification}
-                  players={el.players}
-                  user={el.user.name}
-                />
-              );
-            })}
+          {allTeams?.map((el: any) => {
+            return (
+              <Team
+                name={el.name}
+                image={el.image}
+                qualification={el.qualification}
+                players={el.players}
+                user={el.user.name}
+              />
+            );
+          })}
         </div>
       </div>
     </div>

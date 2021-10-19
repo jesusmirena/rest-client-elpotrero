@@ -48,7 +48,6 @@ export default function Profile() {
   function handleConfirmar(e: any) {
     e.preventDefault();
     dispatch(deleteUser(user.id));
-    alert("GRACIAS POR CONFIAR EN NOSOTROS");
     logout();
     history.push("/");
   }

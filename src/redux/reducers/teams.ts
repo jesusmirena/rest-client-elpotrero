@@ -12,10 +12,8 @@ const reducer = (state = initialState, action: any) => {
     case GET_TEAMS_ID:
       return {
         ...state,
-        teams: action.payload,
-        allTeams: action.payload,
         teamsId: action.payload,
-
+        allTeams: action.payload,
       };
     case GET_TEAMS:
       return {
@@ -30,7 +28,7 @@ const reducer = (state = initialState, action: any) => {
           : state.allTeams.filter((e: any) => e.id == action.payload);
       return {
         ...state,
-        teams: filter,
+        teamsId: filter,
       };
 
     default:

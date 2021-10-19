@@ -1,34 +1,41 @@
-import React, { useEffect, useReducer, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { filterCarrito, getTeams, putTeam } from "../../../redux/actions";
+import { Link, useHistory } from "react-router-dom";
+import {
+  filterCarrito,
+  getPlayers,
+  getTeamsId,
+  putTeam,
+} from "../../../redux/actions";
 import styles from "./CartItem.module.scss";
 export default function CartItem() {
   const jugadores = useSelector((state: any) => state.carrito.carrito);
-  const equipos = useSelector((state: any) => state.teams.teams);
+  const equipos = useSelector((state: any) => state.teams.teamsId);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const [state, setstate] = useState({
-    name: equipos[0].name,
-    image: equipos[0].image,
+    name: equipos[0] ? equipos[0].name : "",
+    image: equipos[0] ? equipos[0].image : "",
     available: true,
     player: [],
   });
 
-  function deletePlayer(e: any) {
+  /*   function deletePlayer(e: any) {
     dispatch(filterCarrito(e));
     alert("Jugador eliminado");
-  }
+  } */
 
   let arreglo: any = [];
 
-  jugadores.forEach((e: any) => {
-    arreglo.push({ id: e.id });
-  });
+  jugadores[0]
+    ? jugadores.forEach((e: any) => {
+        arreglo.push({ id: e.id });
+      })
+    : "";
 
   function handleSubmit(e: any) {
     dispatch(putTeam(equipos[0].id, state));
-    alert("Enviado");
   }
 
   useEffect(() => {
@@ -43,7 +50,10 @@ export default function CartItem() {
       <Link to="/jugadores">
         <button className={styles.btn}>Volver</button>
       </Link>
-      <h1 className={styles.title}>Equipo: {equipos[0].name}</h1>
+      <h1 className={styles.title}>Equipo :</h1>
+      <h1 className={styles.title}>
+        {equipos[0] ? equipos[0].name : "ERROR no hay equipo seleccionado"}
+      </h1>
       <ul className={styles.grid}>
         {jugadores.map((p: any) => {
           return (
@@ -57,9 +67,13 @@ export default function CartItem() {
         })}
       </ul>
       <div className={styles.btnC}>
-        <button className={styles.btn} type="submit" onClick={handleSubmit}>
-          Enviar
-        </button>
+        {equipos[0] ? (
+          <Link to="/jugadores">
+            <button className={styles.btn} type="submit" onClick={handleSubmit}>
+              Enviar
+            </button>
+          </Link>
+        ) : null}
       </div>
     </div>
   );

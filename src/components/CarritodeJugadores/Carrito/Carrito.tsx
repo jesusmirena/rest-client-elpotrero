@@ -10,7 +10,7 @@ export default function Carrito() {
   const history = useHistory();
 
   const equipo = useSelector((state: any) => state.carrito.carrito);
-  const equipos = useSelector((state: any) => state.teams.teams);
+  const equipos = useSelector((state: any) => state.teams.teamsId);
 
   function deletePlayer(e: any) {
     dispatch(filterCarrito(e));
@@ -45,9 +45,7 @@ export default function Carrito() {
           Selecciona un equipo
         </option>
         {equipos.map((e: any) => (
-          <option value={e.id}>
-            {e.name} {e.id}
-          </option>
+          <option value={e.id}>{e.name}</option>
         ))}
         <option value="todos">Todos los equipos</option>
       </select>
