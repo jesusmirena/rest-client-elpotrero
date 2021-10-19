@@ -13,7 +13,7 @@ export default function HomeDos() {
             Vos preocupate por romperla en el partido.
           </p>
           <br />
-          <Link to="/jugadores">
+          <Link to="/disponibles">
             <button className={styles.btn}>Me falta uno</button>
           </Link>
           <br />
