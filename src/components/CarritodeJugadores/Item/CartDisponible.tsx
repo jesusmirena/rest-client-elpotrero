@@ -3,8 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { putTeam } from "../../../redux/actions";
 import styles from "./CartItem.module.scss";
-export default function CartItem() {
-  const jugadores = useSelector((state: any) => state.carrito.carrito);
+export default function CartDisponible() {
+  const jugadores = useSelector(
+    (state: any) => state.carrito.carritoDisponible
+  );
   const equipos = useSelector((state: any) => state.teams.teamsId);
   const dispatch = useDispatch();
 
@@ -36,7 +38,7 @@ export default function CartItem() {
 
   return (
     <div>
-      <Link to="/jugadores">
+      <Link to="/disponibles">
         <button className={styles.btn}>Volver</button>
       </Link>
       <h1 className={styles.title}>Equipo :</h1>
@@ -57,7 +59,7 @@ export default function CartItem() {
       </ul>
       <div className={styles.btnC}>
         {equipos[0] ? (
-          <Link to="/jugadores">
+          <Link to="/disponibles">
             <button className={styles.btn} type="submit" onClick={handleSubmit}>
               Enviar
             </button>

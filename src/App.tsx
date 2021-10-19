@@ -23,6 +23,7 @@ import DetalleJugador from "./components/DetalleJugador/DetalleJugador";
 import LoginGoogleForm from "./components/Forms/FormPage/LoginGoogle/LoginGoogleForm";
 import CartItem from "./components/CarritodeJugadores/Item/CartItem";
 import PlayersAvailable from "./components/Players/PlayersAvailable";
+import CartDisponible from "./components/CarritodeJugadores/Item/CartDisponible";
 
 function App() {
   return (
@@ -33,7 +34,7 @@ function App() {
         <div>
           <Switch>
             <Route exact path="/" component={LandinPage} />
-            <Route path="/homedos" component={HomeDos} />
+            <Route exact path="/home" component={HomeDos} />
             <Route path="/home/:startDate" component={CardsGrid} />
             <Route path="/canchas" component={ReservarCancha} />
             <Route path="/equipo" component={CrearEquipo} />
@@ -51,9 +52,8 @@ function App() {
             <Route path="/teamsId" component={TeamsId} />
             <Route path="/crearequipo" component={CrearEquipo} />
             <Route path="/carrito" component={CartItem} />
+            <Route path="/carritoAvailable" component={CartDisponible} />
             <Route path="/disponibles" component={PlayersAvailable} />
-            {/*           <Route path="/alquiler/:startDate" component={CardsGrid} />
-             */}{" "}
           </Switch>
         </div>
       </UserContextProvider>

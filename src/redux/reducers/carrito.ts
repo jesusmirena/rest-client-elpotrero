@@ -25,7 +25,7 @@ const reducer = (state = initialState, action: any): any => {
         ],
       };
 
-    case "FILTER_CARRITO_DISPONIBLE":
+    case "FILTER_CARRITO":
       return {
         ...state,
         carritoDisponible: state.carritoDisponible.filter(

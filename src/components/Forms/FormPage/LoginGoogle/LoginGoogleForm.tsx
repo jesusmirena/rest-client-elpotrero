@@ -39,14 +39,12 @@ function LoginGoogleForm() {
   function handleSubmitRegisterGoogle(e: any) {
     console.log("handle GOOGLE", UsuarioGoogle);
     e.preventDefault();
-    PutLoginGoogle(UsuarioGoogle),
-      alert("Bienvenido"),
-      history.push("/homedos");
+    PutLoginGoogle(UsuarioGoogle), alert("Bienvenido"), history.push("/home");
   }
   function handleSubmitLoginGoogle(e: any) {
     e.preventDefault();
     PostLoginGoogle(cookieJson);
-    history.push("/homedos");
+    history.push("/home");
   }
 
   return (

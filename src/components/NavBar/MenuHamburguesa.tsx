@@ -71,7 +71,7 @@ export default function MenuHamburguesa() {
   }
 
   function handleReservaCancha() {
-    history.push("/homedos");
+    history.push("/home");
   }
 
   const toggleDrawer =
@@ -143,7 +143,7 @@ export default function MenuHamburguesa() {
               onClick={handlePlaying}
               variant="contained"
             >
-              QUERIO JUGAR
+              QUIERO JUGAR
             </Button>
           </ListItem>
         )}

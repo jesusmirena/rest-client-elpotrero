@@ -229,7 +229,28 @@ export function getTeamsId(id: any) {
     return dispatch({ type: GET_TEAMS_ID, payload: res.data });
   };
 }
+export function getTeamsDetailId(id: any) {
+  return async function (dispatch: any) {
+    try {
+      const token = window.sessionStorage.getItem("jwt") || "";
+      let res = await axios.get("http://localhost:3001/team/team/" + id, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
+      return dispatch({ type: "GET_TEAM_DETAIL_ID", payload: res.data });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+}
+
+export function resetTeam() {
+  return async function (dispatch: any) {
+    return dispatch({ type: "RESET_TEAM" });
+  };
+}
 export function getPlayers() {
   return async function (dispatch: any) {
     const token = window.sessionStorage.getItem("jwt") || "";
@@ -253,7 +274,27 @@ export function orderByName(orden: any) {
     return dispatch({ type: "GET_ORDER_BY_NAME", payload: res.data });
   };
 }
+
+export function orderByNameAvailable(orden: any) {
+  return async function (dispatch: any) {
+    const token = window.sessionStorage.getItem("jwt") || "";
+    let res = await axios.get(
+      `http://localhost:3001/player/available?order=${orden}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return dispatch({
+      type: "GET_ORDER_BY_NAME_DISPONIBLE",
+      payload: res.data,
+    });
+  };
+}
+
 export function getPlayersDisponibles(orden: any) {
+  //PLAYERS NO BORRAR repetir
   return async function (dispatch: any) {
     const token = window.sessionStorage.getItem("jwt") || "";
     let res = await axios.get(
@@ -289,6 +330,24 @@ export function getOrderGender(orden: any) {
     return dispatch({ type: "GET_PLAYERS_GENDER", payload: res.data });
   };
 }
+export function getOrderGenderAvailable(orden: any) {
+  return async function (dispatch: any) {
+    const token = window.sessionStorage.getItem("jwt") || "";
+    let res = await axios.get(
+      `http://localhost:3001/player/available?gender=${orden}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return dispatch({
+      type: "GET_PLAYERS_GENDER_AVAILABLE",
+      payload: res.data,
+    });
+  };
+}
+
 export function getOrderPunctuation(orden: any) {
   return async function (dispatch: any) {
     const token = window.sessionStorage.getItem("jwt") || "";
@@ -303,6 +362,24 @@ export function getOrderPunctuation(orden: any) {
     return dispatch({ type: "GET_PLAYERS_PUNCTUATION", payload: res.data });
   };
 }
+export function getOrderPunctuationAvailable(orden: any) {
+  return async function (dispatch: any) {
+    const token = window.sessionStorage.getItem("jwt") || "";
+    let res = await axios.get(
+      `http://localhost:3001/player/available?punctuation=${orden}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return dispatch({
+      type: "GET_PLAYERS_PUNCTUATION_DISPONIBLE",
+      payload: res.data,
+    });
+  };
+}
+
 export function getOrderPosition(orden: any) {
   return async function (dispatch: any) {
     const token = window.sessionStorage.getItem("jwt") || "";
@@ -315,6 +392,23 @@ export function getOrderPosition(orden: any) {
       }
     );
     return dispatch({ type: "GET_PLAYERS_POSITION", payload: res.data });
+  };
+}
+export function getOrderPositionAvailable(orden: any) {
+  return async function (dispatch: any) {
+    const token = window.sessionStorage.getItem("jwt") || "";
+    let res = await axios.get(
+      `http://localhost:3001/player/available?position=${orden}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return dispatch({
+      type: "GET_PLAYERS_POSITION_AVAILABLE",
+      payload: res.data,
+    });
   };
 }
 export function searchByName(orden: any) {

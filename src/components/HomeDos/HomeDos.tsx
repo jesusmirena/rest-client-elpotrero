@@ -14,7 +14,7 @@ export default function HomeDos() {
           </p>
           <br />
           <Link to="/jugadores">
-          <button className={styles.btn}>Invitar Jugador</button>
+            <button className={styles.btn}>Me falta uno</button>
           </Link>
           <br />
           <Link to="/teamsId">
@@ -24,7 +24,8 @@ export default function HomeDos() {
         <div className={styles.reserva}>
           <p className={styles.infotitle}>Busca y Reservá</p>
           <p className={styles.parrafo}>
-            Conocé la disponibilidad de tus canchas preferidas. Tenés toda la información para hacer tu reserva instantánea.
+            Conocé la disponibilidad de tus canchas preferidas. Tenés toda la
+            información para hacer tu reserva instantánea.
           </p>
           <br />
           <div className={styles.datepicker}>
@@ -34,7 +35,8 @@ export default function HomeDos() {
         <div className={styles.alquila}>
           <p className={styles.infotitle}>Calificar</p>
           <p className={styles.parrafo}>
-            Califica los equipos y jugadores para mejorar la calidad de tus partidos.
+            Califica los equipos y jugadores para mejorar la calidad de tus
+            partidos.
           </p>
           <br />
           <button className={styles.btn}>Calificar</button>

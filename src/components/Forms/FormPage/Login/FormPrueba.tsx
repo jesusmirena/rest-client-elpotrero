@@ -53,7 +53,7 @@ export default function FormPrueba({ notify }: any) {
                 <Link to="#">¿Olvidaste tu contraseña?</Link>
 
                 <button className="btn" type="submit">
-                  {isLogged && <Redirect to="/homedos" />}
+                  {isLogged && <Redirect to="/home" />}
                   Ingresa
                 </button>
               </form>
