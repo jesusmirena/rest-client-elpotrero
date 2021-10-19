@@ -255,7 +255,7 @@ export function resetTeam() {
 }
 export function getPlayers() {
   return async function (dispatch: any) {
-    const token = window.sessionStorage.getItem("jwt") || "";  
+    const token = window.sessionStorage.getItem("jwt") || "";
     let res = await axios.get("http://localhost:3001/player", {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -486,7 +486,7 @@ export function filterTeam(payload: any) {
   };
 }
 
-export function getNotificaciones(id:any) {
+export function getNotificaciones(id: any) {
   return async function (dispatch: any) {
     const token = window.sessionStorage.getItem("jwt") || "";
     let res = await axios.get(`http://localhost:3001/notification/${id}`, {
@@ -498,14 +498,17 @@ export function getNotificaciones(id:any) {
   };
 }
 
-export function getNotificacionesMisEquipos(id:any) {
+export function getNotificacionesMisEquipos(id: any) {
   return async function (dispatch: any) {
     const token = window.sessionStorage.getItem("jwt") || "";
-    let res = await axios.get(`http://localhost:3001/notification/myteam/${id}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    let res = await axios.get(
+      `http://localhost:3001/notification/myteam/${id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
     return dispatch({ type: GET_NOTIFICACIONES_MY_TEAM, payload: res.data });
   };
 }
@@ -513,11 +516,15 @@ export function putNotification(payload: any) {
   return async function () {
     try {
       const token = window.sessionStorage.getItem("jwt") || "";
-      const res = await axios.put("http://localhost:3001/notification", payload,{     
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-      });
+      const res = await axios.put(
+        "http://localhost:3001/notification",
+        payload,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       return res;
     } catch (err) {
       console.log("put", err);
@@ -525,18 +532,24 @@ export function putNotification(payload: any) {
   };
 }
 
-  export function postNotification(payload: any) {
-    return async function () {
-      try {
-        const token = window.sessionStorage.getItem("jwt") || "";
-        const res = await axios.post(`http://localhost:3001/notification`, payload,{
+export function postNotification(payload: any) {
+  return async function () {
+    try {
+      const token = window.sessionStorage.getItem("jwt") || "";
+      const res = await axios.post(
+        `http://localhost:3001/notification`,
+        payload,
+        {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        });
-        return res;
-      } catch (err) {
-        console.log("post", err);
-      }
-    };
+        }
+      );
+      alert("Notificacion enviada");
+      return res;
+    } catch (err) {
+      alert("Fallo envio de notificacion");
+      console.log("post", err);
+    }
+  };
 }

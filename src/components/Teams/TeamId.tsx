@@ -20,7 +20,7 @@ export default function TeamId(props: any) {
   return (
     <div className={styles.container}>
       <div className={styles.imgcontainer}>
-        <img className={styles.img} src={imagen} alt="" />
+        <img className={styles.img} src={props.image} alt="" />
       </div>
       <div className={styles.info}>
         <h3>{props.name}</h3>

@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import {
   filterCarrito,
   filterTeam,
@@ -9,6 +9,7 @@ import {
 } from "../../../redux/actions";
 import { GiSoccerField } from "react-icons/gi";
 import styles from "./Carrito.module.scss";
+import DatepickerDisponible from "../../Card/Datepicker/DatepickerNotification";
 
 export default function CarritoDisponible() {
   const dispatch = useDispatch();
@@ -49,37 +50,43 @@ export default function CarritoDisponible() {
   return (
     <div className={styles.padre}>
       <h1 className={styles.title}>Tu equipo</h1>
-
-      <select
-        onChange={(e) => {
-          handleId(e);
-        }}
-      >
-        <option selected disabled>
-          Selecciona un equipo
-        </option>
-        {equipos.map((e: any) => (
-          <option value={e.id}>{e.name}</option>
-        ))}
-        <option value="todos">Todos los equipos</option>
-      </select>
-      <div className={styles.container}>
-        <GiSoccerField
-          className={styles.cancha}
-          onClick={handleEnviar}
-          size={70}
-        />
-
+      <div>
+        <select
+          onChange={(e) => {
+            handleId(e);
+          }}
+        >
+          <option selected disabled>
+            Selecciona un equipo
+          </option>
+          {equipos.map((e: any) => (
+            <option value={e.id}>{e.name}</option>
+          ))}
+          <option value="todos">Todos los equipos</option>
+        </select>
         <div>
+          <DatepickerDisponible />
+        </div>
+      </div>
+
+      <div className={styles.container}>
+        <div>
+          <GiSoccerField
+            className={styles.cancha}
+            onClick={handleEnviar}
+            size={70}
+          />
+        </div>
+        {/*     <div>
           {equipodisponible.length === 0 ? null : (
             <h3> Jugadores seleccionados: {equipodisponible.length} </h3>
           )}
-        </div>
+        </div> */}
         <div>
           {detail.player && (
-            <h3>
+            <h4>
               Jugadores en tu equipo: {detail.player && detail.player.length}
-            </h3>
+            </h4>
           )}
         </div>
 

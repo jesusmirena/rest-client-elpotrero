@@ -1,4 +1,4 @@
-.container{
+.container {
   display: flex;
   flex-direction: column;
   background-color: black;
@@ -16,7 +16,7 @@
 }
 .img {
   margin-top: 0.8rem;
-  width: 280px;
+  width: 200px;
   height: 200px;
   border-radius: 10px;
 }
@@ -28,7 +28,7 @@
   text-align: center;
   color: white;
 }
-.container button{
+.container button {
   width: 15rem;
   margin-left: 4rem;
 }
