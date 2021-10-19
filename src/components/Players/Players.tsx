@@ -44,7 +44,6 @@ function Players() {
   function handleOrderByPosition(orden: any) {
     dispatch(getOrderPosition(orden));
   }
-
   return (
     <div>
       <h1 className={styles.title}>Jugadores</h1>
@@ -132,20 +131,7 @@ function Players() {
                 <td>{p.punctuation} / 5</td>
                 <td>
                   <form>
-                    {p.available ? (
-                      /*    <input
-                        className={`${styles.boton} ${styles.botonInvitar}`}
-                        type="submit"
-                        name=""
-                        value="Invitar"
-                      /> */
-                      /*                       <AddCarrito players={p} />
-                              
- */
-                      <AddCarrito players={p} />
-                    ) : (
-                      <></>
-                    )}
+                    <AddCarrito players={p} />
 
                     <input
                       className={`${styles.boton} ${styles.botonCalificar}`}

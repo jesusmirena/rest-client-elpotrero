@@ -23,7 +23,7 @@ export default function Header() {
             </IconButton>
           </div>
           <div className={styles.logoContainer}>
-            <Link to="/homedos">
+            <Link to="/home">
               <img className={styles.logo} src={logo} />
             </Link>
           </div>

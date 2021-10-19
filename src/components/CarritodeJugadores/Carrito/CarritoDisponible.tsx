@@ -10,11 +10,10 @@ import {
 import { GiSoccerField } from "react-icons/gi";
 import styles from "./Carrito.module.scss";
 
-export default function Carrito() {
+export default function CarritoDisponible() {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const equipo = useSelector((state: any) => state.carrito.carrito);
   const equipodisponible = useSelector(
     (state: any) => state.carrito.carritoDisponible
   );
@@ -40,10 +39,10 @@ export default function Carrito() {
     if (equipos.length > 1) {
       return alert("elige un equipo");
     }
-    if (!equipo.length) {
+    if (!equipodisponible.length) {
       return alert("elige un jugador");
     } else {
-      history.push("/carrito");
+      history.push("/carritoAvailable");
     }
   }
 
@@ -72,8 +71,8 @@ export default function Carrito() {
         />
 
         <div>
-          {equipo.length === 0 ? null : (
-            <h3> Jugadores seleccionados: {equipo.length} </h3>
+          {equipodisponible.length === 0 ? null : (
+            <h3> Jugadores seleccionados: {equipodisponible.length} </h3>
           )}
         </div>
         <div>
@@ -86,19 +85,6 @@ export default function Carrito() {
 
         <div className={styles.containerNombre}>
           {equipodisponible.map((e: any) => {
-            return (
-              <div className={styles.containerBtn} style={{ color: "white" }}>
-                <input
-                  className={styles.btn}
-                  type="button"
-                  onClick={() => deletePlayer(e.id)}
-                  value="X"
-                />
-                {e.name}
-              </div>
-            );
-          })}
-          {equipo.map((e: any) => {
             return (
               <div className={styles.containerBtn} style={{ color: "white" }}>
                 <input

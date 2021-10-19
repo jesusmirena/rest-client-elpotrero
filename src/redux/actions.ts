@@ -12,9 +12,6 @@ import {
 
 import axios from "axios";
 
-const token = window.sessionStorage.getItem("jwt") || "";
-
-
 export async function postUsername(payload: User) {
   const response = await axios.post("http://localhost:3001/user", payload);
 }
@@ -52,7 +49,7 @@ export async function putLoginGoogle(user: any) {
 export async function postLoginGoogle(user: any) {
   try {
     const response = await axios.post(
-      "http://localhost:3001/auth//googleLogin",
+      "http://localhost:3001/auth/googleLogin",
       user
     );
     const userGoogle = response.data;
@@ -61,12 +58,13 @@ export async function postLoginGoogle(user: any) {
       payload: userGoogle,
     };
   } catch (error) {
-    console.log("ERROR DEL PUTLOGINGOOGLE", error);
+    console.log("ERROR DEL POST-LOGIN-GOOGLE", error);
   }
 }
 
 export function getUser(id: any) {
   return async function (dispatch: any) {
+    const token = window.sessionStorage.getItem("jwt") || "";
     let res = await axios.get("http://localhost:3001/user?id=" + id, {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -78,6 +76,7 @@ export function getUser(id: any) {
 
 export function getCanchasDisponible(payload: any) {
   return async function (dispatch: any) {
+    const token = window.sessionStorage.getItem("jwt") || "";
     let res = await axios.get(
       "http://localhost:3001/fields/available/" + payload,
       {
@@ -96,17 +95,25 @@ export function resetUser() {
 
 export function deleteUser(id: any) {
   return async function () {
-    const res = await axios.delete(`http://localhost:3001/user/${id}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    return res;
+    try {
+      const token = window.sessionStorage.getItem("jwt") || "";
+      const res = await axios.delete(`http://localhost:3001/user/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      alert("Usuario eliminado");
+      return res;
+    } catch (err) {
+      alert("Vuelve a intentar");
+      console.log(err);
+    }
   };
 }
 
 export function postReserva(payload: any) {
   return async function () {
+    const token = window.sessionStorage.getItem("jwt") || "";
     const res = await axios.post("http://localhost:3001/timetable", payload, {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -119,6 +126,7 @@ export function postReserva(payload: any) {
 
 export function postTeam(payload: any) {
   return async function () {
+    const token = window.sessionStorage.getItem("jwt") || "";
     const res = await axios.post("http://localhost:3001/team", payload, {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -131,13 +139,16 @@ export function postTeam(payload: any) {
 export function putUser(id: any, payload: any) {
   return async function () {
     try {
+      const token = window.sessionStorage.getItem("jwt") || "";
       const res = await axios.put(`http://localhost:3001/user/${id}`, payload, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
+      alert("Cambios realizados satisfactoriamente");
       return res;
     } catch (err) {
+      alert("Vuelve a intentar por favor");
       console.log("put", err);
     }
   };
@@ -146,6 +157,7 @@ export function putUser(id: any, payload: any) {
 export function putTeam(id: any, payload: any) {
   return async function () {
     try {
+      const token = window.sessionStorage.getItem("jwt") || "";
       const res = await axios.put(
         `http://localhost:3001/team/team/${id}`,
         payload,
@@ -155,9 +167,10 @@ export function putTeam(id: any, payload: any) {
           },
         }
       );
-      return res;
+      return alert("Enviado");
     } catch (err) {
       console.log("Error equipo", err);
+      alert("Algo salio mal");
     }
   };
 }
@@ -170,6 +183,7 @@ export function resetReserva() {
 
 export function getReserva(id: any) {
   return async function (dispatch: any) {
+    const token = window.sessionStorage.getItem("jwt") || "";
     let res = await axios.get(`http://localhost:3001/timetable/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -181,6 +195,7 @@ export function getReserva(id: any) {
 
 export function deleteReserva(id: any) {
   return async function (dispatch: any) {
+    const token = window.sessionStorage.getItem("jwt") || "";
     let res = await axios.delete(`http://localhost:3001/timetable/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -192,6 +207,7 @@ export function deleteReserva(id: any) {
 
 export function getTeams() {
   return async function (dispatch: any) {
+    const token = window.sessionStorage.getItem("jwt") || "";
     let res = await axios.get("http://localhost:3001/team/available", {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -203,6 +219,7 @@ export function getTeams() {
 
 export function getTeamsId(id: any) {
   return async function (dispatch: any) {
+    const token = window.sessionStorage.getItem("jwt") || "";
     let res = await axios.get("http://localhost:3001/team?id=" + id, {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -212,7 +229,28 @@ export function getTeamsId(id: any) {
     return dispatch({ type: GET_TEAMS_ID, payload: res.data });
   };
 }
+export function getTeamsDetailId(id: any) {
+  return async function (dispatch: any) {
+    try {
+      const token = window.sessionStorage.getItem("jwt") || "";
+      let res = await axios.get("http://localhost:3001/team/team/" + id, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
+      return dispatch({ type: "GET_TEAM_DETAIL_ID", payload: res.data });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+}
+
+export function resetTeam() {
+  return async function (dispatch: any) {
+    return dispatch({ type: "RESET_TEAM" });
+  };
+}
 export function getPlayers() {
   return async function (dispatch: any) {
     const token = window.sessionStorage.getItem("jwt") || "";  
@@ -224,15 +262,10 @@ export function getPlayers() {
     return dispatch({ type: GET_PLAYERS, payload: res.data });
   };
 }
-// export function postMercadoPago(payload: any) {
-//   return async function () {
-//     const res = await axios.post("http://localhost:3001/checkout", payload);
-//     console.log("MERCADO",res);
-//     return res;
-//   };
-// }
+
 export function orderByName(orden: any) {
   return async function (dispatch: any) {
+    const token = window.sessionStorage.getItem("jwt") || "";
     let res = await axios.get(`http://localhost:3001/player?order=${orden}`, {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -241,8 +274,29 @@ export function orderByName(orden: any) {
     return dispatch({ type: "GET_ORDER_BY_NAME", payload: res.data });
   };
 }
-export function getPlayersDisponibles(orden: any) {
+
+export function orderByNameAvailable(orden: any) {
   return async function (dispatch: any) {
+    const token = window.sessionStorage.getItem("jwt") || "";
+    let res = await axios.get(
+      `http://localhost:3001/player/available?order=${orden}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return dispatch({
+      type: "GET_ORDER_BY_NAME_DISPONIBLE",
+      payload: res.data,
+    });
+  };
+}
+
+export function getPlayersDisponibles(orden: any) {
+  //PLAYERS NO BORRAR repetir
+  return async function (dispatch: any) {
+    const token = window.sessionStorage.getItem("jwt") || "";
     let res = await axios.get(
       `http://localhost:3001/player/available?order=${orden}`,
       {
@@ -256,6 +310,7 @@ export function getPlayersDisponibles(orden: any) {
 }
 export function getSoloDisponibles() {
   return async function (dispatch: any) {
+    const token = window.sessionStorage.getItem("jwt") || "";
     let res = await axios.get(`http://localhost:3001/player/available`, {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -266,6 +321,7 @@ export function getSoloDisponibles() {
 }
 export function getOrderGender(orden: any) {
   return async function (dispatch: any) {
+    const token = window.sessionStorage.getItem("jwt") || "";
     let res = await axios.get(`http://localhost:3001/player/${orden}`, {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -274,8 +330,27 @@ export function getOrderGender(orden: any) {
     return dispatch({ type: "GET_PLAYERS_GENDER", payload: res.data });
   };
 }
+export function getOrderGenderAvailable(orden: any) {
+  return async function (dispatch: any) {
+    const token = window.sessionStorage.getItem("jwt") || "";
+    let res = await axios.get(
+      `http://localhost:3001/player/available?gender=${orden}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return dispatch({
+      type: "GET_PLAYERS_GENDER_AVAILABLE",
+      payload: res.data,
+    });
+  };
+}
+
 export function getOrderPunctuation(orden: any) {
   return async function (dispatch: any) {
+    const token = window.sessionStorage.getItem("jwt") || "";
     let res = await axios.get(
       `http://localhost:3001/player/punctuation/${orden}`,
       {
@@ -287,8 +362,27 @@ export function getOrderPunctuation(orden: any) {
     return dispatch({ type: "GET_PLAYERS_PUNCTUATION", payload: res.data });
   };
 }
+export function getOrderPunctuationAvailable(orden: any) {
+  return async function (dispatch: any) {
+    const token = window.sessionStorage.getItem("jwt") || "";
+    let res = await axios.get(
+      `http://localhost:3001/player/available?punctuation=${orden}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return dispatch({
+      type: "GET_PLAYERS_PUNCTUATION_DISPONIBLE",
+      payload: res.data,
+    });
+  };
+}
+
 export function getOrderPosition(orden: any) {
   return async function (dispatch: any) {
+    const token = window.sessionStorage.getItem("jwt") || "";
     let res = await axios.get(
       `http://localhost:3001/player/position/${orden}`,
       {
@@ -300,8 +394,26 @@ export function getOrderPosition(orden: any) {
     return dispatch({ type: "GET_PLAYERS_POSITION", payload: res.data });
   };
 }
+export function getOrderPositionAvailable(orden: any) {
+  return async function (dispatch: any) {
+    const token = window.sessionStorage.getItem("jwt") || "";
+    let res = await axios.get(
+      `http://localhost:3001/player/available?position=${orden}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return dispatch({
+      type: "GET_PLAYERS_POSITION_AVAILABLE",
+      payload: res.data,
+    });
+  };
+}
 export function searchByName(orden: any) {
   return async function (dispatch: any) {
+    const token = window.sessionStorage.getItem("jwt") || "";
     let res = await axios.get(`http://localhost:3001/player/byname/${orden}`, {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -311,20 +423,11 @@ export function searchByName(orden: any) {
   };
 }
 
-// export function getTeams(id: any) {
-//   return async function (dispatch: any) {
-//     let res = await axios.get("http://localhost:3001/team?id=" + id);
-
-//     return dispatch({ type: GET_TEAMS, payload: res.data });
-//   };
-// }
-
 export function addCarrito(payload: any) {
   return async function (dispatch: any) {
     return dispatch({ type: "ADD_CARRITO", payload });
   };
 }
-
 export function addCarritoDisponible(payload: any) {
   return async function (dispatch: any) {
     return dispatch({ type: "ADD_CARRITO_DISPONIBLE", payload });
@@ -346,6 +449,7 @@ export function putEditTeam(id: any, payload: any) {
   return async function () {
     console.log(payload);
     try {
+      const token = window.sessionStorage.getItem("jwt") || "";
       const res = await axios.put(
         `http://localhost:3001/team/team/${id}`,
         payload,
@@ -364,6 +468,7 @@ export function putEditTeam(id: any, payload: any) {
 
 export function deleteTeam(id: any) {
   return async function () {
+    const token = window.sessionStorage.getItem("jwt") || "";
     const res = await axios.delete(`http://localhost:3001/team/team/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`,

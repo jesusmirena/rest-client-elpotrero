@@ -5,17 +5,26 @@ const initialState: any = {
   teamsId: [],
   allTeams: [],
   teamDisponible: [],
+  teamDetail: [],
 };
 
 const reducer = (state = initialState, action: any) => {
   switch (action.type) {
+    case "GET_TEAM_DETAIL_ID":
+      return {
+        ...state,
+        teamDetail: action.payload,
+      };
+    case "RESET_TEAM":
+      return {
+        ...state,
+        teamDetail: [],
+      };
     case GET_TEAMS_ID:
       return {
         ...state,
-        teams: action.payload,
-        allTeams: action.payload,
         teamsId: action.payload,
-
+        allTeams: action.payload,
       };
     case GET_TEAMS:
       return {
@@ -30,7 +39,7 @@ const reducer = (state = initialState, action: any) => {
           : state.allTeams.filter((e: any) => e.id == action.payload);
       return {
         ...state,
-        teams: filter,
+        teamsId: filter,
       };
 
     default:

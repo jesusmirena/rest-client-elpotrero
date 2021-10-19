@@ -80,7 +80,6 @@ export default function EditProfile({
   function handleSubmit(e: any) {
     e.preventDefault();
     dispatch(putUser(id, userusuario.user));
-    alert("CAMBIOS REALIZADO");
   }
 
   return (

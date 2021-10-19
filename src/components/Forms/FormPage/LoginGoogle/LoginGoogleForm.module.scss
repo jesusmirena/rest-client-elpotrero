@@ -1,14 +1,42 @@
 .formBgImg {
   background: url("../../../../visuales/fondoLogin.jpg");
   color: white;
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 18rem;
+}
+.titulo {
+  font-size: 5rem;
+  font-weight: bold;
+}
 .formBgImg h2 {
   text-align: center !important;
+}
+.boton {
+  text-align: center;
+  border: solid 1px #111111;
+  font-size: 3rem;
+  width: 20rem;
+  margin-top: 0.8rem;
+  height: 6rem;
+  box-shadow: 0px 0px 10px #111111;
+  &:hover {
+    border: solid 1px #ffffff;
+  }
+}
+.botonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .form {
   background-color: #0000007c;

@@ -58,22 +58,20 @@ export default function MenuHamburguesa() {
     e.preventDefault();
     dispatch(putUser(id, { player: { available: true } }));
     setFlag(!flag);
-    alert("Vas a jugar!");
   }
 
   function handleNoPlaying(e: any) {
     e.preventDefault();
     dispatch(putUser(id, { player: { available: false } }));
     setFlag(!flag);
-    alert("Juega pronto!");
   }
 
-  function handleMisEquipos(){
-    history.push("/teamsId")
+  function handleMisEquipos() {
+    history.push("/teamsId");
   }
 
-  function handleReservaCancha(){
-    history.push("/homedos")
+  function handleReservaCancha() {
+    history.push("/home");
   }
 
   const toggleDrawer =
@@ -110,7 +108,10 @@ export default function MenuHamburguesa() {
           <ListItemText onClick={handleCrearEquipo} primary="Crear equipo" />
         </ListItem>
         <ListItem button>
-          <ListItemText onClick={handleReservaCancha} primary="Reservar cancha" />
+          <ListItemText
+            onClick={handleReservaCancha}
+            primary="Reservar cancha"
+          />
         </ListItem>
         <ListItem button>
           <ListItemText primary="Invitar jugadores" />
@@ -142,7 +143,7 @@ export default function MenuHamburguesa() {
               onClick={handlePlaying}
               variant="contained"
             >
-              QUERIO JUGAR
+              QUIERO JUGAR
             </Button>
           </ListItem>
         )}

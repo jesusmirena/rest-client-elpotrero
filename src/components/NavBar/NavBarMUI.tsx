@@ -20,7 +20,7 @@ export default function NavBarMui() {
             </li>
 
             <li className={styles.navLink}>
-              <Link to="/jugadores">ME FALTA UNO</Link>
+              <Link to="/disponibles">ME FALTA UNO</Link>
             </li>
             <li className={styles.navLink}>
               <Link to="/contacto">CONTACTO</Link>
