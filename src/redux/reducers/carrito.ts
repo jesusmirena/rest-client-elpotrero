@@ -31,13 +31,15 @@ const reducer = (state = initialState, action: any): any => {
         carritoDisponible: state.carritoDisponible.filter(
           (e: any) => e.id !== action.payload
         ),
+        carrito: state.carrito.filter((e: any) => e.id !== action.payload),
       };
-    case "FILTER_CARRITO":
+    /*   case "FILTER_CARRITO":
+      console.log("LLEGUE", action.payload);
       return {
         ...state,
         carrito: state.carrito.filter((e: any) => e.id !== action.payload),
       };
-
+ */
     default:
       return state;
   }
