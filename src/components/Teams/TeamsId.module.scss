@@ -1,7 +1,33 @@
-.container{
-  display: flex;
+/* .container {
+  //background: url("../../visuales/edit.jpg");
+  color: white;
+  //height: 100vh;
+  //max-width: 100%;
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 2rem;
+  grid-row-gap: 2rem;
+ 
+} */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 600px);
+  gap: 5rem;
+  padding: 40px;
   justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  color: black;
+}
+.containerGrid {
+  width: 80%;
+  height: 95%;
+  margin: 50px auto;
+  padding-bottom: 5rem;
+  border-radius: 1rem;
+}
+
+.titulo {
+  text-align: center;
 }

@@ -9,6 +9,8 @@ export default function Teams() {
   const dispatch = useDispatch();
   const allTeams = useSelector((state: any) => state.teams.teams);
 
+
+  let userId: any = window.sessionStorage.getItem("id");
   useEffect(() => {
     dispatch(getTeams());
   }, [dispatch]);
@@ -20,17 +22,21 @@ export default function Teams() {
           <h1>Equipos disponibles</h1>
         </div>
         <div className={styles.grid}>
-          {allTeams?.map((el: any) => {
-            return (
-              <Team
-                name={el.name}
-                image={el.image}
-                qualification={el.qualification}
-                players={el.players}
-                user={el.user.name}
-              />
-            );
-          })}
+          {allTeams &&
+            allTeams.map((el: any) => {
+              return (
+                <Team
+                  key={el.id}
+                  id={el.id}
+                  name={el.name}
+                  image={el.image}
+                  qualification={el.qualification}
+                  available={el.available}
+                  players={el.players}
+                  user={el.user}
+                />
+              );
+            })}
         </div>
       </div>
     </div>
