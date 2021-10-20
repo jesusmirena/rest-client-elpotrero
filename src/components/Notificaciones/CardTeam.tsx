@@ -2,7 +2,6 @@ import React from 'react'
 
 export default function CardTeam(props:any){
 
-    console.log("notificaciones",props.notificaciones)
     return(
         <div>
             <span>{props.teamName}</span>

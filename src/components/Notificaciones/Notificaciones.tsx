@@ -1,12 +1,17 @@
 import React ,{ useEffect, useState } from "react"
-import { getNotificaciones, putNotification,getNotificacionesMisEquipos } from "../../redux/actions";
+import { getNotificaciones, putNotification,getNotificacionesMisEquipos, getNotificacionesJugadorUnir, getNotificacionesRespuestaJugadorUnir } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import CardTeam from "./CardTeam";
+import JugadorUnir from "./JugadorUnir";
+import RespuestaJugadorUnir from "./RespuestaJugadorUnir";
 
 export default function Notificaciones(){
 const notificaciones = useSelector((state:any) => state.notificaciones.notificaciones)
 let notificacionesMisEquipos = useSelector((state:any) => state.notificaciones.notificacionesMisEquipos)
+const notificacionesJugadoresUnir = useSelector((state:any) => state.notificaciones.notificacionesJugadorUnir)
+let notificacionesRespuestaJugadoresUnir = useSelector((state:any) => state.notificaciones.notificacionesRespuestaJugadorUnir)
+ 
 
 const dispatch = useDispatch();
 const history = useHistory();
@@ -14,7 +19,9 @@ let userId: any = window.sessionStorage.getItem("id");
 
 useEffect(() => {
   dispatch(getNotificaciones(userId)); 
-  dispatch(getNotificacionesMisEquipos(userId)); 
+  dispatch(getNotificacionesMisEquipos(userId));
+  dispatch(getNotificacionesJugadorUnir(1)) 
+  dispatch(getNotificacionesRespuestaJugadorUnir(44))
 }, []);
 
 notificacionesMisEquipos = notificacionesMisEquipos.filter((n:any) => n.notification != "Sin notificaciones")
@@ -53,6 +60,15 @@ notificacionesMisEquipos = notificacionesMisEquipos.filter((n:any) => n.notifica
                   </div>
                 )})}
               </div>
+              <div>
+                {notificacionesRespuestaJugadoresUnir?.map((n:any) =>{
+                  return(
+                <RespuestaJugadorUnir
+                  teamName= {n.teamName}
+                  attending ={n.attending}
+                />
+                )})}
+              </div>
               <div>Notificaciones de Tus Equipos</div>
             <div>
               {notificacionesMisEquipos?.map((n:any)=>{
@@ -62,6 +78,17 @@ notificacionesMisEquipos = notificacionesMisEquipos.filter((n:any) => n.notifica
                 notificaciones = {n.notification}
                 />
                 )})}
+              </div>
+              <div>
+                {notificacionesJugadoresUnir.map((n:any) =>{
+                  return(
+                    <JugadorUnir
+                      key ={n.id}
+                      teamName = {n.teamName}
+                      notificaciones ={n.notification}
+                    />
+                  )
+                })}
               </div>
         </div>      
     )

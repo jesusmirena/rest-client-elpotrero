@@ -8,6 +8,8 @@ import {
   GET_TEAMS_ID,
   GET_PLAYERS,
   GET_NOTIFICACIONES_MY_TEAM,
+  GET_NOTICACIONES_EQUIPO,
+  GET_RESPUESTA_EQUIPO
 } from "./actionsNames";
 
 // import axios from '../lib/axiosConfig'
@@ -589,5 +591,53 @@ export function selectHour(payload: any) {
 export function resetCarrito() {
   return {
     type: "RESET_CARRITO",
+  };
+}
+export function getNotificacionesJugadorUnir(id: any) {
+  return async function (dispatch: any) {
+    const token = window.sessionStorage.getItem("jwt") || "";
+    let res = await axios.get(
+      `http://localhost:3001/notification/joinTeam/myteam/${id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return dispatch({ type: GET_NOTICACIONES_EQUIPO, payload: res.data });
+  };
+}
+
+export function getNotificacionesRespuestaJugadorUnir(id: any) {
+  return async function (dispatch: any) {
+    const token = window.sessionStorage.getItem("jwt") || "";
+    let res = await axios.get(
+      `http://localhost:3001/notification/joinTeam/teamrespond/${id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return dispatch({ type: GET_RESPUESTA_EQUIPO, payload: res.data });
+  };
+}
+export function putNotificationTeams(payload: any) {
+  return async function () {
+    try {
+      const token = window.sessionStorage.getItem("jwt") || "";
+      const res = await axios.put(
+        "http://localhost:3001/notification/joinTeam",
+        payload,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      return res;
+    } catch (err) {
+      console.log("put", err);
+    }
   };
 }
