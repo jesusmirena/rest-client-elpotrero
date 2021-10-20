@@ -20,7 +20,7 @@ export default function TeamId(props: any) {
   const history = useHistory();
   const [user, setUser]: any = useState([]);
   const [flag, setFlag] = useState(true);
-  const id = window.sessionStorage.getItem("id");
+  const id = window.sessionStorage.getItem("id")
 
   const teamsId = async () => {
     const data = await axios.get("http://localhost:3001/team?id=" + id);
@@ -32,6 +32,7 @@ export default function TeamId(props: any) {
     e.preventDefault();
     dispatch(putTeam(props.id, { available: true }));
     setFlag(!flag);
+    history.push("/disponibles")
   }
 
   function handleNoPlaying(e: any) {
@@ -78,7 +79,7 @@ export default function TeamId(props: any) {
         <button>Reservar Cancha </button>
       </Link>
       <Link to="/jugadores">
-        <button>Invitar jugadores</button>
+        <button>Añadir participante</button>
       </Link>
       {user[0]?.available ? (
         <>
@@ -89,7 +90,7 @@ export default function TeamId(props: any) {
             }}
             onClick={handleNoPlaying}
           >
-            NO QUIERO JUGAR
+            EQUIPO COMPLETO
           </button>
         </>
       ) : (
@@ -102,7 +103,7 @@ export default function TeamId(props: any) {
             }}
             onClick={handlePlaying}
           >
-            QUERIO JUGAR
+            INVITAR JUGADORES
           </button>
         </>
       )}
