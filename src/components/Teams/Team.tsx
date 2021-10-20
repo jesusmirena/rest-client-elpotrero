@@ -2,7 +2,7 @@ import { dividerClasses } from "@mui/material";
 import React, { useState } from "react";
 import imagen from "../../visuales/edit.jpg";
 import styles from "./Team.module.scss";
-import { putCalificarTeam, putTeam } from "../../redux/actions";
+import { putCalificarTeam, putTeam, postNotificationTeam } from "../../redux/actions";
 import { useDispatch } from "react-redux";
 
 export default function Team(props: any) {
@@ -29,21 +29,19 @@ export default function Team(props: any) {
     });
   }
 
-  let playerId = props.players?.map((p: any) => {
+ /*  let playerId = props.players?.map((p: any) => {
     return {
       id: p.id,
     };
   });
-
+ */
   function handleUnirme() {
     let payload = {
-      name: props.name,
-      image: props.image,
-      available: props.available,
-      player: [...playerId, { id: parseInt(userId) }],
+      team: props.id,
+      player: parseInt(userId)
     };
 
-    dispatch(putTeam(props.id, payload));
+    dispatch(postNotificationTeam(payload));
   }
 
   return (

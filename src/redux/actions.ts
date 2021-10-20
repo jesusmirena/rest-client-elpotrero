@@ -668,3 +668,25 @@ export function getAllReserva(id: any) {
     return dispatch({ type: GET_ALL_RESERVA, payload: res.data });
   };
 }
+
+export function postNotificationTeam(payload: any) {
+  return async function () {
+    try {
+      const token = window.sessionStorage.getItem("jwt") || "";
+      const res = await axios.post(
+        `http://localhost:3001/notification/joinTeam`,
+        payload,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      alert("Notificacion enviada");
+      return res;
+    } catch (err) {
+      alert("Fallo envio de notificacion");
+      console.log("post", err);
+    }
+  };
+}
