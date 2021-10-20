@@ -67,19 +67,28 @@ export default function TeamId(props: any) {
         <img className={styles.img} src={props.image} alt="" />
       </div>
       <div className={styles.info}>
-        <h3>{props.name}</h3>
-        <p>Calificacion: </p>
-        <p>{props.qualification}</p>
-        <p>Votos: </p>
-        <p>{props.votes}</p>
+        <h2>{props.name}</h2>
+        <br />
+        <div>
+          <h3>Calificacion: </h3>
+          <h3>{props.qualification}</h3>
+          <br />  
+          <h3>Votos: </h3>
+          <h3>{props.votes}</h3>
+        </div>
       </div>
+      <br />
+      <br />
       <button>Editar Equipo</button>
+      <br />
       <Link to="/home">
         <button>Reservar Cancha </button>
       </Link>
+      <br />
       <Link to="/jugadores">
         <button>Añadir participante</button>
       </Link>
+      <br />
       {user[0]?.available ? (
         <>
           <button
@@ -106,6 +115,7 @@ export default function TeamId(props: any) {
           </button>
         </>
       )}
+      <br />
       <button
         className={styles.btnEliminar}
         onClick={() => confirmDelete(props.id)}
@@ -120,7 +130,7 @@ export default function TeamId(props: any) {
               return (
                 <div key={el.id} className={styles.player}>
                   {/* <img className={styles.imagePlayer} src={el.image} alt="" /> */}
-                  <h3>nombre: </h3>
+                  <h3>Nombre: </h3>
                   <span>{el.name}</span>
                   {/* <h3>calificacion: </h3>
                 <span>{el.qualification}</span> */}
