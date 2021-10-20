@@ -73,11 +73,14 @@ export default function MenuHamburguesa() {
   function handleReservaCancha() {
     history.push("/home");
   }
-  function handleMisNotificaciones(){
-    history.push("/notificaciones")
+  function handleMisNotificaciones() {
+    history.push("/notificaciones");
   }
-  function handleInvitarJugadoresDisponibles(){
-    history.push("/disponibles")
+  function handleMisReservas() {
+    history.push("/misreservas");
+  }
+  function handleInvitarJugadoresDisponibles() {
+    history.push("/disponibles");
   }
 
   const toggleDrawer =
@@ -114,7 +117,10 @@ export default function MenuHamburguesa() {
           <ListItemText onClick={handleCrearEquipo} primary="Crear equipo" />
         </ListItem>
         <ListItem button>
-          <ListItemText onClick ={handleInvitarJugadoresDisponibles} primary="Invitar jugadores" />
+          <ListItemText
+            onClick={handleInvitarJugadoresDisponibles}
+            primary="Invitar jugadores"
+          />
         </ListItem>
         <ListItem button>
           <ListItemText onClick={handleMisEquipos} primary="Mis equipos" />
@@ -149,13 +155,16 @@ export default function MenuHamburguesa() {
         )}
 
         <ListItem button>
-          <ListItemText  onClick={handleMisNotificaciones} primary="Mis notificaciones" />
+          <ListItemText
+            onClick={handleMisNotificaciones}
+            primary="Mis notificaciones"
+          />
         </ListItem>
         <ListItem button>
-          <ListItemText
-            onClick={handleReservaCancha}
-            primary="ir a Home"
-          />
+          <ListItemText onClick={handleMisReservas} primary="Mis reservas" />
+        </ListItem>
+        <ListItem button>
+          <ListItemText onClick={handleReservaCancha} primary="ir a Home" />
         </ListItem>
         <ListItem button>
           <Button

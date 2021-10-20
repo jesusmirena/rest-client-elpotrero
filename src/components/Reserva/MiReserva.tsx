@@ -1,29 +1,22 @@
-
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { deleteReserva, getReserva, resetReserva } from "../../redux/actions";
 import styles from "./MiReserva.module.scss";
 
-
 export default function MiReserva(props: any) {
   const dispatch = useDispatch();
   const history = useHistory();
   const reservaData = useSelector((state: any) => state.reserva);
   let userId: any = window.sessionStorage.getItem("id");
-  
-
 
   function handleSubmit(e: any) {
     e.preventDefault();
     dispatch(deleteReserva(props.id));
-    history.push("/");
     dispatch(resetReserva());
     window.sessionStorage.removeItem("idreserva");
+    window.location.reload();
   }
-  
-
- 
 
   return (
     <div className={styles.container}>

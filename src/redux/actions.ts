@@ -223,8 +223,6 @@ export function getTeams() {
   };
 }
 
-
-
 export function getTeamsId(id: any) {
   return async function (dispatch: any) {
     const token = window.sessionStorage.getItem("jwt") || "";
@@ -475,13 +473,18 @@ export function putEditTeam(id: any, payload: any) {
 
 export function deleteTeam(id: any) {
   return async function () {
-    const token = window.sessionStorage.getItem("jwt") || "";
-    const res = await axios.delete(`http://localhost:3001/team/team/${id}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    return res;
+    try {
+      const token = window.sessionStorage.getItem("jwt") || "";
+      const res = await axios.delete(`http://localhost:3001/team/team/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return alert("Equipo eliminado");
+    } catch (err) {
+      console.log(err);
+      return alert("Vulve a intentar");
+    }
   };
 }
 export function filterTeam(payload: any) {
