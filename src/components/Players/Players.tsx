@@ -11,6 +11,7 @@ import {
   getPlayersDisponibles,
   getTeamsId,
   orderByName,
+  putPlayerQualification,
 } from "../../redux/actions";
 import SearchBar from "./SearchBar";
 import AddCarrito from "../CarritodeJugadores/Carrito/AddCarrito";
@@ -21,6 +22,10 @@ function Players() {
   const id = sessionStorage.getItem("id");
 
   const [equipo, setEquipo] = useState();
+  const [player, setPlayer] = useState({
+    id: "",
+    qualification: 0,
+  });
 
   const dispatch = useDispatch();
 
@@ -43,6 +48,21 @@ function Players() {
   }
   function handleOrderByPosition(orden: any) {
     dispatch(getOrderPosition(orden));
+  }
+
+  function handleChange(e: any, p: any) {
+    setPlayer({
+      id: p,
+      qualification: parseInt(e.target.value),
+    });
+  }
+  function handleSubmitQualification(e: any) {
+    e.preventDefault();
+    dispatch(putPlayerQualification(player));
+    setPlayer({
+      id: "",
+      qualification: 0,
+    });
   }
 
   return (
@@ -146,12 +166,23 @@ function Players() {
                     ) : (
                       <></>
                     )}
-
-                    <input
-                      className={`${styles.boton} ${styles.botonCalificar}`}
-                      type="submit"
-                      value="Calificar"
-                    />
+                    <div>
+                      <input
+                        name="qualification"
+                        onChange={(e) => handleChange(e, p.id)}
+                        placeholder="calificacion"
+                        type="number"
+                        min="0"
+                        max="5"
+                      />
+                      <input
+                        name="jugador"
+                        onClick={(e) => handleSubmitQualification(e)}
+                        className={`${styles.boton} ${styles.botonCalificar}`}
+                        type="submit"
+                        value="Calificar"
+                      />
+                    </div>
                   </form>
                 </td>
               </tr>

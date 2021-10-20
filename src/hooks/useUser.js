@@ -6,15 +6,27 @@ import { postLogin, postLoginGoogle, putLoginGoogle } from "../redux/actions";
 export default function useUser() {
   const [state, setState] = useState({ loading: false, error: false });
   const { jwt, setJWT } = useContext(Context);
-  const history = useHistory();
+
   const login = useCallback(
     async ({ mail, password }) => {
-      setState({ loading: true, error: false });
-      const usuarioGuardado = await postLogin({ mail, password });
-      window.sessionStorage.setItem("id", usuarioGuardado.payload.id);
-      window.sessionStorage.setItem("jwt", usuarioGuardado.payload.token);
-      setState({ loading: false, error: false });
-      setJWT(usuarioGuardado.payload.token);
+      try {
+        setState({ loading: true, error: false });
+        const usuarioGuardado = await postLogin({ mail, password });
+        if (
+          usuarioGuardado.payload === "Password incorrecta" ||
+          usuarioGuardado.payload === "El usuario no existe" ||
+          usuarioGuardado.payload === "Inicie sesión con google"
+        ) {
+          alert(usuarioGuardado.payload);
+          return usuarioGuardado.payload;
+        }
+        window.sessionStorage.setItem("id", usuarioGuardado.payload.id);
+        window.sessionStorage.setItem("jwt", usuarioGuardado.payload.token);
+        setState({ loading: false, error: false });
+        setJWT(usuarioGuardado.payload.token);
+      } catch (error) {
+        console.log("ERROR HOOK ", error);
+      }
     },
     [setJWT]
   );

@@ -14,6 +14,7 @@ import axios from "axios";
 
 export async function postUsername(payload: User) {
   const response = await axios.post("http://localhost:3001/user", payload);
+  return response.data;
 }
 
 export async function postLogin({ mail, password }: any) {
@@ -165,7 +166,29 @@ export function putTeam(id: any, payload: any) {
     }
   };
 }
+export function putPlayerQualification(payload: any) {
+  console.log(payload);
 
+  return async function () {
+    try {
+      const token = window.sessionStorage.getItem("jwt") || "";
+      const res = await axios.put(
+        `http://localhost:3001/player/qualification`,
+        payload,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      console.log("RESPUESTA", res);
+
+      return res;
+    } catch (err) {
+      console.log("Error put de player", err);
+    }
+  };
+}
 export function resetReserva() {
   return async function (dispatch: any) {
     return dispatch({ type: "RESET_RESERVA" });

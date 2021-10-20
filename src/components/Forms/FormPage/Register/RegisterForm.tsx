@@ -15,10 +15,18 @@ export default function RegisterForm() {
   } = useForm<User>();
   const password = useRef({});
   password.current = watch("password", "");
-  const onSubmit: SubmitHandler<User> = (data) => {
-    postUsername(data),
-      alert("Usuario Creado"),
-      console.log("usuario creado", data);
+  const onSubmit: SubmitHandler<User> = async (data) => {
+    const usuario = await postUsername(data);
+    if (
+      usuario === "El email ya existe" ||
+      usuario === "El dni ya existe" ||
+      usuario === "El nombre de usuario ya existe"
+    ) {
+      alert(usuario);
+
+      return "";
+    }
+    alert("Usuario Creado"), console.log("usuario creado", data);
     reset(), history.push("/");
   };
 
