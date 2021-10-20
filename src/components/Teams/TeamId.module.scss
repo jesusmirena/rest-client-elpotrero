@@ -4,8 +4,8 @@
   flex-direction: column;
   background-color: rgba(0, 0, 0, 0.801);
   border-radius: 25px;
-  height: 730px;
-  width: 633px;
+  height: 750px;
+  width: 643px;
   transition: transform 250ms;
   &:hover {
     transform: translate(-10px, -10px);
@@ -14,15 +14,16 @@
 .imgcontainer {
   display: flex;
   justify-content: center;
+  margin-right: 18rem;
 }
 .img {
   margin-top: 0.8rem;
-  width: 200px;
-  height: 200px;
+  width: 13rem;
+  height: 13rem;
   border-radius: 10px;
 }
 .info {
-  color: red;
+  color:white;
   margin-right: 18rem;
 }
 .info p {
@@ -77,4 +78,8 @@ h3 {
 .imagePlayer{
   width:4rem;
   height:3rem
+}
+
+.btnEliminar{
+  background-color: rgb(236, 42, 42);;
 }
