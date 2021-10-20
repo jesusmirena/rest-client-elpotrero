@@ -70,7 +70,7 @@ export default function CartDisponible() {
       <h1 className={styles.title}>
         {equipos[0] ? equipos[0].name : "ERROR no hay equipo seleccionado"}
       </h1>
-      <h3>{dates && dates}</h3>
+
       <ul className={styles.grid}>
         {jugadores.map((p: any) => {
           return (
