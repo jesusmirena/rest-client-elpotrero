@@ -20,8 +20,8 @@ let userId: any = window.sessionStorage.getItem("id");
 useEffect(() => {
   dispatch(getNotificaciones(userId)); 
   dispatch(getNotificacionesMisEquipos(userId));
-  dispatch(getNotificacionesJugadorUnir(1)) 
-  dispatch(getNotificacionesRespuestaJugadorUnir(44))
+  dispatch(getNotificacionesJugadorUnir(userId)) 
+  dispatch(getNotificacionesRespuestaJugadorUnir(userId))
 }, []);
 
 notificacionesMisEquipos = notificacionesMisEquipos.filter((n:any) => n.notification != "Sin notificaciones")
