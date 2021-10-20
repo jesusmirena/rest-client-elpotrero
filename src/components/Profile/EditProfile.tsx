@@ -162,19 +162,19 @@ export default function EditProfile({
             <option selected={true} disabled value="Default">
               Escoge una posicion
             </option>
-            <option value="GOALKEEPER">Portero</option>
-            <option value="DEFENDER">Defensa</option>
-            <option value="MIDFIELDER">Centrocampista</option>
-            <option value="ATTACKER">Delantero</option>
+            <option value="GOALKEEPER">ARQUERO</option>
+            <option value="DEFENDER">DEFENSOR</option>
+            <option value="MIDFIELDER">MEDIOCAMPISTA</option>
+            <option value="ATTACKER">ATACANTE</option>
           </select>
           <label className={styles.label}>Genero</label>
           <select onChange={handleGen}>
             <option selected={true} disabled value="Default">
               Escoge un genero
             </option>
-            <option value="FEMALE">Femenino</option>
-            <option value="MALE">Masculino</option>
-            <option value="UNDEFINED">Otro</option>
+            <option value="FEMALE">FEMENINO</option>
+            <option value="MALE">MASCULINO</option>
+            <option value="UNDEFINED">OTRO</option>
           </select>
 
           <button onClick={handleSubmit} className={styles.btn}>
