@@ -32,3 +32,20 @@
 .cancha {
   cursor: pointer;
 }
+
+.select {
+  text-align: center;
+
+  color: white;
+  font-size: 1rem;
+}
+.selectHora {
+  border-radius: 10px;
+  outline: none;
+  text-decoration: none;
+  border: 1px solid white;
+
+  background-color: #000000;
+  margin: 1rem;
+  color: white;
+}

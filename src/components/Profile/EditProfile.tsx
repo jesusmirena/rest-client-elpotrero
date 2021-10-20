@@ -20,6 +20,34 @@ export default function EditProfile({
   votes,
   id,
 }: any) {
+  const cloud_name = "dkkwjslk9";
+  const upload_preset = "kzhe1mvq";
+
+  const handleClick = (e: any) => {
+    e.preventDefault();
+    const { files }: any = document.querySelector(".app_uploadInput");
+    const formData = new FormData();
+    formData.append("file", files[0]);
+    formData.append("upload_preset", upload_preset);
+    const options = {
+      method: "POST",
+      body: formData,
+    };
+    return fetch(
+      `https://api.Cloudinary.com/v1_1/${cloud_name}/image/upload`,
+      options
+    )
+      .then((res) => res.json())
+      .then((res) => {
+        setUser({
+          ...user,
+          image: res.secure_url,
+        }); //url de la imagen
+        console.log("img", res.secure_url);
+      })
+      .catch((err) => console.log(err));
+  };
+
   const [user, setUser] = useState({
     name: name,
     userName: userName,
@@ -80,7 +108,6 @@ export default function EditProfile({
   function handleSubmit(e: any) {
     e.preventDefault();
     dispatch(putUser(id, userusuario.user));
-    alert("CAMBIOS REALIZADO");
   }
 
   return (
@@ -90,13 +117,23 @@ export default function EditProfile({
       </div> */}
       <div className={styles.container}>
         <form className={styles.formContainer}>
-          <label className={styles.label}>URL imagen</label>
-          <input
-            className={styles.formInput}
-            type="text"
-            name="image"
-            onChange={handleChange}
-          />
+          <label className={styles.label}>Imagen</label>
+          {/*  <input
+          
+          className={styles.formInput}
+          type="text"
+          name="image"
+        onChange={handleChange}/> */}
+          <div className={styles.file}>
+            <input
+              style={{ borderRadius: "10px" }}
+              type="file"
+              className="app_uploadInput"
+            />
+          </div>
+          <button className={styles.btnImg} onClick={handleClick}>
+            Cargar imagen
+          </button>
           <label className={styles.label}>Nombre</label>
           <input
             className={styles.formInput}
@@ -125,19 +162,19 @@ export default function EditProfile({
             <option selected={true} disabled value="Default">
               Escoge una posicion
             </option>
-            <option value="GOALKEEPER">Portero</option>
-            <option value="DEFENDER">Defensa</option>
-            <option value="MIDFIELDER">Centrocampista</option>
-            <option value="ATTACKER">Delantero</option>
+            <option value="GOALKEEPER">ARQUERO</option>
+            <option value="DEFENDER">DEFENSOR</option>
+            <option value="MIDFIELDER">MEDIOCAMPISTA</option>
+            <option value="ATTACKER">ATACANTE</option>
           </select>
           <label className={styles.label}>Genero</label>
           <select onChange={handleGen}>
             <option selected={true} disabled value="Default">
               Escoge un genero
             </option>
-            <option value="FEMALE">Femenino</option>
-            <option value="MALE">Masculino</option>
-            <option value="UNDEFINED">Otro</option>
+            <option value="FEMALE">FEMENINO</option>
+            <option value="MALE">MASCULINO</option>
+            <option value="UNDEFINED">OTRO</option>
           </select>
 
           <button onClick={handleSubmit} className={styles.btn}>

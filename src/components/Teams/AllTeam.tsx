@@ -2,10 +2,10 @@ import { dividerClasses } from "@mui/material";
 import React, { useState } from "react";
 import imagen from "../../visuales/edit.jpg";
 import styles from "./Team.module.scss";
-import { putCalificarTeam, putTeam, postNotificationTeam } from "../../redux/actions";
+import { putCalificarTeam, putTeam } from "../../redux/actions";
 import { useDispatch } from "react-redux";
 
-export default function Team(props: any) {
+export default function AllTeam(props: any) {
   const dispatch = useDispatch();
   const [calificacion, setCalificacion] = useState({
     id: 0,
@@ -29,37 +29,35 @@ export default function Team(props: any) {
     });
   }
 
- /*  let playerId = props.players?.map((p: any) => {
+  let playerId = props.players.map((p: any) => {
     return {
       id: p.id,
     };
   });
- */
-  function handleUnirme() {
+
+  /* function handleUnirme() {
     let payload = {
-      team: props.id,
-      player: parseInt(userId)
+      name: props.name,
+      image: props.image,
+      available: props.available,
+      player: [...playerId, { id: parseInt(userId) }],
     };
 
-    dispatch(postNotificationTeam(payload));
-  }
+    dispatch(putTeam(props.id, payload));
+  } */
 
   return (
     <div className={styles.container}>
       <div className={styles.imgcontainer}>
         <img className={styles.img} src={props.image} alt="" />
       </div>
-
       <div className={styles.info}>
-        <div>
-          <h3>{props && props.name}</h3>
-          <p>Calificacion: </p>
-          <p>{props && props.qualification}</p>
-          <p>Capitan: </p>
-          <p>{props && props.user}</p>
-        </div>
+        <h3>{props.name}</h3>
+        <p>Calificacion: </p>
+        <p>{props.qualification}</p>
+        <p>Capitan: </p>
+        <p>{props.user}</p>
       </div>
-
       <p className={styles.span}>Jugadores:</p>
       {props.players &&
         props.players.map((el: any) => {
@@ -70,7 +68,7 @@ export default function Team(props: any) {
           );
         })}
       <br />
-      <button onClick={handleUnirme}>Unirme</button>
+      {/* <button onClick={handleUnirme}>Unirme</button> */}
       <select
         onChange={(e) => handleCalificar(e)}
         name="Calificar"

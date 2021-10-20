@@ -1,6 +1,7 @@
 import { GET_PLAYERS } from "../actionsNames";
 const initialState: any = {
   jugadores: [],
+  jugadoresDisponibles: [],
 };
 
 const reducer = (state: any = initialState, action: any): any => {
@@ -10,12 +11,34 @@ const reducer = (state: any = initialState, action: any): any => {
         ...state,
         jugadores: action.payload,
       };
-    case "GET_ORDER_BY_NAME":
+    case "GET_SOLO_DISPONIBLES":
       return {
         ...state,
-        jugadores: action.payload,
+        jugadoresDisponibles: action.payload,
       };
-    case "GET_SOLO_DISPONIBLES":
+
+    case "GET_ORDER_BY_NAME_DISPONIBLE":
+      return {
+        ...state,
+        jugadoresDisponibles: action.payload,
+      };
+    case "GET_PLAYERS_PUNCTUATION_DISPONIBLE":
+      return {
+        ...state,
+        jugadoresDisponibles: action.payload,
+      };
+    case "GET_PLAYERS_GENDER_AVAILABLE":
+      return {
+        ...state,
+        jugadoresDisponibles: action.payload,
+      };
+    case "GET_PLAYERS_POSITION_AVAILABLE":
+      return {
+        ...state,
+        jugadoresDisponibles: action.payload,
+      };
+
+    case "GET_ORDER_BY_NAME":
       return {
         ...state,
         jugadores: action.payload,

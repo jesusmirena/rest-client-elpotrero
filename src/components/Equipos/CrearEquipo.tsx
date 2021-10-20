@@ -12,7 +12,8 @@ export default function CrearEquipo() {
 
   const [team, setTeam] = useState({
     name: "",
-    image: "",
+    image:
+      "https://scontent.feze11-1.fna.fbcdn.net/v/t1.6435-9/246721314_10223753867867303_1359235114715575403_n.jpg?_nc_cat=106&_nc_rgb565=1&ccb=1-5&_nc_sid=730e14&_nc_eui2=AeHiQRam5DB0a4N0N8b9MxaMrRFOMM8mUEqtEU4wzyZQSlsE1tnFjR6RRpKaHn3eLQ4&_nc_ohc=IMzc8wsL-vMAX9KUPjp&_nc_ht=scontent.feze11-1.fna&oh=c0722c386816ce28a8825a0f38b151c5&oe=6195E926",
     available: true,
     id: id,
   });
@@ -34,15 +35,13 @@ export default function CrearEquipo() {
     history.push("/jugadores");
   }
   console.log();
-  
+
   function handleChange(e: any) {
     setTeam({
       ...team,
       [e.target.name]: e.target.value,
     });
   }
-
-  console.log("TEEMCREAR",team);
 
   return (
     <div className={styles.background}>
@@ -57,19 +56,8 @@ export default function CrearEquipo() {
               name="name"
               type="text"
             />
-            {/*             <p className={styles.formLabel}>Nombre del equipo </p>
-             */}{" "}
           </div>
-          <div className={styles.formDiv}>
-            <input
-              placeholder="URL imagen del equipo"
-              className={styles.formInput}
-              onChange={handleChange}
-              name="image"
-              type="text"
-            />
-            {/* <p className={styles.formLabel}>Imagen del equipo </p> */}
-          </div>
+
           <div className={styles.btncontainer}>
             <button type="submit" className={styles.btn}>
               Crear equipo

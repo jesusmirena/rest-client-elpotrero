@@ -58,22 +58,29 @@ export default function MenuHamburguesa() {
     e.preventDefault();
     dispatch(putUser(id, { player: { available: true } }));
     setFlag(!flag);
-    alert("Vas a jugar!");
   }
 
   function handleNoPlaying(e: any) {
     e.preventDefault();
     dispatch(putUser(id, { player: { available: false } }));
     setFlag(!flag);
-    alert("Juega pronto!");
   }
 
-  function handleMisEquipos(){
-    history.push("/teamsId")
+  function handleMisEquipos() {
+    history.push("/teamsId");
   }
 
-  function handleReservaCancha(){
-    history.push("/homedos")
+  function handleReservaCancha() {
+    history.push("/home");
+  }
+  function handleMisNotificaciones() {
+    history.push("/notificaciones");
+  }
+  function handleMisReservas() {
+    history.push("/misreservas");
+  }
+  function handleInvitarJugadoresDisponibles() {
+    history.push("/disponibles");
   }
 
   const toggleDrawer =
@@ -110,10 +117,10 @@ export default function MenuHamburguesa() {
           <ListItemText onClick={handleCrearEquipo} primary="Crear equipo" />
         </ListItem>
         <ListItem button>
-          <ListItemText onClick={handleReservaCancha} primary="Reservar cancha" />
-        </ListItem>
-        <ListItem button>
-          <ListItemText primary="Invitar jugadores" />
+          <ListItemText
+            onClick={handleInvitarJugadoresDisponibles}
+            primary="Invitar jugadores"
+          />
         </ListItem>
         <ListItem button>
           <ListItemText onClick={handleMisEquipos} primary="Mis equipos" />
@@ -142,13 +149,22 @@ export default function MenuHamburguesa() {
               onClick={handlePlaying}
               variant="contained"
             >
-              QUERIO JUGAR
+              QUIERO JUGAR
             </Button>
           </ListItem>
         )}
 
         <ListItem button>
-          <ListItemText primary="Eliminar equipo" />
+          <ListItemText
+            onClick={handleMisNotificaciones}
+            primary="Mis notificaciones"
+          />
+        </ListItem>
+        <ListItem button>
+          <ListItemText onClick={handleMisReservas} primary="Mis reservas" />
+        </ListItem>
+        <ListItem button>
+          <ListItemText onClick={handleReservaCancha} primary="ir a Home" />
         </ListItem>
         <ListItem button>
           <Button

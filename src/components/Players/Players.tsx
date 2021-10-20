@@ -152,20 +152,7 @@ function Players() {
                 <td>{p.punctuation} / 5</td>
                 <td>
                   <form>
-                    {p.available ? (
-                      /*    <input
-                        className={`${styles.boton} ${styles.botonInvitar}`}
-                        type="submit"
-                        name=""
-                        value="Invitar"
-                      /> */
-                      /*                       <AddCarrito players={p} />
-                              
- */
-                      <AddCarrito players={p} />
-                    ) : (
-                      <></>
-                    )}
+                    {p.available ? <AddCarrito players={p} /> : <></>}
                     <div>
                       <input
                         name="qualification"

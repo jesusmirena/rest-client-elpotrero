@@ -133,10 +133,10 @@ export default function RegisterForm() {
             <option selected={true} disabled value="Default">
               Escoge una posicion
             </option>
-            <option value="GOALKEEPER">Portero</option>
-            <option value="DEFENDER">Defensa</option>
-            <option value="MIDFIELDER">Centrocampista</option>
-            <option value="ATTACKER">Delantero</option>
+            <option value="GOALKEEPER">ARQUERO</option>
+            <option value="DEFENDER">DEFENSOR</option>
+            <option value="MIDFIELDER">MEDIOCAMPISTA</option>
+            <option value="ATTACKER">ATACANTE</option>
           </select>
         </div>
         <div className={styles.formDiv}>
@@ -145,9 +145,9 @@ export default function RegisterForm() {
             <option selected={true} disabled value="Default">
               Escoge un genero
             </option>
-            <option value="FEMALE">femenino</option>
-            <option value="MALE">masculino</option>
-            <option value="UNDEFINED">otro</option>
+            <option value="FEMALE">FEMENINO</option>
+            <option value="MALE">MASCULINO</option>
+            <option value="UNDEFINED">OTRO</option>
           </select>
         </div>
         <div className={styles.btncontainer}>

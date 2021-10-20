@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { deleteReserva, getReserva } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../redux/store";
 import { useHistory } from "react-router-dom";
 import useUser from "../../hooks/useUser";
 import { Redirect } from "react-router";

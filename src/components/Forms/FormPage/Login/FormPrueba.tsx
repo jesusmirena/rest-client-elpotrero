@@ -54,7 +54,7 @@ export default function FormPrueba({ notify }: any) {
                 <Link to="#">¿Olvidaste tu contraseña?</Link>
 
                 <button className="btn" type="submit">
-                  {isLogged ? <Redirect to="/homedos" /> : <Redirect to="/" />}
+                  {isLogged ? <Redirect to="/home" /> : <Redirect to="/" />}
                   Ingresa
                 </button>
               </form>
@@ -77,8 +77,6 @@ export default function FormPrueba({ notify }: any) {
           </div>
         </div>
       </div>
-      ){/* } */}
-      {/* {hasLoginError && <h2>Credentials are invalid</h2>} */}
     </>
   );
 }

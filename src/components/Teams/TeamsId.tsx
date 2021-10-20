@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getTeams, getTeamsId } from "../../redux/actions";
-import styles from "./Teams.module.scss";
+import styles from "./TeamsId.module.scss";
 import TeamId from "./TeamId";
 
 export default function Teams() {
@@ -16,7 +16,7 @@ export default function Teams() {
   }, []);
 
   return (
-    <div>
+    <div className={styles.container}>
       <div className={styles.containerGrid}>
         <div className={styles.titulo}>
           <h1>Mis equipos</h1>
@@ -26,10 +26,13 @@ export default function Teams() {
             allTeams.map((el: any) => {
               return (
                 <TeamId
+                  key={el.id}
                   id={el.id}
                   name={el.name}
                   image={el.image}
                   qualification={el.qualification}
+                  players={el.players}
+                  votes={el.votes}
                 />
               );
             })}

@@ -33,8 +33,8 @@
 
 .btn {
   margin: 1rem auto;
-  color: black;
-  background-color: white;
+  color: white;
+  background-color: rgb(0, 0, 0);
 }
 
 .label {
@@ -93,4 +93,14 @@
 
 .c {
   margin: 2rem auto;
+}
+
+.file {
+  color: white;
+  margin: 1rem auto;
+}
+
+.btnImg {
+  background-color: rgb(0, 0, 0);
+  padding: 12px 25px;
 }

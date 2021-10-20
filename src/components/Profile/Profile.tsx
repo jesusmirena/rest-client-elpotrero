@@ -8,6 +8,7 @@ import EditProfile from "./EditProfile";
 import useUser from "../../hooks/useUser";
 import { useHistory } from "react-router";
 import { margin } from "@mui/material/node_modules/@mui/system";
+import { playersPosition } from "../Teams/Funciones/PlayersPosition";
 
 export default function Profile() {
   const profile = window.sessionStorage.getItem("id");
@@ -48,7 +49,6 @@ export default function Profile() {
   function handleConfirmar(e: any) {
     e.preventDefault();
     dispatch(deleteUser(user.id));
-    alert("GRACIAS POR CONFIAR EN NOSOTROS");
     logout();
     history.push("/");
   }
@@ -110,7 +110,9 @@ export default function Profile() {
               <label className={styles.label}>Dni</label>
               <p className={styles.txt}>{user.dni}</p>
               <label className={styles.label}>Posicion</label>
-              <p className={styles.txt}>{user.player?.position}</p>
+              <p className={styles.txt}>
+                {playersPosition(user.player?.position)}
+              </p>
             </div>
           </div>
         </div>
