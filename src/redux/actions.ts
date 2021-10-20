@@ -569,7 +569,25 @@ export function putCalificarTeam(payload: any) {
       return alert("Calificaste con exito");
     } catch (err) {
       console.log("Error equipo", err);
-      alert("Algo salio mal");
+      alert("Algo salio mal invitando");
     }
+  };
+}
+
+export function selectDay(payload: any) {
+  return {
+    type: "SELECT_DAY",
+    payload,
+  };
+}
+export function selectHour(payload: any) {
+  return {
+    type: "SELECT_HOUR",
+    payload,
+  };
+}
+export function resetCarrito() {
+  return {
+    type: "RESET_CARRITO",
   };
 }

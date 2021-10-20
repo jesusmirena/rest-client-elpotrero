@@ -43,8 +43,6 @@ export default function CrearEquipo() {
     });
   }
 
-  console.log("TEEMCREAR", team);
-
   return (
     <div className={styles.background}>
       <h2 style={{ color: "black" }}>Arma tu equipo</h2>

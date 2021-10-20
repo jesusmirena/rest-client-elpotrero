@@ -17,6 +17,10 @@ export default function HomeDos() {
             <button className={styles.btn}>Me falta uno</button>
           </Link>
           <br />
+          <Link to="/jugadores">
+            <button className={styles.btn}>Jugadores</button>
+          </Link>
+          <br />
           <Link to="/teamsId">
             <button className={styles.btn}>Mis equipos</button>
           </Link>

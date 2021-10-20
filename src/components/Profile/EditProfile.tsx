@@ -20,6 +20,34 @@ export default function EditProfile({
   votes,
   id,
 }: any) {
+  const cloud_name = "dkkwjslk9";
+  const upload_preset = "kzhe1mvq";
+
+  const handleClick = (e: any) => {
+    e.preventDefault();
+    const { files }: any = document.querySelector(".app_uploadInput");
+    const formData = new FormData();
+    formData.append("file", files[0]);
+    formData.append("upload_preset", upload_preset);
+    const options = {
+      method: "POST",
+      body: formData,
+    };
+    return fetch(
+      `https://api.Cloudinary.com/v1_1/${cloud_name}/image/upload`,
+      options
+    )
+      .then((res) => res.json())
+      .then((res) => {
+        setUser({
+          ...user,
+          image: res.secure_url,
+        }); //url de la imagen
+        console.log("img", res.secure_url);
+      })
+      .catch((err) => console.log(err));
+  };
+
   const [user, setUser] = useState({
     name: name,
     userName: userName,
@@ -89,13 +117,23 @@ export default function EditProfile({
       </div> */}
       <div className={styles.container}>
         <form className={styles.formContainer}>
-          <label className={styles.label}>URL imagen</label>
-          <input
-            className={styles.formInput}
-            type="text"
-            name="image"
-            onChange={handleChange}
-          />
+          <label className={styles.label}>Imagen</label>
+          {/*  <input
+          
+          className={styles.formInput}
+          type="text"
+          name="image"
+        onChange={handleChange}/> */}
+          <div className={styles.file}>
+            <input
+              style={{ borderRadius: "10px" }}
+              type="file"
+              className="app_uploadInput"
+            />
+          </div>
+          <button className={styles.btnImg} onClick={handleClick}>
+            Cargar imagen
+          </button>
           <label className={styles.label}>Nombre</label>
           <input
             className={styles.formInput}

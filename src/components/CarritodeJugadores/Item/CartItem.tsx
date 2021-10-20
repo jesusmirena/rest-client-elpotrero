@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { putTeam } from "../../../redux/actions";
+import { putTeam, resetCarrito } from "../../../redux/actions";
 import styles from "./CartItem.module.scss";
 export default function CartItem() {
   const jugadores = useSelector((state: any) => state.carrito.carrito);
@@ -25,6 +25,7 @@ export default function CartItem() {
 
   function handleSubmit(e: any) {
     dispatch(putTeam(equipos[0].id, state));
+    dispatch(resetCarrito());
   }
 
   useEffect(() => {
@@ -46,8 +47,8 @@ export default function CartItem() {
       <ul className={styles.grid}>
         {jugadores.map((p: any) => {
           return (
-            <li>
-              <div>
+            <li key={p.id}>
+              <div key={p.id}>
                 <p className={styles.titulo}>{p.name}</p>
                 <img src={p.image} alt="Jugador" />
               </div>
@@ -57,7 +58,7 @@ export default function CartItem() {
       </ul>
       <div className={styles.btnC}>
         {equipos[0] ? (
-          <Link to="/jugadores">
+          <Link to="/home">
             <button className={styles.btn} type="submit" onClick={handleSubmit}>
               Enviar
             </button>

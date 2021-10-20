@@ -1,6 +1,8 @@
 const initialState: any = {
   carrito: [],
   carritoDisponible: [],
+  horario: [],
+  fecha: [],
 };
 
 const reducer = (state = initialState, action: any): any => {
@@ -33,13 +35,23 @@ const reducer = (state = initialState, action: any): any => {
         ),
         carrito: state.carrito.filter((e: any) => e.id !== action.payload),
       };
-    /*   case "FILTER_CARRITO":
-      console.log("LLEGUE", action.payload);
+
+    case "SELECT_DAY":
       return {
         ...state,
-        carrito: state.carrito.filter((e: any) => e.id !== action.payload),
+        fecha: action.payload,
       };
- */
+    case "SELECT_HOUR":
+      return {
+        ...state,
+        horario: action.payload,
+      };
+    case "RESET_CARRITO":
+      return {
+        ...state,
+        carrito: [],
+        carritoDisponible: [],
+      };
     default:
       return state;
   }

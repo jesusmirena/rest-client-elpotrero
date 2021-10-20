@@ -1,19 +1,38 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { putTeam } from "../../../redux/actions";
+import {
+  postNotification,
+  putTeam,
+  resetCarrito,
+} from "../../../redux/actions";
 import styles from "./CartItem.module.scss";
 export default function CartDisponible() {
   const jugadores = useSelector(
     (state: any) => state.carrito.carritoDisponible
   );
+  try {
+    var dates = useSelector((state: any) => state.carrito.fecha);
+  } catch (err) {
+    console.log(err);
+  }
   const equipos = useSelector((state: any) => state.teams.teamsId);
+  const hora = useSelector((state: any) => state.carrito.horario);
+
   const dispatch = useDispatch();
 
   const [state, setstate] = useState({
     name: equipos[0] ? equipos[0].name : "",
     image: equipos[0] ? equipos[0].image : "",
     available: true,
+    player: [],
+  });
+
+  const [notification, setNotification] = useState({
+    day: dates,
+    hour: hora,
+    duration: 1,
+    team: equipos[0] ? equipos[0].id : "",
     player: [],
   });
 
@@ -27,13 +46,19 @@ export default function CartDisponible() {
 
   function handleSubmit(e: any) {
     dispatch(putTeam(equipos[0].id, state));
+    dispatch(resetCarrito());
+    dispatch(postNotification(notification));
   }
 
   useEffect(() => {
-    setstate({
-      ...state,
+    setNotification({
+      ...notification,
       player: arreglo,
-    });
+    }),
+      setstate({
+        ...state,
+        player: arreglo,
+      });
   }, [dispatch]);
 
   return (
@@ -45,10 +70,11 @@ export default function CartDisponible() {
       <h1 className={styles.title}>
         {equipos[0] ? equipos[0].name : "ERROR no hay equipo seleccionado"}
       </h1>
+      <h3>{dates && dates}</h3>
       <ul className={styles.grid}>
         {jugadores.map((p: any) => {
           return (
-            <li>
+            <li key={p.id}>
               <div>
                 <p className={styles.titulo}>{p.name}</p>
                 <img src={p.image} alt="Jugador" />
@@ -59,7 +85,7 @@ export default function CartDisponible() {
       </ul>
       <div className={styles.btnC}>
         {equipos[0] ? (
-          <Link to="/disponibles">
+          <Link to="/home">
             <button className={styles.btn} type="submit" onClick={handleSubmit}>
               Enviar
             </button>

@@ -29,7 +29,7 @@ export default function Team(props: any) {
     });
   }
 
-  let playerId = props.players.map((p: any) => {
+  let playerId = props.players?.map((p: any) => {
     return {
       id: p.id,
     };
@@ -51,13 +51,17 @@ export default function Team(props: any) {
       <div className={styles.imgcontainer}>
         <img className={styles.img} src={props.image} alt="" />
       </div>
+
       <div className={styles.info}>
-        <h3>{props.name}</h3>
-        <p>Calificacion: </p>
-        <p>{props.qualification}</p>
-        <p>Capitan: </p>
-        <p>{props.user}</p>
+        <div>
+          <h3>{props && props.name}</h3>
+          <p>Calificacion: </p>
+          <p>{props && props.qualification}</p>
+          <p>Capitan: </p>
+          <p>{props && props.user}</p>
+        </div>
       </div>
+
       <p className={styles.span}>Jugadores:</p>
       {props.players &&
         props.players.map((el: any) => {

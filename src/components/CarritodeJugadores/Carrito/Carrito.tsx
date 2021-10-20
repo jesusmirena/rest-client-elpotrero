@@ -60,7 +60,9 @@ export default function Carrito() {
           Selecciona un equipo
         </option>
         {equipos.map((e: any) => (
-          <option value={e.id}>{e.name}</option>
+          <option key={e.id} value={e.id}>
+            {e.name}
+          </option>
         ))}
         <option value="todos">Todos los equipos</option>
       </select>
@@ -72,23 +74,23 @@ export default function Carrito() {
         />
 
         <div>
-          {equipo.length === 0 ? null : (
-            <h3> Jugadores seleccionados: {equipo.length} </h3>
-          )}
-        </div>
-        <div>
           {detail.player && (
-            <h3>
+            <h4>
               Jugadores en tu equipo: {detail.player && detail.player.length}
-            </h3>
+            </h4>
           )}
         </div>
 
         <div className={styles.containerNombre}>
           {equipodisponible.map((e: any) => {
             return (
-              <div className={styles.containerBtn} style={{ color: "white" }}>
+              <div
+                key={e.id}
+                className={styles.containerBtn}
+                style={{ color: "white" }}
+              >
                 <input
+                  key={e.id}
                   className={styles.btn}
                   type="button"
                   onClick={() => deletePlayer(e.id)}
@@ -100,8 +102,13 @@ export default function Carrito() {
           })}
           {equipo.map((e: any) => {
             return (
-              <div className={styles.containerBtn} style={{ color: "white" }}>
+              <div
+                key={e.id}
+                className={styles.containerBtn}
+                style={{ color: "white" }}
+              >
                 <input
+                  key={e.id}
                   className={styles.btn}
                   type="button"
                   onClick={() => deletePlayer(e.id)}

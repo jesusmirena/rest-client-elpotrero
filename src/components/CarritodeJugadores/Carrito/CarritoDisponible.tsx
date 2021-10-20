@@ -6,10 +6,19 @@ import {
   filterTeam,
   getTeamsDetailId,
   resetTeam,
+  selectHour,
 } from "../../../redux/actions";
 import { GiSoccerField } from "react-icons/gi";
 import styles from "./Carrito.module.scss";
 import DatepickerDisponible from "../../Card/Datepicker/DatepickerNotification";
+
+let hours: any = [];
+let inicialTime = 10;
+let endTime = 23;
+while (inicialTime < endTime) {
+  hours.push(inicialTime + ":00");
+  inicialTime++;
+}
 
 export default function CarritoDisponible() {
   const dispatch = useDispatch();
@@ -20,6 +29,7 @@ export default function CarritoDisponible() {
   );
   const equipos = useSelector((state: any) => state.teams.teamsId);
   const detail = useSelector((state: any) => state.teams.teamDetail);
+  const hour = useSelector((state: any) => state.carrito.horario);
 
   function deletePlayer(e: any) {
     dispatch(filterCarrito(e));
@@ -38,13 +48,20 @@ export default function CarritoDisponible() {
 
   function handleEnviar() {
     if (equipos.length > 1) {
-      return alert("elige un equipo");
+      return alert("Elige un equipo");
     }
     if (!equipodisponible.length) {
-      return alert("elige un jugador");
+      return alert("Elige un jugador");
+    }
+    if (!hour.length) {
+      return alert("Elige un horario");
     } else {
       history.push("/carritoAvailable");
     }
+  }
+
+  function handleSelectHour(e: any) {
+    dispatch(selectHour(e.target.value));
   }
 
   return (
@@ -60,12 +77,24 @@ export default function CarritoDisponible() {
             Selecciona un equipo
           </option>
           {equipos.map((e: any) => (
-            <option value={e.id}>{e.name}</option>
+            <option key={e.id} value={e.id}>
+              {e.name}
+            </option>
           ))}
           <option value="todos">Todos los equipos</option>
         </select>
         <div>
           <DatepickerDisponible />
+        </div>
+        <div>
+          <select onChange={handleSelectHour} className={styles.selectHora}>
+            <option className={styles.select}>Elige un horario</option>
+            {hours.map((g: any) => (
+              <option className={styles.select} key={g} value={g}>
+                {g}
+              </option>
+            ))}
+          </select>
         </div>
       </div>
 
@@ -77,11 +106,6 @@ export default function CarritoDisponible() {
             size={70}
           />
         </div>
-        {/*     <div>
-          {equipodisponible.length === 0 ? null : (
-            <h3> Jugadores seleccionados: {equipodisponible.length} </h3>
-          )}
-        </div> */}
         <div>
           {detail.player && (
             <h4>
@@ -93,7 +117,11 @@ export default function CarritoDisponible() {
         <div className={styles.containerNombre}>
           {equipodisponible.map((e: any) => {
             return (
-              <div className={styles.containerBtn} style={{ color: "white" }}>
+              <div
+                key={e.id}
+                className={styles.containerBtn}
+                style={{ color: "white" }}
+              >
                 <input
                   className={styles.btn}
                   type="button"

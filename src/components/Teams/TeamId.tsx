@@ -8,11 +8,11 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import useUser from "../../hooks/useUser";
 
-function playersPosition(el: any){
-  if(el === "ATTACKER" ) return "ATACANTE";
-  if(el === "MIDFIELDER" ) return "MEDIOCAMPISTA";
-  if(el === "GOALKEEPER" ) return "ARQUERO";
-  if(el === "DEFENDER" ) return "DEFENSOR";
+function playersPosition(el: any) {
+  if (el === "ATTACKER") return "ATACANTE";
+  if (el === "MIDFIELDER") return "MEDIOCAMPISTA";
+  if (el === "GOALKEEPER") return "ARQUERO";
+  if (el === "DEFENDER") return "DEFENSOR";
 }
 
 export default function TeamId(props: any) {
@@ -36,7 +36,7 @@ export default function TeamId(props: any) {
 
   function handleNoPlaying(e: any) {
     e.preventDefault();
-    dispatch(putTeam(id, { available: false }));
+    dispatch(putTeam(props.id, { available: false }));
     setFlag(!flag);
   }
   useEffect(() => {
@@ -61,7 +61,6 @@ export default function TeamId(props: any) {
     }
   }
 
-
   return (
     <div className={styles.container}>
       <div className={styles.imgcontainer}>
@@ -81,7 +80,7 @@ export default function TeamId(props: any) {
       <Link to="/jugadores">
         <button>Invitar jugadores</button>
       </Link>
-      {user.data?.available ? (
+      {user[0]?.available ? (
         <>
           <button
             style={{
