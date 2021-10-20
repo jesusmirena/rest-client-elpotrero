@@ -114,12 +114,6 @@ export default function MenuHamburguesa() {
           <ListItemText onClick={handleCrearEquipo} primary="Crear equipo" />
         </ListItem>
         <ListItem button>
-          <ListItemText
-            onClick={handleReservaCancha}
-            primary="Reservar cancha"
-          />
-        </ListItem>
-        <ListItem button>
           <ListItemText onClick ={handleInvitarJugadoresDisponibles} primary="Invitar jugadores" />
         </ListItem>
         <ListItem button>
@@ -156,6 +150,12 @@ export default function MenuHamburguesa() {
 
         <ListItem button>
           <ListItemText  onClick={handleMisNotificaciones} primary="Mis notificaciones" />
+        </ListItem>
+        <ListItem button>
+          <ListItemText
+            onClick={handleReservaCancha}
+            primary="ir a Home"
+          />
         </ListItem>
         <ListItem button>
           <Button

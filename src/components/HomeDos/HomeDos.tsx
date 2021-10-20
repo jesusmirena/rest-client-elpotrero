@@ -17,10 +17,6 @@ export default function HomeDos() {
             <button className={styles.btn}>Me falta uno</button>
           </Link>
           <br />
-          <Link to="/jugadores">
-            <button className={styles.btn}>Jugadores</button>
-          </Link>
-          <br />
           <Link to="/teamsId">
             <button className={styles.btn}>Mis equipos</button>
           </Link>
@@ -43,7 +39,11 @@ export default function HomeDos() {
             partidos.
           </p>
           <br />
-          <button className={styles.btn}>Calificar</button>
+          <Link to="/jugadores">
+            <button className={styles.btn}>Jugadores</button>
+          </Link>
+          <br />
+          <button className={styles.btn}>Equipos</button>
         </div>
       </div>
     </div>

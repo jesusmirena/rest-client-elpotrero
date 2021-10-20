@@ -28,8 +28,8 @@ export default function JugadorUnir(props:any){
 
     return(
         <div>
-            <span>{props.teamName}</span>
-            {props.notificaciones?.map((n:any) =>{
+            <span>{ Array.isArray(props.notificaciones) && props.teamName}</span>
+            {Array.isArray(props.notificaciones) && props.notificaciones?.map((n:any) =>{
                 return(
                     <div key ={n.notificationId}>
                     <div>El jugador {n.playerName} quiere unirse a tu equipo</div>
