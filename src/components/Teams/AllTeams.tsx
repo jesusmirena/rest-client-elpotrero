@@ -20,7 +20,7 @@ export default function AllTeams() {
     <div>
       <div className={styles.containerGrid}>
         <div className={styles.titulo}>
-          <h1>Equipos disponibles</h1>
+          <h1>Equipos</h1>
         </div>
         <div className={styles.grid}>
           {allTeams &&

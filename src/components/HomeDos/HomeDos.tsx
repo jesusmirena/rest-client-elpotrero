@@ -43,7 +43,9 @@ export default function HomeDos() {
             <button className={styles.btn}>Jugadores</button>
           </Link>
           <br />
+          <Link to="/allteams">
           <button className={styles.btn}>Equipos</button>
+          </Link>
         </div>
       </div>
     </div>
