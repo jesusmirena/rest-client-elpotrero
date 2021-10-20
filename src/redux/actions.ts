@@ -8,6 +8,8 @@ import {
   GET_TEAMS_ID,
   GET_PLAYERS,
   GET_NOTIFICACIONES_MY_TEAM,
+  GET_TEAMS_ALLTEAMS,
+  GET_ALL_RESERVA,
 } from "./actionsNames";
 
 // import axios from '../lib/axiosConfig'
@@ -218,6 +220,8 @@ export function getTeams() {
     return dispatch({ type: GET_TEAMS, payload: res.data });
   };
 }
+
+
 
 export function getTeamsId(id: any) {
   return async function (dispatch: any) {
@@ -558,5 +562,29 @@ export function putCalificarTeam(payload: any) {
       console.log("Error equipo", err);
       alert("Algo salio mal");
     }
+  };
+}
+
+export function getAllTeams() {
+  return async function (dispatch: any) {
+    const token = window.sessionStorage.getItem("jwt") || "";
+    let res = await axios.get("http://localhost:3001/team/allTeams", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return dispatch({ type: GET_TEAMS_ALLTEAMS, payload: res.data });
+  };
+}
+
+export function getAllReserva(id: any) {
+  return async function (dispatch: any) {
+    const token = window.sessionStorage.getItem("jwt") || "";
+    let res = await axios.get(`http://localhost:3001/timetable/user/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return dispatch({ type: GET_ALL_RESERVA, payload: res.data });
   };
 }

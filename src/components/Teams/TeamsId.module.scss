@@ -1,22 +1,20 @@
-/* .container {
-  //background: url("../../visuales/edit.jpg");
+h1 {
+  font-size: 8rem;
+}
+.container {
+  background-image: url("https://apuntesderabona.com/wp-content/uploads/2017/05/Estadios.jpg");
   color: white;
-  //height: 100vh;
-  //max-width: 100%;
+  margin-top: -5.5rem;
+  height: 100vh;
+  width: 100%;
   position: relative;
   background-repeat: no-repeat;
   background-size: cover;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  grid-column-gap: 2rem;
-  grid-row-gap: 2rem;
- 
-} */
+}
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, 600px);
-  gap: 5rem;
+  grid-template-columns: repeat(auto-fill, 500px);
+  gap: 12rem;
   padding: 40px;
   justify-content: center;
 }

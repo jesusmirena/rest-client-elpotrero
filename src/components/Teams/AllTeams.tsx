@@ -1,22 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getTeams, getTeamsId } from "../../redux/actions";
+import { getTeams, getTeamsId, getAllTeams } from "../../redux/actions";
 import styles from "./Teams.module.scss";
-import Team from "./Team";
+import AllTeam from "./AllTeam";
 
-export default function Teams() {
+export default function AllTeams() {
   const dispatch = useDispatch();
-  const allTeams = useSelector((state: any) => state.teams.teams);
+  const allTeams = useSelector((state: any) => state.teams.teamsAllTeams);
+  console.log("TODITITOS", allTeams)
 
 
   let userId: any = window.sessionStorage.getItem("id");
   useEffect(() => {
-    dispatch(getTeams());
+    dispatch(getAllTeams());
   }, [dispatch]);
 
   return (
-    <div className={styles.container}>
+    <div>
       <div className={styles.containerGrid}>
         <div className={styles.titulo}>
           <h1>Equipos disponibles</h1>
@@ -25,13 +26,13 @@ export default function Teams() {
           {allTeams &&
             allTeams.map((el: any) => {
               return (
-                <Team
+                <AllTeam
                   key={el.id}
                   id={el.id}
                   name={el.name}
                   image={el.image}
-                  qualification={el.qualification}
                   available={el.available}
+                  qualification={el.qualification}
                   players={el.players}
                   user={el.user}
                 />

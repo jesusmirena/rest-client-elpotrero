@@ -25,6 +25,8 @@ import Notificaciones from "./components/Notificaciones/Notificaciones";
 import CartItem from "./components/CarritodeJugadores/Item/CartItem";
 import PlayersAvailable from "./components/Players/PlayersAvailable";
 import CartDisponible from "./components/CarritodeJugadores/Item/CartDisponible";
+import AllTeams from "./components/Teams/AllTeams";
+import MisReservas from "./components/Reserva/MisReservas";
 
 function App() {
   return (
@@ -56,6 +58,8 @@ function App() {
             <Route path="/carritoAvailable" component={CartDisponible} />
             <Route path="/disponibles" component={PlayersAvailable} />
             <Route path="/notificaciones" component={Notificaciones} />
+            <Route path="/allteams" component={AllTeams}/>
+            <Route path="/misreservas" component={MisReservas}/>
           </Switch>
         </div>
       </UserContextProvider>

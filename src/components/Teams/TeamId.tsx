@@ -80,7 +80,7 @@ export default function TeamId(props: any) {
         <button>Reservar Cancha </button>
       </Link>
       <Link to="/jugadores">
-        <button>Invitar jugadores</button>
+        <button>Añadir participante</button>
       </Link>
       {user[0]?.available ? (
         <>
