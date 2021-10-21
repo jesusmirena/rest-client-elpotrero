@@ -1,16 +1,8 @@
-<<<<<<< HEAD
-/******/ (function() { // webpackBootstrap
-/******/ 	var __webpack_modules__ = ({
-
-/***/ "./src/index.tsx":
-/*!***********************!*\
-=======
 /******/ (function () {
   // webpackBootstrap
   /******/ var __webpack_modules__ = {
     /***/ "./src/index.tsx":
       /*!***********************!*\
->>>>>>> Deploy
   !*** ./src/index.tsx ***!
   \***********************/
       /***/ function () {
