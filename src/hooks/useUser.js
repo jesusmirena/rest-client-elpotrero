@@ -35,7 +35,6 @@ export default function useUser() {
     async (user) => {
       setState({ loading: true, error: false });
       const usuarioGuardado = await putLoginGoogle(user);
-      console.log("USUARIO GUARDADO LOGIN", usuarioGuardado);
       window.sessionStorage.setItem("id", usuarioGuardado.payload.id);
       window.sessionStorage.setItem("jwt", usuarioGuardado.payload.token);
       setState({ loading: false, error: false });

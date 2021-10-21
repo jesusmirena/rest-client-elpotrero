@@ -475,6 +475,7 @@ export function filterCarrito(payload: any) {
 }
 
 export function putEditTeam(id: any, payload: any) {
+  console.log("PAYLOAD PUT", payload);
   return async function () {
     try {
       const token = window.sessionStorage.getItem("jwt") || "";
@@ -487,8 +488,9 @@ export function putEditTeam(id: any, payload: any) {
           },
         }
       );
-      return res;
+      return alert("Cambios realizados satisfactoriamente");
     } catch (err) {
+      alert("Error, vuelve a intentar");
       console.log("put", err);
     }
   };
@@ -564,6 +566,7 @@ export function putNotification(payload: any) {
 }
 
 export function postNotification(payload: any) {
+  console.log(payload);
   return async function () {
     try {
       const token = window.sessionStorage.getItem("jwt") || "";
@@ -714,5 +717,27 @@ export function postNotificationTeam(payload: any) {
       alert("Fallo envio de notificacion");
       console.log("post", err);
     }
+  };
+}
+
+export function filterPlayerTeam(payload: any) {
+  return async function (dispatch: any) {
+    return dispatch({ type: "FILTER_PLAYER_TEAM", payload });
+  };
+}
+// player/available?search=string_a_buscar (filtra sólo los nombres que cohinciden)
+
+export function searchByNameAvailable(orden: any) {
+  return async function (dispatch: any) {
+    const token = window.sessionStorage.getItem("jwt") || "";
+    let res = await axios.get(
+      `http://localhost:3001/player/available?search=${orden}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return dispatch({ type: "SEARCH_PLAYER_AVAILABLE", payload: res.data });
   };
 }

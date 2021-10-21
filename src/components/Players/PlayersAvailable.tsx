@@ -13,7 +13,7 @@ import AddCarritoDisponible from "../CarritodeJugadores/Carrito/AddCarritoDispon
 import Carrito from "../CarritodeJugadores/Carrito/Carrito";
 import CarritoDisponible from "../CarritodeJugadores/Carrito/CarritoDisponible";
 import styles from "./Players.module.scss";
-import SearchBar from "./SearchBar";
+import SearchBarAvailable from "./SearchbarAvailable";
 
 export default function PlayersAvailable() {
   const id = sessionStorage.getItem("id");
@@ -44,6 +44,7 @@ export default function PlayersAvailable() {
   return (
     <div>
       <h1 className={styles.title}>Todos los jugadores disponibles</h1>
+      <SearchBarAvailable />
       <CarritoDisponible />
 
       <table className={styles.jugadores}>

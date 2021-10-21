@@ -29,11 +29,6 @@ function Players() {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getPlayers());
-    dispatch(getTeamsId(id));
-  }, [dispatch]);
-
   function handleOrderByName(orden: any) {
     dispatch(orderByName(orden));
   }
@@ -64,6 +59,10 @@ function Players() {
       qualification: 0,
     });
   }
+  useEffect(() => {
+    dispatch(getPlayers());
+    dispatch(getTeamsId(id));
+  }, [dispatch]);
 
   return (
     <div>

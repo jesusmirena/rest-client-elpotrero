@@ -1,12 +1,13 @@
-import { Button, dividerClasses, ListItem } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
-import imagen from "../../visuales/edit.jpg";
+import { Link } from "react-router-dom";
 import styles from "./TeamId.module.scss";
-import { deleteTeam, putTeam } from "../../redux/actions";
-import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
-import useUser from "../../hooks/useUser";
+import {
+  deleteTeam,
+  filterTeam,
+  getTeamsId,
+  putTeam,
+} from "../../redux/actions";
+import { useDispatch } from "react-redux";
 
 function playersPosition(el: any) {
   if (el === "ATTACKER") return "ATACANTE";
@@ -17,22 +18,13 @@ function playersPosition(el: any) {
 
 export default function TeamId(props: any) {
   const dispatch = useDispatch();
-  const history = useHistory();
-  const [user, setUser]: any = useState([]);
   const [flag, setFlag] = useState(true);
   const id = window.sessionStorage.getItem("id");
-
-  const teamsId = async () => {
-    const data = await axios.get("http://localhost:3001/team?id=" + id);
-    var res = await data.data;
-    setUser(res);
-  };
 
   function handlePlaying(e: any) {
     e.preventDefault();
     dispatch(putTeam(props.id, { available: true }));
     setFlag(!flag);
-    history.push("/disponibles");
   }
 
   function handleNoPlaying(e: any) {
@@ -40,15 +32,6 @@ export default function TeamId(props: any) {
     dispatch(putTeam(props.id, { available: false }));
     setFlag(!flag);
   }
-  useEffect(() => {
-    teamsId();
-  }, [flag]);
-
-  /*   function handleOnClickDelete(id: any) {
-    dispatch(deleteTeam(id));
-    alert("Equipo eliminado");
-    window.location.reload();
-  } */
 
   function confirmDelete(id: any) {
     let respuesta = confirm("Estas seguro de queres eliminar el equipo?");
@@ -60,6 +43,13 @@ export default function TeamId(props: any) {
       return false;
     }
   }
+  function handleEditTeam() {
+    dispatch(filterTeam(props.id));
+  }
+
+  useEffect(() => {
+    dispatch(getTeamsId(id));
+  }, [flag]);
 
   return (
     <div className={styles.container}>
@@ -73,14 +63,16 @@ export default function TeamId(props: any) {
         <p>Votos: </p>
         <p>{props.votes}</p>
       </div>
-      <button>Editar Equipo</button>
+      <Link to="/teamedit">
+        <button onClick={handleEditTeam}>Editar Equipo</button>
+      </Link>
       <Link to="/home">
         <button>Reservar Cancha </button>
       </Link>
       <Link to="/jugadores">
         <button>Añadir participante</button>
       </Link>
-      {user[0]?.available ? (
+      {props.available ? (
         <>
           <button
             style={{
@@ -94,7 +86,6 @@ export default function TeamId(props: any) {
         </>
       ) : (
         <>
-          {/* <ListItemText onClick={handlePlaying} primary="Quiero jugar!" /> */}
           <button
             style={{
               backgroundColor: "#21b649",
@@ -119,11 +110,9 @@ export default function TeamId(props: any) {
             props.players.map((el: any) => {
               return (
                 <div key={el.id} className={styles.player}>
-                  {/* <img className={styles.imagePlayer} src={el.image} alt="" /> */}
                   <h3>nombre: </h3>
                   <span>{el.name}</span>
-                  {/* <h3>calificacion: </h3>
-                <span>{el.qualification}</span> */}
+
                   <h3>Posicion</h3>
                   <span>{playersPosition(el.position)}</span>
                 </div>
