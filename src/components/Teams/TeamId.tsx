@@ -21,9 +21,14 @@ export default function TeamId(props: any) {
   const [user, setUser]: any = useState([]);
   const [flag, setFlag] = useState(true);
   const id = window.sessionStorage.getItem("id");
+  const token = window.sessionStorage.getItem("jwt") || "";
 
   const teamsId = async () => {
-    const data = await axios.get("http://localhost:3001/team?id=" + id);
+    const data = await axios.get("http://localhost:3001/team?id=" + id, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     var res = await data.data;
     setUser(res);
   };

@@ -20,6 +20,7 @@ import axios from "axios";
 
 export async function postUsername(payload: User) {
   const response = await axios.post("http://localhost:3001/user", payload);
+  console.log("PAYLOAD POSTUSERNAME", response);
   return response.data;
 }
 

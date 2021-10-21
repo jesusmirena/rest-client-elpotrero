@@ -23,11 +23,11 @@ export default function RegisterForm() {
       usuario === "El nombre de usuario ya existe"
     ) {
       alert(usuario);
-
       return "";
     }
-    alert("Usuario Creado"), console.log("usuario creado", data);
-    reset(), history.push("/");
+    alert("Usuario Creado")
+    reset()
+    history.push("/")
   };
 
   return (

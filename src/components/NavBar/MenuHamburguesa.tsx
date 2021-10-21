@@ -110,23 +110,23 @@ export default function MenuHamburguesa() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        <ListItem button>
+        <ListItem >
           <ListItemText onClick={handleViewProfile} primary="Ver perfil" />
         </ListItem>
-        <ListItem button>
+        <ListItem >
           <ListItemText onClick={handleCrearEquipo} primary="Crear equipo" />
         </ListItem>
-        <ListItem button>
+        <ListItem >
           <ListItemText
             onClick={handleInvitarJugadoresDisponibles}
             primary="Invitar jugadores"
           />
         </ListItem>
-        <ListItem button>
+        <ListItem >
           <ListItemText onClick={handleMisEquipos} primary="Mis equipos" />
         </ListItem>
         {user.player?.available ? (
-          <ListItem button>
+          <ListItem >
             <Button
               style={{
                 backgroundColor: "#b62121",
@@ -135,11 +135,11 @@ export default function MenuHamburguesa() {
               onClick={handleNoPlaying}
               variant="contained"
             >
-              NO QUIERO JUGAR
+              NO QUIERO JUGAR 
             </Button>
           </ListItem>
         ) : (
-          <ListItem button>
+          <ListItem>
             {/* <ListItemText onClick={handlePlaying} primary="Quiero jugar!" /> */}
             <Button
               style={{
@@ -154,19 +154,19 @@ export default function MenuHamburguesa() {
           </ListItem>
         )}
 
-        <ListItem button>
+        <ListItem >
           <ListItemText
             onClick={handleMisNotificaciones}
             primary="Mis notificaciones"
           />
         </ListItem>
-        <ListItem button>
+        <ListItem >
           <ListItemText onClick={handleMisReservas} primary="Mis reservas" />
         </ListItem>
-        <ListItem button>
+        <ListItem >
           <ListItemText onClick={handleReservaCancha} primary="ir a Home" />
         </ListItem>
-        <ListItem button>
+        <ListItem >
           <Button
             style={{
               backgroundColor: "#b62121",
