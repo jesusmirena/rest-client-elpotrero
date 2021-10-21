@@ -162,7 +162,6 @@ export function putUser(id: any, payload: any) {
 }
 
 export function putTeam(id: any, payload: any) {
-  console.log("id", id, "PAYLOAD", payload);
   return async function () {
     try {
       const token = window.sessionStorage.getItem("jwt") || "";
@@ -175,7 +174,7 @@ export function putTeam(id: any, payload: any) {
           },
         }
       );
-      return alert("Enviado");
+      return res;
     } catch (err) {
       console.log("Error equipo", err);
       alert("Algo salio mal");
