@@ -52,7 +52,7 @@ export default function CartDisponible() {
     : "";
 
   function handleSubmit(e: any) {
-    dispatch(putTeam(equipos[0].id, state));
+    //dispatch(putTeam(equipos[0].id, state));
     dispatch(postNotification(notification));
     dispatch(resetCarrito());
   }
@@ -61,11 +61,11 @@ export default function CartDisponible() {
     setNotification({
       ...notification,
       player: arreglo,
-    }),
-      setstate({
+    });
+    /*     setstate({
         ...state,
         player: array.concat(arreglo),
-      });
+      }); */
   }, [dispatch]);
 
   return (
