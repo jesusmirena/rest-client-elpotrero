@@ -17,8 +17,8 @@ export default function MisReservas() {
   return (
     <div>
       <div className={styles.containerGrid}>
-        <div className={styles.titulo}>
-          <h1>Mis Reservas</h1>
+        <div>
+          <h1 className={styles.titulo}>Mis Reservas</h1>
           {!allReserva?.length && (
             <h2 style={{ color: "white" }}>
               No tienes ninguna reserva en este momento

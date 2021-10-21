@@ -95,7 +95,7 @@ export default function CartDisponible() {
         {equipos[0] ? (
           <Link to="/home">
             <button className={styles.btn} type="submit" onClick={handleSubmit}>
-              Enviar
+              Confirmar equipo
             </button>
           </Link>
         ) : null}

@@ -2,7 +2,11 @@ import { dividerClasses } from "@mui/material";
 import React, { useState } from "react";
 import imagen from "../../visuales/edit.jpg";
 import styles from "./Team.module.scss";
-import { putCalificarTeam, putTeam, postNotificationTeam } from "../../redux/actions";
+import {
+  putCalificarTeam,
+  putTeam,
+  postNotificationTeam,
+} from "../../redux/actions";
 import { useDispatch } from "react-redux";
 
 export default function Team(props: any) {
@@ -29,7 +33,7 @@ export default function Team(props: any) {
     });
   }
 
- /*  let playerId = props.players?.map((p: any) => {
+  /*  let playerId = props.players?.map((p: any) => {
     return {
       id: p.id,
     };
@@ -38,7 +42,7 @@ export default function Team(props: any) {
   function handleUnirme() {
     let payload = {
       team: props.id,
-      player: parseInt(userId)
+      player: parseInt(userId),
     };
 
     dispatch(postNotificationTeam(payload));
@@ -52,7 +56,7 @@ export default function Team(props: any) {
 
       <div className={styles.info}>
         <div>
-          <h3>{props && props.name}</h3>
+          <h2>{props && props.name}</h2>
           <p>Calificacion: </p>
           <p>{props && props.qualification}</p>
           <p>Capitan: </p>
@@ -60,18 +64,21 @@ export default function Team(props: any) {
         </div>
       </div>
 
-      <p className={styles.span}>Jugadores:</p>
+      <p className={styles.info}>Jugadores:</p>
       {props.players &&
         props.players.map((el: any) => {
           return (
             <div key={el.id}>
-              <h3 className={styles.span}>{el.playerName}</h3>
+              <h3 className={styles.info}>{el.playerName}</h3>
             </div>
           );
         })}
       <br />
-      <button onClick={handleUnirme}>Unirme</button>
+      <button className={styles.botonUnirme} onClick={handleUnirme}>
+        Unirme
+      </button>
       <select
+        className={styles.selectCalificacion}
         onChange={(e) => handleCalificar(e)}
         name="Calificar"
         id="calificar"
@@ -92,7 +99,9 @@ export default function Team(props: any) {
           5
         </option>
       </select>
-      <button onClick={handleSubmit}>Calificar</button>
+      <button className={styles.botonCalificar} onClick={handleSubmit}>
+        Calificar
+      </button>
     </div>
   );
 }

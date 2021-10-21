@@ -24,7 +24,7 @@ export default function MiReserva(props: any) {
         <img className={styles.img} src={props.field.image} alt="" />
       </div>
       <div className={styles.info}>
-        <h3>{props.field.name}</h3>
+        <h2>{props.field.name}</h2>
         <h3>{props.field.address}</h3>
         <p>Dia de la reserva: </p>
         <p>{props.day}</p>
@@ -33,7 +33,9 @@ export default function MiReserva(props: any) {
         <p>Precio Total</p>
         <p>{props.field.cost}</p>
       </div>
-      <button onClick={handleSubmit}>Cancelar reserva</button>
+      <button className={styles.button} onClick={handleSubmit}>
+        Cancelar reserva
+      </button>
     </div>
   );
 }

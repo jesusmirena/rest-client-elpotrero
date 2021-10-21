@@ -11,7 +11,6 @@
   grid-template-rows: repeat(3, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 0px;
- 
 }
 .containerGrid {
   width: 90%;
@@ -19,14 +18,14 @@
   margin: 50px auto;
   padding-bottom: 5rem;
   border-radius: 1rem;
-  background-color: rgba(0, 0, 0, 0.692);
 }
 .titulo {
   text-align: center;
+  color: black;
 }
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, 350px);
+  grid-template-columns: repeat(auto-fill, 700px);
   gap: 60px;
   padding: 40px;
   justify-content: center;

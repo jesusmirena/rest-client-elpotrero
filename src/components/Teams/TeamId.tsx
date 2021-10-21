@@ -62,27 +62,28 @@ export default function TeamId(props: any) {
         <div>
           <h3>Calificacion: </h3>
           <h3>{props.qualification}</h3>
-          <br />  
+          <br />
           <h3>Votos: </h3>
           <h3>{props.votes}</h3>
         </div>
       </div>
 
       <Link to="/teamedit">
-        <button onClick={handleEditTeam}>Editar Equipo</button>
+        <button className={styles.boton} onClick={handleEditTeam}>
+          Editar Equipo
+        </button>
       </Link>
 
       <Link to="/home">
-        <button>Reservar Cancha </button>
+        <button className={styles.boton}>Reservar Cancha </button>
       </Link>
-      <br />
       <Link to="/jugadores">
-        <button>Añadir participante</button>
+        <button className={styles.boton}>Añadir participante</button>
       </Link>
       {props.available ? (
-
         <>
           <button
+            className={styles.boton}
             style={{
               backgroundColor: "#b62121",
               fontSize: "12px",
@@ -95,6 +96,7 @@ export default function TeamId(props: any) {
       ) : (
         <>
           <button
+            className={styles.boton}
             style={{
               backgroundColor: "#21b649",
               fontSize: "12px",
@@ -105,9 +107,8 @@ export default function TeamId(props: any) {
           </button>
         </>
       )}
-      <br />
       <button
-        className={styles.btnEliminar}
+        className={`${styles.boton} ${styles.btnEliminar}`}
         onClick={() => confirmDelete(props.id)}
       >
         Eliminar Equipo

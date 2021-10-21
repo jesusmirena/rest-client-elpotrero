@@ -62,7 +62,7 @@ export default function EditTeam() {
     );
   }
   return (
-    <div>
+    <div className={styles.containerGlobal}>
       {edit.length ? (
         <>
           <div className={styles.conteiner}>
@@ -70,7 +70,7 @@ export default function EditTeam() {
           </div>
           <div>
             <Link to="/teamsId">
-              <button>Volver</button>
+              <button className={styles.btn}>Volver</button>
             </Link>
           </div>
           <div className={styles.container}>
