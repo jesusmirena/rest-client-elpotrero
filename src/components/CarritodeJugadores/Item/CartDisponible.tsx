@@ -29,7 +29,7 @@ export default function CartDisponible() {
   });
 
   const [notification, setNotification] = useState({
-    day: dates,
+    day: dates.toString(),
     hour: hora,
     duration: 1,
     team: equipos[0] ? equipos[0].id : "",

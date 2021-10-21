@@ -58,7 +58,12 @@ function Players() {
   }
   function handleSubmitQualification(e: any) {
     e.preventDefault();
+    if (player.qualification === 0) {
+      alert("Selecciona una calificación");
+      return "";
+    }
     dispatch(putPlayerQualification(player));
+    alert("Jugador calificado");
     setPlayer({
       id: "",
       qualification: 0,
@@ -152,7 +157,7 @@ function Players() {
                 <td>{p.punctuation} / 5</td>
                 <td>
                   <form>
-                    {p.available ? <AddCarrito players={p} /> : <></>}
+                    <AddCarrito players={p} />
                     <div>
                       <input
                         name="qualification"

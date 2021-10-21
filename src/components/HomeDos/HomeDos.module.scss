@@ -6,40 +6,29 @@
   position: relative;
   background-repeat: no-repeat;
   background-size: cover;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
 }
 
-
-.btngrid {
-  grid-area: 2 / 2 / 3 / 3;
-}
-.btnc {
-  margin: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.btn {
-  cursor: pointer;
-  border-radius: 6rem;
+.botonContainer {
   justify-content: center;
   align-items: center;
   align-content: center;
   display: flex;
-  font-family: Arial;
+  flex-direction: column;
+}
+.btn {
+  cursor: pointer;
+  border-radius: 3rem;
+  display: block;
   color: white;
   font-size: 1.5rem;
   height: 5rem;
   width: 17rem;
-  border: solid #ffffff 8px;
+  border: solid #ffffff 6px;
   text-decoration: none;
   background: none;
-  margin-left: 13rem;
+  margin: 0.8rem auto;
 }
 
 .containerTitle {
@@ -50,42 +39,19 @@
   align-content: center;
   margin-top: 13rem;
 }
-.title {
-  color: white;
-  margin: 0;
-  font-family: "Anton", sans-serif;
-  font-size: 17rem;
-  letter-spacing: 1rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-}
 
 .backgroundInfo {
   border-radius: 1rem;
-  grid-area: 2 / 1 / 3 / 4;
   background-color: black;
   background-color: rgba(0, 0, 0, 0.5);
   margin-left: 10%;
   margin-right: 10%;
   margin-bottom: 13%;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 1fr;
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
+  display: flex;
 }
 
-.busca {
-  grid-area: 1 / 1 / 2 / 2;
-}
-.reserva {
-  grid-area: 1 / 2 / 2 / 3;
-}
-
-.alquila {
-  grid-area: 1 / 3 / 2 / 4;
+.infoContainer {
+  margin: 0 3rem;
 }
 
 .parrafo {
@@ -96,7 +62,8 @@
   margin: 1rem;
 }
 .datepicker {
-  grid-area: 2 / 3 / 3 / 4;
+  border-radius: 20px;
+  background-color: rgba(14, 14, 14, 0.575);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -112,23 +79,26 @@
 }
 
 @media screen and(max-width: 1400px) {
-  .title {
-    font-size: 13rem;
+  .infotitle {
+    font-size: 3rem;
+  }
+  .parrafo {
+    font-size: 1.2rem;
   }
   .btn {
-    height: 5rem;
-    width: 18rem;
-    font-size: 2rem;
+    height: 6rem;
+    width: 15rem;
+    font-size: 1.8rem;
   }
 }
 @media screen and(max-width: 1280px) {
-  .title {
-    font-size: 10rem;
+  .infotitle {
+    font-size: 2.8rem;
   }
   .btn {
     height: 5rem;
-    width: 15rem;
-    font-size: 2rem;
+    width: 14rem;
+    font-size: 1.6rem;
   }
 }
 @media (max-width: 768px) {
@@ -157,6 +127,9 @@
     flex-direction: column;
     align-items: center;
   }
+  .container {
+    background: #ffffff;
+  }
   .title {
     text-align: center;
     font-size: 2.7rem;
@@ -167,15 +140,15 @@
   .parrafo {
     font-size: 1.3rem;
   }
-  .btngrid {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    .btn {
-      border: solid #ffffff 3px;
-      height: 2rem;
-      width: 8rem;
-      font-size: 1rem;
-    }
+  .datepicker {
+    width: 17rem;
+  }
+
+  .btn {
+    display: block;
+    border: solid #ffffff 3px;
+    height: auto;
+    width: auto;
+    font-size: 1rem;
   }
 }
