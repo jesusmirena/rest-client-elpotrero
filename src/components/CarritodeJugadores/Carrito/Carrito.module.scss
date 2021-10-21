@@ -49,3 +49,19 @@
   margin: 1rem;
   color: white;
 }
+.boton {
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 1rem 2rem;
+  margin: 1rem;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+}
+.botonInvitar {
+  background-color: #71b100;
+  &:hover {
+    background-color: darken(#71b100, 5);
+  }
+}

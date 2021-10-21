@@ -85,7 +85,7 @@ export default function FormAlquiler({
               </option>
             ))}
           </select>
-          <button onClick={handleSubmit} type="submit">
+          <button className={styles.boton} onClick={handleSubmit} type="submit">
             Reserva
           </button>
         </div>

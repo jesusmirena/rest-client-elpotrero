@@ -8,11 +8,11 @@ export default function LandinPage() {
     <>
       <div className={styles.container}>
         <img className={styles.logo} src={Logo} alt="" />
-        <div className={styles.btngrid}>
-          <FormPrueba />
-        </div>
         <div className={styles.containerTitle}>
           <h1 className={styles.title}>EL POTRERO</h1>
+        </div>
+        <div className={styles.btngrid}>
+          <FormPrueba />
         </div>
       </div>
     </>
