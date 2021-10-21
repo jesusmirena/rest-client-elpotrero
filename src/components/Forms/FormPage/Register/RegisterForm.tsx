@@ -26,8 +26,9 @@ export default function RegisterForm() {
 
       return "";
     }
-    alert("Usuario Creado"), console.log("usuario creado", data);
-    reset(), history.push("/");
+    alert("Usuario Creado")
+    reset()
+    history.push("/");
   };
 
   return (

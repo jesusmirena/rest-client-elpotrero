@@ -34,7 +34,7 @@ export default function CrearEquipo() {
     });
     history.push("/jugadores");
   }
-  console.log();
+ 
 
   function handleChange(e: any) {
     setTeam({
@@ -66,7 +66,7 @@ export default function CrearEquipo() {
         </form>
 
         <div className={styles.imageContainer}>
-          <img className={styles.img} src={team.image || imagen} />
+          <img className={styles.img} src={team.image || imagen} alt={team.name}/>
           <h1 className={styles.title}>{team.name}</h1>
         </div>
       </div>

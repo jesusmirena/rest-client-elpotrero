@@ -1,5 +1,4 @@
 import {
-  POST_USERNAME,
   GET_CANCHAS,
   GET_RESERVA,
   DELETE_RESERVA,
@@ -182,7 +181,7 @@ export function putTeam(id: any, payload: any) {
   };
 }
 export function putPlayerQualification(payload: any) {
-  console.log(payload);
+
 
   return async function () {
     try {
@@ -196,8 +195,6 @@ export function putPlayerQualification(payload: any) {
           },
         }
       );
-      console.log("RESPUESTA", res);
-
       return res;
     } catch (err) {
       console.log("Error put de player", err);
@@ -475,7 +472,6 @@ export function filterCarrito(payload: any) {
 }
 
 export function putEditTeam(id: any, payload: any) {
-  console.log("PAYLOAD PUT", payload);
   return async function () {
     try {
       const token = window.sessionStorage.getItem("jwt") || "";
@@ -508,7 +504,7 @@ export function deleteTeam(id: any) {
       return alert("Equipo eliminado");
     } catch (err) {
       console.log(err);
-      return alert("Vulve a intentar");
+      return alert("Vuelve a intentar");
     }
   };
 }
@@ -566,7 +562,6 @@ export function putNotification(payload: any) {
 }
 
 export function postNotification(payload: any) {
-  console.log(payload);
   return async function () {
     try {
       const token = window.sessionStorage.getItem("jwt") || "";

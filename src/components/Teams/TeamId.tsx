@@ -34,9 +34,10 @@ export default function TeamId(props: any) {
   }
 
   function confirmDelete(id: any) {
+    // eslint-disable-next-line no-restricted-globals
     let respuesta = confirm("Estas seguro de queres eliminar el equipo?");
 
-    if (respuesta == true) {
+    if (respuesta === true) {
       dispatch(deleteTeam(id));
       window.location.reload();
     } else {
@@ -49,6 +50,7 @@ export default function TeamId(props: any) {
 
   useEffect(() => {
     dispatch(getTeamsId(id));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [flag]);
 
   return (

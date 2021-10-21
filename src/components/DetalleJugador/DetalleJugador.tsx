@@ -41,6 +41,7 @@ function DetalleJugador(props: { match: { params: { id: any } } }) {
   }
   useEffect(() => {
     getJugador(id);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   return (
@@ -56,10 +57,10 @@ function DetalleJugador(props: { match: { params: { id: any } } }) {
       <div className={styles.container}>
         {jugador.map((p: any) => {
           return (
-            <>
+            <div key={p.id} className={`${styles.cardItem} ${styles.CardItemUniqueEffect}`}>
               <div
-                key={p.id}
-                className={`${styles.cardItem} ${styles.CardItemUniqueEffect}`}
+              
+               
               >
                 <img
                   src={
@@ -100,7 +101,7 @@ function DetalleJugador(props: { match: { params: { id: any } } }) {
                   value="Calificar"
                 />
               </form>
-            </>
+            </div>
           );
         })}
       </div>

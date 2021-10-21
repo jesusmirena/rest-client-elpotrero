@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import styles from "./Players.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  filterTeam,
   getOrderGender,
   getOrderPosition,
   getOrderPunctuation,
@@ -18,10 +17,8 @@ import AddCarrito from "../CarritodeJugadores/Carrito/AddCarrito";
 import Carrito from "../CarritodeJugadores/Carrito/Carrito";
 function Players() {
   const jugadores = useSelector((state: any) => state.jugadores.jugadores);
-  const equipos = useSelector((state: any) => state.teams.teams);
   const id = sessionStorage.getItem("id");
 
-  const [equipo, setEquipo] = useState();
   const [player, setPlayer] = useState({
     id: "",
     qualification: 0,
@@ -67,6 +64,7 @@ function Players() {
   useEffect(() => {
     dispatch(getPlayers());
     dispatch(getTeamsId(id));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
 
   return (
