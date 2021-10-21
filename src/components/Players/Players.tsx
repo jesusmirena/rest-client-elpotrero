@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import styles from "./Players.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  filterTeam,
   getOrderGender,
   getOrderPosition,
   getOrderPunctuation,
@@ -18,21 +17,14 @@ import AddCarrito from "../CarritodeJugadores/Carrito/AddCarrito";
 import Carrito from "../CarritodeJugadores/Carrito/Carrito";
 function Players() {
   const jugadores = useSelector((state: any) => state.jugadores.jugadores);
-  const equipos = useSelector((state: any) => state.teams.teams);
   const id = sessionStorage.getItem("id");
 
-  const [equipo, setEquipo] = useState();
   const [player, setPlayer] = useState({
     id: "",
     qualification: 0,
   });
 
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getPlayers());
-    dispatch(getTeamsId(id));
-  }, [dispatch]);
 
   function handleOrderByName(orden: any) {
     dispatch(orderByName(orden));
@@ -58,12 +50,22 @@ function Players() {
   }
   function handleSubmitQualification(e: any) {
     e.preventDefault();
+    if (player.qualification === 0) {
+      alert("Selecciona una calificación");
+      return "";
+    }
     dispatch(putPlayerQualification(player));
+    alert("Jugador calificado");
     setPlayer({
       id: "",
       qualification: 0,
     });
   }
+  useEffect(() => {
+    dispatch(getPlayers());
+    dispatch(getTeamsId(id));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch]);
 
   return (
     <div>
@@ -152,7 +154,7 @@ function Players() {
                 <td>{p.punctuation} / 5</td>
                 <td>
                   <form>
-                    {p.available ? <AddCarrito players={p} /> : <></>}
+                    <AddCarrito players={p} />
                     <div>
                       <input
                         name="qualification"

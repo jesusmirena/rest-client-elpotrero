@@ -1,5 +1,4 @@
-
-.container{
+.container {
   display: flex;
   flex-direction: column;
   background-color: rgba(0, 0, 0, 0.801);
@@ -23,13 +22,13 @@
   border-radius: 10px;
 }
 .info {
-  color:white;
+  color: white;
   margin-right: 18rem;
 }
 .info p {
   display: flex;
   align-items: center;
-  flex-direction:column;
+  flex-direction: column;
   font-size: 1.5rem;
   text-align: center;
   color: white;
@@ -37,7 +36,7 @@
 /* .container button {
   width: 15rem;
   margin-left: 4rem; */
-.container button{
+.container button {
   width: 17rem;
   margin-left: 3rem;
   display: flex;
@@ -51,35 +50,36 @@ h3 {
   color: white;
 }
 
-.player{
+.player {
   font-size: 1.5rem;
   text-align: center;
-  color: rgb(236, 42, 42);
+  color: #ffffff;
   display: flex;
-  justify-content:center;
+  justify-content: center;
   flex-direction: column;
   align-items: center;
   text-align: center;
   margin-top: 1.3rem;
-
 }
-
-.players{
+.boton {
+  margin: 0.5rem;
+}
+.players {
   display: flex;
-  justify-content:center;
+  justify-content: center;
   flex-direction: column;
   align-content: flex-start;
   align-items: center;
   text-align: center;
   margin-left: 18rem;
-  margin-top: -42rem;
+  margin-top: -40rem;
 }
 
-.imagePlayer{
-  width:4rem;
-  height:3rem
+.imagePlayer {
+  width: 4rem;
+  height: 3rem;
 }
 
-.btnEliminar{
-  background-color: rgb(236, 42, 42);;
+.btnEliminar {
+  background-color: rgb(236, 42, 42);
 }

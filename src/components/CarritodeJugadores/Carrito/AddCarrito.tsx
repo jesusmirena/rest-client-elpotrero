@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addCarrito } from "../../../redux/actions";
-import Carrito from "./Carrito";
+import styles from "./Carrito.module.scss";
 
 export default function AddCarrito({ players }: any) {
   const { image, id, name } = players;
@@ -30,13 +30,13 @@ export default function AddCarrito({ players }: any) {
 
   return (
     <div>
-      <button
-        type="button"
+      <input
         onClick={handleSubmit}
-        style={{ color: "black", borderRadius: "5px" }}
-      >
-        Seleccionar
-      </button>
+        className={`${styles.boton} ${styles.botonInvitar}`}
+        type="submit"
+        name=""
+        value="Invitar"
+      />
     </div>
   );
 }

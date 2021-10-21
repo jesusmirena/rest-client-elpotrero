@@ -1,39 +1,96 @@
-.container{
-  display: flex;
-  flex-direction: column;
-  background-color: black;
-  border-radius: 20px;
-  height: 670px;
-  width: 333px;
-  transition: transform 250ms;
-  &:hover {
-    transform: translate(-10px, -10px);
-  }
+.container {
+  box-shadow: 0 15px 30px 1px grey;
+  background: rgba(255, 255, 255, 0.9);
+  text-align: center;
+  border-radius: 5px;
+  overflow: hidden;
+  margin: 1rem auto;
+  height: 460px;
+  width: 750px;
 }
+
 .imgcontainer {
-  display: flex;
-  justify-content: center;
+  // display: inline-block;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  float: right;
+  width: 45%;
 }
+
 .img {
-  margin-top: 0.8rem;
-  width: 280px;
-  height: 200px;
-  border-radius: 10px;
+  width: 100%;
+  height: 100%;
 }
+
 .info {
-  color: white;
+  color: #000000;
 }
 .info p {
   font-size: 1.5rem;
+  font-weight: 450;
   text-align: center;
-  color: white;
+  color: #000000;
 }
 
-.span{
-  color:white;
+.selectContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.select {
+  margin-bottom: 1em;
+  padding: 0.25em;
+  border: 0;
+  border-bottom: 2px solid currentcolor;
+  font-weight: bold;
+  letter-spacing: 0.15em;
+  border-radius: 0.5rem;
 }
 
-.container button{
-  width: 10rem;
-  margin-left: 5.5rem;
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+  background-color: #000000;
+  display: block;
+  border-radius: 0.5rem;
+  color: #ffffff;
+  text-align: center;
+  padding: 0.6rem 1.5rem;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  border: none;
+}
+@media (min-width: 768px) {
+  .button {
+    display: inline-block;
+  }
+}
+.button:hover {
+  cursor: pointer;
+}
+
+.botonUnirme {
+  background-color: #2d88ff;
+
+  &:hover {
+    background-color: darken(#2d88ff, 5);
+    cursor: pointer;
+  }
+}
+.selectCalificacion {
+  margin: 0.5rem;
+}
+.botonCalificar {
+  background-color: #e08709;
+
+  &:hover {
+    background-color: darken(#e08709, 5);
+    cursor: pointer;
+  }
 }

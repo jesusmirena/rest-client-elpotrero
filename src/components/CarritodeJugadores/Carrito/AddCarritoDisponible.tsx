@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import styles from "./Carrito.module.scss";
 import { addCarrito, addCarritoDisponible } from "../../../redux/actions";
 
 export default function AddCarritoDisponible({ players }: any) {
@@ -29,13 +30,13 @@ export default function AddCarritoDisponible({ players }: any) {
 
   return (
     <div>
-      <button
-        type="button"
+      <input
         onClick={handleSubmit}
-        style={{ color: "black", borderRadius: "5px" }}
-      >
-        Seleccionar
-      </button>
+        className={`${styles.boton} ${styles.botonInvitar}`}
+        type="submit"
+        name=""
+        value="Invitar"
+      />
     </div>
   );
 }

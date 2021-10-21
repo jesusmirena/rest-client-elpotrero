@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: #18191a;
+}
+.containerNotificaciones {
+  background-color: #242526;
+  border-left: solid 0.6px #3e4042;
+  border-right: solid 0.6px #3e4042;
+  width: 45%;
+}
+.notificacionC {
+  border-top: solid 0.6px #3e4042;
+  border-bottom: solid 0.6px #3e4042;
+}
+.textoNotificaciones {
+  color: #ffffff;
+  margin: 1rem;
+}
+.botonAceptar {
+  background-color: #2d88ff;
+  margin: 1rem;
+}
+.botonRechazar {
+  background-color: #3a3b3c;
+  margin: 1rem;
+}

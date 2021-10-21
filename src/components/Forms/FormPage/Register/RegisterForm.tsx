@@ -27,7 +27,7 @@ export default function RegisterForm() {
     }
     alert("Usuario Creado")
     reset()
-    history.push("/")
+    history.push("/");
   };
 
   return (

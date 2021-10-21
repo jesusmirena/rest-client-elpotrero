@@ -1,5 +1,5 @@
-import React, { useCallback, useContext, useState } from "react";
-import { useHistory } from "react-router";
+import { useCallback, useContext, useState } from "react";
+
 import Context from "../context/userContext";
 import { postLogin, postLoginGoogle, putLoginGoogle } from "../redux/actions";
 
@@ -35,7 +35,6 @@ export default function useUser() {
     async (user) => {
       setState({ loading: true, error: false });
       const usuarioGuardado = await putLoginGoogle(user);
-      console.log("USUARIO GUARDADO LOGIN", usuarioGuardado);
       window.sessionStorage.setItem("id", usuarioGuardado.payload.id);
       window.sessionStorage.setItem("jwt", usuarioGuardado.payload.token);
       setState({ loading: false, error: false });
@@ -48,7 +47,6 @@ export default function useUser() {
     async (user) => {
       setState({ loading: true, error: false });
       const usuarioGuardado = await postLoginGoogle(user);
-      console.log("USUARIO GUARDADO LOGIN", usuarioGuardado);
       window.sessionStorage.setItem("id", usuarioGuardado.payload.id);
       window.sessionStorage.setItem("jwt", usuarioGuardado.payload.token);
       setState({ loading: false, error: false });

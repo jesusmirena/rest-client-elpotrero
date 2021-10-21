@@ -4,6 +4,7 @@ import styles from "../CardsGrid/CardsGrid.module.scss";
 
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
+import { Redirect } from "react-router";
 
 export default function CardsGrid(props: any) {
   try {
@@ -28,16 +29,23 @@ export default function CardsGrid(props: any) {
 
   return (
     <div className={styles.containerGrid}>
-      <h3 className={styles.titulo}>
-        Canchas disponibles en la fecha :{fecha}
-      </h3>
-      {
-        <div className={styles.grid}>
-          {canchas.map((c: Cancha, i) => {
-            return <Card key={i} data={c} />;
-          })}
+      {canchas.length ? (
+        <>
+          <h3 className={styles.titulo}>
+            Canchas disponibles en la fecha :{fecha}
+          </h3>
+
+          <div className={styles.grid}>
+            {canchas.map((c: Cancha, i: any) => {
+              return <Card key={i} data={c} />;
+            })}
+          </div>
+        </>
+      ) : (
+        <div>
+          <button>volver</button>
         </div>
-      }
+      )}
     </div>
   );
 }

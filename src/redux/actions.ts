@@ -1,5 +1,4 @@
 import {
-  POST_USERNAME,
   GET_CANCHAS,
   GET_RESERVA,
   DELETE_RESERVA,
@@ -183,7 +182,7 @@ export function putTeam(id: any, payload: any) {
   };
 }
 export function putPlayerQualification(payload: any) {
-  console.log(payload);
+
 
   return async function () {
     try {
@@ -197,8 +196,6 @@ export function putPlayerQualification(payload: any) {
           },
         }
       );
-      console.log("RESPUESTA", res);
-
       return res;
     } catch (err) {
       console.log("Error put de player", err);
@@ -488,8 +485,9 @@ export function putEditTeam(id: any, payload: any) {
           },
         }
       );
-      return res;
+      return alert("Cambios realizados satisfactoriamente");
     } catch (err) {
+      alert("Error, vuelve a intentar");
       console.log("put", err);
     }
   };
@@ -507,7 +505,7 @@ export function deleteTeam(id: any) {
       return alert("Equipo eliminado");
     } catch (err) {
       console.log(err);
-      return alert("Vulve a intentar");
+      return alert("Vuelve a intentar");
     }
   };
 }
@@ -715,5 +713,27 @@ export function postNotificationTeam(payload: any) {
       alert("Fallo envio de notificacion");
       console.log("post", err);
     }
+  };
+}
+
+export function filterPlayerTeam(payload: any) {
+  return async function (dispatch: any) {
+    return dispatch({ type: "FILTER_PLAYER_TEAM", payload });
+  };
+}
+// player/available?search=string_a_buscar (filtra sólo los nombres que cohinciden)
+
+export function searchByNameAvailable(orden: any) {
+  return async function (dispatch: any) {
+    const token = window.sessionStorage.getItem("jwt") || "";
+    let res = await axios.get(
+      `http://localhost:3001/player/available?search=${orden}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return dispatch({ type: "SEARCH_PLAYER_AVAILABLE", payload: res.data });
   };
 }

@@ -33,7 +33,6 @@ export default function MenuHamburguesa() {
     const data = await axios.get("http://localhost:3001/user?id=" + id);
     var res = await data.data;
     setUser(res);
-    // console.log("axios profile", res);
   };
 
   function handleLogout() {
@@ -46,9 +45,9 @@ export default function MenuHamburguesa() {
   function handleViewProfile() {
     history.push("/profile");
   }
-  function handleViewTeam() {
-    history.push("/profile");
-  }
+  // function handleViewTeam() {
+  //   history.push("/profile");
+  // }
 
   function handleCrearEquipo() {
     history.push("/crearequipo");
@@ -100,6 +99,7 @@ export default function MenuHamburguesa() {
 
   useEffect(() => {
     player();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [flag]);
 
   const list = (anchor: Anchor) => (

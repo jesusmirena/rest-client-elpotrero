@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import {
@@ -8,12 +8,13 @@ import {
   getSoloDisponibles,
   getTeamsId,
   orderByNameAvailable,
+  putPlayerQualification,
 } from "../../redux/actions";
 import AddCarritoDisponible from "../CarritodeJugadores/Carrito/AddCarritoDisponible";
 import Carrito from "../CarritodeJugadores/Carrito/Carrito";
 import CarritoDisponible from "../CarritodeJugadores/Carrito/CarritoDisponible";
 import styles from "./Players.module.scss";
-import SearchBar from "./SearchBar";
+import SearchBarAvailable from "./SearchbarAvailable";
 
 export default function PlayersAvailable() {
   const id = sessionStorage.getItem("id");
@@ -21,6 +22,11 @@ export default function PlayersAvailable() {
   const jugadores = useSelector(
     (state: any) => state.jugadores.jugadoresDisponibles
   );
+
+  const [player, setPlayer] = useState({
+    id: "",
+    qualification: 0,
+  });
   const dispatch = useDispatch();
 
   function handleOrderByName(orden: any) {
@@ -36,6 +42,21 @@ export default function PlayersAvailable() {
     dispatch(getOrderPunctuationAvailable(orden));
   }
 
+  function handleChange(e: any, p: any) {
+    setPlayer({
+      id: p,
+      qualification: parseInt(e.target.value),
+    });
+  }
+  function handleSubmitQualification(e: any) {
+    e.preventDefault();
+    dispatch(putPlayerQualification(player));
+    alert("Jugador calificado");
+    setPlayer({
+      id: "",
+      qualification: 0,
+    });
+  }
   useEffect(() => {
     dispatch(getTeamsId(id));
 
@@ -44,6 +65,7 @@ export default function PlayersAvailable() {
   return (
     <div>
       <h1 className={styles.title}>Todos los jugadores disponibles</h1>
+      <SearchBarAvailable />
       <CarritoDisponible />
 
       <table className={styles.jugadores}>
@@ -130,8 +152,17 @@ export default function PlayersAvailable() {
                     ) : (
                       <></>
                     )}
-
                     <input
+                      name="qualification"
+                      onChange={(e) => handleChange(e, p.id)}
+                      placeholder="calificacion"
+                      type="number"
+                      min="0"
+                      max="5"
+                    />
+                    <input
+                      name="jugador"
+                      onClick={(e) => handleSubmitQualification(e)}
                       className={`${styles.boton} ${styles.botonCalificar}`}
                       type="submit"
                       value="Calificar"

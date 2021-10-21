@@ -11,9 +11,17 @@ export default function CartItem() {
   const [state, setstate] = useState({
     name: equipos[0] ? equipos[0].name : "",
     image: equipos[0] ? equipos[0].image : "",
-    available: true,
+    available: equipos[0] ? equipos[0].available : "",
     player: [],
   });
+
+  let array: any = [];
+
+  equipos[0]
+    ? equipos[0].players.forEach((e: any) => {
+        array.push({ id: e.id });
+      })
+    : "";
 
   let arreglo: any = [];
 
@@ -31,7 +39,7 @@ export default function CartItem() {
   useEffect(() => {
     setstate({
       ...state,
-      player: arreglo,
+      player: array.concat(arreglo),
     });
   }, [dispatch]);
 

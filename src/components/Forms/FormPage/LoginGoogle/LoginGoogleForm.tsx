@@ -11,11 +11,8 @@ function LoginGoogleForm() {
   const history = useHistory();
 
   const {
-    isLoginLoading,
-    hasLoginError,
     PutLoginGoogle,
     PostLoginGoogle,
-    isLogged,
   } = useUser();
 
   const [UsuarioGoogle, setUsuarioGoogle] = useState({
@@ -37,9 +34,10 @@ function LoginGoogleForm() {
     });
   }
   function handleSubmitRegisterGoogle(e: any) {
-    console.log("handle GOOGLE", UsuarioGoogle);
     e.preventDefault();
-    PutLoginGoogle(UsuarioGoogle), alert("Bienvenido"), history.push("/home");
+    PutLoginGoogle(UsuarioGoogle)
+    alert("Bienvenido")
+    history.push("/home");
   }
   function handleSubmitLoginGoogle(e: any) {
     e.preventDefault();

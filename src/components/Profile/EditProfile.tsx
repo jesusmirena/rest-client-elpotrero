@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import styles from "./EditProfile.module.scss";
-import img from "../../visuales/profile.png";
 import { putUser } from "../../redux/actions";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router";
 
 export default function EditProfile({
   userName,
@@ -43,7 +41,6 @@ export default function EditProfile({
           ...user,
           image: res.secure_url,
         }); //url de la imagen
-        console.log("img", res.secure_url);
       })
       .catch((err) => console.log(err));
   };
@@ -64,7 +61,7 @@ export default function EditProfile({
       votes: votes,
     },
   });
-  const history = useHistory();
+
   const userusuario = {
     user: {
       name: user.name,
@@ -183,7 +180,7 @@ export default function EditProfile({
         </form>
         <div className={styles.imageContainer}>
           <div className={styles.c}>
-            <img src={user.image} className={styles.img} />
+            <img src={user.image} className={styles.img} alt={user.name}/>
             <label className={styles.label}>Nombre</label>
             <p className={styles.txt}>{user.name}</p>
             <label className={styles.label}>Usuario</label>

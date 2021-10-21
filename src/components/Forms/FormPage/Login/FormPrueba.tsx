@@ -7,7 +7,7 @@ import useUser from "../../../../hooks/useUser";
 import { FcGoogle } from "react-icons/fc";
 
 export default function FormPrueba({ notify }: any) {
-  const { isLoginLoading, hasLoginError, login, isLogged } = useUser();
+  const { login, isLogged } = useUser();
   const {
     register,
     formState: { errors },
@@ -16,11 +16,14 @@ export default function FormPrueba({ notify }: any) {
   } = useForm();
 
   const onSubmit: SubmitHandler<any> = ({ mail, password }) => {
-    login({ mail, password }), reset();
+    login({ mail, password })
+    reset();
   };
+  
   function googleLogin() {
     const googleLoginURL = "http://localhost:3001/auth/google";
     const newWindow = window.location.replace(googleLoginURL);
+    console.log(newWindow)
   }
   return (
     <>

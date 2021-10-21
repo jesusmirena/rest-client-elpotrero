@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { deleteReserva, getReserva } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -15,8 +15,6 @@ export default function Reserva() {
   let userId: any = window.sessionStorage.getItem("id");
   const { isLogged } = useUser();
 
-  //console.log("IDDDD", userId);
-
   function handleSubmit(e: any) {
     e.preventDefault();
     dispatch(deleteReserva(reservaData.reserva.id));
@@ -29,6 +27,7 @@ export default function Reserva() {
   const numberid = parseInt(userId);
   useEffect(() => {
     dispatch(getReserva(numberid));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <>

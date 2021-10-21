@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import styles from "./Profile.module.scss";
 import axios from "axios";
-import { deleteUser, getUser, resetUser } from "../../redux/actions";
+import { deleteUser} from "../../redux/actions";
 import img from "../../visuales/profile.png";
 import EditProfile from "./EditProfile";
 import useUser from "../../hooks/useUser";
 import { useHistory } from "react-router";
-import { margin } from "@mui/material/node_modules/@mui/system";
 import { playersPosition } from "../Teams/Funciones/PlayersPosition";
 
 export default function Profile() {
@@ -17,8 +16,6 @@ export default function Profile() {
 
   const { logout } = useUser();
 
-  // console.log("Id", profile);
-
   const [user, setUser]: any = useState([]);
   const [btn, setBtn] = useState(true);
   const [btndelete, setBtndelete] = useState(false);
@@ -27,9 +24,8 @@ export default function Profile() {
     const data = await axios.get("http://localhost:3001/user?id=" + profile);
     var res = await data.data;
     setUser(res);
-    // console.log("axios profile", res);
-  };
 
+  };
   /*   useEffect(() => {
     axios.get("http://localhost:3001/user?id=" + profile).then((res) => {
       setUser(res.data);
@@ -55,6 +51,7 @@ export default function Profile() {
 
   useEffect(() => {
     player();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [btn]);
   return (
     <div className={styles.background}>
@@ -101,7 +98,7 @@ export default function Profile() {
           </div>
           <div>
             <div className={styles.card}>
-              <img className={styles.img} src={user.image || img} />
+              <img className={styles.img} src={user.image || img} alt={user.userName} />
               <div></div>
               <label className={styles.label}>Usuario</label>
               <p className={styles.txt}> {user.userName}</p>

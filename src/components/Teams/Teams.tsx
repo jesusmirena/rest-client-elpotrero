@@ -9,7 +9,6 @@ export default function Teams() {
   const dispatch = useDispatch();
   const allTeams = useSelector((state: any) => state.teams.teams);
 
-
   let userId: any = window.sessionStorage.getItem("id");
   useEffect(() => {
     dispatch(getTeams());
@@ -19,7 +18,7 @@ export default function Teams() {
     <div className={styles.container}>
       <div className={styles.containerGrid}>
         <div className={styles.titulo}>
-          <h1>Equipos disponibles</h1>
+          <h1 style={{ color: "black" }}>Equipos disponibles</h1>
         </div>
         <div className={styles.grid}>
           {allTeams &&

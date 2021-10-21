@@ -1,3 +1,4 @@
+import { getTeamsId } from "../actions";
 import { GET_TEAMS, GET_TEAMS_ID, GET_TEAMS_ALLTEAMS } from "../actionsNames";
 
 const initialState: any = {
@@ -42,11 +43,11 @@ const reducer = (state = initialState, action: any) => {
         ...state,
         teamsId: filter,
       };
-      case GET_TEAMS_ALLTEAMS:
-        return {
-          ...state,
-          teamsAllTeams: action.payload,
-        }
+    case GET_TEAMS_ALLTEAMS:
+      return {
+        ...state,
+        teamsAllTeams: action.payload,
+      };
 
     default:
       return state;

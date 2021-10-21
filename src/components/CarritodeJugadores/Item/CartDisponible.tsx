@@ -27,14 +27,21 @@ export default function CartDisponible() {
     available: true,
     player: [],
   });
-
   const [notification, setNotification] = useState({
-    day: dates,
+    day: dates.toString(),
     hour: hora,
     duration: 1,
     team: equipos[0] ? equipos[0].id : "",
     player: [],
   });
+
+  let array: any = [];
+
+  equipos[0]
+    ? equipos[0].players.forEach((e: any) => {
+        array.push({ id: e.id });
+      })
+    : "";
 
   let arreglo: any = [];
 
@@ -46,8 +53,8 @@ export default function CartDisponible() {
 
   function handleSubmit(e: any) {
     dispatch(putTeam(equipos[0].id, state));
-    dispatch(resetCarrito());
     dispatch(postNotification(notification));
+    dispatch(resetCarrito());
   }
 
   useEffect(() => {
@@ -57,7 +64,7 @@ export default function CartDisponible() {
     }),
       setstate({
         ...state,
-        player: arreglo,
+        player: array.concat(arreglo),
       });
   }, [dispatch]);
 
@@ -66,6 +73,7 @@ export default function CartDisponible() {
       <Link to="/disponibles">
         <button className={styles.btn}>Volver</button>
       </Link>
+
       <h1 className={styles.title}>Equipo :</h1>
       <h1 className={styles.title}>
         {equipos[0] ? equipos[0].name : "ERROR no hay equipo seleccionado"}
@@ -87,7 +95,7 @@ export default function CartDisponible() {
         {equipos[0] ? (
           <Link to="/home">
             <button className={styles.btn} type="submit" onClick={handleSubmit}>
-              Enviar
+              Confirmar equipo
             </button>
           </Link>
         ) : null}
