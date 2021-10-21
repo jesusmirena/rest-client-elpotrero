@@ -174,7 +174,7 @@ export function putTeam(id: any, payload: any) {
           },
         }
       );
-      return alert("Enviado");
+      return res;
     } catch (err) {
       console.log("Error equipo", err);
       alert("Algo salio mal");

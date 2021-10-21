@@ -51,12 +51,18 @@ export default function EditTeam() {
       [e.target.name]: e.target.value,
     });
   }
+
+  var arreglo: any = [];
   function handlePut() {
+    state.forEach((e: any) => {
+      arreglo.push({ id: e.id });
+    });
+
     dispatch(
       putEditTeam(edit[0].id, {
         name: equipo.name,
         image: equipo.image,
-        player: state,
+        player: arreglo,
         available: edit[0].available,
       })
     );

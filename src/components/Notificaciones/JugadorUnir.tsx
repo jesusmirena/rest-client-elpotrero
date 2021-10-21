@@ -1,19 +1,36 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { putNotificationTeams } from "../../redux/actions";
+import { putNotificationTeams, putTeam } from "../../redux/actions";
 import { playersPosition } from "../Teams/Funciones/PlayersPosition";
 import styles from "./Notificaciones.module.scss";
-
 
 export default function JugadorUnir(props: any) {
   const dispatch = useDispatch();
 
-  function handleAccept(id: number) {
+  //n.notificationId,
+  /*   n.teamId,
+  n.teamName,
+  n.teamImage,
+  n.teamAvailable,
+  n.teamPlayers */
+
+  function handleAccept(idNotification: number, playerid: any) {
     let payload = {
-      id: id,
+      id: idNotification,
       attending: "YES",
     };
+    console.log("PROPS", props.teamPlayers);
     dispatch(putNotificationTeams(payload));
+    dispatch(
+      putTeam(props.id, {
+        name: props.teamName,
+        image: props.teamImage,
+        available: props.teamAvailable,
+        //[...props.teamPlayers, {id: playerId}]
+
+        player: [...props.teamPlayers, { id: parseInt(playerid) }],
+      })
+    );
     alert("Aceptaste la invitación satisfactoriamente");
     window.location.reload();
   }
@@ -37,7 +54,6 @@ export default function JugadorUnir(props: any) {
         props.notificaciones?.map((n: any) => {
           return (
             <div key={n.notificationId}>
-
               <p className={styles.textoNotificaciones}>
                 El jugador {n.playerName} quiere unirse a tu equipo
               </p>
@@ -52,7 +68,7 @@ export default function JugadorUnir(props: any) {
               </p>
               <button
                 className={styles.botonAceptar}
-                onClick={() => handleAccept(n.notificationId)}
+                onClick={() => handleAccept(n.notificationId, n.playerId)}
               >
                 Aceptar invitacion
               </button>

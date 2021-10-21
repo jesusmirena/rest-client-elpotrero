@@ -5,6 +5,7 @@ import {
   getNotificacionesMisEquipos,
   getNotificacionesJugadorUnir,
   getNotificacionesRespuestaJugadorUnir,
+  putTeam,
 } from "../../redux/actions";
 import styles from "./Notificaciones.module.scss";
 import { useDispatch, useSelector } from "react-redux";
@@ -42,11 +43,28 @@ export default function Notificaciones() {
     (n: any) => n.notification != "Sin notificaciones"
   );
 
-  function handleAccept(id: number) {
+  //   onClick={() => handleAccept(n.id, n.teamId ,n.teamName, n.teamImage, n.teamAvailable, n.teamPlayers)}
+
+  function handleAccept(
+    id: number,
+    teamId: number,
+    name: string,
+    image: string,
+    available: boolean,
+    players: any
+  ) {
     let payload = {
       id: id,
       attending: "YES",
     };
+    dispatch(
+      putTeam(teamId, {
+        name: name,
+        image: image,
+        available: available,
+        player: players.concat({ id: parseInt(userId) }),
+      })
+    );
     dispatch(putNotification(payload));
     alert("Aceptaste la invitación satisfactoriamente");
     window.location.reload();
@@ -83,7 +101,16 @@ export default function Notificaciones() {
                   </p>
                   <button
                     className={styles.botonAceptar}
-                    onClick={() => handleAccept(n.id)}
+                    onClick={() =>
+                      handleAccept(
+                        n.id,
+                        n.teamId,
+                        n.teamName,
+                        n.teamImage,
+                        n.teamAvailable,
+                        n.teamPlayers
+                      )
+                    }
                   >
                     Aceptar invitacion
                   </button>
@@ -125,6 +152,10 @@ export default function Notificaciones() {
                 key={n.id}
                 teamName={n.teamName}
                 notificaciones={n.notification}
+                teamImage={n.teamImge}
+                teamAvailable={n.teamAvailable}
+                teamPlayers={n.teamPlayers}
+                id={n.id}
               />
             );
           })}
