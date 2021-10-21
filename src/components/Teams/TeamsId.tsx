@@ -33,6 +33,7 @@ export default function Teams() {
                   qualification={el.qualification}
                   players={el.players}
                   votes={el.votes}
+                  available={el.available}
                 />
               );
             })}

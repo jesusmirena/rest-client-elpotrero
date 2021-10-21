@@ -4,6 +4,7 @@ import { putNotificationTeams } from "../../redux/actions";
 import { playersPosition } from "../Teams/Funciones/PlayersPosition";
 import styles from "./Notificaciones.module.scss";
 
+
 export default function JugadorUnir(props: any) {
   const dispatch = useDispatch();
 
@@ -36,6 +37,7 @@ export default function JugadorUnir(props: any) {
         props.notificaciones?.map((n: any) => {
           return (
             <div key={n.notificationId}>
+
               <p className={styles.textoNotificaciones}>
                 El jugador {n.playerName} quiere unirse a tu equipo
               </p>

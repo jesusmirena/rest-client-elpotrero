@@ -29,7 +29,6 @@ export default function Profile() {
     setUser(res);
     // console.log("axios profile", res);
   };
-
   /*   useEffect(() => {
     axios.get("http://localhost:3001/user?id=" + profile).then((res) => {
       setUser(res.data);
