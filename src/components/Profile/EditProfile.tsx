@@ -3,6 +3,7 @@ import styles from "./EditProfile.module.scss";
 import { putUser } from "../../redux/actions";
 import { useDispatch } from "react-redux";
 import { playersPosition } from "../Teams/Funciones/PlayersPosition";
+import { genderName } from "../Teams/Funciones/Gender";
 export default function EditProfile({
   userName,
   cellphone,
@@ -192,7 +193,7 @@ export default function EditProfile({
               {playersPosition(user.player.position)}
             </p>
             <label className={styles.label}>Genero</label>
-            <p className={styles.txt}>{user.gender}</p>
+            <p className={styles.txt}>{genderName(user.gender)}</p>
           </div>
         </div>
       </div>

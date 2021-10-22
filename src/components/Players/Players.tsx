@@ -16,6 +16,8 @@ import SearchBar from "./SearchBar";
 import AddCarrito from "../CarritodeJugadores/Carrito/AddCarrito";
 import Carrito from "../CarritodeJugadores/Carrito/Carrito";
 import { playersPosition } from "../Teams/Funciones/PlayersPosition";
+import { genderName } from "../Teams/Funciones/Gender";
+
 function Players() {
   const jugadores = useSelector((state: any) => state.jugadores.jugadores);
   const id = sessionStorage.getItem("id");
@@ -150,7 +152,7 @@ function Players() {
                   <Link to={`/jugador/${p.id}`}>{p.name}</Link>
                 </td>
                 <td>{p.available ? "Disponible" : "No Disponible"}</td>
-                <td>{p.gender}</td>
+                <td>{genderName(p.gender)}</td>
                 <td>{playersPosition(p.position)}</td>
                 <td>{p.punctuation} / 5</td>
                 <td>

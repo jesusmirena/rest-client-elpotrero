@@ -5,6 +5,7 @@ import styles from "./DetalleJugador.module.scss";
 import { putPlayerQualification } from "../../redux/actions";
 import { useDispatch } from "react-redux";
 import { playersPosition } from "../Teams/Funciones/PlayersPosition";
+import { genderName } from "../Teams/Funciones/Gender";
 
 function DetalleJugador(props: { match: { params: { id: any } } }) {
   const dispatch = useDispatch();
@@ -75,7 +76,7 @@ function DetalleJugador(props: { match: { params: { id: any } } }) {
                   <p className={styles.Genres}>
                     Fecha de nacimiento: {p.birthday}
                   </p>
-                  <p className={styles.Genres}>Sexo:{p.gender} </p>
+                  <p className={styles.Genres}>Sexo:{genderName(p.gender)} </p>
                   <p className={styles.Rating}>Calificacion: {p.punctuation}</p>
                   <p className={styles.Genres}>
                     Posicion: {playersPosition(p.position)}{" "}
