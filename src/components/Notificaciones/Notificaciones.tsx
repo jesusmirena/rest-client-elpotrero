@@ -37,7 +37,7 @@ export default function Notificaciones() {
     dispatch(getNotificacionesMisEquipos(userId));
     dispatch(getNotificacionesJugadorUnir(userId));
     dispatch(getNotificacionesRespuestaJugadorUnir(userId));
-  }, []);
+  }, [dispatch]);
 
   notificacionesMisEquipos = notificacionesMisEquipos.filter(
     (n: any) => n.notification != "Sin notificaciones"
@@ -141,7 +141,10 @@ export default function Notificaciones() {
         <div>
           {notificacionesMisEquipos?.map((n: any) => {
             return (
-              <CardTeam teamName={n.teamName} notificaciones={n.notification} />
+              <CardTeam
+                teamName={n.teamName}
+                notificaciones={n.notificaction}
+              />
             );
           })}
         </div>

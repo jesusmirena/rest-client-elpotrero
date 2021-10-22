@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 export default function AllTeam(props: any) {
   const dispatch = useDispatch();
   const [calificacion, setCalificacion] = useState({
-    id: 0,
+    id: props.id,
     qualification: 0,
   });
   let userId: any = window.sessionStorage.getItem("id");
@@ -24,7 +24,7 @@ export default function AllTeam(props: any) {
     e.preventDefault();
     dispatch(putCalificarTeam(calificacion));
     setCalificacion({
-      id: 0,
+      ...calificacion,
       qualification: 0,
     });
   }

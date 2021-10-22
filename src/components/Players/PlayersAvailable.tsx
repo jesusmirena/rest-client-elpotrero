@@ -15,7 +15,7 @@ import Carrito from "../CarritodeJugadores/Carrito/Carrito";
 import CarritoDisponible from "../CarritodeJugadores/Carrito/CarritoDisponible";
 import styles from "./Players.module.scss";
 import SearchBarAvailable from "./SearchbarAvailable";
-
+import { playersPosition } from "../Teams/Funciones/PlayersPosition";
 export default function PlayersAvailable() {
   const id = sessionStorage.getItem("id");
 
@@ -134,7 +134,7 @@ export default function PlayersAvailable() {
                 </td>
                 <td>{p.available ? "Disponible" : "No Disponible"}</td>
                 <td>{p.gender}</td>
-                <td>{p.position}</td>
+                <td>{playersPosition(p.position)}</td>
                 <td>{p.punctuation} / 5</td>
                 <td>
                   <form>

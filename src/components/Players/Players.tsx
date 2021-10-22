@@ -15,6 +15,7 @@ import {
 import SearchBar from "./SearchBar";
 import AddCarrito from "../CarritodeJugadores/Carrito/AddCarrito";
 import Carrito from "../CarritodeJugadores/Carrito/Carrito";
+import { playersPosition } from "../Teams/Funciones/PlayersPosition";
 function Players() {
   const jugadores = useSelector((state: any) => state.jugadores.jugadores);
   const id = sessionStorage.getItem("id");
@@ -64,7 +65,7 @@ function Players() {
   useEffect(() => {
     dispatch(getPlayers());
     dispatch(getTeamsId(id));
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
 
   return (
@@ -150,7 +151,7 @@ function Players() {
                 </td>
                 <td>{p.available ? "Disponible" : "No Disponible"}</td>
                 <td>{p.gender}</td>
-                <td>{p.position}</td>
+                <td>{playersPosition(p.position)}</td>
                 <td>{p.punctuation} / 5</td>
                 <td>
                   <form>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./EditProfile.module.scss";
 import { putUser } from "../../redux/actions";
 import { useDispatch } from "react-redux";
-
+import { playersPosition } from "../Teams/Funciones/PlayersPosition";
 export default function EditProfile({
   userName,
   cellphone,
@@ -180,7 +180,7 @@ export default function EditProfile({
         </form>
         <div className={styles.imageContainer}>
           <div className={styles.c}>
-            <img src={user.image} className={styles.img} alt={user.name}/>
+            <img src={user.image} className={styles.img} alt={user.name} />
             <label className={styles.label}>Nombre</label>
             <p className={styles.txt}>{user.name}</p>
             <label className={styles.label}>Usuario</label>
@@ -188,7 +188,9 @@ export default function EditProfile({
             <label className={styles.label}>Telefono</label>
             <p className={styles.txt}>{user.cellphone}</p>
             <label className={styles.label}>Posicion</label>
-            <p className={styles.txt}>{user.player.position}</p>
+            <p className={styles.txt}>
+              {playersPosition(user.player.position)}
+            </p>
             <label className={styles.label}>Genero</label>
             <p className={styles.txt}>{user.gender}</p>
           </div>

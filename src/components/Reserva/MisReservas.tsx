@@ -20,7 +20,7 @@ export default function MisReservas() {
         <div>
           <h1 className={styles.titulo}>Mis Reservas</h1>
           {!allReserva?.length && (
-            <h2 style={{ color: "white" }}>
+            <h2 style={{ color: "black" }}>
               No tienes ninguna reserva en este momento
             </h2>
           )}

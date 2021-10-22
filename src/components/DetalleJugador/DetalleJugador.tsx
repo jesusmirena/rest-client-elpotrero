@@ -4,6 +4,7 @@ import axios from "axios";
 import styles from "./DetalleJugador.module.scss";
 import { putPlayerQualification } from "../../redux/actions";
 import { useDispatch } from "react-redux";
+import { playersPosition } from "../Teams/Funciones/PlayersPosition";
 
 function DetalleJugador(props: { match: { params: { id: any } } }) {
   const dispatch = useDispatch();
@@ -41,7 +42,7 @@ function DetalleJugador(props: { match: { params: { id: any } } }) {
   }
   useEffect(() => {
     getJugador(id);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   return (
@@ -57,11 +58,11 @@ function DetalleJugador(props: { match: { params: { id: any } } }) {
       <div className={styles.container}>
         {jugador.map((p: any) => {
           return (
-            <div key={p.id} className={`${styles.cardItem} ${styles.CardItemUniqueEffect}`}>
-              <div
-              
-               
-              >
+            <div
+              key={p.id}
+              className={`${styles.cardItem} ${styles.CardItemUniqueEffect}`}
+            >
+              <div>
                 <img
                   src={
                     p.image ||
@@ -76,7 +77,9 @@ function DetalleJugador(props: { match: { params: { id: any } } }) {
                   </p>
                   <p className={styles.Genres}>Sexo:{p.gender} </p>
                   <p className={styles.Rating}>Calificacion: {p.punctuation}</p>
-                  <p className={styles.Genres}>Posicion: {p.position} </p>
+                  <p className={styles.Genres}>
+                    Posicion: {playersPosition(p.position)}{" "}
+                  </p>
                   <p className={styles.Genres}>
                     Disponibilidad:{" "}
                     {p.available ? "Disponible" : "No Disponible"}
