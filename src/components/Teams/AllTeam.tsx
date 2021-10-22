@@ -52,23 +52,21 @@ export default function AllTeam(props: any) {
         <img className={styles.img} src={props.image} alt="" />
       </div>
       <div className={styles.info}>
-        <h3>{props.name}</h3>
+        <h2>{props.name}</h2>
         <p>Calificacion: </p>
         <p>{props.qualification}</p>
         <p>Capitan: </p>
         <p>{props.user}</p>
       </div>
-      <p className={styles.span}>Jugadores:</p>
+      <p className={styles.info}>Jugadores:</p>
       {props.players &&
         props.players.map((el: any) => {
           return (
             <div key={el.id}>
-              <h3 className={styles.span}>{el.playerName}</h3>
+              <h3 className={styles.info}>{el.playerName}</h3>
             </div>
           );
         })}
-      <br />
-      {/* <button onClick={handleUnirme}>Unirme</button> */}
       <select
         onChange={(e) => handleCalificar(e)}
         name="Calificar"
@@ -90,7 +88,9 @@ export default function AllTeam(props: any) {
           5
         </option>
       </select>
-      <button onClick={handleSubmit}>Calificar</button>
+      <button className={styles.botonCalificar} onClick={handleSubmit}>
+        Calificar
+      </button>
     </div>
   );
 }

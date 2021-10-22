@@ -10,6 +10,7 @@ import useUser from "../../hooks/useUser";
 import { putUser, resetUser } from "../../redux/actions";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
+import styles from "./NavBarMUI.module.scss";
 import axios from "axios";
 
 type Anchor = "top" | "left" | "bottom" | "right";
@@ -99,7 +100,7 @@ export default function MenuHamburguesa() {
 
   useEffect(() => {
     player();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [flag]);
 
   const list = (anchor: Anchor) => (
@@ -110,23 +111,36 @@ export default function MenuHamburguesa() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        <ListItem >
-          <ListItemText onClick={handleViewProfile} primary="Ver perfil" />
-        </ListItem>
-        <ListItem >
-          <ListItemText onClick={handleCrearEquipo} primary="Crear equipo" />
-        </ListItem>
-        <ListItem >
+        <ListItem>
           <ListItemText
+            className={styles.link}
+            onClick={handleViewProfile}
+            primary="Ver perfil"
+          />
+        </ListItem>
+        <ListItem>
+          <ListItemText
+            className={styles.link}
+            onClick={handleCrearEquipo}
+            primary="Crear equipo"
+          />
+        </ListItem>
+        <ListItem>
+          <ListItemText
+            className={styles.link}
             onClick={handleInvitarJugadoresDisponibles}
             primary="Invitar jugadores"
           />
         </ListItem>
-        <ListItem >
-          <ListItemText onClick={handleMisEquipos} primary="Mis equipos" />
+        <ListItem>
+          <ListItemText
+            className={styles.link}
+            onClick={handleMisEquipos}
+            primary="Mis equipos"
+          />
         </ListItem>
         {user.player?.available ? (
-          <ListItem >
+          <ListItem>
             <Button
               style={{
                 backgroundColor: "#b62121",
@@ -135,12 +149,12 @@ export default function MenuHamburguesa() {
               onClick={handleNoPlaying}
               variant="contained"
             >
-              NO QUIERO JUGAR 
+              NO QUIERO JUGAR
             </Button>
           </ListItem>
         ) : (
           <ListItem>
-            {/* <ListItemText onClick={handlePlaying} primary="Quiero jugar!" /> */}
+            {/* <ListItemText className={styles.link} onClick={handlePlaying} primary="Quiero jugar!" /> */}
             <Button
               style={{
                 backgroundColor: "#21b649",
@@ -154,19 +168,28 @@ export default function MenuHamburguesa() {
           </ListItem>
         )}
 
-        <ListItem >
+        <ListItem>
           <ListItemText
+            className={styles.link}
             onClick={handleMisNotificaciones}
             primary="Mis notificaciones"
           />
         </ListItem>
-        <ListItem >
-          <ListItemText onClick={handleMisReservas} primary="Mis reservas" />
+        <ListItem>
+          <ListItemText
+            className={styles.link}
+            onClick={handleMisReservas}
+            primary="Mis reservas"
+          />
         </ListItem>
-        <ListItem >
-          <ListItemText onClick={handleReservaCancha} primary="ir a Home" />
+        <ListItem>
+          <ListItemText
+            className={styles.link}
+            onClick={handleReservaCancha}
+            primary="ir a Home"
+          />
         </ListItem>
-        <ListItem >
+        <ListItem>
           <Button
             style={{
               backgroundColor: "#b62121",

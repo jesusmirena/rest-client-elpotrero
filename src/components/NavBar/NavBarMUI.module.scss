@@ -5,7 +5,12 @@
   flex-direction: row;
   align-items: center;
 }
-
+.link {
+  cursor: pointer;
+  &:hover {
+    color: #494949;
+  }
+}
 .navBg {
   background-color: $black;
 }
