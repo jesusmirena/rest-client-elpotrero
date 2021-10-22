@@ -7,7 +7,7 @@ import AllTeam from "./AllTeam";
 export default function AllTeams() {
   const dispatch = useDispatch();
   const allTeams = useSelector((state: any) => state.teams.teamsAllTeams);
-  
+
   useEffect(() => {
     dispatch(getAllTeams());
   }, [dispatch]);
@@ -16,7 +16,7 @@ export default function AllTeams() {
     <div>
       <div className={styles.containerGrid}>
         <div className={styles.titulo}>
-          <h1>Equipos</h1>
+          <h1 style={{ color: "black" }}>Equipos</h1>
         </div>
         <div className={styles.grid}>
           {allTeams &&

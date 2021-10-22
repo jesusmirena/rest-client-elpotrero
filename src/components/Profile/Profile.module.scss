@@ -1,16 +1,17 @@
 .background {
   background: url("../../visuales/crearequipo.jpg");
   color: white;
-  height: 100vh;
+  height: 100%;
   max-width: 100%;
 
   background-size: cover;
+  padding: 1rem;
 }
 .conteiner {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 1rem auto;
+  margin: 0 auto;
   background-color: black;
   color: white;
   border-radius: 20px;

@@ -5,6 +5,7 @@ import styles from "../CardsGrid/CardsGrid.module.scss";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { Redirect } from "react-router";
+import { Link } from "react-router-dom";
 
 export default function CardsGrid(props: any) {
   try {
@@ -31,9 +32,9 @@ export default function CardsGrid(props: any) {
     <div className={styles.containerGrid}>
       {canchas.length ? (
         <>
-          <h3 className={styles.titulo}>
+          <h2 className={styles.titulo}>
             Canchas disponibles en la fecha :{fecha}
-          </h3>
+          </h2>
 
           <div className={styles.grid}>
             {canchas.map((c: Cancha, i: any) => {
@@ -43,7 +44,11 @@ export default function CardsGrid(props: any) {
         </>
       ) : (
         <div>
-          <button>volver</button>
+          <h2 style={{ color: "black" }}>Volver a Home</h2>
+
+          <Link style={{ color: "black" }} to="/home">
+            Volver
+          </Link>
         </div>
       )}
     </div>

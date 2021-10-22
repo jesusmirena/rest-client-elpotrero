@@ -1,20 +1,217 @@
-.grid {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding: 40px;
-  justify-content: center;
-}
-.containerGrid {
-  width: 80%;
-  height: 95%;
-  margin: 50px auto;
-  padding-bottom: 5rem;
-  border-radius: 1rem;
-}
+// .grid {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   flex-direction: column;
+//   padding: 40px;
+//   justify-content: center;
+// }
+// .containerGrid {
+//   width: 80%;
+//   height: 95%;
+//   margin: 50px auto;
+//   padding-bottom: 5rem;
+//   border-radius: 1rem;
+// }
 
 .titulo {
   text-align: center;
   color: black;
+}
+$accent-theme-color: #444444c7;
+$accent-theme-color2: #8d909b;
+$dark-theme-color: #101010;
+$light-theme-color: #fff;
+
+$item-width: 300px;
+$item-height: 300px;
+
+$item-info-offset: 7px;
+
+$link-dimensions: 35px;
+$link-offset: 10px;
+@mixin transition-mix(
+  $property: all,
+  $duration: 0.1s,
+  $timing: linear,
+  $delay: 0s
+) {
+  transition-property: $property;
+  transition-duration: $duration;
+  transition-timing-function: $timing;
+  transition-delay: $delay;
+}
+
+//position absolute mixin
+@mixin position-absolute($top: null, $left: null, $right: null, $bottom: null) {
+  position: absolute;
+  top: $top;
+  left: $left;
+  right: $right;
+  bottom: $bottom;
+}
+
+//mixin for image positioning
+@mixin img-position($max-width: 200%, $max-height: 200%) {
+  position: relative;
+  overflow: hidden;
+
+  img {
+    @include position-absolute($top: 50%, $left: 50%);
+
+    width: auto;
+    height: auto;
+    min-width: 100%;
+    min-height: 100%;
+    max-width: $max-width;
+    max-height: $max-height;
+    transform: translate(-50%, -50%);
+  }
+}
+.titulo {
+  color: black;
+  text-align: center;
+}
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem;
+  flex-direction: column;
+}
+.boton {
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 1rem 2rem;
+  margin: 1rem;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+}
+.botonVolver {
+  background-color: black;
+}
+.botonCalificar {
+  background-color: #e08709;
+  &:hover {
+    background-color: darken(#e08709, 5);
+  }
+}
+.botonInvitar {
+  background-color: #71b100;
+  &:hover {
+    background-color: darken(#71b100, 5);
+  }
+}
+.cardItem {
+  @include img-position();
+  border-radius: 16px;
+  width: 100%;
+  height: 30rem;
+}
+
+.Content {
+  @include position-absolute($bottom: 0, $left: 0);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+
+  background-color: $accent-theme-color;
+}
+
+.Title {
+  position: relative;
+  color: #ffffff;
+  margin: 0 0 20px 0;
+  padding: 15px 0;
+
+  font: {
+    size: 22px;
+  }
+  text-transform: uppercase;
+  letter-spacing: 2px;
+
+  &:after {
+    @include position-absolute($bottom: 0, $left: 0);
+
+    display: block;
+    height: 2px;
+    width: 100%;
+
+    content: "";
+
+    background-color: $accent-theme-color2;
+  }
+}
+
+/* EFFECT #1 STYLES */
+.CardItemUniqueEffect {
+  .Content {
+    transform: scale(1.1);
+    opacity: 0;
+  }
+
+  .Title {
+    top: -10px;
+    opacity: 0;
+
+    &:after {
+      transform: scaleX(0);
+    }
+  }
+}
+
+.CardItemUniqueEffect:hover {
+  .Content {
+    @include transition-mix($duration: 0.2s);
+
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  .Title {
+    @include transition-mix($delay: 0.25s);
+
+    top: 0;
+    opacity: 1;
+
+    &:after {
+      @include transition-mix(
+        $duration: 0.15s,
+        $timing: cubic-bezier(0.63, 0.01, 0, 1.39),
+        $delay: 0.65s
+      );
+      transform: scaleX(1);
+    }
+  }
+}
+.Genres,
+.Rating {
+  text-align: center;
+  padding: 5px;
+  background-color: #262d36;
+  color: #ffffff;
+  border-radius: 4px;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  margin: 3px 0px;
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 500px);
+  gap: 1rem;
+  padding: 1rem;
+  justify-content: center;
+}
+
+@media (max-width: 560px) {
+  .cardsGrid {
+    grid-template-columns: 100%;
+  }
 }

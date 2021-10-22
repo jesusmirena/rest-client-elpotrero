@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import styles from "./Profile.module.scss";
 import axios from "axios";
-import { deleteUser} from "../../redux/actions";
+import { deleteUser } from "../../redux/actions";
 import img from "../../visuales/profile.png";
 import EditProfile from "./EditProfile";
 import useUser from "../../hooks/useUser";
@@ -24,7 +24,6 @@ export default function Profile() {
     const data = await axios.get("http://localhost:3001/user?id=" + profile);
     var res = await data.data;
     setUser(res);
-
   };
   /*   useEffect(() => {
     axios.get("http://localhost:3001/user?id=" + profile).then((res) => {
@@ -51,46 +50,10 @@ export default function Profile() {
 
   useEffect(() => {
     player();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [btn]);
   return (
     <div className={styles.background}>
-      <div className={styles.btnC}>
-        <button
-          style={{ background: "white" }}
-          className={styles.btn}
-          onClick={handleBtn}
-        >
-          {btn ? "EDITAR PERFIL" : "VOLVER"}
-        </button>
-
-        <button
-          style={{ background: "red", color: "white" }}
-          className={styles.btn}
-          onClick={handleDelete}
-        >
-          {btndelete ? "CANCELAR" : "ELIMINAR PERFIL"}
-        </button>
-      </div>
-      {btndelete && (
-        <div className={styles.btnC}>
-          <div style={{ background: "red", borderRadius: "10px" }}>
-            <h3 style={{ margin: "0.4rem", color: "white", fontSize: "2rem" }}>
-              Estas seguro que queres eliminar el perfil?
-            </h3>{" "}
-          </div>
-          <div>
-            <button
-              style={{ background: "red", color: "white", margin: "1rem auto" }}
-              className={styles.btn}
-              onClick={handleConfirmar}
-            >
-              CONFIRMAR
-            </button>
-          </div>
-        </div>
-      )}
-
       {btn ? (
         <div>
           <div className={styles.conteiner}>
@@ -98,7 +61,11 @@ export default function Profile() {
           </div>
           <div>
             <div className={styles.card}>
-              <img className={styles.img} src={user.image || img} alt={user.userName} />
+              <img
+                className={styles.img}
+                src={user.image || img}
+                alt={user.userName}
+              />
               <div></div>
               <label className={styles.label}>Usuario</label>
               <p className={styles.txt}> {user.userName}</p>
@@ -132,6 +99,41 @@ export default function Profile() {
             votes={user.player.votes}
             available={user.player.available}
           />
+        </div>
+      )}
+      <div className={styles.btnC}>
+        <button
+          style={{ background: "white" }}
+          className={styles.btn}
+          onClick={handleBtn}
+        >
+          {btn ? "EDITAR PERFIL" : "VOLVER"}
+        </button>
+
+        <button
+          style={{ background: "red", color: "white" }}
+          className={styles.btn}
+          onClick={handleDelete}
+        >
+          {btndelete ? "CANCELAR" : "ELIMINAR PERFIL"}
+        </button>
+      </div>
+      {btndelete && (
+        <div className={styles.btnC}>
+          <div style={{ background: "red", borderRadius: "10px" }}>
+            <h3 style={{ margin: "0.4rem", color: "white", fontSize: "2rem" }}>
+              Estas seguro que queres eliminar el perfil?
+            </h3>{" "}
+          </div>
+          <div>
+            <button
+              style={{ background: "red", color: "white", margin: "1rem auto" }}
+              className={styles.btn}
+              onClick={handleConfirmar}
+            >
+              CONFIRMAR
+            </button>
+          </div>
         </div>
       )}
     </div>
