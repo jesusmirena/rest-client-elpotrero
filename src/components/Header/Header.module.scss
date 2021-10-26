@@ -3,6 +3,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 1fr;
+  padding: 1rem;
 }
 
 .logoContainer {
@@ -13,7 +14,7 @@
   align-content: center;
 }
 .logo {
-  height: 150px;
+  height: 120px;
 }
 .menuHamburguesa {
   display: flex;

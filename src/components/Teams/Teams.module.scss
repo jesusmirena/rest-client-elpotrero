@@ -4,6 +4,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  background-color: #262626;
 }
 .containerGrid {
   display: flex;
@@ -20,8 +21,8 @@
 }
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, 700px);
-  gap: 80px;
+  grid-template-columns: repeat(auto-fill, 450px);
+  gap: 40px;
   padding: 30px;
   justify-content: center;
   text-align: center;

@@ -16,7 +16,8 @@ table.jugadores {
   }
   tr {
     border: solid;
-    border-width: 1px 0;
+    border-width: 10px 0;
+
     &:first-child {
       border-top: none;
     }
@@ -49,7 +50,7 @@ table.jugadores {
   color: white;
   font-weight: bold;
   text-decoration: none;
-  padding: 1rem 2rem;
+  padding: 0.5rem 1rem;
   margin: 1rem;
   text-align: center;
   border: none;

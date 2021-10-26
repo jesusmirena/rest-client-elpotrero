@@ -1,12 +1,8 @@
-import { dividerClasses } from "@mui/material";
 import React, { useState } from "react";
-import imagen from "../../visuales/edit.jpg";
+import Rating from "@mui/material/Rating";
+
 import styles from "./Team.module.scss";
-import {
-  putCalificarTeam,
-  putTeam,
-  postNotificationTeam,
-} from "../../redux/actions";
+import { putCalificarTeam, postNotificationTeam } from "../../redux/actions";
 import { useDispatch } from "react-redux";
 
 export default function Team(props: any) {
@@ -50,29 +46,32 @@ export default function Team(props: any) {
 
   return (
     <div className={styles.container}>
+      {/* <Calificacion value={3} /> */}
       <div className={styles.imgcontainer}>
         <img className={styles.img} src={props.image} alt="" />
       </div>
+      <div className={styles.containerInfo}>
+        <div className={styles.info}>
+          <h2 className={styles.name}>{props && props.name}</h2>
 
-      <div className={styles.info}>
-        <div>
-          <h2>{props && props.name}</h2>
-          <p>Calificacion: </p>
-          <p>{props && props.qualification}</p>
+          <div>
+            <Rating name="read-only" value={props.qualification} readOnly />
+          </div>
+
           <p>Capitan: </p>
           <p>{props && props.user}</p>
+
+          <p className={styles.info}>Jugadores:</p>
+          {props.players &&
+            props.players.map((el: any) => {
+              return (
+                <div key={el.id}>
+                  <p className={styles.info}>{el.playerName}</p>
+                </div>
+              );
+            })}
         </div>
       </div>
-
-      <p className={styles.info}>Jugadores:</p>
-      {props.players &&
-        props.players.map((el: any) => {
-          return (
-            <div key={el.id}>
-              <h3 className={styles.info}>{el.playerName}</h3>
-            </div>
-          );
-        })}
       <br />
       <button className={styles.botonUnirme} onClick={handleUnirme}>
         Unirme

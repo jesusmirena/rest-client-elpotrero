@@ -8,9 +8,9 @@ export default function HomeDos() {
     <div className={styles.container}>
       <div className={styles.backgroundInfo}>
         <div className={styles.infoContainer}>
-          <p className={styles.infotitle}>Jugá</p>
+          <h2 className={styles.infotitle}>Jugar</h2>
           <p className={styles.parrafo}>
-            Vos preocupate por romperla en el partido.
+            Conseguí al jugador que te falta y mirá a qué equipos te podés unir
           </p>
 
           <div className={styles.botonContainer}>
@@ -18,13 +18,13 @@ export default function HomeDos() {
               <button className={styles.btn}>Me falta uno</button>
             </Link>
 
-            <Link to="/teamsId">
-              <button className={styles.btn}>Mis equipos</button>
+            <Link to="/teams">
+              <button className={styles.btn}>Equipos disponibles</button>
             </Link>
           </div>
         </div>
         <div className={styles.infoContainer}>
-          <p className={styles.infotitle}>Busca y Reservá</p>
+          <h2 className={styles.infotitle}>Reservar</h2>
           <p className={styles.parrafo}>
             Conocé la disponibilidad de tus canchas preferidas. Tenés toda la
             información para hacer tu reserva instantánea.
@@ -34,17 +34,19 @@ export default function HomeDos() {
           </div>
         </div>
         <div className={styles.infoContainer}>
-          <p className={styles.infotitle}>Calificar</p>
+          <h2 className={styles.infotitle}>Calificar</h2>
           <p className={styles.parrafo}>
-            Califica los equipos y jugadores para mejorar la calidad de tus
+            Calificá los equipos y jugadores para mejorar la calidad de tus
             partidos.
           </p>
-          <Link to="/jugadores">
-            <button className={styles.btn}>Jugadores</button>
-          </Link>
-          <Link to="/allteams">
-            <button className={styles.btn}>Equipos</button>
-          </Link>
+          <div className={styles.botonContainer}>
+            <Link to="/jugadores">
+              <button className={styles.btn}>Jugadores</button>
+            </Link>
+            <Link to="/allteams">
+              <button className={styles.btn}>Equipos</button>
+            </Link>
+          </div>
         </div>
       </div>
     </div>

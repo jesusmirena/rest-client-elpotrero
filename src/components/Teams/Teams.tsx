@@ -17,9 +17,9 @@ export default function Teams() {
   return (
     <div className={styles.container}>
       <div className={styles.containerGrid}>
-        <div className={styles.titulo}>
+        {/* <div className={styles.titulo}>
           <h1 style={{ color: "black" }}>Equipos disponibles</h1>
-        </div>
+        </div> */}
         <div className={styles.grid}>
           {allTeams &&
             allTeams.map((el: any) => {

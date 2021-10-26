@@ -8,6 +8,7 @@ import {
   putTeam,
 } from "../../redux/actions";
 import { useDispatch } from "react-redux";
+import { Rating } from "@mui/material";
 
 function playersPosition(el: any) {
   if (el === "ATTACKER") return "ATACANTE";
@@ -50,7 +51,7 @@ export default function TeamId(props: any) {
 
   useEffect(() => {
     dispatch(getTeamsId(id));
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [flag]);
 
   return (
@@ -62,8 +63,9 @@ export default function TeamId(props: any) {
         <h2>{props.name}</h2>
         <br />
         <div>
-          <h3>Calificacion: </h3>
-          <h3>{props.qualification}</h3>
+          <div>
+            <Rating name="read-only" value={props.qualification} readOnly />
+          </div>
           <br />
           <h3>Votos: </h3>
           <h3>{props.votes}</h3>
@@ -122,12 +124,7 @@ export default function TeamId(props: any) {
             props.players.map((el: any) => {
               return (
                 <div key={el.id} className={styles.player}>
-                  <h3>nombre: </h3>
-
                   <span>{el.name}</span>
-
-                  <h3>Posicion</h3>
-                  <span>{playersPosition(el.position)}</span>
                 </div>
               );
             })}

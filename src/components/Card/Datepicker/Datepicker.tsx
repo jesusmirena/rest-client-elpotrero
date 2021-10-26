@@ -21,7 +21,7 @@ export default function Datepicker() {
 
   return (
     <div className={styles.container}>
-      <p className={styles.fecha}>Selecciona una fecha</p>
+      <p className={styles.fecha}>Seleccioná una fecha</p>
       <div>
         <DatePicker
           className={styles.date}

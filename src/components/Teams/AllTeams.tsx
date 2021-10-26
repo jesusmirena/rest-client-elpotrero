@@ -13,11 +13,8 @@ export default function AllTeams() {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className={styles.container}>
       <div className={styles.containerGrid}>
-        <div className={styles.titulo}>
-          <h1 style={{ color: "black" }}>Equipos</h1>
-        </div>
         <div className={styles.grid}>
           {allTeams &&
             allTeams.map((el: any) => {

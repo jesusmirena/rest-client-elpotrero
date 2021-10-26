@@ -118,27 +118,6 @@ export default function MenuHamburguesa() {
             primary="Ver perfil"
           />
         </ListItem>
-        <ListItem>
-          <ListItemText
-            className={styles.link}
-            onClick={handleCrearEquipo}
-            primary="Crear equipo"
-          />
-        </ListItem>
-        <ListItem>
-          <ListItemText
-            className={styles.link}
-            onClick={handleInvitarJugadoresDisponibles}
-            primary="Invitar jugadores"
-          />
-        </ListItem>
-        <ListItem>
-          <ListItemText
-            className={styles.link}
-            onClick={handleMisEquipos}
-            primary="Mis equipos"
-          />
-        </ListItem>
         {user.player?.available ? (
           <ListItem>
             <Button
@@ -167,7 +146,6 @@ export default function MenuHamburguesa() {
             </Button>
           </ListItem>
         )}
-
         <ListItem>
           <ListItemText
             className={styles.link}
@@ -185,16 +163,38 @@ export default function MenuHamburguesa() {
         <ListItem>
           <ListItemText
             className={styles.link}
+            onClick={handleMisEquipos}
+            primary="Mis equipos"
+          />
+        </ListItem>
+        <ListItem>
+          <ListItemText
+            className={styles.link}
+            onClick={handleCrearEquipo}
+            primary="Crear equipo"
+          />
+        </ListItem>
+
+        <ListItem>
+          <ListItemText
+            className={styles.link}
+            onClick={handleInvitarJugadoresDisponibles}
+            primary="Me falta uno"
+          />
+        </ListItem>
+
+        <ListItem>
+          <ListItemText
+            className={styles.link}
             onClick={handleReservaCancha}
-            primary="ir a Home"
+            primary="Ir a Home"
           />
         </ListItem>
         <ListItem>
           <Button
             style={{
               backgroundColor: "#b62121",
-
-              fontSize: "18px",
+              fontSize: "12px",
             }}
             onClick={handleLogout}
             variant="contained"

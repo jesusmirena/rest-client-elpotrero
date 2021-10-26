@@ -7,12 +7,9 @@
 }
 .link {
   cursor: pointer;
-  &:hover {
-    color: #494949;
-  }
 }
 .navBg {
-  background-color: $black;
+  background-color: #000000;
 }
 .navegacion {
   scroll-snap-align: center;
@@ -28,15 +25,14 @@
   }
 }
 .navegacion .navLink {
-  padding: 1rem 2rem;
+  padding: 0.8rem 2rem;
   color: $white;
   text-decoration: none;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   font-weight: 700;
 }
 .navegacion .navLink:hover {
-  background-color: #252525;
-  color: #cebebe;
+  background-color: #333333;
 }
 .navegacion .navLink:last-of-type {
   margin-bottom: 0;

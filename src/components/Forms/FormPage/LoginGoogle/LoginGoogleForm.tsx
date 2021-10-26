@@ -10,10 +10,7 @@ function LoginGoogleForm() {
   const cookieJson = JSON.parse(cookieObject);
   const history = useHistory();
 
-  const {
-    PutLoginGoogle,
-    PostLoginGoogle,
-  } = useUser();
+  const { PutLoginGoogle, PostLoginGoogle } = useUser();
 
   const [UsuarioGoogle, setUsuarioGoogle] = useState({
     id: cookieJson.id,
@@ -35,8 +32,8 @@ function LoginGoogleForm() {
   }
   function handleSubmitRegisterGoogle(e: any) {
     e.preventDefault();
-    PutLoginGoogle(UsuarioGoogle)
-    alert("Bienvenido")
+    PutLoginGoogle(UsuarioGoogle);
+    alert("Bienvenido");
     history.push("/home");
   }
   function handleSubmitLoginGoogle(e: any) {
@@ -56,13 +53,13 @@ function LoginGoogleForm() {
                 className={styles.boton}
                 onClick={(e) => handleSubmitLoginGoogle(e)}
               >
-                Comienza
+                Comenzá
               </button>
             </div>
           </div>
         ) : (
           <>
-            <h2>Ingresa los datos restantes</h2>
+            <h2>Ingresá los datos restantes</h2>
 
             <form
               className={styles.form}

@@ -17,6 +17,7 @@ import styles from "./Players.module.scss";
 import SearchBarAvailable from "./SearchbarAvailable";
 import { playersPosition } from "../Teams/Funciones/PlayersPosition";
 import { genderName } from "../Teams/Funciones/Gender";
+import { Rating } from "@mui/material";
 export default function PlayersAvailable() {
   const id = sessionStorage.getItem("id");
 
@@ -136,7 +137,11 @@ export default function PlayersAvailable() {
                 <td>{p.available ? "Disponible" : "No Disponible"}</td>
                 <td>{genderName(p.gender)}</td>
                 <td>{playersPosition(p.position)}</td>
-                <td>{p.punctuation} / 5</td>
+                <td>
+                  <div>
+                    <Rating name="read-only" value={p.punctuation} readOnly />
+                  </div>
+                </td>
                 <td>
                   <form>
                     {p.available ? (

@@ -17,6 +17,7 @@ import AddCarrito from "../CarritodeJugadores/Carrito/AddCarrito";
 import Carrito from "../CarritodeJugadores/Carrito/Carrito";
 import { playersPosition } from "../Teams/Funciones/PlayersPosition";
 import { genderName } from "../Teams/Funciones/Gender";
+import { Rating } from "@mui/material";
 
 function Players() {
   const jugadores = useSelector((state: any) => state.jugadores.jugadores);
@@ -154,7 +155,11 @@ function Players() {
                 <td>{p.available ? "Disponible" : "No Disponible"}</td>
                 <td>{genderName(p.gender)}</td>
                 <td>{playersPosition(p.position)}</td>
-                <td>{p.punctuation} / 5</td>
+                <td>
+                  <div>
+                    <Rating name="read-only" value={p.punctuation} readOnly />
+                  </div>
+                </td>
                 <td>
                   <form>
                     <AddCarrito players={p} />

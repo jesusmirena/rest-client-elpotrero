@@ -18,17 +18,9 @@
   flex-direction: column;
 }
 .btn {
-  cursor: pointer;
-  border-radius: 3rem;
-  display: block;
-  color: white;
-  font-size: 1.5rem;
-  height: 5rem;
-  width: 17rem;
-  border: solid #ffffff 6px;
-  text-decoration: none;
-  background: none;
-  margin: 0.8rem auto;
+  margin: 0.5rem auto;
+  border-radius: 6rem;
+  font-size: 20px !important;
 }
 
 .containerTitle {
@@ -41,15 +33,15 @@
 }
 
 .backgroundInfo {
-  border-radius: 1rem;
-  background-color: black;
-  background-color: rgba(0, 0, 0, 0.5);
   margin: 0 auto;
   display: flex;
 }
 
 .infoContainer {
   margin: 0 3rem;
+  border-radius: 1rem;
+  background-color: black;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .parrafo {
@@ -61,7 +53,6 @@
 }
 .datepicker {
   border-radius: 20px;
-  background-color: rgba(14, 14, 14, 0.575);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -72,8 +63,8 @@
   margin-top: 1rem;
   text-align: center;
   color: white;
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  font-size: 3rem;
+  text-transform: uppercase;
+  font-size: 1.7rem;
 }
 
 @media screen and(max-width: 1400px) {

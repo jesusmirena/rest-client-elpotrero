@@ -1,4 +1,4 @@
-import { dividerClasses } from "@mui/material";
+import { dividerClasses, Rating } from "@mui/material";
 import React, { useState } from "react";
 import imagen from "../../visuales/edit.jpg";
 import styles from "./Team.module.scss";
@@ -53,8 +53,9 @@ export default function AllTeam(props: any) {
       </div>
       <div className={styles.info}>
         <h2>{props.name}</h2>
-        <p>Calificacion: </p>
-        <p>{props.qualification}</p>
+        <div>
+          <Rating name="read-only" value={props.qualification} readOnly />
+        </div>
         <p>Capitan: </p>
         <p>{props.user}</p>
       </div>

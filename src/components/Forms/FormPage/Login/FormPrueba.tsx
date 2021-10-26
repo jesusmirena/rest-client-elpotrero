@@ -16,14 +16,14 @@ export default function FormPrueba({ notify }: any) {
   } = useForm();
 
   const onSubmit: SubmitHandler<any> = ({ mail, password }) => {
-    login({ mail, password })
+    login({ mail, password });
     reset();
   };
-  
+
   function googleLogin() {
     const googleLoginURL = "http://localhost:3001/auth/google";
     const newWindow = window.location.replace(googleLoginURL);
-    console.log(newWindow)
+    console.log(newWindow);
   }
   return (
     <>
@@ -33,7 +33,7 @@ export default function FormPrueba({ notify }: any) {
           <div className="form-container sign-in-container">
             <div className="formNegro">
               <button className="boton-google" onClick={googleLogin}>
-                Inicia con Google{" "}
+                Iniciá con Google{" "}
                 <FcGoogle className="icono-google" size={20} />
               </button>
               <form
@@ -41,7 +41,7 @@ export default function FormPrueba({ notify }: any) {
                 action="#"
                 onSubmit={handleSubmit(onSubmit)}
               >
-                <h1>Inicia sesión</h1>
+                <h1>Iniciá sesión</h1>
                 <input
                   className="inputLogIn"
                   type="email"
@@ -58,7 +58,7 @@ export default function FormPrueba({ notify }: any) {
 
                 <button className="btn" type="submit">
                   {isLogged ? <Redirect to="/home" /> : <Redirect to="/" />}
-                  Ingresa
+                  Ingresá
                 </button>
               </form>
             </div>
@@ -66,9 +66,9 @@ export default function FormPrueba({ notify }: any) {
           <div className="overlay-container">
             <div className="overlay">
               <div className="overlay-panel overlay-right">
-                <h1 className="titulo-derecha">¿Aún no tienes una cuenta?</h1>
+                <h1 className="titulo-derecha">¿Aún no tenés una cuenta?</h1>
                 <p className="parrafo-derecha">
-                  ¿Qué esperas para registrarte?
+                  ¿Qué esperás para registrarte?
                 </p>
                 <Link to="/register">
                   <button className="ghost" id="signIn">

@@ -1,33 +1,38 @@
 .container {
-  box-shadow: 0 15px 30px 1px grey;
+  // box-shadow: 0 15px 30px 1px grey;
   background: rgba(255, 255, 255, 0.9);
   text-align: center;
-  border-radius: 5px;
+  border-radius: 0.5rem;
   overflow: hidden;
-  margin: 1rem auto;
-  height: 460px;
-  width: 750px;
+  margin: 0.2rem auto;
+  height: auto;
+  width: 410px;
+  padding: 1rem;
 }
-
-.imgcontainer {
-  // display: inline-block;
-  position: relative;
-  overflow: hidden;
-  height: 100%;
-  float: right;
-  width: 45%;
+.containerInfo {
+  display: flex;
+  justify-content: center;
 }
+// .imgcontainer {
+//   // display: inline-block;
+//   position: relative;
+//   overflow: hidden;
+//   height: 100%;
+//   float: right;
+//   width: 45%;
+// }
 
 .img {
-  width: 100%;
-  height: 100%;
+  width: 100px;
+  height: 100px;
 }
 
 .info {
   color: #000000;
 }
 .info p {
-  font-size: 1.5rem;
+  font-size: 1rem;
+  margin: 0;
   font-weight: 450;
   text-align: center;
   color: #000000;
@@ -76,10 +81,10 @@
 }
 
 .botonUnirme {
-  background-color: #2d88ff;
+  background-color: #069ae6;
 
   &:hover {
-    background-color: darken(#2d88ff, 5);
+    background-color: darken(#069ae6, 5);
     cursor: pointer;
   }
 }
