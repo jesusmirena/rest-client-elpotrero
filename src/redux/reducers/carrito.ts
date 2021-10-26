@@ -1,11 +1,11 @@
-const initialState: any = {
+const carritoState: any = {
   carrito: [],
   carritoDisponible: [],
   horario: [],
   fecha: [],
 };
 
-const reducer = (state = initialState, action: any): any => {
+const reducer = (state = carritoState, action: any): any => {
   switch (action.type) {
     case "ADD_CARRITO":
       return {

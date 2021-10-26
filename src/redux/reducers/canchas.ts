@@ -1,10 +1,10 @@
 import { GET_CANCHAS, GET_CANCHAS_DISPONIBLE } from "../actionsNames";
 
-const initialState: Canchastate = {
+const initialState: any = {
   canchas: [],
 };
 
-const reducer = (state = initialState, action: Actioncancha): Canchastate => {
+const reducer = (state = initialState, action: any): any => {
   switch (action.type) {
     case GET_CANCHAS:
       return {

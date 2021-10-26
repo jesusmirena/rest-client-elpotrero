@@ -31,11 +31,12 @@ import EditTeam from "./components/Teams/EditTeam";
 
 function App() {
   return (
-    <BrowserRouter>
-      <UserContextProvider>
-        <Header />
-        <NavBarMui />
-        <div>
+    <div>
+      <BrowserRouter>
+        <UserContextProvider>
+          <Header />
+          <NavBarMui />
+
           <Switch>
             <Route exact path="/" component={LandinPage} />
             <Route exact path="/home" component={HomeDos} />
@@ -63,9 +64,9 @@ function App() {
             <Route path="/misreservas" component={MisReservas} />
             <Route path="/teamedit" component={EditTeam} />
           </Switch>
-        </div>
-      </UserContextProvider>
-    </BrowserRouter>
+        </UserContextProvider>
+      </BrowserRouter>
+    </div>
   );
 }
 

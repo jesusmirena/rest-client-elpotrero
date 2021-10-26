@@ -127,11 +127,13 @@ export default function Notificaciones() {
         <div>
           {notificacionesRespuestaJugadoresUnir?.map((n: any) => {
             return (
-              <RespuestaJugadorUnir
-                key={n.id}
-                teamName={n.teamName}
-                attending={n.attending}
-              />
+              <>
+                <RespuestaJugadorUnir
+                  key={n.id}
+                  teamName={n.teamName}
+                  attending={n.attending}
+                />
+              </>
             );
           })}
         </div>
@@ -141,25 +143,29 @@ export default function Notificaciones() {
         <div>
           {notificacionesMisEquipos?.map((n: any) => {
             return (
-              <CardTeam
-                teamName={n.teamName}
-                notificaciones={n.notificaction}
-              />
+              <>
+                <CardTeam
+                  teamName={n.teamName}
+                  notificaciones={n.notificaction}
+                />
+              </>
             );
           })}
         </div>
         <div>
           {notificacionesJugadoresUnir.map((n: any) => {
             return (
-              <JugadorUnir
-                key={n.id}
-                teamName={n.teamName}
-                notificaciones={n.notification}
-                teamImage={n.teamImge}
-                teamAvailable={n.teamAvailable}
-                teamPlayers={n.teamPlayers}
-                id={n.id}
-              />
+              <>
+                <JugadorUnir
+                  key={n.id}
+                  teamName={n.teamName}
+                  notificaciones={n.notification}
+                  teamImage={n.teamImge}
+                  teamAvailable={n.teamAvailable}
+                  teamPlayers={n.teamPlayers}
+                  id={n.id}
+                />
+              </>
             );
           })}
         </div>

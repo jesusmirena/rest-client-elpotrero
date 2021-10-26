@@ -6,14 +6,16 @@ export function UserContextProvider({ children }: any) {
   const [jwt, setJWT] = useState(() => window.sessionStorage.getItem("jwt"));
 
   return (
-    <Context.Provider
-      value={{
-        jwt,
-        setJWT,
-      }}
-    >
-      {children}
-    </Context.Provider>
+    <>
+      <Context.Provider
+        value={{
+          jwt,
+          setJWT,
+        }}
+      >
+        {children}
+      </Context.Provider>
+    </>
   );
 }
 

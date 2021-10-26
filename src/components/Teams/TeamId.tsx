@@ -10,13 +10,6 @@ import {
 import { useDispatch } from "react-redux";
 import { Rating } from "@mui/material";
 
-function playersPosition(el: any) {
-  if (el === "ATTACKER") return "ATACANTE";
-  if (el === "MIDFIELDER") return "MEDIOCAMPISTA";
-  if (el === "GOALKEEPER") return "ARQUERO";
-  if (el === "DEFENDER") return "DEFENSOR";
-}
-
 export default function TeamId(props: any) {
   const dispatch = useDispatch();
   const [flag, setFlag] = useState(true);

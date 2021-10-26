@@ -11,7 +11,7 @@ export default function Teams() {
 
   useEffect(() => {
     dispatch(getTeamsId(userId));
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -24,16 +24,18 @@ export default function Teams() {
           {allTeams &&
             allTeams.map((el: any) => {
               return (
-                <TeamId
-                  key={el.id}
-                  id={el.id}
-                  name={el.name}
-                  image={el.image}
-                  qualification={el.qualification}
-                  players={el.players}
-                  votes={el.votes}
-                  available={el.available}
-                />
+                <>
+                  <TeamId
+                    key={el.id}
+                    id={el.id}
+                    name={el.name}
+                    image={el.image}
+                    qualification={el.qualification}
+                    players={el.players}
+                    votes={el.votes}
+                    available={el.available}
+                  />
+                </>
               );
             })}
         </div>

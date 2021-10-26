@@ -1,10 +1,10 @@
 import { GET_PLAYERS } from "../actionsNames";
-const initialState: any = {
+const jugadoresState: any = {
   jugadores: [],
   jugadoresDisponibles: [],
 };
 
-const reducer = (state: any = initialState, action: any): any => {
+const reducer = (state: any = jugadoresState, action: any): any => {
   switch (action.type) {
     case GET_PLAYERS:
       return {

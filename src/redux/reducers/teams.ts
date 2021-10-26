@@ -1,7 +1,6 @@
-import { getTeamsId } from "../actions";
 import { GET_TEAMS, GET_TEAMS_ID, GET_TEAMS_ALLTEAMS } from "../actionsNames";
 
-const initialState: any = {
+const teamsState: any = {
   teams: [],
   teamsId: [],
   allTeams: [],
@@ -10,7 +9,7 @@ const initialState: any = {
   teamsAllTeams: [],
 };
 
-const reducer = (state = initialState, action: any) => {
+const reducer = (state = teamsState, action: any) => {
   switch (action.type) {
     case "GET_TEAM_DETAIL_ID":
       return {

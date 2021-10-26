@@ -1,11 +1,11 @@
 import { GET_RESERVA, GET_ALL_RESERVA } from "../actionsNames";
 
-const initialState: any = {
+const reservaState: any = {
   reserva: [],
   allReserva: [],
 };
 
-const reducer = (state = initialState, action: any): any => {
+const reducer = (state = reservaState, action: any): any => {
   switch (action.type) {
     case GET_RESERVA:
       return {
@@ -16,10 +16,10 @@ const reducer = (state = initialState, action: any): any => {
       return {
         reserva: [],
       };
-      case GET_ALL_RESERVA:
-       return {
-         allReserva: action.payload,
-       }
+    case GET_ALL_RESERVA:
+      return {
+        allReserva: action.payload,
+      };
     default:
       return state;
   }
