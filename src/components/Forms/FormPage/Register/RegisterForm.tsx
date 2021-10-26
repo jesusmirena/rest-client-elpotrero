@@ -62,6 +62,7 @@ export default function RegisterForm() {
             {...register("mail", {
               required: true,
               pattern:
+                // eslint-disable-next-line no-useless-escape
                 /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
             })}
           />
