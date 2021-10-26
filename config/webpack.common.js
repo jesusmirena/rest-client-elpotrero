@@ -1,24 +1,22 @@
 const path = require("path");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  mode: "development",
-  watch: true,
-  entry: "./src/index.tsx",
+  entry: {
+    app: "./src/index.tsx",
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, "../public", "index.html"),
+      filename: "./index.html",
+      favicon: "./public/favicon.ico",
+    }),
+  ],
   output: {
     filename: "bundle.js",
     path: path.resolve(__dirname, "../dist"),
     publicPath: "/",
   },
-  resolve: {
-    extensions: [".ts", ".tsx", ".js", ".json"],
-  },
-  devServer: {
-    static: "../dist",
-    historyApiFallback: true,
-  },
-  devtool: "source-map",
   module: {
     rules: [
       {
@@ -28,18 +26,13 @@ module.exports = {
       { test: /\.tsx?$/, loader: "babel-loader" },
       {
         type: "asset",
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        test: /\.(png|svg|jpg|jpeg|gif|ico)$/i,
       },
       { test: /\.tsx?$/, loader: "ts-loader" },
       { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
     ],
   },
-  plugins: [
-    new CleanWebpackPlugin(),
-    new HtmlWebpackPlugin({
-      template: path.join(__dirname, "../public", "index.html"),
-      filename: "./index.html",
-      favicon: "./public/favicon.ico",
-    }),
-  ],
+  resolve: {
+    extensions: [".js", ".json", ".jsx", ".tsx", ".ts"],
+  },
 };
