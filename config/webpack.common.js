@@ -55,10 +55,20 @@ module.exports = {
         test: /\.(png|svg|jpg|jpeg|gif|ico)$/i,
       },
 
-      { test: /\.tsx?$/, loader: "ts-loader" },
+      {
+        test: /\.tsx?$/,
+        loader: "ts-loader",
+        options: {
+          transpileOnly: true,
+        },
+      },
+      {
+        test: /.d.ts$/,
+        loader: "ignore-loader",
+      },
       { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
       {
-        test: /\.(css|scss|sass)$/,
+        test: /\.(scss|sass)$/,
         use: ["style-loader", "css-loader", "sass-loader"],
       },
     ],

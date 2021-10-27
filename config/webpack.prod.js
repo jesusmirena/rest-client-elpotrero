@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = merge(common, {
   mode: "production",
-  devtool: "inline-source-map",
+  devtool: "source-map",
   module: {
     rules: [
       {
@@ -21,21 +21,31 @@ module.exports = merge(common, {
       { test: /\.tsx?$/, loader: "ts-loader" },
       { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
       {
-        test: /\.(css|scss|sass)$/,
+        test: /\.s[ac]ss$/i,
         use: [
-          MiniCssExtractPlugin.loader,
           "style-loader",
           "css-loader",
-          "sass-loader",
+          {
+            loader: "sass-loader",
+            options: {
+              // Prefer `dart-sass`
+              implementation: require("sass"),
+            },
+          },
         ],
+      },
+      {
+        exclude: /\.(s?(a?|c)ss|js|html)$/,
+        loader: "file-loader",
+        options: {
+          name: "[hash:10].[ext]",
+        },
+      },
+      {
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
       },
     ],
   },
-  // optimization: {
-  //   splitChunks: {
-  //     chunks: "all",
-  //     name: false,
-  //   },
-  // },
   plugins: [new MiniCssExtractPlugin()],
 });
