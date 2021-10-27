@@ -4,11 +4,11 @@ const { HotModuleReplacementPlugin } = require("webpack");
 
 module.exports = merge(common, {
   mode: "development",
-  devtool: "source-map",
+  devtool: "inline-source-map",
   devServer: {
-    static: "../dist",
-    open: "chrome",
-    historyApiFallback: true,
+    static: "./dist",
+    /*     open: "chrome",
+    historyApiFallback: true, */
   },
   target: "web",
   plugins: [new HotModuleReplacementPlugin()],

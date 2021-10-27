@@ -7,15 +7,18 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, "../public", "index.html"),
+      /*  template: path.join(__dirname, "../public", "index.html"),
       filename: "./index.html",
-      favicon: "./public/favicon.ico",
+      favicon: "./public/favicon.ico", */
+      title: "Production",
     }),
   ],
   output: {
-    filename: "bundle.js",
-    path: path.resolve(__dirname, "../dist"),
-    publicPath: "/",
+    filename: "[name].bundle.js",
+    path: path.resolve(__dirname, "dist"),
+    clean: true,
+    /*     publicPath: "/",
+     */
   },
   stats: {
     children: true,
@@ -68,7 +71,7 @@ module.exports = {
       },
       { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
       {
-        test: /\.(scss|sass)$/,
+        test: /\.(scss|sass|css)$/,
         use: ["style-loader", "css-loader", "sass-loader"],
       },
     ],
